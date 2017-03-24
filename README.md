@@ -3,7 +3,7 @@ Postleitzahlsuche für die Schweiz / zipcode lookup for swiss area (offline)
 
 ## How to
 ```
-const ZipLookup = require('./../index');
+const ZipLookup = require('js-zipcode');
 const LookupService = new ZipLookup();
 // the return value is always  an array
 const result = LookupService.lookup(8000)[0]; 
