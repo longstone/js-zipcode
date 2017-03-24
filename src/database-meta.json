@@ -1,0 +1,169 @@
+{
+  "countryCode":{
+    "CH": {
+      "de": "Schweiz",
+      "fr": "Suisse",
+      "it": "Svizzera"
+    },
+    "LI": {
+      "de": "Fürstentum Liechtenstein",
+      "fr": "Principauté de Liechtenstein",
+      "it": "Principato del Liechtenstein"
+    },
+    "IT": {
+      "de": "Italien",
+      "fr": "Italie",
+      "it": "Italia"
+    },
+    "DE": {
+      "de": "Deutschland"
+    }
+  },
+  "cantonCode": {
+    "VD": {
+      "de": "Waadt",
+      "fr": "Vaud",
+      "it": "Vaud"
+    },
+    "GE": {
+      "de": "Genf",
+      "fr": "Genève",
+      "it": "Ginevra"
+    },
+    "FR": {
+      "de": "Freiburg",
+      "fr": "Fribourg",
+      "it": "Friburgo"
+    },
+    "BE": {
+      "de": "Bern",
+      "fr": "Berne",
+      "it": "Berna"
+    },
+    "VS": {
+      "de": "Wallis",
+      "fr": "Valais",
+      "it": "Vallese"
+    },
+    "NE": {
+      "de": "Neuenburg",
+      "fr": "Neuchâtel",
+      "it": "Neuchâtel"
+    },
+    "JU": {
+      "de": "Jura",
+      "fr": "Jura",
+      "it": "Giura"
+    },
+    "SO": {
+      "de": "Solothurn",
+      "fr": "Soleure",
+      "it": "Soletta"
+    },
+    "BL": {
+      "de": "Basel-Landschaft",
+      "fr": "Bâle-Campagne",
+      "it": "Basilea Campagna"
+    },
+    "BS": {
+      "de": "Basel-Stadt",
+      "fr": "Bâle-Ville",
+      "it": "Basilea Città"
+    },
+    "AG": {
+      "de": "Aargau",
+      "fr": "Argovie",
+      "it": "Argovia"
+    },
+    "LU": {
+      "de": "Luzern",
+      "fr": "Lucerne",
+      "it": "Lucerna"
+    },
+    "OW": {
+      "de": "Obwalden",
+      "fr": "Obwald",
+      "it": "Obvaldo"
+    },
+    "NW": {
+      "de": "Nidwalden",
+      "fr": "Nidwald",
+      "it": "Nidvaldo"
+    },
+    "ZG": {
+      "de": "Zug",
+      "fr": "Zoug",
+      "it": "Zugo"
+    },
+    "UR": {
+      "de": "Uri",
+      "fr": "Uri",
+      "it": "Uri"
+    },
+    "SZ": {
+      "de": "Schwyz",
+      "fr": "Schwyz",
+      "it": "Svitto"
+    },
+    "TI": {
+      "de": "Tessin",
+      "fr": "Tessin",
+      "it": "Ticino"
+    },
+    "GR": {
+      "de": "Graubünden",
+      "fr": "Grisons",
+      "it": "Grigioni"
+    },
+    "SG": {
+      "de": "St. Gallen",
+      "fr": "Saint-Gall",
+      "it": "San Gallo"
+    },
+    "ZH": {
+      "de": "Zürich",
+      "fr": "Zurich",
+      "it": "Zurigo"
+    },
+    "SH": {
+      "de": "Schaffhausen",
+      "fr": "Schaffhouse",
+      "it": "Sciaffusa"
+    },
+    "TG": {
+      "de": "Thurgau",
+      "fr": "Thurgovie",
+      "it": "Turgovia"
+    },
+    "AR": {
+      "de": "Appenzell Ausserrhoden",
+      "fr": "Appenzell Rhodes-Extérieures",
+      "it": "Appenzello Esterno"
+    },
+    "AI": {
+      "de": "Appenzell Innerrhoden",
+      "fr": "Appenzell Rhodes-Intérieures",
+      "it": "Appenzello Interno"
+    },
+    "GL": {
+      "de": "Glarus",
+      "fr": "Glaris",
+      "it": "Glarona"
+    },
+    "DE": {
+      "de": "Büsingen",
+      "fr": "Büsingen",
+      "it": "Büsingen"
+    },
+    "FL": {
+      "de": "Fürstentum Liechtenstein",
+      "fr": "Principauté de Liechtenstein",
+      "it": "Principato del Liechtenstein"
+    },
+    "IT": {
+      "de": "Italien",
+      "fr": "Italie",
+      "it": "Italia"
+    }
+  }
+}

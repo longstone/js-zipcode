@@ -1,0 +1,16700 @@
+'use strict';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var countryCode = {
+    CH: {
+        de: 'Schweiz',
+        fr: 'Suisse',
+        it: 'Svizzera'
+    },
+    LI: {
+        de: 'F\xFCrstentum Liechtenstein',
+        fr: 'Principaut\xE9 de Liechtenstein',
+        it: 'Principato del Liechtenstein'
+    },
+    IT: {
+        de: 'Italien',
+        fr: 'Italie',
+        it: 'Italia'
+    },
+    DE: {
+        de: 'Deutschland'
+    }
+};
+var cantonCode = {
+    VD: {
+        de: 'Waadt',
+        fr: 'Vaud',
+        it: 'Vaud'
+    },
+    GE: {
+        de: 'Genf',
+        fr: 'Gen\xE8ve',
+        it: 'Ginevra'
+    },
+    FR: {
+        de: 'Freiburg',
+        fr: 'Fribourg',
+        it: 'Friburgo'
+    },
+    BE: {
+        de: 'Bern',
+        fr: 'Berne',
+        it: 'Berna'
+    },
+    VS: {
+        de: 'Wallis',
+        fr: 'Valais',
+        it: 'Vallese'
+    },
+    NE: {
+        de: 'Neuenburg',
+        fr: 'Neuch\xE2tel',
+        it: 'Neuch\xE2tel'
+    },
+    JU: {
+        de: 'Jura',
+        fr: 'Jura',
+        it: 'Giura'
+    },
+    SO: {
+        de: 'Solothurn',
+        fr: 'Soleure',
+        it: 'Soletta'
+    },
+    BL: {
+        de: 'Basel-Landschaft',
+        fr: 'B\xE2le-Campagne',
+        it: 'Basilea Campagna'
+    },
+    BS: {
+        de: 'Basel-Stadt',
+        fr: 'B\xE2le-Ville',
+        it: 'Basilea Citt\xE0'
+    },
+    AG: {
+        de: 'Aargau',
+        fr: 'Argovie',
+        it: 'Argovia'
+    },
+    LU: {
+        de: 'Luzern',
+        fr: 'Lucerne',
+        it: 'Lucerna'
+    },
+    OW: {
+        de: 'Obwalden',
+        fr: 'Obwald',
+        it: 'Obvaldo'
+    },
+    NW: {
+        de: 'Nidwalden',
+        fr: 'Nidwald',
+        it: 'Nidvaldo'
+    },
+    ZG: {
+        de: 'Zug',
+        fr: 'Zoug',
+        it: 'Zugo'
+    },
+    UR: {
+        de: 'Uri',
+        fr: 'Uri',
+        it: 'Uri'
+    },
+    SZ: {
+        de: 'Schwyz',
+        fr: 'Schwyz',
+        it: 'Svitto'
+    },
+    TI: {
+        de: 'Tessin',
+        fr: 'Tessin',
+        it: 'Ticino'
+    },
+    GR: {
+        de: 'Graub\xFCnden',
+        fr: 'Grisons',
+        it: 'Grigioni'
+    },
+    SG: {
+        de: 'St. Gallen',
+        fr: 'Saint-Gall',
+        it: 'San Gallo'
+    },
+    ZH: {
+        de: 'Z\xFCrich',
+        fr: 'Zurich',
+        it: 'Zurigo'
+    },
+    SH: {
+        de: 'Schaffhausen',
+        fr: 'Schaffhouse',
+        it: 'Sciaffusa'
+    },
+    TG: {
+        de: 'Thurgau',
+        fr: 'Thurgovie',
+        it: 'Turgovia'
+    },
+    AR: {
+        de: 'Appenzell Ausserrhoden',
+        fr: 'Appenzell Rhodes-Ext\xE9rieures',
+        it: 'Appenzello Esterno'
+    },
+    AI: {
+        de: 'Appenzell Innerrhoden',
+        fr: 'Appenzell Rhodes-Int\xE9rieures',
+        it: 'Appenzello Interno'
+    },
+    GL: {
+        de: 'Glarus',
+        fr: 'Glaris',
+        it: 'Glarona'
+    },
+    DE: {
+        de: 'B\xFCsingen',
+        fr: 'B\xFCsingen',
+        it: 'B\xFCsingen'
+    },
+    FL: {
+        de: 'F\xFCrstentum Liechtenstein',
+        fr: 'Principaut\xE9 de Liechtenstein',
+        it: 'Principato del Liechtenstein'
+    },
+    IT: {
+        de: 'Italien',
+        fr: 'Italie',
+        it: 'Italia'
+    }
+};
+var zipdatabase = [{
+    zip: 1000,
+    loc: 'Lausanne',
+    canton: 'VD'
+}, {
+    zip: 1003,
+    loc: 'Lausanne',
+    canton: 'VD'
+}, {
+    zip: 1004,
+    loc: 'Lausanne',
+    canton: 'VD'
+}, {
+    zip: 1005,
+    loc: 'Lausanne',
+    canton: 'VD'
+}, {
+    zip: 1006,
+    loc: 'Lausanne',
+    canton: 'VD'
+}, {
+    zip: 1007,
+    loc: 'Lausanne',
+    canton: 'VD'
+}, {
+    zip: 1008,
+    loc: 'Jouxtens-M\xE9zery',
+    canton: 'VD'
+}, {
+    zip: 1008,
+    loc: 'Prilly',
+    canton: 'VD'
+}, {
+    zip: 1009,
+    loc: 'Pully',
+    canton: 'VD'
+}, {
+    zip: 1010,
+    loc: 'Lausanne',
+    canton: 'VD'
+}, {
+    zip: 1011,
+    loc: 'Lausanne',
+    canton: 'VD'
+}, {
+    zip: 1012,
+    loc: 'Lausanne',
+    canton: 'VD'
+}, {
+    zip: 1015,
+    loc: 'Lausanne',
+    canton: 'VD'
+}, {
+    zip: 1018,
+    loc: 'Lausanne',
+    canton: 'VD'
+}, {
+    zip: 1020,
+    loc: 'Renens VD',
+    canton: 'VD'
+}, {
+    zip: 1022,
+    loc: 'Chavannes-pr\xE8s-Renens',
+    canton: 'VD'
+}, {
+    zip: 1023,
+    loc: 'Crissier',
+    canton: 'VD'
+}, {
+    zip: 1024,
+    loc: 'Ecublens VD',
+    canton: 'VD'
+}, {
+    zip: 1025,
+    loc: 'St-Sulpice VD',
+    canton: 'VD'
+}, {
+    zip: 1026,
+    loc: 'Denges',
+    canton: 'VD'
+}, {
+    zip: 1026,
+    loc: 'Echandens',
+    canton: 'VD'
+}, {
+    zip: 1027,
+    loc: 'Lonay',
+    canton: 'VD'
+}, {
+    zip: 1028,
+    loc: 'Pr\xE9verenges',
+    canton: 'VD'
+}, {
+    zip: 1029,
+    loc: 'Villars-Ste-Croix',
+    canton: 'VD'
+}, {
+    zip: 1030,
+    loc: 'Bussigny-pr\xE8s-Lausanne',
+    canton: 'VD'
+}, {
+    zip: 1031,
+    loc: 'Mex VD',
+    canton: 'VD'
+}, {
+    zip: 1032,
+    loc: 'Romanel-sur-Lausanne',
+    canton: 'VD'
+}, {
+    zip: 1033,
+    loc: 'Cheseaux-sur-Lausanne',
+    canton: 'VD'
+}, {
+    zip: 1034,
+    loc: 'Boussens',
+    canton: 'VD'
+}, {
+    zip: 1035,
+    loc: 'Bournens',
+    canton: 'VD'
+}, {
+    zip: 1036,
+    loc: 'Sullens',
+    canton: 'VD'
+}, {
+    zip: 1037,
+    loc: 'Etagni\xE8res',
+    canton: 'VD'
+}, {
+    zip: 1038,
+    loc: 'Bercher',
+    canton: 'VD'
+}, {
+    zip: 1040,
+    loc: 'St-Barth\xE9lemy VD',
+    canton: 'VD'
+}, {
+    zip: 1040,
+    loc: 'Villars-le-Terroir',
+    canton: 'VD'
+}, {
+    zip: 1040,
+    loc: 'Echallens',
+    canton: 'VD'
+}, {
+    zip: 1041,
+    loc: 'Dommartin',
+    canton: 'VD'
+}, {
+    zip: 1041,
+    loc: 'Poliez-Pittet',
+    canton: 'VD'
+}, {
+    zip: 1041,
+    loc: 'Bottens',
+    canton: 'VD'
+}, {
+    zip: 1041,
+    loc: 'Naz',
+    canton: 'VD'
+}, {
+    zip: 1041,
+    loc: 'Montaubion-Chardonney',
+    canton: 'VD'
+}, {
+    zip: 1041,
+    loc: 'Poliez-le-Grand',
+    canton: 'VD'
+}, {
+    zip: 1042,
+    loc: 'Bettens',
+    canton: 'VD'
+}, {
+    zip: 1042,
+    loc: 'Bioley-Orjulaz',
+    canton: 'VD'
+}, {
+    zip: 1042,
+    loc: 'Assens',
+    canton: 'VD'
+}, {
+    zip: 1043,
+    loc: 'Sugnens',
+    canton: 'VD'
+}, {
+    zip: 1044,
+    loc: 'Fey',
+    canton: 'VD'
+}, {
+    zip: 1045,
+    loc: 'Ogens',
+    canton: 'VD'
+}, {
+    zip: 1046,
+    loc: 'Rueyres',
+    canton: 'VD'
+}, {
+    zip: 1047,
+    loc: 'Oppens',
+    canton: 'VD'
+}, {
+    zip: 1052,
+    loc: 'Le Mont-sur-Lausanne',
+    canton: 'VD'
+}, {
+    zip: 1053,
+    loc: 'Bretigny-sur-Morrens',
+    canton: 'VD'
+}, {
+    zip: 1053,
+    loc: 'Cugy VD',
+    canton: 'VD'
+}, {
+    zip: 1054,
+    loc: 'Morrens VD',
+    canton: 'VD'
+}, {
+    zip: 1055,
+    loc: 'Froideville',
+    canton: 'VD'
+}, {
+    zip: 1058,
+    loc: 'Villars-Tiercelin',
+    canton: 'VD'
+}, {
+    zip: 1059,
+    loc: 'Peney-le-Jorat',
+    canton: 'VD'
+}, {
+    zip: 1061,
+    loc: 'Villars-Mendraz',
+    canton: 'VD'
+}, {
+    zip: 1062,
+    loc: 'Sottens',
+    canton: 'VD'
+}, {
+    zip: 1063,
+    loc: 'Peyres-Possens',
+    canton: 'VD'
+}, {
+    zip: 1063,
+    loc: 'Boulens',
+    canton: 'VD'
+}, {
+    zip: 1063,
+    loc: 'Chapelle-sur-Moudon',
+    canton: 'VD'
+}, {
+    zip: 1063,
+    loc: 'Martherenges',
+    canton: 'VD'
+}, {
+    zip: 1066,
+    loc: 'Epalinges',
+    canton: 'VD'
+}, {
+    zip: 1068,
+    loc: 'Les Monts-de-Pully',
+    canton: 'VD'
+}, {
+    zip: 1070,
+    loc: 'Puidoux',
+    canton: 'VD'
+}, {
+    zip: 1071,
+    loc: 'Rivaz',
+    canton: 'VD'
+}, {
+    zip: 1071,
+    loc: 'St-Saphorin (Lavaux)',
+    canton: 'VD'
+}, {
+    zip: 1071,
+    loc: 'Chexbres',
+    canton: 'VD'
+}, {
+    zip: 1072,
+    loc: 'Forel (Lavaux)',
+    canton: 'VD'
+}, {
+    zip: 1073,
+    loc: 'Mollie-Margot',
+    canton: 'VD'
+}, {
+    zip: 1073,
+    loc: 'Savigny',
+    canton: 'VD'
+}, {
+    zip: 1076,
+    loc: 'Ferlens VD',
+    canton: 'VD'
+}, {
+    zip: 1077,
+    loc: 'Servion',
+    canton: 'VD'
+}, {
+    zip: 1078,
+    loc: 'Essertes',
+    canton: 'VD'
+}, {
+    zip: 1080,
+    loc: 'Les Cullayes',
+    canton: 'VD'
+}, {
+    zip: 1081,
+    loc: 'Montpreveyres',
+    canton: 'VD'
+}, {
+    zip: 1082,
+    loc: 'Corcelles-le-Jorat',
+    canton: 'VD'
+}, {
+    zip: 1083,
+    loc: 'M\xE9zi\xE8res VD',
+    canton: 'VD'
+}, {
+    zip: 1084,
+    loc: 'Carrouge VD',
+    canton: 'VD'
+}, {
+    zip: 1085,
+    loc: 'Vulliens',
+    canton: 'VD'
+}, {
+    zip: 1088,
+    loc: 'Ropraz',
+    canton: 'VD'
+}, {
+    zip: 1090,
+    loc: 'La Croix (Lutry)',
+    canton: 'VD'
+}, {
+    zip: 1091,
+    loc: 'Aran',
+    canton: 'VD'
+}, {
+    zip: 1091,
+    loc: 'Chenaux',
+    canton: 'VD'
+}, {
+    zip: 1091,
+    loc: 'Grandvaux',
+    canton: 'VD'
+}, {
+    zip: 1092,
+    loc: 'Belmont-sur-Lausanne',
+    canton: 'VD'
+}, {
+    zip: 1093,
+    loc: 'La Conversion',
+    canton: 'VD'
+}, {
+    zip: 1094,
+    loc: 'Paudex',
+    canton: 'VD'
+}, {
+    zip: 1095,
+    loc: 'Lutry',
+    canton: 'VD'
+}, {
+    zip: 1096,
+    loc: 'Villette (Lavaux)',
+    canton: 'VD'
+}, {
+    zip: 1096,
+    loc: 'Cully',
+    canton: 'VD'
+}, {
+    zip: 1097,
+    loc: 'Riex',
+    canton: 'VD'
+}, {
+    zip: 1098,
+    loc: 'Epesses',
+    canton: 'VD'
+}, {
+    zip: 1110,
+    loc: 'Morges',
+    canton: 'VD'
+}, {
+    zip: 1112,
+    loc: 'Echichens',
+    canton: 'VD'
+}, {
+    zip: 1113,
+    loc: 'St-Saphorin-sur-Morges',
+    canton: 'VD'
+}, {
+    zip: 1114,
+    loc: 'Colombier VD',
+    canton: 'VD'
+}, {
+    zip: 1115,
+    loc: 'Vullierens',
+    canton: 'VD'
+}, {
+    zip: 1116,
+    loc: 'Cottens VD',
+    canton: 'VD'
+}, {
+    zip: 1117,
+    loc: 'Grancy',
+    canton: 'VD'
+}, {
+    zip: 1121,
+    loc: 'Bremblens',
+    canton: 'VD'
+}, {
+    zip: 1122,
+    loc: 'Romanel-sur-Morges',
+    canton: 'VD'
+}, {
+    zip: 1123,
+    loc: 'Aclens',
+    canton: 'VD'
+}, {
+    zip: 1124,
+    loc: 'Gollion',
+    canton: 'VD'
+}, {
+    zip: 1125,
+    loc: 'Monnaz',
+    canton: 'VD'
+}, {
+    zip: 1126,
+    loc: 'Vaux-sur-Morges',
+    canton: 'VD'
+}, {
+    zip: 1127,
+    loc: 'Clarmont',
+    canton: 'VD'
+}, {
+    zip: 1128,
+    loc: 'Reverolle',
+    canton: 'VD'
+}, {
+    zip: 1131,
+    loc: 'Tolochenaz',
+    canton: 'VD'
+}, {
+    zip: 1132,
+    loc: 'Lully VD',
+    canton: 'VD'
+}, {
+    zip: 1134,
+    loc: 'Vufflens-le-Ch\xE2teau',
+    canton: 'VD'
+}, {
+    zip: 1134,
+    loc: 'Chigny',
+    canton: 'VD'
+}, {
+    zip: 1135,
+    loc: 'Denens',
+    canton: 'VD'
+}, {
+    zip: 1136,
+    loc: 'Bussy-Chardonney',
+    canton: 'VD'
+}, {
+    zip: 1141,
+    loc: 'S\xE9very',
+    canton: 'VD'
+}, {
+    zip: 1142,
+    loc: 'Pampigny',
+    canton: 'VD'
+}, {
+    zip: 1143,
+    loc: 'Apples',
+    canton: 'VD'
+}, {
+    zip: 1144,
+    loc: 'Ballens',
+    canton: 'VD'
+}, {
+    zip: 1145,
+    loc: 'Bi\xE8re',
+    canton: 'VD'
+}, {
+    zip: 1146,
+    loc: 'Mollens VD',
+    canton: 'VD'
+}, {
+    zip: 1147,
+    loc: 'Montricher',
+    canton: 'VD'
+}, {
+    zip: 1148,
+    loc: 'Cuarnens',
+    canton: 'VD'
+}, {
+    zip: 1148,
+    loc: 'Moiry VD',
+    canton: 'VD'
+}, {
+    zip: 1148,
+    loc: 'La Praz',
+    canton: 'VD'
+}, {
+    zip: 1148,
+    loc: 'Mont-la-Ville',
+    canton: 'VD'
+}, {
+    zip: 1148,
+    loc: 'Chavannes-le-Veyron',
+    canton: 'VD'
+}, {
+    zip: 1148,
+    loc: 'Mauraz',
+    canton: 'VD'
+}, {
+    zip: 1148,
+    loc: 'Villars-Bozon',
+    canton: 'VD'
+}, {
+    zip: 1148,
+    loc: 'La Coudre',
+    canton: 'VD'
+}, {
+    zip: 1148,
+    loc: 'L\'Isle',
+    canton: 'VD'
+}, {
+    zip: 1149,
+    loc: 'Berolle',
+    canton: 'VD'
+}, {
+    zip: 1162,
+    loc: 'St-Prex',
+    canton: 'VD'
+}, {
+    zip: 1163,
+    loc: 'Etoy',
+    canton: 'VD'
+}, {
+    zip: 1164,
+    loc: 'Buchillon',
+    canton: 'VD'
+}, {
+    zip: 1165,
+    loc: 'Allaman',
+    canton: 'VD'
+}, {
+    zip: 1166,
+    loc: 'Perroy',
+    canton: 'VD'
+}, {
+    zip: 1167,
+    loc: 'Lussy-sur-Morges',
+    canton: 'VD'
+}, {
+    zip: 1168,
+    loc: 'Villars-sous-Yens',
+    canton: 'VD'
+}, {
+    zip: 1169,
+    loc: 'Yens',
+    canton: 'VD'
+}, {
+    zip: 1170,
+    loc: 'Aubonne',
+    canton: 'VD'
+}, {
+    zip: 1172,
+    loc: 'Bougy-Villars',
+    canton: 'VD'
+}, {
+    zip: 1173,
+    loc: 'F\xE9chy',
+    canton: 'VD'
+}, {
+    zip: 1174,
+    loc: 'Montherod',
+    canton: 'VD'
+}, {
+    zip: 1174,
+    loc: 'Pizy',
+    canton: 'VD'
+}, {
+    zip: 1175,
+    loc: 'Lavigny',
+    canton: 'VD'
+}, {
+    zip: 1176,
+    loc: 'St-Livres',
+    canton: 'VD'
+}, {
+    zip: 1180,
+    loc: 'Tartegnin',
+    canton: 'VD'
+}, {
+    zip: 1180,
+    loc: 'Rolle',
+    canton: 'VD'
+}, {
+    zip: 1182,
+    loc: 'Gilly',
+    canton: 'VD'
+}, {
+    zip: 1183,
+    loc: 'Bursins',
+    canton: 'VD'
+}, {
+    zip: 1184,
+    loc: 'Vinzel',
+    canton: 'VD'
+}, {
+    zip: 1184,
+    loc: 'Luins',
+    canton: 'VD'
+}, {
+    zip: 1185,
+    loc: 'Mont-sur-Rolle',
+    canton: 'VD'
+}, {
+    zip: 1186,
+    loc: 'Essertines-sur-Rolle',
+    canton: 'VD'
+}, {
+    zip: 1187,
+    loc: 'St-Oyens',
+    canton: 'VD'
+}, {
+    zip: 1188,
+    loc: 'Gimel',
+    canton: 'VD'
+}, {
+    zip: 1188,
+    loc: 'St-George',
+    canton: 'VD'
+}, {
+    zip: 1189,
+    loc: 'Saubraz',
+    canton: 'VD'
+}, {
+    zip: 1195,
+    loc: 'Dully',
+    canton: 'VD'
+}, {
+    zip: 1195,
+    loc: 'Bursinel',
+    canton: 'VD'
+}, {
+    zip: 1196,
+    loc: 'Gland',
+    canton: 'VD'
+}, {
+    zip: 1197,
+    loc: 'Prangins',
+    canton: 'VD'
+}, {
+    zip: 1200,
+    loc: 'Gen\xE8ve',
+    canton: 'GE'
+}, {
+    zip: 1201,
+    loc: 'Gen\xE8ve',
+    canton: 'GE'
+}, {
+    zip: 1202,
+    loc: 'Gen\xE8ve',
+    canton: 'GE'
+}, {
+    zip: 1203,
+    loc: 'Gen\xE8ve',
+    canton: 'GE'
+}, {
+    zip: 1204,
+    loc: 'Gen\xE8ve',
+    canton: 'GE'
+}, {
+    zip: 1205,
+    loc: 'Gen\xE8ve',
+    canton: 'GE'
+}, {
+    zip: 1206,
+    loc: 'Gen\xE8ve',
+    canton: 'GE'
+}, {
+    zip: 1207,
+    loc: 'Gen\xE8ve',
+    canton: 'GE'
+}, {
+    zip: 1208,
+    loc: 'Gen\xE8ve',
+    canton: 'GE'
+}, {
+    zip: 1209,
+    loc: 'Gen\xE8ve',
+    canton: 'GE'
+}, {
+    zip: 1212,
+    loc: 'Grand-Lancy',
+    canton: 'GE'
+}, {
+    zip: 1213,
+    loc: 'Petit-Lancy',
+    canton: 'GE'
+}, {
+    zip: 1213,
+    loc: 'Onex',
+    canton: 'GE'
+}, {
+    zip: 1214,
+    loc: 'Vernier',
+    canton: 'GE'
+}, {
+    zip: 1215,
+    loc: 'Gen\xE8ve 15 A\xE9roport',
+    canton: 'GE'
+}, {
+    zip: 1216,
+    loc: 'Cointrin',
+    canton: 'GE'
+}, {
+    zip: 1217,
+    loc: 'Meyrin',
+    canton: 'GE'
+}, {
+    zip: 1218,
+    loc: 'Le Grand-Saconnex',
+    canton: 'GE'
+}, {
+    zip: 1219,
+    loc: 'Le Lignon',
+    canton: 'GE'
+}, {
+    zip: 1219,
+    loc: 'A\xEFre',
+    canton: 'GE'
+}, {
+    zip: 1219,
+    loc: 'Ch\xE2telaine',
+    canton: 'GE'
+}, {
+    zip: 1220,
+    loc: 'Les Avanchets',
+    canton: 'GE'
+}, {
+    zip: 1222,
+    loc: 'V\xE9senaz',
+    canton: 'GE'
+}, {
+    zip: 1223,
+    loc: 'Cologny',
+    canton: 'GE'
+}, {
+    zip: 1224,
+    loc: 'Ch\xEAne-Bougeries',
+    canton: 'GE'
+}, {
+    zip: 1225,
+    loc: 'Ch\xEAne-Bourg',
+    canton: 'GE'
+}, {
+    zip: 1226,
+    loc: 'Th\xF4nex',
+    canton: 'GE'
+}, {
+    zip: 1227,
+    loc: 'Les Acacias',
+    canton: 'GE'
+}, {
+    zip: 1227,
+    loc: 'Carouge GE',
+    canton: 'GE'
+}, {
+    zip: 1228,
+    loc: 'Plan-les-Ouates',
+    canton: 'GE'
+}, {
+    zip: 1231,
+    loc: 'Conches',
+    canton: 'GE'
+}, {
+    zip: 1232,
+    loc: 'Confignon',
+    canton: 'GE'
+}, {
+    zip: 1233,
+    loc: 'Bernex',
+    canton: 'GE'
+}, {
+    zip: 1234,
+    loc: 'Vessy',
+    canton: 'GE'
+}, {
+    zip: 1236,
+    loc: 'Cartigny',
+    canton: 'GE'
+}, {
+    zip: 1237,
+    loc: 'Avully',
+    canton: 'GE'
+}, {
+    zip: 1239,
+    loc: 'Collex',
+    canton: 'GE'
+}, {
+    zip: 1241,
+    loc: 'Puplinge',
+    canton: 'GE'
+}, {
+    zip: 1242,
+    loc: 'Satigny',
+    canton: 'GE'
+}, {
+    zip: 1243,
+    loc: 'Presinge',
+    canton: 'GE'
+}, {
+    zip: 1244,
+    loc: 'Choulex',
+    canton: 'GE'
+}, {
+    zip: 1245,
+    loc: 'Collonge-Bellerive',
+    canton: 'GE'
+}, {
+    zip: 1246,
+    loc: 'Corsier GE',
+    canton: 'GE'
+}, {
+    zip: 1247,
+    loc: 'Ani\xE8res',
+    canton: 'GE'
+}, {
+    zip: 1248,
+    loc: 'Hermance',
+    canton: 'GE'
+}, {
+    zip: 1251,
+    loc: 'Gy',
+    canton: 'GE'
+}, {
+    zip: 1252,
+    loc: 'Meinier',
+    canton: 'GE'
+}, {
+    zip: 1253,
+    loc: 'Vandoeuvres',
+    canton: 'GE'
+}, {
+    zip: 1254,
+    loc: 'Jussy',
+    canton: 'GE'
+}, {
+    zip: 1255,
+    loc: 'Veyrier',
+    canton: 'GE'
+}, {
+    zip: 1256,
+    loc: 'Troinex',
+    canton: 'GE'
+}, {
+    zip: 1257,
+    loc: 'La Croix-de-Rozon',
+    canton: 'GE'
+}, {
+    zip: 1258,
+    loc: 'Perly',
+    canton: 'GE'
+}, {
+    zip: 1260,
+    loc: 'Nyon',
+    canton: 'VD'
+}, {
+    zip: 1261,
+    loc: 'Longirod',
+    canton: 'VD'
+}, {
+    zip: 1261,
+    loc: 'Marchissy',
+    canton: 'VD'
+}, {
+    zip: 1261,
+    loc: 'Le Vaud',
+    canton: 'VD'
+}, {
+    zip: 1262,
+    loc: 'Eysins',
+    canton: 'VD'
+}, {
+    zip: 1263,
+    loc: 'Crassier',
+    canton: 'VD'
+}, {
+    zip: 1264,
+    loc: 'St-Cergue',
+    canton: 'VD'
+}, {
+    zip: 1265,
+    loc: 'La Cure',
+    canton: 'VD'
+}, {
+    zip: 1266,
+    loc: 'Duillier',
+    canton: 'VD'
+}, {
+    zip: 1267,
+    loc: 'Vich',
+    canton: 'VD'
+}, {
+    zip: 1267,
+    loc: 'Coinsins',
+    canton: 'VD'
+}, {
+    zip: 1268,
+    loc: 'Burtigny',
+    canton: 'VD'
+}, {
+    zip: 1268,
+    loc: 'Begnins',
+    canton: 'VD'
+}, {
+    zip: 1269,
+    loc: 'Bassins',
+    canton: 'VD'
+}, {
+    zip: 1270,
+    loc: 'Tr\xE9lex',
+    canton: 'VD'
+}, {
+    zip: 1271,
+    loc: 'Givrins',
+    canton: 'VD'
+}, {
+    zip: 1272,
+    loc: 'Genolier',
+    canton: 'VD'
+}, {
+    zip: 1273,
+    loc: 'Le Muids',
+    canton: 'VD'
+}, {
+    zip: 1273,
+    loc: 'Arzier',
+    canton: 'VD'
+}, {
+    zip: 1274,
+    loc: 'Grens',
+    canton: 'VD'
+}, {
+    zip: 1274,
+    loc: 'Signy',
+    canton: 'VD'
+}, {
+    zip: 1275,
+    loc: 'Ch\xE9serex',
+    canton: 'VD'
+}, {
+    zip: 1276,
+    loc: 'Gingins',
+    canton: 'VD'
+}, {
+    zip: 1277,
+    loc: 'Arnex-sur-Nyon',
+    canton: 'VD'
+}, {
+    zip: 1277,
+    loc: 'Borex',
+    canton: 'VD'
+}, {
+    zip: 1278,
+    loc: 'La Rippe',
+    canton: 'VD'
+}, {
+    zip: 1279,
+    loc: 'Bogis-Bossey',
+    canton: 'VD'
+}, {
+    zip: 1279,
+    loc: 'Chavannes-de-Bogis',
+    canton: 'VD'
+}, {
+    zip: 1281,
+    loc: 'Russin',
+    canton: 'GE'
+}, {
+    zip: 1283,
+    loc: 'Dardagny',
+    canton: 'GE'
+}, {
+    zip: 1283,
+    loc: 'La Plaine',
+    canton: 'GE'
+}, {
+    zip: 1284,
+    loc: 'Chancy',
+    canton: 'GE'
+}, {
+    zip: 1285,
+    loc: 'Athenaz (Avusy)',
+    canton: 'GE'
+}, {
+    zip: 1286,
+    loc: 'Soral',
+    canton: 'GE'
+}, {
+    zip: 1287,
+    loc: 'Laconnex',
+    canton: 'GE'
+}, {
+    zip: 1288,
+    loc: 'Aire-la-Ville',
+    canton: 'GE'
+}, {
+    zip: 1290,
+    loc: 'Versoix',
+    canton: 'GE'
+}, {
+    zip: 1290,
+    loc: 'Chavannes-des-Bois',
+    canton: 'VD'
+}, {
+    zip: 1291,
+    loc: 'Commugny',
+    canton: 'VD'
+}, {
+    zip: 1292,
+    loc: 'Chamb\xE9sy',
+    canton: 'GE'
+}, {
+    zip: 1293,
+    loc: 'Bellevue',
+    canton: 'GE'
+}, {
+    zip: 1294,
+    loc: 'Genthod',
+    canton: 'GE'
+}, {
+    zip: 1295,
+    loc: 'Mies',
+    canton: 'VD'
+}, {
+    zip: 1295,
+    loc: 'Tannay',
+    canton: 'VD'
+}, {
+    zip: 1296,
+    loc: 'Coppet',
+    canton: 'VD'
+}, {
+    zip: 1297,
+    loc: 'Founex',
+    canton: 'VD'
+}, {
+    zip: 1298,
+    loc: 'C\xE9ligny',
+    canton: 'GE'
+}, {
+    zip: 1299,
+    loc: 'Crans-pr\xE8s-C\xE9ligny',
+    canton: 'VD'
+}, {
+    zip: 1302,
+    loc: 'Vufflens-la-Ville',
+    canton: 'VD'
+}, {
+    zip: 1303,
+    loc: 'Penthaz',
+    canton: 'VD'
+}, {
+    zip: 1304,
+    loc: 'Senarclens',
+    canton: 'VD'
+}, {
+    zip: 1304,
+    loc: 'Dizy',
+    canton: 'VD'
+}, {
+    zip: 1304,
+    loc: 'Allens',
+    canton: 'VD'
+}, {
+    zip: 1304,
+    loc: 'Cossonay-Ville',
+    canton: 'VD'
+}, {
+    zip: 1305,
+    loc: 'Penthalaz',
+    canton: 'VD'
+}, {
+    zip: 1306,
+    loc: 'Daillens',
+    canton: 'VD'
+}, {
+    zip: 1307,
+    loc: 'Lussery-Villars',
+    canton: 'VD'
+}, {
+    zip: 1308,
+    loc: 'La Chaux (Cossonay)',
+    canton: 'VD'
+}, {
+    zip: 1312,
+    loc: 'Ecl\xE9pens',
+    canton: 'VD'
+}, {
+    zip: 1313,
+    loc: 'Ferreyres',
+    canton: 'VD'
+}, {
+    zip: 1315,
+    loc: 'La Sarraz',
+    canton: 'VD'
+}, {
+    zip: 1316,
+    loc: 'Chevilly',
+    canton: 'VD'
+}, {
+    zip: 1317,
+    loc: 'Orny',
+    canton: 'VD'
+}, {
+    zip: 1318,
+    loc: 'Pompaples',
+    canton: 'VD'
+}, {
+    zip: 1321,
+    loc: 'Arnex-sur-Orbe',
+    canton: 'VD'
+}, {
+    zip: 1322,
+    loc: 'Croy',
+    canton: 'VD'
+}, {
+    zip: 1323,
+    loc: 'Romainm\xF4tier',
+    canton: 'VD'
+}, {
+    zip: 1324,
+    loc: 'Premier',
+    canton: 'VD'
+}, {
+    zip: 1325,
+    loc: 'Vaulion',
+    canton: 'VD'
+}, {
+    zip: 1326,
+    loc: 'Juriens',
+    canton: 'VD'
+}, {
+    zip: 1329,
+    loc: 'Bretonni\xE8res',
+    canton: 'VD'
+}, {
+    zip: 1337,
+    loc: 'Vallorbe',
+    canton: 'VD'
+}, {
+    zip: 1338,
+    loc: 'Ballaigues',
+    canton: 'VD'
+}, {
+    zip: 1341,
+    loc: 'Orient',
+    canton: 'VD'
+}, {
+    zip: 1342,
+    loc: 'Le Pont',
+    canton: 'VD'
+}, {
+    zip: 1343,
+    loc: 'Les Charbonni\xE8res',
+    canton: 'VD'
+}, {
+    zip: 1344,
+    loc: 'L\'Abbaye',
+    canton: 'VD'
+}, {
+    zip: 1345,
+    loc: 'Le Lieu',
+    canton: 'VD'
+}, {
+    zip: 1346,
+    loc: 'Les Bioux',
+    canton: 'VD'
+}, {
+    zip: 1347,
+    loc: 'Le Solliat',
+    canton: 'VD'
+}, {
+    zip: 1347,
+    loc: 'Le Sentier',
+    canton: 'VD'
+}, {
+    zip: 1348,
+    loc: 'Le Brassus',
+    canton: 'VD'
+}, {
+    zip: 1350,
+    loc: 'Orbe',
+    canton: 'VD'
+}, {
+    zip: 1352,
+    loc: 'Agiez',
+    canton: 'VD'
+}, {
+    zip: 1353,
+    loc: 'Bofflens',
+    canton: 'VD'
+}, {
+    zip: 1354,
+    loc: 'Montcherand',
+    canton: 'VD'
+}, {
+    zip: 1355,
+    loc: 'Sergey',
+    canton: 'VD'
+}, {
+    zip: 1355,
+    loc: 'L\'Abergement',
+    canton: 'VD'
+}, {
+    zip: 1356,
+    loc: 'Les Cl\xE9es',
+    canton: 'VD'
+}, {
+    zip: 1356,
+    loc: 'La Russille',
+    canton: 'VD'
+}, {
+    zip: 1357,
+    loc: 'Lignerolle',
+    canton: 'VD'
+}, {
+    zip: 1358,
+    loc: 'Valeyres-sous-Rances',
+    canton: 'VD'
+}, {
+    zip: 1372,
+    loc: 'Bavois',
+    canton: 'VD'
+}, {
+    zip: 1373,
+    loc: 'Chavornay',
+    canton: 'VD'
+}, {
+    zip: 1374,
+    loc: 'Corcelles-sur-Chavornay',
+    canton: 'VD'
+}, {
+    zip: 1375,
+    loc: 'Penth\xE9r\xE9az',
+    canton: 'VD'
+}, {
+    zip: 1376,
+    loc: 'Eclagnens',
+    canton: 'VD'
+}, {
+    zip: 1376,
+    loc: 'Goumoens-le-Jux',
+    canton: 'VD'
+}, {
+    zip: 1376,
+    loc: 'Goumoens-la-Ville',
+    canton: 'VD'
+}, {
+    zip: 1377,
+    loc: 'Oulens-sous-Echallens',
+    canton: 'VD'
+}, {
+    zip: 1400,
+    loc: 'Yverdon-les-Bains',
+    canton: 'VD'
+}, {
+    zip: 1400,
+    loc: 'Cheseaux-Nor\xE9az',
+    canton: 'VD'
+}, {
+    zip: 1404,
+    loc: 'Cuarny',
+    canton: 'VD'
+}, {
+    zip: 1404,
+    loc: 'Villars-Epeney',
+    canton: 'VD'
+}, {
+    zip: 1405,
+    loc: 'Pomy',
+    canton: 'VD'
+}, {
+    zip: 1406,
+    loc: 'Cronay',
+    canton: 'VD'
+}, {
+    zip: 1407,
+    loc: 'Bioley-Magnoux',
+    canton: 'VD'
+}, {
+    zip: 1407,
+    loc: 'Gossens',
+    canton: 'VD'
+}, {
+    zip: 1407,
+    loc: 'M\xE9zery-pr\xE8s-Donneloye',
+    canton: 'VD'
+}, {
+    zip: 1407,
+    loc: 'Donneloye',
+    canton: 'VD'
+}, {
+    zip: 1408,
+    loc: 'Prahins',
+    canton: 'VD'
+}, {
+    zip: 1409,
+    loc: 'Chan\xE9az',
+    canton: 'VD'
+}, {
+    zip: 1410,
+    loc: 'Pr\xE9vondavaux',
+    canton: 'FR'
+}, {
+    zip: 1410,
+    loc: 'St-Cierges',
+    canton: 'VD'
+}, {
+    zip: 1410,
+    loc: 'Denezy',
+    canton: 'VD'
+}, {
+    zip: 1410,
+    loc: 'Correvon',
+    canton: 'VD'
+}, {
+    zip: 1410,
+    loc: 'Thierrens',
+    canton: 'VD'
+}, {
+    zip: 1412,
+    loc: 'Valeyres-sous-Ursins',
+    canton: 'VD'
+}, {
+    zip: 1412,
+    loc: 'Ursins',
+    canton: 'VD'
+}, {
+    zip: 1413,
+    loc: 'Orzens',
+    canton: 'VD'
+}, {
+    zip: 1415,
+    loc: 'Molondin',
+    canton: 'VD'
+}, {
+    zip: 1415,
+    loc: 'D\xE9moret',
+    canton: 'VD'
+}, {
+    zip: 1416,
+    loc: 'Pailly',
+    canton: 'VD'
+}, {
+    zip: 1417,
+    loc: 'Epautheyres',
+    canton: 'VD'
+}, {
+    zip: 1417,
+    loc: 'Essertines-sur-Yverdon',
+    canton: 'VD'
+}, {
+    zip: 1418,
+    loc: 'Vuarrens',
+    canton: 'VD'
+}, {
+    zip: 1420,
+    loc: 'Fiez',
+    canton: 'VD'
+}, {
+    zip: 1421,
+    loc: 'Fontaines-sur-Grandson',
+    canton: 'VD'
+}, {
+    zip: 1421,
+    loc: 'Grandevent',
+    canton: 'VD'
+}, {
+    zip: 1422,
+    loc: 'Grandson',
+    canton: 'VD'
+}, {
+    zip: 1423,
+    loc: 'Fontanezier',
+    canton: 'VD'
+}, {
+    zip: 1423,
+    loc: 'Romairon',
+    canton: 'VD'
+}, {
+    zip: 1423,
+    loc: 'Vaugondry',
+    canton: 'VD'
+}, {
+    zip: 1423,
+    loc: 'Villars-Burquin',
+    canton: 'VD'
+}, {
+    zip: 1424,
+    loc: 'Champagne',
+    canton: 'VD'
+}, {
+    zip: 1425,
+    loc: 'Onnens VD',
+    canton: 'VD'
+}, {
+    zip: 1426,
+    loc: 'Corcelles-pr\xE8s-Concise',
+    canton: 'VD'
+}, {
+    zip: 1426,
+    loc: 'Concise',
+    canton: 'VD'
+}, {
+    zip: 1427,
+    loc: 'Bonvillars',
+    canton: 'VD'
+}, {
+    zip: 1428,
+    loc: 'Mutrux',
+    canton: 'VD'
+}, {
+    zip: 1428,
+    loc: 'Provence',
+    canton: 'VD'
+}, {
+    zip: 1429,
+    loc: 'Giez',
+    canton: 'VD'
+}, {
+    zip: 1430,
+    loc: 'Orges',
+    canton: 'VD'
+}, {
+    zip: 1431,
+    loc: 'Vugelles-La Mothe',
+    canton: 'VD'
+}, {
+    zip: 1431,
+    loc: 'Novalles',
+    canton: 'VD'
+}, {
+    zip: 1432,
+    loc: 'Belmont-sur-Yverdon',
+    canton: 'VD'
+}, {
+    zip: 1432,
+    loc: 'Gressy',
+    canton: 'VD'
+}, {
+    zip: 1433,
+    loc: 'Suchy',
+    canton: 'VD'
+}, {
+    zip: 1434,
+    loc: 'Ependes VD',
+    canton: 'VD'
+}, {
+    zip: 1435,
+    loc: 'Essert-Pittet',
+    canton: 'VD'
+}, {
+    zip: 1436,
+    loc: 'Treycovagnes',
+    canton: 'VD'
+}, {
+    zip: 1436,
+    loc: 'Chamblon',
+    canton: 'VD'
+}, {
+    zip: 1437,
+    loc: 'Susc\xE9vaz',
+    canton: 'VD'
+}, {
+    zip: 1438,
+    loc: 'Mathod',
+    canton: 'VD'
+}, {
+    zip: 1439,
+    loc: 'Rances',
+    canton: 'VD'
+}, {
+    zip: 1441,
+    loc: 'Valeyres-sous-Montagny',
+    canton: 'VD'
+}, {
+    zip: 1442,
+    loc: 'Montagny-pr\xE8s-Yverdon',
+    canton: 'VD'
+}, {
+    zip: 1443,
+    loc: 'Champvent',
+    canton: 'VD'
+}, {
+    zip: 1443,
+    loc: 'Essert-sous-Champvent',
+    canton: 'VD'
+}, {
+    zip: 1443,
+    loc: 'Villars-sous-Champvent',
+    canton: 'VD'
+}, {
+    zip: 1445,
+    loc: 'Vuiteboeuf',
+    canton: 'VD'
+}, {
+    zip: 1446,
+    loc: 'Baulmes',
+    canton: 'VD'
+}, {
+    zip: 1450,
+    loc: 'La Sagne (Ste-Croix)',
+    canton: 'VD'
+}, {
+    zip: 1450,
+    loc: 'Le Ch\xE2teau-de-Ste-Croix',
+    canton: 'VD'
+}, {
+    zip: 1450,
+    loc: 'Ste-Croix',
+    canton: 'VD'
+}, {
+    zip: 1452,
+    loc: 'Les Rasses',
+    canton: 'VD'
+}, {
+    zip: 1453,
+    loc: 'Mauborget',
+    canton: 'VD'
+}, {
+    zip: 1453,
+    loc: 'Bullet',
+    canton: 'VD'
+}, {
+    zip: 1454,
+    loc: 'La Vraconnaz',
+    canton: 'VD'
+}, {
+    zip: 1454,
+    loc: 'L\'Auberson',
+    canton: 'VD'
+}, {
+    zip: 1462,
+    loc: 'Yvonand',
+    canton: 'VD'
+}, {
+    zip: 1463,
+    loc: 'Rovray',
+    canton: 'VD'
+}, {
+    zip: 1464,
+    loc: 'Ch\xEAne-P\xE2quier',
+    canton: 'VD'
+}, {
+    zip: 1464,
+    loc: 'Chavannes-le-Ch\xEAne',
+    canton: 'VD'
+}, {
+    zip: 1468,
+    loc: 'Cheyres',
+    canton: 'FR'
+}, {
+    zip: 1470,
+    loc: 'Bollion',
+    canton: 'FR'
+}, {
+    zip: 1470,
+    loc: 'Lully FR',
+    canton: 'FR'
+}, {
+    zip: 1470,
+    loc: 'Seiry',
+    canton: 'FR'
+}, {
+    zip: 1470,
+    loc: 'Estavayer-le-Lac',
+    canton: 'FR'
+}, {
+    zip: 1473,
+    loc: 'Font',
+    canton: 'FR'
+}, {
+    zip: 1473,
+    loc: 'Ch\xE2tillon FR',
+    canton: 'FR'
+}, {
+    zip: 1474,
+    loc: 'Ch\xE2bles FR',
+    canton: 'FR'
+}, {
+    zip: 1475,
+    loc: 'Autavaux',
+    canton: 'FR'
+}, {
+    zip: 1475,
+    loc: 'Forel FR',
+    canton: 'FR'
+}, {
+    zip: 1475,
+    loc: 'Montbrelloz',
+    canton: 'FR'
+}, {
+    zip: 1482,
+    loc: 'Cugy FR',
+    canton: 'FR'
+}, {
+    zip: 1483,
+    loc: 'Frasses',
+    canton: 'FR'
+}, {
+    zip: 1483,
+    loc: 'Vesin',
+    canton: 'FR'
+}, {
+    zip: 1483,
+    loc: 'Montet (Broye)',
+    canton: 'FR'
+}, {
+    zip: 1484,
+    loc: 'Aumont',
+    canton: 'FR'
+}, {
+    zip: 1484,
+    loc: 'Granges-de-Vesin',
+    canton: 'FR'
+}, {
+    zip: 1485,
+    loc: 'Nuvilly',
+    canton: 'FR'
+}, {
+    zip: 1486,
+    loc: 'Vuissens',
+    canton: 'FR'
+}, {
+    zip: 1489,
+    loc: 'Murist',
+    canton: 'FR'
+}, {
+    zip: 1509,
+    loc: 'Vucherens',
+    canton: 'VD'
+}, {
+    zip: 1510,
+    loc: 'Syens',
+    canton: 'VD'
+}, {
+    zip: 1510,
+    loc: 'Moudon',
+    canton: 'VD'
+}, {
+    zip: 1512,
+    loc: 'Chavannes-sur-Moudon',
+    canton: 'VD'
+}, {
+    zip: 1513,
+    loc: 'Hermenches',
+    canton: 'VD'
+}, {
+    zip: 1513,
+    loc: 'Rossenges',
+    canton: 'VD'
+}, {
+    zip: 1514,
+    loc: 'Bussy-sur-Moudon',
+    canton: 'VD'
+}, {
+    zip: 1515,
+    loc: 'Neyruz-sur-Moudon',
+    canton: 'VD'
+}, {
+    zip: 1515,
+    loc: 'Villars-le-Comte',
+    canton: 'VD'
+}, {
+    zip: 1521,
+    loc: 'Curtilles',
+    canton: 'VD'
+}, {
+    zip: 1522,
+    loc: 'Oulens-sur-Lucens',
+    canton: 'VD'
+}, {
+    zip: 1522,
+    loc: 'Lucens',
+    canton: 'VD'
+}, {
+    zip: 1523,
+    loc: 'Granges-pr\xE8s-Marnand',
+    canton: 'VD'
+}, {
+    zip: 1524,
+    loc: 'Marnand',
+    canton: 'VD'
+}, {
+    zip: 1525,
+    loc: 'Seigneux',
+    canton: 'VD'
+}, {
+    zip: 1525,
+    loc: 'Henniez',
+    canton: 'VD'
+}, {
+    zip: 1526,
+    loc: 'Forel-sur-Lucens',
+    canton: 'VD'
+}, {
+    zip: 1526,
+    loc: 'Cremin',
+    canton: 'VD'
+}, {
+    zip: 1527,
+    loc: 'Villeneuve FR',
+    canton: 'FR'
+}, {
+    zip: 1528,
+    loc: 'Praratoud',
+    canton: 'FR'
+}, {
+    zip: 1528,
+    loc: 'Surpierre',
+    canton: 'FR'
+}, {
+    zip: 1529,
+    loc: 'Cheiry',
+    canton: 'FR'
+}, {
+    zip: 1530,
+    loc: 'Payerne',
+    canton: 'VD'
+}, {
+    zip: 1532,
+    loc: 'F\xE9tigny',
+    canton: 'FR'
+}, {
+    zip: 1533,
+    loc: 'M\xE9ni\xE8res',
+    canton: 'FR'
+}, {
+    zip: 1534,
+    loc: 'Chapelle (Broye)',
+    canton: 'FR'
+}, {
+    zip: 1534,
+    loc: 'Sassel',
+    canton: 'VD'
+}, {
+    zip: 1535,
+    loc: 'Combremont-le-Grand',
+    canton: 'VD'
+}, {
+    zip: 1536,
+    loc: 'Combremont-le-Petit',
+    canton: 'VD'
+}, {
+    zip: 1537,
+    loc: 'Champtauroz',
+    canton: 'VD'
+}, {
+    zip: 1538,
+    loc: 'Treytorrens (Payerne)',
+    canton: 'VD'
+}, {
+    zip: 1541,
+    loc: 'Morens FR',
+    canton: 'FR'
+}, {
+    zip: 1541,
+    loc: 'S\xE9vaz',
+    canton: 'FR'
+}, {
+    zip: 1541,
+    loc: 'Bussy FR',
+    canton: 'FR'
+}, {
+    zip: 1542,
+    loc: 'Rueyres-les-Pr\xE9s',
+    canton: 'FR'
+}, {
+    zip: 1543,
+    loc: 'Grandcour',
+    canton: 'VD'
+}, {
+    zip: 1544,
+    loc: 'Gletterens',
+    canton: 'FR'
+}, {
+    zip: 1545,
+    loc: 'Chevroux',
+    canton: 'VD'
+}, {
+    zip: 1551,
+    loc: 'Vers-chez-Perrin',
+    canton: 'VD'
+}, {
+    zip: 1552,
+    loc: 'Trey',
+    canton: 'VD'
+}, {
+    zip: 1553,
+    loc: 'Ch\xE2tonnaye',
+    canton: 'FR'
+}, {
+    zip: 1554,
+    loc: 'S\xE9deilles',
+    canton: 'VD'
+}, {
+    zip: 1554,
+    loc: 'Rossens VD',
+    canton: 'VD'
+}, {
+    zip: 1555,
+    loc: 'Villarzel',
+    canton: 'VD'
+}, {
+    zip: 1562,
+    loc: 'Corcelles-pr\xE8s-Payerne',
+    canton: 'VD'
+}, {
+    zip: 1563,
+    loc: 'Dompierre FR',
+    canton: 'FR'
+}, {
+    zip: 1564,
+    loc: 'Domdidier',
+    canton: 'FR'
+}, {
+    zip: 1565,
+    loc: 'Vallon',
+    canton: 'FR'
+}, {
+    zip: 1565,
+    loc: 'Missy',
+    canton: 'VD'
+}, {
+    zip: 1566,
+    loc: 'Les Friques',
+    canton: 'FR'
+}, {
+    zip: 1566,
+    loc: 'St-Aubin FR',
+    canton: 'FR'
+}, {
+    zip: 1567,
+    loc: 'Delley',
+    canton: 'FR'
+}, {
+    zip: 1568,
+    loc: 'Portalban',
+    canton: 'FR'
+}, {
+    zip: 1580,
+    loc: 'Oleyres',
+    canton: 'VD'
+}, {
+    zip: 1580,
+    loc: 'Avenches',
+    canton: 'VD'
+}, {
+    zip: 1582,
+    loc: 'Donatyre',
+    canton: 'VD'
+}, {
+    zip: 1583,
+    loc: 'Villarepos',
+    canton: 'FR'
+}, {
+    zip: 1584,
+    loc: 'Villars-le-Grand',
+    canton: 'VD'
+}, {
+    zip: 1585,
+    loc: 'Bellerive VD',
+    canton: 'VD'
+}, {
+    zip: 1585,
+    loc: 'Cotterd',
+    canton: 'VD'
+}, {
+    zip: 1585,
+    loc: 'Salavaux',
+    canton: 'VD'
+}, {
+    zip: 1586,
+    loc: 'Vallamand',
+    canton: 'VD'
+}, {
+    zip: 1587,
+    loc: 'Montmagny',
+    canton: 'VD'
+}, {
+    zip: 1587,
+    loc: 'Constantine',
+    canton: 'VD'
+}, {
+    zip: 1588,
+    loc: 'Cudrefin',
+    canton: 'VD'
+}, {
+    zip: 1589,
+    loc: 'Chabrey',
+    canton: 'VD'
+}, {
+    zip: 1595,
+    loc: 'Clavaleyres',
+    canton: 'BE'
+}, {
+    zip: 1595,
+    loc: 'Faoug',
+    canton: 'VD'
+}, {
+    zip: 1607,
+    loc: 'Les Tavernes',
+    canton: 'VD'
+}, {
+    zip: 1607,
+    loc: 'Les Thioleyres',
+    canton: 'VD'
+}, {
+    zip: 1607,
+    loc: 'Pal\xE9zieux-Village',
+    canton: 'VD'
+}, {
+    zip: 1607,
+    loc: 'Pal\xE9zieux',
+    canton: 'VD'
+}, {
+    zip: 1608,
+    loc: 'Chapelle (Gl\xE2ne)',
+    canton: 'FR'
+}, {
+    zip: 1608,
+    loc: 'Bussigny-sur-Oron',
+    canton: 'VD'
+}, {
+    zip: 1608,
+    loc: 'Chesalles-sur-Oron',
+    canton: 'VD'
+}, {
+    zip: 1608,
+    loc: 'Oron-le-Ch\xE2tel',
+    canton: 'VD'
+}, {
+    zip: 1609,
+    loc: 'Besencens',
+    canton: 'FR'
+}, {
+    zip: 1609,
+    loc: 'Fiaug\xE8res',
+    canton: 'FR'
+}, {
+    zip: 1609,
+    loc: 'Le Jordil',
+    canton: 'FR'
+}, {
+    zip: 1609,
+    loc: 'St-Martin FR',
+    canton: 'FR'
+}, {
+    zip: 1610,
+    loc: 'Ch\xE2tillens',
+    canton: 'VD'
+}, {
+    zip: 1610,
+    loc: 'Vuibroye',
+    canton: 'VD'
+}, {
+    zip: 1610,
+    loc: 'Oron-la-Ville',
+    canton: 'VD'
+}, {
+    zip: 1611,
+    loc: 'Le Cr\xEAt-pr\xE8s-Semsales',
+    canton: 'FR'
+}, {
+    zip: 1612,
+    loc: 'Ecoteaux',
+    canton: 'VD'
+}, {
+    zip: 1613,
+    loc: 'Maracon',
+    canton: 'VD'
+}, {
+    zip: 1614,
+    loc: 'Granges (Veveyse)',
+    canton: 'FR'
+}, {
+    zip: 1615,
+    loc: 'Bossonnens',
+    canton: 'FR'
+}, {
+    zip: 1616,
+    loc: 'Attalens',
+    canton: 'FR'
+}, {
+    zip: 1617,
+    loc: 'Tatroz',
+    canton: 'FR'
+}, {
+    zip: 1617,
+    loc: 'Remaufens',
+    canton: 'FR'
+}, {
+    zip: 1618,
+    loc: 'Ch\xE2tel-St-Denis',
+    canton: 'FR'
+}, {
+    zip: 1619,
+    loc: 'Les Paccots',
+    canton: 'FR'
+}, {
+    zip: 1623,
+    loc: 'Semsales',
+    canton: 'FR'
+}, {
+    zip: 1624,
+    loc: 'La Verrerie',
+    canton: 'FR'
+}, {
+    zip: 1624,
+    loc: 'Grattavache',
+    canton: 'FR'
+}, {
+    zip: 1624,
+    loc: 'Progens',
+    canton: 'FR'
+}, {
+    zip: 1625,
+    loc: 'Maules',
+    canton: 'FR'
+}, {
+    zip: 1625,
+    loc: 'S\xE2les (Gruy\xE8re)',
+    canton: 'FR'
+}, {
+    zip: 1626,
+    loc: 'Romanens',
+    canton: 'FR'
+}, {
+    zip: 1626,
+    loc: 'Treyfayes',
+    canton: 'FR'
+}, {
+    zip: 1626,
+    loc: 'Rueyres-Treyfayes',
+    canton: 'FR'
+}, {
+    zip: 1627,
+    loc: 'Vaulruz',
+    canton: 'FR'
+}, {
+    zip: 1628,
+    loc: 'Vuadens',
+    canton: 'FR'
+}, {
+    zip: 1630,
+    loc: 'Bulle',
+    canton: 'FR'
+}, {
+    zip: 1632,
+    loc: 'Riaz',
+    canton: 'FR'
+}, {
+    zip: 1633,
+    loc: 'Vuippens',
+    canton: 'FR'
+}, {
+    zip: 1633,
+    loc: 'Marsens',
+    canton: 'FR'
+}, {
+    zip: 1634,
+    loc: 'La Roche FR',
+    canton: 'FR'
+}, {
+    zip: 1635,
+    loc: 'La Tour-de-Tr\xEAme',
+    canton: 'FR'
+}, {
+    zip: 1636,
+    loc: 'Broc',
+    canton: 'FR'
+}, {
+    zip: 1637,
+    loc: 'Charmey (Gruy\xE8re)',
+    canton: 'FR'
+}, {
+    zip: 1638,
+    loc: 'Morlon',
+    canton: 'FR'
+}, {
+    zip: 1642,
+    loc: 'Sorens',
+    canton: 'FR'
+}, {
+    zip: 1643,
+    loc: 'Gumefens',
+    canton: 'FR'
+}, {
+    zip: 1644,
+    loc: 'Avry-devant-Pont',
+    canton: 'FR'
+}, {
+    zip: 1645,
+    loc: 'Le Bry',
+    canton: 'FR'
+}, {
+    zip: 1646,
+    loc: 'Echarlens',
+    canton: 'FR'
+}, {
+    zip: 1647,
+    loc: 'Corbi\xE8res',
+    canton: 'FR'
+}, {
+    zip: 1648,
+    loc: 'Hauteville',
+    canton: 'FR'
+}, {
+    zip: 1649,
+    loc: 'Pont-la-Ville',
+    canton: 'FR'
+}, {
+    zip: 1651,
+    loc: 'Villarvolard',
+    canton: 'FR'
+}, {
+    zip: 1652,
+    loc: 'Botterens',
+    canton: 'FR'
+}, {
+    zip: 1652,
+    loc: 'Villarbeney',
+    canton: 'FR'
+}, {
+    zip: 1653,
+    loc: 'Ch\xE2tel-sur-Montsalvens',
+    canton: 'FR'
+}, {
+    zip: 1653,
+    loc: 'Cr\xE9suz',
+    canton: 'FR'
+}, {
+    zip: 1654,
+    loc: 'Cerniat FR',
+    canton: 'FR'
+}, {
+    zip: 1656,
+    loc: 'Im Fang',
+    canton: 'FR'
+}, {
+    zip: 1656,
+    loc: 'Jaun',
+    canton: 'FR'
+}, {
+    zip: 1657,
+    loc: 'Abl\xE4ndschen',
+    canton: 'BE'
+}, {
+    zip: 1658,
+    loc: 'La Tine',
+    canton: 'VD'
+}, {
+    zip: 1658,
+    loc: 'Rossini\xE8re',
+    canton: 'VD'
+}, {
+    zip: 1659,
+    loc: 'Flendruz',
+    canton: 'VD'
+}, {
+    zip: 1659,
+    loc: 'Rougemont',
+    canton: 'VD'
+}, {
+    zip: 1660,
+    loc: 'Les Moulins',
+    canton: 'VD'
+}, {
+    zip: 1660,
+    loc: 'L\'Etivaz',
+    canton: 'VD'
+}, {
+    zip: 1660,
+    loc: 'Ch\xE2teau-d\'Oex',
+    canton: 'VD'
+}, {
+    zip: 1660,
+    loc: 'La L\xE9cherette',
+    canton: 'VD'
+}, {
+    zip: 1661,
+    loc: 'Le P\xE2quier-Montbarry',
+    canton: 'FR'
+}, {
+    zip: 1663,
+    loc: 'Mol\xE9son-sur-Gruy\xE8res',
+    canton: 'FR'
+}, {
+    zip: 1663,
+    loc: 'Pringy',
+    canton: 'FR'
+}, {
+    zip: 1663,
+    loc: 'Gruy\xE8res',
+    canton: 'FR'
+}, {
+    zip: 1663,
+    loc: 'Epagny',
+    canton: 'FR'
+}, {
+    zip: 1665,
+    loc: 'Estavannens',
+    canton: 'FR'
+}, {
+    zip: 1666,
+    loc: 'Villars-sous-Mont',
+    canton: 'FR'
+}, {
+    zip: 1666,
+    loc: 'Grandvillard',
+    canton: 'FR'
+}, {
+    zip: 1667,
+    loc: 'Enney',
+    canton: 'FR'
+}, {
+    zip: 1669,
+    loc: 'Neirivue',
+    canton: 'FR'
+}, {
+    zip: 1669,
+    loc: 'Les Sciernes-d\'Albeuve',
+    canton: 'FR'
+}, {
+    zip: 1669,
+    loc: 'Montbovon',
+    canton: 'FR'
+}, {
+    zip: 1669,
+    loc: 'Lessoc',
+    canton: 'FR'
+}, {
+    zip: 1669,
+    loc: 'Albeuve',
+    canton: 'FR'
+}, {
+    zip: 1670,
+    loc: 'Bionnens',
+    canton: 'FR'
+}, {
+    zip: 1670,
+    loc: 'Esmonts',
+    canton: 'FR'
+}, {
+    zip: 1670,
+    loc: 'Ursy',
+    canton: 'FR'
+}, {
+    zip: 1673,
+    loc: 'Auboranges',
+    canton: 'FR'
+}, {
+    zip: 1673,
+    loc: 'Ecublens FR',
+    canton: 'FR'
+}, {
+    zip: 1673,
+    loc: 'Rue',
+    canton: 'FR'
+}, {
+    zip: 1673,
+    loc: 'Gillarens',
+    canton: 'FR'
+}, {
+    zip: 1673,
+    loc: 'Promasens',
+    canton: 'FR'
+}, {
+    zip: 1674,
+    loc: 'Vuarmarens',
+    canton: 'FR'
+}, {
+    zip: 1674,
+    loc: 'Montet (Gl\xE2ne)',
+    canton: 'FR'
+}, {
+    zip: 1674,
+    loc: 'Morlens',
+    canton: 'FR'
+}, {
+    zip: 1675,
+    loc: 'Vauderens',
+    canton: 'FR'
+}, {
+    zip: 1675,
+    loc: 'Blessens',
+    canton: 'FR'
+}, {
+    zip: 1675,
+    loc: 'Mossel',
+    canton: 'FR'
+}, {
+    zip: 1676,
+    loc: 'Chavannes-les-Forts',
+    canton: 'FR'
+}, {
+    zip: 1677,
+    loc: 'Prez-vers-Siviriez',
+    canton: 'FR'
+}, {
+    zip: 1678,
+    loc: 'Siviriez',
+    canton: 'FR'
+}, {
+    zip: 1679,
+    loc: 'Villaraboud',
+    canton: 'FR'
+}, {
+    zip: 1680,
+    loc: 'Berlens',
+    canton: 'FR'
+}, {
+    zip: 1680,
+    loc: 'Romont FR',
+    canton: 'FR'
+}, {
+    zip: 1681,
+    loc: 'Billens',
+    canton: 'FR'
+}, {
+    zip: 1681,
+    loc: 'Hennens',
+    canton: 'FR'
+}, {
+    zip: 1682,
+    loc: 'Villars-Bramard',
+    canton: 'VD'
+}, {
+    zip: 1682,
+    loc: 'Dompierre VD',
+    canton: 'VD'
+}, {
+    zip: 1682,
+    loc: 'Lovatens',
+    canton: 'VD'
+}, {
+    zip: 1682,
+    loc: 'Cerniaz VD',
+    canton: 'VD'
+}, {
+    zip: 1682,
+    loc: 'Pr\xE9vonloup',
+    canton: 'VD'
+}, {
+    zip: 1683,
+    loc: 'Brenles',
+    canton: 'VD'
+}, {
+    zip: 1683,
+    loc: 'Chesalles-sur-Moudon',
+    canton: 'VD'
+}, {
+    zip: 1683,
+    loc: 'Sarzens',
+    canton: 'VD'
+}, {
+    zip: 1684,
+    loc: 'M\xE9zi\xE8res FR',
+    canton: 'FR'
+}, {
+    zip: 1685,
+    loc: 'Villariaz',
+    canton: 'FR'
+}, {
+    zip: 1686,
+    loc: 'Grangettes-pr\xE8s-Romont',
+    canton: 'FR'
+}, {
+    zip: 1686,
+    loc: 'La Neirigue',
+    canton: 'FR'
+}, {
+    zip: 1687,
+    loc: 'Est\xE9venens',
+    canton: 'FR'
+}, {
+    zip: 1687,
+    loc: 'La Magne',
+    canton: 'FR'
+}, {
+    zip: 1687,
+    loc: 'Vuisternens-devant-Romont',
+    canton: 'FR'
+}, {
+    zip: 1688,
+    loc: 'Sommentier',
+    canton: 'FR'
+}, {
+    zip: 1688,
+    loc: 'Lieffrens',
+    canton: 'FR'
+}, {
+    zip: 1689,
+    loc: 'Le Ch\xE2telard-pr\xE8s-Romont',
+    canton: 'FR'
+}, {
+    zip: 1690,
+    loc: 'Lussy FR',
+    canton: 'FR'
+}, {
+    zip: 1690,
+    loc: 'Villaz-St-Pierre',
+    canton: 'FR'
+}, {
+    zip: 1691,
+    loc: 'Villarimboud',
+    canton: 'FR'
+}, {
+    zip: 1692,
+    loc: 'Massonnens',
+    canton: 'FR'
+}, {
+    zip: 1694,
+    loc: 'Orsonnens',
+    canton: 'FR'
+}, {
+    zip: 1694,
+    loc: 'Chavannes-sous-Orsonnens',
+    canton: 'FR'
+}, {
+    zip: 1694,
+    loc: 'Villargiroud',
+    canton: 'FR'
+}, {
+    zip: 1694,
+    loc: 'Villarsiviriaux',
+    canton: 'FR'
+}, {
+    zip: 1695,
+    loc: 'Villarlod',
+    canton: 'FR'
+}, {
+    zip: 1695,
+    loc: 'Estavayer-le-Gibloux',
+    canton: 'FR'
+}, {
+    zip: 1695,
+    loc: 'Rueyres-St-Laurent',
+    canton: 'FR'
+}, {
+    zip: 1695,
+    loc: 'Villarsel-le-Gibloux',
+    canton: 'FR'
+}, {
+    zip: 1696,
+    loc: 'Vuisternens-en-Ogoz',
+    canton: 'FR'
+}, {
+    zip: 1697,
+    loc: 'La Joux FR',
+    canton: 'FR'
+}, {
+    zip: 1697,
+    loc: 'Les Ecasseys',
+    canton: 'FR'
+}, {
+    zip: 1699,
+    loc: 'Bouloz',
+    canton: 'FR'
+}, {
+    zip: 1699,
+    loc: 'Pont (Veveyse)',
+    canton: 'FR'
+}, {
+    zip: 1699,
+    loc: 'Porsel',
+    canton: 'FR'
+}, {
+    zip: 1700,
+    loc: 'Fribourg',
+    canton: 'FR'
+}, {
+    zip: 1708,
+    loc: 'Fribourg',
+    canton: 'FR'
+}, {
+    zip: 1712,
+    loc: 'Tafers',
+    canton: 'FR'
+}, {
+    zip: 1713,
+    loc: 'St. Antoni',
+    canton: 'FR'
+}, {
+    zip: 1714,
+    loc: 'Heitenried',
+    canton: 'FR'
+}, {
+    zip: 1715,
+    loc: 'Alterswil FR',
+    canton: 'FR'
+}, {
+    zip: 1716,
+    loc: 'Oberschrot',
+    canton: 'FR'
+}, {
+    zip: 1716,
+    loc: 'Schwarzsee',
+    canton: 'FR'
+}, {
+    zip: 1716,
+    loc: 'Plaffeien',
+    canton: 'FR'
+}, {
+    zip: 1717,
+    loc: 'St. Ursen',
+    canton: 'FR'
+}, {
+    zip: 1718,
+    loc: 'Rechthalten',
+    canton: 'FR'
+}, {
+    zip: 1719,
+    loc: 'Zumholz',
+    canton: 'FR'
+}, {
+    zip: 1719,
+    loc: 'Br\xFCnisried',
+    canton: 'FR'
+}, {
+    zip: 1720,
+    loc: 'Ch\xE9sopelloz',
+    canton: 'FR'
+}, {
+    zip: 1720,
+    loc: 'Corminboeuf',
+    canton: 'FR'
+}, {
+    zip: 1721,
+    loc: 'Corm\xE9rod',
+    canton: 'FR'
+}, {
+    zip: 1721,
+    loc: 'Courtion',
+    canton: 'FR'
+}, {
+    zip: 1721,
+    loc: 'Misery',
+    canton: 'FR'
+}, {
+    zip: 1722,
+    loc: 'Bourguillon',
+    canton: 'FR'
+}, {
+    zip: 1723,
+    loc: 'Marly',
+    canton: 'FR'
+}, {
+    zip: 1723,
+    loc: 'Pierrafortscha',
+    canton: 'FR'
+}, {
+    zip: 1723,
+    loc: 'Villarsel-sur-Marly',
+    canton: 'FR'
+}, {
+    zip: 1724,
+    loc: 'Bonnefontaine',
+    canton: 'FR'
+}, {
+    zip: 1724,
+    loc: 'Essert FR',
+    canton: 'FR'
+}, {
+    zip: 1724,
+    loc: 'Ferpicloz',
+    canton: 'FR'
+}, {
+    zip: 1724,
+    loc: 'Mont\xE9vraz',
+    canton: 'FR'
+}, {
+    zip: 1724,
+    loc: 'Oberried FR',
+    canton: 'FR'
+}, {
+    zip: 1724,
+    loc: 'Sen\xE8des',
+    canton: 'FR'
+}, {
+    zip: 1724,
+    loc: 'Z\xE9nauva',
+    canton: 'FR'
+}, {
+    zip: 1724,
+    loc: 'Le Mouret',
+    canton: 'FR'
+}, {
+    zip: 1725,
+    loc: 'Posieux',
+    canton: 'FR'
+}, {
+    zip: 1726,
+    loc: 'Farvagny-le-Petit',
+    canton: 'FR'
+}, {
+    zip: 1726,
+    loc: 'Grenilles',
+    canton: 'FR'
+}, {
+    zip: 1726,
+    loc: 'Posat',
+    canton: 'FR'
+}, {
+    zip: 1726,
+    loc: 'Farvagny',
+    canton: 'FR'
+}, {
+    zip: 1727,
+    loc: 'Magnedens',
+    canton: 'FR'
+}, {
+    zip: 1727,
+    loc: 'Corpataux-Magnedens',
+    canton: 'FR'
+}, {
+    zip: 1728,
+    loc: 'Rossens FR',
+    canton: 'FR'
+}, {
+    zip: 1730,
+    loc: 'Ecuvillens',
+    canton: 'FR'
+}, {
+    zip: 1731,
+    loc: 'Ependes FR',
+    canton: 'FR'
+}, {
+    zip: 1732,
+    loc: 'Arconciel',
+    canton: 'FR'
+}, {
+    zip: 1733,
+    loc: 'Treyvaux',
+    canton: 'FR'
+}, {
+    zip: 1734,
+    loc: 'Tentlingen',
+    canton: 'FR'
+}, {
+    zip: 1735,
+    loc: 'Giffers',
+    canton: 'FR'
+}, {
+    zip: 1736,
+    loc: 'St. Silvester',
+    canton: 'FR'
+}, {
+    zip: 1737,
+    loc: 'Plasselb',
+    canton: 'FR'
+}, {
+    zip: 1738,
+    loc: 'Sangernboden',
+    canton: 'BE'
+}, {
+    zip: 1740,
+    loc: 'Neyruz FR',
+    canton: 'FR'
+}, {
+    zip: 1741,
+    loc: 'Cottens FR',
+    canton: 'FR'
+}, {
+    zip: 1742,
+    loc: 'Autigny',
+    canton: 'FR'
+}, {
+    zip: 1744,
+    loc: 'Ch\xE9nens',
+    canton: 'FR'
+}, {
+    zip: 1745,
+    loc: 'Lentigny',
+    canton: 'FR'
+}, {
+    zip: 1746,
+    loc: 'Prez-vers-Nor\xE9az',
+    canton: 'FR'
+}, {
+    zip: 1747,
+    loc: 'Corserey',
+    canton: 'FR'
+}, {
+    zip: 1748,
+    loc: 'Torny-le-Grand',
+    canton: 'FR'
+}, {
+    zip: 1749,
+    loc: 'Middes',
+    canton: 'FR'
+}, {
+    zip: 1752,
+    loc: 'Villars-sur-Gl\xE2ne',
+    canton: 'FR'
+}, {
+    zip: 1753,
+    loc: 'Matran',
+    canton: 'FR'
+}, {
+    zip: 1754,
+    loc: 'Ros\xE9',
+    canton: 'FR'
+}, {
+    zip: 1754,
+    loc: 'Corjolens',
+    canton: 'FR'
+}, {
+    zip: 1754,
+    loc: 'Avry-sur-Matran',
+    canton: 'FR'
+}, {
+    zip: 1754,
+    loc: 'Avry-Centre FR',
+    canton: 'FR'
+}, {
+    zip: 1756,
+    loc: 'Onnens FR',
+    canton: 'FR'
+}, {
+    zip: 1756,
+    loc: 'Lovens',
+    canton: 'FR'
+}, {
+    zip: 1757,
+    loc: 'Nor\xE9az',
+    canton: 'FR'
+}, {
+    zip: 1762,
+    loc: 'Givisiez',
+    canton: 'FR'
+}, {
+    zip: 1763,
+    loc: 'Granges-Paccot',
+    canton: 'FR'
+}, {
+    zip: 1772,
+    loc: 'Ponthaux',
+    canton: 'FR'
+}, {
+    zip: 1772,
+    loc: 'Nierlet-les-Bois',
+    canton: 'FR'
+}, {
+    zip: 1772,
+    loc: 'Grolley',
+    canton: 'FR'
+}, {
+    zip: 1773,
+    loc: 'L\xE9chelles',
+    canton: 'FR'
+}, {
+    zip: 1773,
+    loc: 'Chandon',
+    canton: 'FR'
+}, {
+    zip: 1773,
+    loc: 'Russy',
+    canton: 'FR'
+}, {
+    zip: 1774,
+    loc: 'Montagny-les-Monts',
+    canton: 'FR'
+}, {
+    zip: 1774,
+    loc: 'Cousset',
+    canton: 'FR'
+}, {
+    zip: 1775,
+    loc: 'Mannens',
+    canton: 'FR'
+}, {
+    zip: 1775,
+    loc: 'Grandsivaz',
+    canton: 'FR'
+}, {
+    zip: 1776,
+    loc: 'Montagny-la-Ville',
+    canton: 'FR'
+}, {
+    zip: 1782,
+    loc: 'Autafond',
+    canton: 'FR'
+}, {
+    zip: 1782,
+    loc: 'La Corbaz',
+    canton: 'FR'
+}, {
+    zip: 1782,
+    loc: 'Cormagens',
+    canton: 'FR'
+}, {
+    zip: 1782,
+    loc: 'Lossy',
+    canton: 'FR'
+}, {
+    zip: 1782,
+    loc: 'Formangueires',
+    canton: 'FR'
+}, {
+    zip: 1782,
+    loc: 'Belfaux',
+    canton: 'FR'
+}, {
+    zip: 1783,
+    loc: 'Pensier',
+    canton: 'FR'
+}, {
+    zip: 1783,
+    loc: 'Barber\xEAche',
+    canton: 'FR'
+}, {
+    zip: 1784,
+    loc: 'Cournillens',
+    canton: 'FR'
+}, {
+    zip: 1784,
+    loc: 'Wallenried',
+    canton: 'FR'
+}, {
+    zip: 1784,
+    loc: 'Courtepin',
+    canton: 'FR'
+}, {
+    zip: 1785,
+    loc: 'Cressier FR',
+    canton: 'FR'
+}, {
+    zip: 1786,
+    loc: 'Sugiez',
+    canton: 'FR'
+}, {
+    zip: 1787,
+    loc: 'M\xF4tier (Vully)',
+    canton: 'FR'
+}, {
+    zip: 1787,
+    loc: 'Mur (Vully) FR',
+    canton: 'FR'
+}, {
+    zip: 1787,
+    loc: 'Mur (Vully) VD',
+    canton: 'VD'
+}, {
+    zip: 1788,
+    loc: 'Praz (Vully)',
+    canton: 'FR'
+}, {
+    zip: 1789,
+    loc: 'Lugnorre',
+    canton: 'FR'
+}, {
+    zip: 1791,
+    loc: 'Courtaman',
+    canton: 'FR'
+}, {
+    zip: 1792,
+    loc: 'Guschelmuth',
+    canton: 'FR'
+}, {
+    zip: 1792,
+    loc: 'Cordast',
+    canton: 'FR'
+}, {
+    zip: 1793,
+    loc: 'Jeuss',
+    canton: 'FR'
+}, {
+    zip: 1794,
+    loc: 'Salvenach',
+    canton: 'FR'
+}, {
+    zip: 1795,
+    loc: 'Courlevon',
+    canton: 'FR'
+}, {
+    zip: 1796,
+    loc: 'Courgevaux',
+    canton: 'FR'
+}, {
+    zip: 1797,
+    loc: 'M\xFCnchenwiler',
+    canton: 'BE'
+}, {
+    zip: 1800,
+    loc: 'Vevey',
+    canton: 'VD'
+}, {
+    zip: 1801,
+    loc: 'Le Mont-P\xE8lerin',
+    canton: 'VD'
+}, {
+    zip: 1802,
+    loc: 'Corseaux',
+    canton: 'VD'
+}, {
+    zip: 1803,
+    loc: 'Chardonne',
+    canton: 'VD'
+}, {
+    zip: 1804,
+    loc: 'Corsier-sur-Vevey',
+    canton: 'VD'
+}, {
+    zip: 1805,
+    loc: 'Jongny',
+    canton: 'VD'
+}, {
+    zip: 1806,
+    loc: 'St-L\xE9gier-La Chi\xE9saz',
+    canton: 'VD'
+}, {
+    zip: 1807,
+    loc: 'Blonay',
+    canton: 'VD'
+}, {
+    zip: 1808,
+    loc: 'Les Monts-de-Corsier',
+    canton: 'VD'
+}, {
+    zip: 1809,
+    loc: 'Fenil-sur-Corsier',
+    canton: 'VD'
+}, {
+    zip: 1814,
+    loc: 'La Tour-de-Peilz',
+    canton: 'VD'
+}, {
+    zip: 1815,
+    loc: 'Clarens',
+    canton: 'VD'
+}, {
+    zip: 1816,
+    loc: 'Chailly-Montreux',
+    canton: 'VD'
+}, {
+    zip: 1817,
+    loc: 'Brent',
+    canton: 'VD'
+}, {
+    zip: 1820,
+    loc: 'Montreux',
+    canton: 'VD'
+}, {
+    zip: 1820,
+    loc: 'Veytaux',
+    canton: 'VD'
+}, {
+    zip: 1820,
+    loc: 'Territet',
+    canton: 'VD'
+}, {
+    zip: 1822,
+    loc: 'Chernex',
+    canton: 'VD'
+}, {
+    zip: 1823,
+    loc: 'Glion',
+    canton: 'VD'
+}, {
+    zip: 1824,
+    loc: 'Caux',
+    canton: 'VD'
+}, {
+    zip: 1832,
+    loc: 'Villard-sur-Chamby',
+    canton: 'VD'
+}, {
+    zip: 1832,
+    loc: 'Chamby',
+    canton: 'VD'
+}, {
+    zip: 1833,
+    loc: 'Les Avants',
+    canton: 'VD'
+}, {
+    zip: 1844,
+    loc: 'Villeneuve VD',
+    canton: 'VD'
+}, {
+    zip: 1845,
+    loc: 'Noville',
+    canton: 'VD'
+}, {
+    zip: 1846,
+    loc: 'Chessel',
+    canton: 'VD'
+}, {
+    zip: 1847,
+    loc: 'Rennaz',
+    canton: 'VD'
+}, {
+    zip: 1852,
+    loc: 'Roche VD',
+    canton: 'VD'
+}, {
+    zip: 1853,
+    loc: 'Yvorne',
+    canton: 'VD'
+}, {
+    zip: 1854,
+    loc: 'Leysin',
+    canton: 'VD'
+}, {
+    zip: 1856,
+    loc: 'Corbeyrier',
+    canton: 'VD'
+}, {
+    zip: 1860,
+    loc: 'Aigle',
+    canton: 'VD'
+}, {
+    zip: 1862,
+    loc: 'La Comballaz',
+    canton: 'VD'
+}, {
+    zip: 1862,
+    loc: 'Les Mosses',
+    canton: 'VD'
+}, {
+    zip: 1863,
+    loc: 'Le S\xE9pey',
+    canton: 'VD'
+}, {
+    zip: 1864,
+    loc: 'Vers-l\'Eglise',
+    canton: 'VD'
+}, {
+    zip: 1865,
+    loc: 'Les Diablerets',
+    canton: 'VD'
+}, {
+    zip: 1866,
+    loc: 'La Forclaz VD',
+    canton: 'VD'
+}, {
+    zip: 1867,
+    loc: 'St-Triphon',
+    canton: 'VD'
+}, {
+    zip: 1867,
+    loc: 'Panex',
+    canton: 'VD'
+}, {
+    zip: 1867,
+    loc: 'Ollon VD',
+    canton: 'VD'
+}, {
+    zip: 1868,
+    loc: 'Collombey',
+    canton: 'VS'
+}, {
+    zip: 1869,
+    loc: 'Massongex',
+    canton: 'VS'
+}, {
+    zip: 1870,
+    loc: 'Monthey',
+    canton: 'VS'
+}, {
+    zip: 1871,
+    loc: 'Cho\xEBx',
+    canton: 'VS'
+}, {
+    zip: 1871,
+    loc: 'Les Giettes',
+    canton: 'VS'
+}, {
+    zip: 1872,
+    loc: 'Troistorrents',
+    canton: 'VS'
+}, {
+    zip: 1873,
+    loc: 'Champoussin',
+    canton: 'VS'
+}, {
+    zip: 1873,
+    loc: 'Les Crosets',
+    canton: 'VS'
+}, {
+    zip: 1873,
+    loc: 'Val-d\'Illiez',
+    canton: 'VS'
+}, {
+    zip: 1874,
+    loc: 'Champ\xE9ry',
+    canton: 'VS'
+}, {
+    zip: 1875,
+    loc: 'Morgins',
+    canton: 'VS'
+}, {
+    zip: 1880,
+    loc: 'Fenalet-sur-Bex',
+    canton: 'VD'
+}, {
+    zip: 1880,
+    loc: 'Freni\xE8res-sur-Bex',
+    canton: 'VD'
+}, {
+    zip: 1880,
+    loc: 'Les Plans-sur-Bex',
+    canton: 'VD'
+}, {
+    zip: 1880,
+    loc: 'Bex',
+    canton: 'VD'
+}, {
+    zip: 1882,
+    loc: 'Les Posses-sur-Bex',
+    canton: 'VD'
+}, {
+    zip: 1882,
+    loc: 'Gryon',
+    canton: 'VD'
+}, {
+    zip: 1884,
+    loc: 'Hu\xE9moz',
+    canton: 'VD'
+}, {
+    zip: 1884,
+    loc: 'Arveyes',
+    canton: 'VD'
+}, {
+    zip: 1884,
+    loc: 'Villars-sur-Ollon',
+    canton: 'VD'
+}, {
+    zip: 1885,
+    loc: 'Chesi\xE8res',
+    canton: 'VD'
+}, {
+    zip: 1890,
+    loc: 'Mex VS',
+    canton: 'VS'
+}, {
+    zip: 1890,
+    loc: 'St-Maurice',
+    canton: 'VS'
+}, {
+    zip: 1891,
+    loc: 'V\xE9rossaz',
+    canton: 'VS'
+}, {
+    zip: 1892,
+    loc: 'Lavey-les-Bains',
+    canton: 'VD'
+}, {
+    zip: 1892,
+    loc: 'Morcles',
+    canton: 'VD'
+}, {
+    zip: 1892,
+    loc: 'Lavey-Village',
+    canton: 'VD'
+}, {
+    zip: 1893,
+    loc: 'Muraz (Collombey)',
+    canton: 'VS'
+}, {
+    zip: 1895,
+    loc: 'Vionnaz',
+    canton: 'VS'
+}, {
+    zip: 1896,
+    loc: 'Miex',
+    canton: 'VS'
+}, {
+    zip: 1896,
+    loc: 'Vouvry',
+    canton: 'VS'
+}, {
+    zip: 1897,
+    loc: 'Les Evouettes',
+    canton: 'VS'
+}, {
+    zip: 1897,
+    loc: 'Bouveret',
+    canton: 'VS'
+}, {
+    zip: 1898,
+    loc: 'St-Gingolph',
+    canton: 'VS'
+}, {
+    zip: 1899,
+    loc: 'Torgon',
+    canton: 'VS'
+}, {
+    zip: 1902,
+    loc: 'Evionnaz',
+    canton: 'VS'
+}, {
+    zip: 1903,
+    loc: 'Collonges',
+    canton: 'VS'
+}, {
+    zip: 1904,
+    loc: 'Vernayaz',
+    canton: 'VS'
+}, {
+    zip: 1905,
+    loc: 'Dor\xE9naz',
+    canton: 'VS'
+}, {
+    zip: 1906,
+    loc: 'Charrat',
+    canton: 'VS'
+}, {
+    zip: 1907,
+    loc: 'Saxon',
+    canton: 'VS'
+}, {
+    zip: 1908,
+    loc: 'Riddes',
+    canton: 'VS'
+}, {
+    zip: 1911,
+    loc: 'Mayens-de-Chamoson',
+    canton: 'VS'
+}, {
+    zip: 1911,
+    loc: 'Ovronnaz',
+    canton: 'VS'
+}, {
+    zip: 1912,
+    loc: 'Produit (Leytron)',
+    canton: 'VS'
+}, {
+    zip: 1912,
+    loc: 'Montagnon (Leytron)',
+    canton: 'VS'
+}, {
+    zip: 1912,
+    loc: 'Dugny (Leytron)',
+    canton: 'VS'
+}, {
+    zip: 1912,
+    loc: 'Leytron',
+    canton: 'VS'
+}, {
+    zip: 1913,
+    loc: 'Saillon',
+    canton: 'VS'
+}, {
+    zip: 1914,
+    loc: 'Auddes-sur-Riddes',
+    canton: 'VS'
+}, {
+    zip: 1914,
+    loc: 'Is\xE9rables',
+    canton: 'VS'
+}, {
+    zip: 1918,
+    loc: 'La Tzoumaz',
+    canton: 'VS'
+}, {
+    zip: 1920,
+    loc: 'Martigny',
+    canton: 'VS'
+}, {
+    zip: 1921,
+    loc: 'Martigny-Croix',
+    canton: 'VS'
+}, {
+    zip: 1922,
+    loc: 'Les Granges (Salvan)',
+    canton: 'VS'
+}, {
+    zip: 1922,
+    loc: 'Salvan',
+    canton: 'VS'
+}, {
+    zip: 1923,
+    loc: 'Le Tr\xE9tien',
+    canton: 'VS'
+}, {
+    zip: 1923,
+    loc: 'Les Mar\xE9cottes',
+    canton: 'VS'
+}, {
+    zip: 1925,
+    loc: 'Le Ch\xE2telard VS',
+    canton: 'VS'
+}, {
+    zip: 1925,
+    loc: 'Finhaut',
+    canton: 'VS'
+}, {
+    zip: 1926,
+    loc: 'Fully',
+    canton: 'VS'
+}, {
+    zip: 1927,
+    loc: 'Chemin',
+    canton: 'VS'
+}, {
+    zip: 1928,
+    loc: 'Ravoire',
+    canton: 'VS'
+}, {
+    zip: 1929,
+    loc: 'Trient',
+    canton: 'VS'
+}, {
+    zip: 1932,
+    loc: 'Les Valettes (Bovernier)',
+    canton: 'VS'
+}, {
+    zip: 1932,
+    loc: 'Bovernier',
+    canton: 'VS'
+}, {
+    zip: 1933,
+    loc: 'Vens (Sembrancher)',
+    canton: 'VS'
+}, {
+    zip: 1933,
+    loc: 'Chamoille (Sembrancher)',
+    canton: 'VS'
+}, {
+    zip: 1933,
+    loc: 'La Garde (Sembrancher)',
+    canton: 'VS'
+}, {
+    zip: 1933,
+    loc: 'Sembrancher',
+    canton: 'VS'
+}, {
+    zip: 1934,
+    loc: 'Bruson',
+    canton: 'VS'
+}, {
+    zip: 1934,
+    loc: 'Cotterg (Le Ch\xE2ble VS)',
+    canton: 'VS'
+}, {
+    zip: 1934,
+    loc: 'Villette (Le Ch\xE2ble VS)',
+    canton: 'VS'
+}, {
+    zip: 1934,
+    loc: 'Fontenelle (Le Ch\xE2ble VS)',
+    canton: 'VS'
+}, {
+    zip: 1934,
+    loc: 'Montagnier (Le Ch\xE2ble VS)',
+    canton: 'VS'
+}, {
+    zip: 1934,
+    loc: 'Le Ch\xE2ble VS',
+    canton: 'VS'
+}, {
+    zip: 1936,
+    loc: 'Verbier',
+    canton: 'VS'
+}, {
+    zip: 1937,
+    loc: 'Orsi\xE8res',
+    canton: 'VS'
+}, {
+    zip: 1938,
+    loc: 'Champex-Lac',
+    canton: 'VS'
+}, {
+    zip: 1941,
+    loc: 'Cries (Voll\xE8ges)',
+    canton: 'VS'
+}, {
+    zip: 1941,
+    loc: 'Voll\xE8ges',
+    canton: 'VS'
+}, {
+    zip: 1942,
+    loc: 'Levron',
+    canton: 'VS'
+}, {
+    zip: 1943,
+    loc: 'Praz-de-Fort',
+    canton: 'VS'
+}, {
+    zip: 1944,
+    loc: 'La Fouly VS',
+    canton: 'VS'
+}, {
+    zip: 1945,
+    loc: 'Liddes',
+    canton: 'VS'
+}, {
+    zip: 1945,
+    loc: 'Fontaine Dessus (Liddes)',
+    canton: 'VS'
+}, {
+    zip: 1945,
+    loc: 'Fontaine Dessous (Liddes)',
+    canton: 'VS'
+}, {
+    zip: 1945,
+    loc: 'Dranse (Liddes)',
+    canton: 'VS'
+}, {
+    zip: 1945,
+    loc: 'Chandonne (Liddes)',
+    canton: 'VS'
+}, {
+    zip: 1945,
+    loc: 'Rive Haute (Liddes)',
+    canton: 'VS'
+}, {
+    zip: 1945,
+    loc: 'Fornex (Liddes)',
+    canton: 'VS'
+}, {
+    zip: 1945,
+    loc: 'Les Moulins VS (Liddes)',
+    canton: 'VS'
+}, {
+    zip: 1945,
+    loc: 'Vich\xE8res (Liddes)',
+    canton: 'VS'
+}, {
+    zip: 1945,
+    loc: 'Palasuit (Liddes)',
+    canton: 'VS'
+}, {
+    zip: 1945,
+    loc: 'Chez Petit (Liddes)',
+    canton: 'VS'
+}, {
+    zip: 1945,
+    loc: 'Petit Vich\xE8res (Liddes)',
+    canton: 'VS'
+}, {
+    zip: 1946,
+    loc: 'Bourg-St-Pierre',
+    canton: 'VS'
+}, {
+    zip: 1947,
+    loc: 'Prarreyer (Verseg\xE8res)',
+    canton: 'VS'
+}, {
+    zip: 1947,
+    loc: 'Les Places (Verseg\xE8res)',
+    canton: 'VS'
+}, {
+    zip: 1947,
+    loc: 'La Montoz (Verseg\xE8res)',
+    canton: 'VS'
+}, {
+    zip: 1947,
+    loc: 'Champsec (Verseg\xE8res)',
+    canton: 'VS'
+}, {
+    zip: 1947,
+    loc: 'Le Fregnoley (Verseg\xE8res)',
+    canton: 'VS'
+}, {
+    zip: 1947,
+    loc: 'Verseg\xE8res',
+    canton: 'VS'
+}, {
+    zip: 1948,
+    loc: 'Lourtier',
+    canton: 'VS'
+}, {
+    zip: 1948,
+    loc: 'Fionnay',
+    canton: 'VS'
+}, {
+    zip: 1948,
+    loc: 'Sarreyer',
+    canton: 'VS'
+}, {
+    zip: 1948,
+    loc: 'Le Planchamp (Lourtier)',
+    canton: 'VS'
+}, {
+    zip: 1948,
+    loc: 'Le Morgnes (Lourtier)',
+    canton: 'VS'
+}, {
+    zip: 1950,
+    loc: 'Sion',
+    canton: 'VS'
+}, {
+    zip: 1955,
+    loc: 'St-Pierre-de-Clages',
+    canton: 'VS'
+}, {
+    zip: 1955,
+    loc: 'Les V\xE9rines (Chamoson)',
+    canton: 'VS'
+}, {
+    zip: 1955,
+    loc: 'N\xE9miaz (Chamoson)',
+    canton: 'VS'
+}, {
+    zip: 1955,
+    loc: 'Grugnay (Chamoson)',
+    canton: 'VS'
+}, {
+    zip: 1955,
+    loc: 'Chamoson',
+    canton: 'VS'
+}, {
+    zip: 1957,
+    loc: 'Ardon',
+    canton: 'VS'
+}, {
+    zip: 1958,
+    loc: 'Uvrier',
+    canton: 'VS'
+}, {
+    zip: 1958,
+    loc: 'St-L\xE9onard',
+    canton: 'VS'
+}, {
+    zip: 1961,
+    loc: 'Vernami\xE8ge',
+    canton: 'VS'
+}, {
+    zip: 1962,
+    loc: 'Pont-de-la-Morge (Sion)',
+    canton: 'VS'
+}, {
+    zip: 1963,
+    loc: 'V\xE9troz',
+    canton: 'VS'
+}, {
+    zip: 1964,
+    loc: 'Conthey',
+    canton: 'VS'
+}, {
+    zip: 1965,
+    loc: 'Chandolin-pr\xE8s-Savi\xE8se',
+    canton: 'VS'
+}, {
+    zip: 1965,
+    loc: 'Dr\xF4ne VS',
+    canton: 'VS'
+}, {
+    zip: 1965,
+    loc: 'Roumaz (Savi\xE8se)',
+    canton: 'VS'
+}, {
+    zip: 1965,
+    loc: 'Granois (Savi\xE8se)',
+    canton: 'VS'
+}, {
+    zip: 1965,
+    loc: 'St-Germain (Savi\xE8se)',
+    canton: 'VS'
+}, {
+    zip: 1965,
+    loc: 'Orm\xF4ne (Savi\xE8se)',
+    canton: 'VS'
+}, {
+    zip: 1965,
+    loc: 'Mayens-de-la-Zour (Savi\xE8se)',
+    canton: 'VS'
+}, {
+    zip: 1965,
+    loc: 'Monteiller-Savi\xE8se',
+    canton: 'VS'
+}, {
+    zip: 1965,
+    loc: 'Savi\xE8se',
+    canton: 'VS'
+}, {
+    zip: 1966,
+    loc: 'Sign\xE8se (Ayent)',
+    canton: 'VS'
+}, {
+    zip: 1966,
+    loc: 'Fortunau (Ayent)',
+    canton: 'VS'
+}, {
+    zip: 1966,
+    loc: 'Luc (Ayent)',
+    canton: 'VS'
+}, {
+    zip: 1966,
+    loc: 'St-Romain (Ayent)',
+    canton: 'VS'
+}, {
+    zip: 1966,
+    loc: 'Saxonne (Ayent)',
+    canton: 'VS'
+}, {
+    zip: 1966,
+    loc: 'Villa (Ayent)',
+    canton: 'VS'
+}, {
+    zip: 1966,
+    loc: 'La Place (Ayent)',
+    canton: 'VS'
+}, {
+    zip: 1966,
+    loc: 'Botyre (Ayent)',
+    canton: 'VS'
+}, {
+    zip: 1966,
+    loc: 'Blignoud (Ayent)',
+    canton: 'VS'
+}, {
+    zip: 1966,
+    loc: 'Argnoud (Ayent)',
+    canton: 'VS'
+}, {
+    zip: 1967,
+    loc: 'Bramois',
+    canton: 'VS'
+}, {
+    zip: 1968,
+    loc: 'Mase',
+    canton: 'VS'
+}, {
+    zip: 1969,
+    loc: 'Liez (St-Martin)',
+    canton: 'VS'
+}, {
+    zip: 1969,
+    loc: 'Trogne (St-Martin)',
+    canton: 'VS'
+}, {
+    zip: 1969,
+    loc: 'Suen (St-Martin)',
+    canton: 'VS'
+}, {
+    zip: 1969,
+    loc: 'Eison (St.Martin)',
+    canton: 'VS'
+}, {
+    zip: 1969,
+    loc: 'St-Martin VS',
+    canton: 'VS'
+}, {
+    zip: 1971,
+    loc: 'Champlan (Grimisuat)',
+    canton: 'VS'
+}, {
+    zip: 1971,
+    loc: 'Com\xE9raz (Grimisuat)',
+    canton: 'VS'
+}, {
+    zip: 1971,
+    loc: 'Grimisuat',
+    canton: 'VS'
+}, {
+    zip: 1972,
+    loc: 'Anz\xE8re',
+    canton: 'VS'
+}, {
+    zip: 1973,
+    loc: 'Nax',
+    canton: 'VS'
+}, {
+    zip: 1974,
+    loc: 'Arbaz',
+    canton: 'VS'
+}, {
+    zip: 1975,
+    loc: 'St-S\xE9verin',
+    canton: 'VS'
+}, {
+    zip: 1976,
+    loc: 'Aven',
+    canton: 'VS'
+}, {
+    zip: 1976,
+    loc: 'Daillon',
+    canton: 'VS'
+}, {
+    zip: 1976,
+    loc: 'Erde',
+    canton: 'VS'
+}, {
+    zip: 1977,
+    loc: 'Icogne',
+    canton: 'VS'
+}, {
+    zip: 1978,
+    loc: 'Lens',
+    canton: 'VS'
+}, {
+    zip: 1981,
+    loc: 'Vex',
+    canton: 'VS'
+}, {
+    zip: 1982,
+    loc: 'Euseigne',
+    canton: 'VS'
+}, {
+    zip: 1983,
+    loc: 'Lana (Evol\xE8ne)',
+    canton: 'VS'
+}, {
+    zip: 1983,
+    loc: 'Evol\xE8ne',
+    canton: 'VS'
+}, {
+    zip: 1984,
+    loc: 'Les Haud\xE8res',
+    canton: 'VS'
+}, {
+    zip: 1985,
+    loc: 'La Sage',
+    canton: 'VS'
+}, {
+    zip: 1986,
+    loc: 'Arolla',
+    canton: 'VS'
+}, {
+    zip: 1987,
+    loc: 'M\xE2che',
+    canton: 'VS'
+}, {
+    zip: 1987,
+    loc: 'H\xE9r\xE9mence',
+    canton: 'VS'
+}, {
+    zip: 1988,
+    loc: 'Les Collons',
+    canton: 'VS'
+}, {
+    zip: 1988,
+    loc: 'Thyon',
+    canton: 'VS'
+}, {
+    zip: 1991,
+    loc: 'Arvillard (Salins)',
+    canton: 'VS'
+}, {
+    zip: 1991,
+    loc: 'Pravidondaz (Salins)',
+    canton: 'VS'
+}, {
+    zip: 1991,
+    loc: 'Turin (Salins)',
+    canton: 'VS'
+}, {
+    zip: 1991,
+    loc: 'Mis\xE9riez (Salins)',
+    canton: 'VS'
+}, {
+    zip: 1991,
+    loc: 'Salins',
+    canton: 'VS'
+}, {
+    zip: 1992,
+    loc: 'Les Agettes',
+    canton: 'VS'
+}, {
+    zip: 1992,
+    loc: 'Les Mayens-de-Sion',
+    canton: 'VS'
+}, {
+    zip: 1992,
+    loc: 'La Vernaz (Les Agettes)',
+    canton: 'VS'
+}, {
+    zip: 1992,
+    loc: 'Cr\xEAte-\xE0-l\'Oeil(Les Agettes)',
+    canton: 'VS'
+}, {
+    zip: 1993,
+    loc: 'Cl\xE8bes (Nendaz)',
+    canton: 'VS'
+}, {
+    zip: 1993,
+    loc: 'Veysonnaz',
+    canton: 'VS'
+}, {
+    zip: 1994,
+    loc: 'Aproz (Nendaz)',
+    canton: 'VS'
+}, {
+    zip: 1996,
+    loc: 'Fey (Nendaz)',
+    canton: 'VS'
+}, {
+    zip: 1996,
+    loc: 'Beuson (Nendaz)',
+    canton: 'VS'
+}, {
+    zip: 1996,
+    loc: 'Baar (Nendaz)',
+    canton: 'VS'
+}, {
+    zip: 1996,
+    loc: 'Brignon (Nendaz)',
+    canton: 'VS'
+}, {
+    zip: 1996,
+    loc: 'Bioley-de-Brignon (Nendaz)',
+    canton: 'VS'
+}, {
+    zip: 1996,
+    loc: 'Bieudron (Nendaz)',
+    canton: 'VS'
+}, {
+    zip: 1996,
+    loc: 'Cond\xE9mines (Nendaz)',
+    canton: 'VS'
+}, {
+    zip: 1996,
+    loc: 'Saclentz (Nendaz)',
+    canton: 'VS'
+}, {
+    zip: 1996,
+    loc: 'Basse-Nendaz',
+    canton: 'VS'
+}, {
+    zip: 1997,
+    loc: 'Siviez (Nendaz)',
+    canton: 'VS'
+}, {
+    zip: 1997,
+    loc: 'Haute-Nendaz',
+    canton: 'VS'
+}, {
+    zip: 2000,
+    loc: 'Neuch\xE2tel',
+    canton: 'NE'
+}, {
+    zip: 2012,
+    loc: 'Auvernier',
+    canton: 'NE'
+}, {
+    zip: 2013,
+    loc: 'Colombier NE',
+    canton: 'NE'
+}, {
+    zip: 2014,
+    loc: 'B\xF4le',
+    canton: 'NE'
+}, {
+    zip: 2015,
+    loc: 'Areuse',
+    canton: 'NE'
+}, {
+    zip: 2016,
+    loc: 'Cortaillod',
+    canton: 'NE'
+}, {
+    zip: 2017,
+    loc: 'Boudry',
+    canton: 'NE'
+}, {
+    zip: 2019,
+    loc: 'Chambrelien',
+    canton: 'NE'
+}, {
+    zip: 2019,
+    loc: 'Rochefort',
+    canton: 'NE'
+}, {
+    zip: 2022,
+    loc: 'Bevaix',
+    canton: 'NE'
+}, {
+    zip: 2023,
+    loc: 'Gorgier',
+    canton: 'NE'
+}, {
+    zip: 2024,
+    loc: 'St-Aubin-Sauges',
+    canton: 'NE'
+}, {
+    zip: 2025,
+    loc: 'Chez-le-Bart',
+    canton: 'NE'
+}, {
+    zip: 2027,
+    loc: 'Montalchez',
+    canton: 'NE'
+}, {
+    zip: 2027,
+    loc: 'Fresens',
+    canton: 'NE'
+}, {
+    zip: 2028,
+    loc: 'Vaumarcus',
+    canton: 'NE'
+}, {
+    zip: 2034,
+    loc: 'Peseux',
+    canton: 'NE'
+}, {
+    zip: 2035,
+    loc: 'Corcelles NE',
+    canton: 'NE'
+}, {
+    zip: 2036,
+    loc: 'Cormondr\xE8che',
+    canton: 'NE'
+}, {
+    zip: 2037,
+    loc: 'Montmollin',
+    canton: 'NE'
+}, {
+    zip: 2037,
+    loc: 'Montezillon',
+    canton: 'NE'
+}, {
+    zip: 2042,
+    loc: 'Valangin',
+    canton: 'NE'
+}, {
+    zip: 2043,
+    loc: 'Boudevilliers',
+    canton: 'NE'
+}, {
+    zip: 2046,
+    loc: 'Fontaines NE',
+    canton: 'NE'
+}, {
+    zip: 2052,
+    loc: 'La Vue-des-Alpes',
+    canton: 'NE'
+}, {
+    zip: 2052,
+    loc: 'Fontainemelon',
+    canton: 'NE'
+}, {
+    zip: 2053,
+    loc: 'Cernier',
+    canton: 'NE'
+}, {
+    zip: 2054,
+    loc: 'Les Vieux-Pr\xE9s',
+    canton: 'NE'
+}, {
+    zip: 2054,
+    loc: 'Ch\xE9zard-St-Martin',
+    canton: 'NE'
+}, {
+    zip: 2056,
+    loc: 'Dombresson',
+    canton: 'NE'
+}, {
+    zip: 2057,
+    loc: 'Villiers',
+    canton: 'NE'
+}, {
+    zip: 2058,
+    loc: 'Le P\xE2quier NE',
+    canton: 'NE'
+}, {
+    zip: 2063,
+    loc: 'Engollon',
+    canton: 'NE'
+}, {
+    zip: 2063,
+    loc: 'Fenin',
+    canton: 'NE'
+}, {
+    zip: 2063,
+    loc: 'Saules',
+    canton: 'NE'
+}, {
+    zip: 2063,
+    loc: 'Vilars NE',
+    canton: 'NE'
+}, {
+    zip: 2065,
+    loc: 'Savagnier',
+    canton: 'NE'
+}, {
+    zip: 2067,
+    loc: 'Chaumont',
+    canton: 'NE'
+}, {
+    zip: 2068,
+    loc: 'Hauterive NE',
+    canton: 'NE'
+}, {
+    zip: 2072,
+    loc: 'St-Blaise',
+    canton: 'NE'
+}, {
+    zip: 2073,
+    loc: 'Enges',
+    canton: 'NE'
+}, {
+    zip: 2074,
+    loc: 'Marin-Epagnier',
+    canton: 'NE'
+}, {
+    zip: 2075,
+    loc: 'Thielle',
+    canton: 'NE'
+}, {
+    zip: 2075,
+    loc: 'Wavre',
+    canton: 'NE'
+}, {
+    zip: 2087,
+    loc: 'Cornaux NE',
+    canton: 'NE'
+}, {
+    zip: 2088,
+    loc: 'Cressier NE',
+    canton: 'NE'
+}, {
+    zip: 2103,
+    loc: 'Noiraigue',
+    canton: 'NE'
+}, {
+    zip: 2105,
+    loc: 'Travers',
+    canton: 'NE'
+}, {
+    zip: 2108,
+    loc: 'Couvet',
+    canton: 'NE'
+}, {
+    zip: 2112,
+    loc: 'M\xF4tiers NE',
+    canton: 'NE'
+}, {
+    zip: 2113,
+    loc: 'Boveresse',
+    canton: 'NE'
+}, {
+    zip: 2114,
+    loc: 'Fleurier',
+    canton: 'NE'
+}, {
+    zip: 2115,
+    loc: 'Buttes',
+    canton: 'NE'
+}, {
+    zip: 2116,
+    loc: 'Mont-de-Buttes',
+    canton: 'NE'
+}, {
+    zip: 2117,
+    loc: 'La C\xF4te-aux-F\xE9es',
+    canton: 'NE'
+}, {
+    zip: 2123,
+    loc: 'St-Sulpice NE',
+    canton: 'NE'
+}, {
+    zip: 2124,
+    loc: 'Les Sagnettes',
+    canton: 'NE'
+}, {
+    zip: 2126,
+    loc: 'Les Verri\xE8res',
+    canton: 'NE'
+}, {
+    zip: 2127,
+    loc: 'Les Bayards',
+    canton: 'NE'
+}, {
+    zip: 2149,
+    loc: 'Champ-du-Moulin',
+    canton: 'NE'
+}, {
+    zip: 2149,
+    loc: 'Fretereules',
+    canton: 'NE'
+}, {
+    zip: 2149,
+    loc: 'Brot-Dessous',
+    canton: 'NE'
+}, {
+    zip: 2206,
+    loc: 'Les Geneveys-sur-Coffrane',
+    canton: 'NE'
+}, {
+    zip: 2207,
+    loc: 'Coffrane',
+    canton: 'NE'
+}, {
+    zip: 2208,
+    loc: 'Les Hauts-Geneveys',
+    canton: 'NE'
+}, {
+    zip: 2300,
+    loc: 'La Chaux-de-Fonds',
+    canton: 'NE'
+}, {
+    zip: 2300,
+    loc: 'La Cibourg',
+    canton: 'NE'
+}, {
+    zip: 2314,
+    loc: 'La Sagne NE',
+    canton: 'NE'
+}, {
+    zip: 2316,
+    loc: 'Petit-Martel',
+    canton: 'NE'
+}, {
+    zip: 2316,
+    loc: 'Les Ponts-de-Martel',
+    canton: 'NE'
+}, {
+    zip: 2318,
+    loc: 'Brot-Plamboz',
+    canton: 'NE'
+}, {
+    zip: 2322,
+    loc: 'Le Cr\xEAt-du-Locle',
+    canton: 'NE'
+}, {
+    zip: 2325,
+    loc: 'Les Planchettes',
+    canton: 'NE'
+}, {
+    zip: 2325,
+    loc: 'Les Joux-Derri\xE8re',
+    canton: 'NE'
+}, {
+    zip: 2333,
+    loc: 'La Cibourg',
+    canton: 'BE'
+}, {
+    zip: 2333,
+    loc: 'La Ferri\xE8re',
+    canton: 'BE'
+}, {
+    zip: 2336,
+    loc: 'Les Bois',
+    canton: 'JU'
+}, {
+    zip: 2338,
+    loc: 'Les Emibois',
+    canton: 'JU'
+}, {
+    zip: 2338,
+    loc: 'Muriaux',
+    canton: 'JU'
+}, {
+    zip: 2340,
+    loc: 'Le Noirmont',
+    canton: 'JU'
+}, {
+    zip: 2345,
+    loc: 'Le Cerneux-Veusil',
+    canton: 'JU'
+}, {
+    zip: 2345,
+    loc: 'La Chaux-des-Breuleux',
+    canton: 'JU'
+}, {
+    zip: 2345,
+    loc: 'Les Breuleux',
+    canton: 'JU'
+}, {
+    zip: 2350,
+    loc: 'Saignel\xE9gier',
+    canton: 'JU'
+}, {
+    zip: 2353,
+    loc: 'Les Pommerats',
+    canton: 'JU'
+}, {
+    zip: 2354,
+    loc: 'Goumois',
+    canton: 'JU'
+}, {
+    zip: 2360,
+    loc: 'Le B\xE9mont',
+    canton: 'JU'
+}, {
+    zip: 2362,
+    loc: 'Montfavergier',
+    canton: 'JU'
+}, {
+    zip: 2362,
+    loc: 'Montfaucon',
+    canton: 'JU'
+}, {
+    zip: 2363,
+    loc: 'Les Enfers',
+    canton: 'JU'
+}, {
+    zip: 2364,
+    loc: 'St-Brais',
+    canton: 'JU'
+}, {
+    zip: 2400,
+    loc: 'Le Pr\xE9voux',
+    canton: 'NE'
+}, {
+    zip: 2400,
+    loc: 'Le Locle',
+    canton: 'NE'
+}, {
+    zip: 2405,
+    loc: 'La Chaux-du-Milieu',
+    canton: 'NE'
+}, {
+    zip: 2406,
+    loc: 'Le Brouillet',
+    canton: 'NE'
+}, {
+    zip: 2406,
+    loc: 'Les Taill\xE8res',
+    canton: 'NE'
+}, {
+    zip: 2406,
+    loc: 'La Ch\xE2tagne',
+    canton: 'NE'
+}, {
+    zip: 2406,
+    loc: 'La Br\xE9vine',
+    canton: 'NE'
+}, {
+    zip: 2414,
+    loc: 'Le Cerneux-P\xE9quignot',
+    canton: 'NE'
+}, {
+    zip: 2416,
+    loc: 'Les Brenets',
+    canton: 'NE'
+}, {
+    zip: 2500,
+    loc: 'Biel/Bienne',
+    canton: 'BE'
+}, {
+    zip: 2502,
+    loc: 'Biel/Bienne',
+    canton: 'BE'
+}, {
+    zip: 2503,
+    loc: 'Biel/Bienne',
+    canton: 'BE'
+}, {
+    zip: 2504,
+    loc: 'Biel/Bienne',
+    canton: 'BE'
+}, {
+    zip: 2505,
+    loc: 'Biel/Bienne',
+    canton: 'BE'
+}, {
+    zip: 2512,
+    loc: 'T\xFCscherz-Alferm\xE9e',
+    canton: 'BE'
+}, {
+    zip: 2513,
+    loc: 'Twann',
+    canton: 'BE'
+}, {
+    zip: 2514,
+    loc: 'Ligerz',
+    canton: 'BE'
+}, {
+    zip: 2515,
+    loc: 'Pr\xEAles',
+    canton: 'BE'
+}, {
+    zip: 2516,
+    loc: 'Lamboing',
+    canton: 'BE'
+}, {
+    zip: 2517,
+    loc: 'Diesse',
+    canton: 'BE'
+}, {
+    zip: 2518,
+    loc: 'Nods',
+    canton: 'BE'
+}, {
+    zip: 2520,
+    loc: 'La Neuveville',
+    canton: 'BE'
+}, {
+    zip: 2523,
+    loc: 'Ligni\xE8res',
+    canton: 'NE'
+}, {
+    zip: 2525,
+    loc: 'Le Landeron',
+    canton: 'NE'
+}, {
+    zip: 2532,
+    loc: 'Magglingen/Macolin',
+    canton: 'BE'
+}, {
+    zip: 2533,
+    loc: 'Evilard',
+    canton: 'BE'
+}, {
+    zip: 2534,
+    loc: 'Les Pr\xE9s-d\'Orvin',
+    canton: 'BE'
+}, {
+    zip: 2534,
+    loc: 'Orvin',
+    canton: 'BE'
+}, {
+    zip: 2535,
+    loc: 'Frinvillier',
+    canton: 'BE'
+}, {
+    zip: 2536,
+    loc: 'Plagne',
+    canton: 'BE'
+}, {
+    zip: 2537,
+    loc: 'Vauffelin',
+    canton: 'BE'
+}, {
+    zip: 2538,
+    loc: 'Romont BE',
+    canton: 'BE'
+}, {
+    zip: 2540,
+    loc: 'Grenchen',
+    canton: 'SO'
+}, {
+    zip: 2542,
+    loc: 'Pieterlen',
+    canton: 'BE'
+}, {
+    zip: 2543,
+    loc: 'Lengnau BE',
+    canton: 'BE'
+}, {
+    zip: 2544,
+    loc: 'Bettlach',
+    canton: 'SO'
+}, {
+    zip: 2545,
+    loc: 'Selzach',
+    canton: 'SO'
+}, {
+    zip: 2552,
+    loc: 'Orpund',
+    canton: 'BE'
+}, {
+    zip: 2553,
+    loc: 'Safnern',
+    canton: 'BE'
+}, {
+    zip: 2554,
+    loc: 'Meinisberg',
+    canton: 'BE'
+}, {
+    zip: 2555,
+    loc: 'Br\xFCgg BE',
+    canton: 'BE'
+}, {
+    zip: 2556,
+    loc: 'Scheuren',
+    canton: 'BE'
+}, {
+    zip: 2556,
+    loc: 'Schwadernau',
+    canton: 'BE'
+}, {
+    zip: 2557,
+    loc: 'Studen BE',
+    canton: 'BE'
+}, {
+    zip: 2558,
+    loc: 'Aegerten',
+    canton: 'BE'
+}, {
+    zip: 2560,
+    loc: 'Nidau',
+    canton: 'BE'
+}, {
+    zip: 2562,
+    loc: 'Port',
+    canton: 'BE'
+}, {
+    zip: 2563,
+    loc: 'Ipsach',
+    canton: 'BE'
+}, {
+    zip: 2564,
+    loc: 'Bellmund',
+    canton: 'BE'
+}, {
+    zip: 2565,
+    loc: 'Jens',
+    canton: 'BE'
+}, {
+    zip: 2572,
+    loc: 'M\xF6rigen',
+    canton: 'BE'
+}, {
+    zip: 2572,
+    loc: 'Sutz',
+    canton: 'BE'
+}, {
+    zip: 2575,
+    loc: 'Hagneck',
+    canton: 'BE'
+}, {
+    zip: 2575,
+    loc: 'Gerolfingen',
+    canton: 'BE'
+}, {
+    zip: 2575,
+    loc: 'T\xE4uffelen',
+    canton: 'BE'
+}, {
+    zip: 2576,
+    loc: 'L\xFCscherz',
+    canton: 'BE'
+}, {
+    zip: 2577,
+    loc: 'Finsterhennen',
+    canton: 'BE'
+}, {
+    zip: 2577,
+    loc: 'Siselen BE',
+    canton: 'BE'
+}, {
+    zip: 2603,
+    loc: 'P\xE9ry',
+    canton: 'BE'
+}, {
+    zip: 2604,
+    loc: 'La Heutte',
+    canton: 'BE'
+}, {
+    zip: 2605,
+    loc: 'Sonceboz-Sombeval',
+    canton: 'BE'
+}, {
+    zip: 2606,
+    loc: 'Corg\xE9mont',
+    canton: 'BE'
+}, {
+    zip: 2607,
+    loc: 'Cort\xE9bert',
+    canton: 'BE'
+}, {
+    zip: 2608,
+    loc: 'Montagne-de-Courtelary',
+    canton: 'BE'
+}, {
+    zip: 2608,
+    loc: 'Courtelary',
+    canton: 'BE'
+}, {
+    zip: 2610,
+    loc: 'Mont-Soleil',
+    canton: 'BE'
+}, {
+    zip: 2610,
+    loc: 'Mont-Crosin',
+    canton: 'BE'
+}, {
+    zip: 2610,
+    loc: 'Les Pontins',
+    canton: 'BE'
+}, {
+    zip: 2610,
+    loc: 'St-Imier',
+    canton: 'BE'
+}, {
+    zip: 2612,
+    loc: 'Cormoret',
+    canton: 'BE'
+}, {
+    zip: 2613,
+    loc: 'Villeret',
+    canton: 'BE'
+}, {
+    zip: 2615,
+    loc: 'Montagne-de-Sonvilier',
+    canton: 'BE'
+}, {
+    zip: 2615,
+    loc: 'Sonvilier',
+    canton: 'BE'
+}, {
+    zip: 2616,
+    loc: 'La Cibourg',
+    canton: 'BE'
+}, {
+    zip: 2616,
+    loc: 'Renan BE',
+    canton: 'BE'
+}, {
+    zip: 2710,
+    loc: 'Tavannes',
+    canton: 'BE'
+}, {
+    zip: 2712,
+    loc: 'Le Fuet',
+    canton: 'BE'
+}, {
+    zip: 2713,
+    loc: 'Bellelay',
+    canton: 'BE'
+}, {
+    zip: 2714,
+    loc: 'Le Pr\xE9dame',
+    canton: 'JU'
+}, {
+    zip: 2714,
+    loc: 'Les Genevez JU',
+    canton: 'JU'
+}, {
+    zip: 2715,
+    loc: 'Monible',
+    canton: 'BE'
+}, {
+    zip: 2715,
+    loc: 'Ch\xE2telat',
+    canton: 'BE'
+}, {
+    zip: 2716,
+    loc: 'Sornetan',
+    canton: 'BE'
+}, {
+    zip: 2717,
+    loc: 'Fornet-Dessous',
+    canton: 'BE'
+}, {
+    zip: 2717,
+    loc: 'Reb\xE9velier',
+    canton: 'BE'
+}, {
+    zip: 2718,
+    loc: 'Fornet-Dessus',
+    canton: 'JU'
+}, {
+    zip: 2718,
+    loc: 'Lajoux JU',
+    canton: 'JU'
+}, {
+    zip: 2720,
+    loc: 'La Tanne',
+    canton: 'BE'
+}, {
+    zip: 2720,
+    loc: 'Tramelan',
+    canton: 'BE'
+}, {
+    zip: 2722,
+    loc: 'Les Reussilles',
+    canton: 'BE'
+}, {
+    zip: 2723,
+    loc: 'Mont-Tramelan',
+    canton: 'BE'
+}, {
+    zip: 2732,
+    loc: 'Saicourt',
+    canton: 'BE'
+}, {
+    zip: 2732,
+    loc: 'Saules BE',
+    canton: 'BE'
+}, {
+    zip: 2732,
+    loc: 'Loveresse',
+    canton: 'BE'
+}, {
+    zip: 2732,
+    loc: 'Reconvilier',
+    canton: 'BE'
+}, {
+    zip: 2733,
+    loc: 'Pontenet',
+    canton: 'BE'
+}, {
+    zip: 2735,
+    loc: 'B\xE9vilard',
+    canton: 'BE'
+}, {
+    zip: 2735,
+    loc: 'Champoz',
+    canton: 'BE'
+}, {
+    zip: 2735,
+    loc: 'Malleray',
+    canton: 'BE'
+}, {
+    zip: 2736,
+    loc: 'Sorvilier',
+    canton: 'BE'
+}, {
+    zip: 2738,
+    loc: 'Court',
+    canton: 'BE'
+}, {
+    zip: 2740,
+    loc: 'Moutier',
+    canton: 'BE'
+}, {
+    zip: 2742,
+    loc: 'Perrefitte',
+    canton: 'BE'
+}, {
+    zip: 2743,
+    loc: 'Eschert',
+    canton: 'BE'
+}, {
+    zip: 2744,
+    loc: 'Belprahon',
+    canton: 'BE'
+}, {
+    zip: 2745,
+    loc: 'Grandval',
+    canton: 'BE'
+}, {
+    zip: 2746,
+    loc: 'Cr\xE9mines',
+    canton: 'BE'
+}, {
+    zip: 2747,
+    loc: 'Seehof',
+    canton: 'BE'
+}, {
+    zip: 2747,
+    loc: 'Corcelles BE',
+    canton: 'BE'
+}, {
+    zip: 2748,
+    loc: 'Souboz',
+    canton: 'BE'
+}, {
+    zip: 2748,
+    loc: 'Les Ecorcheresses',
+    canton: 'BE'
+}, {
+    zip: 2762,
+    loc: 'Roches BE',
+    canton: 'BE'
+}, {
+    zip: 2800,
+    loc: 'Del\xE9mont',
+    canton: 'JU'
+}, {
+    zip: 2802,
+    loc: 'Develier',
+    canton: 'JU'
+}, {
+    zip: 2803,
+    loc: 'Bourrignon',
+    canton: 'JU'
+}, {
+    zip: 2805,
+    loc: 'Soyhi\xE8res',
+    canton: 'JU'
+}, {
+    zip: 2806,
+    loc: 'Mettembert',
+    canton: 'JU'
+}, {
+    zip: 2807,
+    loc: 'Lucelle',
+    canton: 'JU'
+}, {
+    zip: 2807,
+    loc: 'Pleigne',
+    canton: 'JU'
+}, {
+    zip: 2812,
+    loc: 'Movelier',
+    canton: 'JU'
+}, {
+    zip: 2813,
+    loc: 'Ederswiler',
+    canton: 'JU'
+}, {
+    zip: 2814,
+    loc: 'Roggenburg',
+    canton: 'BL'
+}, {
+    zip: 2822,
+    loc: 'Courroux',
+    canton: 'JU'
+}, {
+    zip: 2823,
+    loc: 'Courcelon',
+    canton: 'JU'
+}, {
+    zip: 2824,
+    loc: 'Vicques',
+    canton: 'JU'
+}, {
+    zip: 2825,
+    loc: 'Courchapoix',
+    canton: 'JU'
+}, {
+    zip: 2826,
+    loc: 'Corban',
+    canton: 'JU'
+}, {
+    zip: 2827,
+    loc: 'Schelten',
+    canton: 'BE'
+}, {
+    zip: 2827,
+    loc: 'Mervelier',
+    canton: 'JU'
+}, {
+    zip: 2828,
+    loc: 'Montsevelier',
+    canton: 'JU'
+}, {
+    zip: 2829,
+    loc: 'Vermes',
+    canton: 'JU'
+}, {
+    zip: 2830,
+    loc: 'Vellerat',
+    canton: 'JU'
+}, {
+    zip: 2830,
+    loc: 'Courrendlin',
+    canton: 'JU'
+}, {
+    zip: 2832,
+    loc: 'Rebeuvelier',
+    canton: 'JU'
+}, {
+    zip: 2842,
+    loc: 'Rossemaison',
+    canton: 'JU'
+}, {
+    zip: 2843,
+    loc: 'Ch\xE2tillon JU',
+    canton: 'JU'
+}, {
+    zip: 2852,
+    loc: 'Court\xE9telle',
+    canton: 'JU'
+}, {
+    zip: 2853,
+    loc: 'Courfaivre',
+    canton: 'JU'
+}, {
+    zip: 2854,
+    loc: 'Bassecourt',
+    canton: 'JU'
+}, {
+    zip: 2855,
+    loc: 'Glovelier',
+    canton: 'JU'
+}, {
+    zip: 2856,
+    loc: 'Bo\xE9court',
+    canton: 'JU'
+}, {
+    zip: 2857,
+    loc: 'Montavon',
+    canton: 'JU'
+}, {
+    zip: 2863,
+    loc: 'Undervelier',
+    canton: 'JU'
+}, {
+    zip: 2864,
+    loc: 'Soulce',
+    canton: 'JU'
+}, {
+    zip: 2873,
+    loc: 'Saulcy',
+    canton: 'JU'
+}, {
+    zip: 2874,
+    loc: 'Montfavergier',
+    canton: 'JU'
+}, {
+    zip: 2874,
+    loc: 'St-Brais',
+    canton: 'JU'
+}, {
+    zip: 2875,
+    loc: 'Les Enfers',
+    canton: 'JU'
+}, {
+    zip: 2875,
+    loc: 'Montfaucon',
+    canton: 'JU'
+}, {
+    zip: 2877,
+    loc: 'Le B\xE9mont JU',
+    canton: 'JU'
+}, {
+    zip: 2882,
+    loc: 'St-Ursanne',
+    canton: 'JU'
+}, {
+    zip: 2883,
+    loc: 'Montmelon',
+    canton: 'JU'
+}, {
+    zip: 2884,
+    loc: 'Montenol',
+    canton: 'JU'
+}, {
+    zip: 2885,
+    loc: 'Epauvillers',
+    canton: 'JU'
+}, {
+    zip: 2886,
+    loc: 'Epiquerez',
+    canton: 'JU'
+}, {
+    zip: 2887,
+    loc: 'Soubey',
+    canton: 'JU'
+}, {
+    zip: 2888,
+    loc: 'Seleute',
+    canton: 'JU'
+}, {
+    zip: 2889,
+    loc: 'Ocourt',
+    canton: 'JU'
+}, {
+    zip: 2900,
+    loc: 'Porrentruy',
+    canton: 'JU'
+}, {
+    zip: 2902,
+    loc: 'Fontenais',
+    canton: 'JU'
+}, {
+    zip: 2903,
+    loc: 'Villars-sur Fontenais',
+    canton: 'JU'
+}, {
+    zip: 2904,
+    loc: 'Bressaucourt',
+    canton: 'JU'
+}, {
+    zip: 2905,
+    loc: 'Courtedoux',
+    canton: 'JU'
+}, {
+    zip: 2906,
+    loc: 'Chevenez',
+    canton: 'JU'
+}, {
+    zip: 2907,
+    loc: 'Rocourt',
+    canton: 'JU'
+}, {
+    zip: 2908,
+    loc: 'Grandfontaine',
+    canton: 'JU'
+}, {
+    zip: 2912,
+    loc: 'Roche-d\'Or',
+    canton: 'JU'
+}, {
+    zip: 2912,
+    loc: 'R\xE9cl\xE8re',
+    canton: 'JU'
+}, {
+    zip: 2914,
+    loc: 'Damvant',
+    canton: 'JU'
+}, {
+    zip: 2915,
+    loc: 'Bure',
+    canton: 'JU'
+}, {
+    zip: 2916,
+    loc: 'Fahy',
+    canton: 'JU'
+}, {
+    zip: 2922,
+    loc: 'Courchavon',
+    canton: 'JU'
+}, {
+    zip: 2923,
+    loc: 'Courtema\xEEche',
+    canton: 'JU'
+}, {
+    zip: 2924,
+    loc: 'Montignez',
+    canton: 'JU'
+}, {
+    zip: 2925,
+    loc: 'Buix',
+    canton: 'JU'
+}, {
+    zip: 2926,
+    loc: 'Boncourt',
+    canton: 'JU'
+}, {
+    zip: 2932,
+    loc: 'Coeuve',
+    canton: 'JU'
+}, {
+    zip: 2933,
+    loc: 'Damphreux',
+    canton: 'JU'
+}, {
+    zip: 2933,
+    loc: 'Lugnez',
+    canton: 'JU'
+}, {
+    zip: 2935,
+    loc: 'Beurnev\xE9sin',
+    canton: 'JU'
+}, {
+    zip: 2942,
+    loc: 'Alle',
+    canton: 'JU'
+}, {
+    zip: 2943,
+    loc: 'Vendlincourt',
+    canton: 'JU'
+}, {
+    zip: 2944,
+    loc: 'Bonfol',
+    canton: 'JU'
+}, {
+    zip: 2946,
+    loc: 'Mi\xE9court',
+    canton: 'JU'
+}, {
+    zip: 2947,
+    loc: 'Charmoille',
+    canton: 'JU'
+}, {
+    zip: 2950,
+    loc: 'Courtemautruy',
+    canton: 'JU'
+}, {
+    zip: 2950,
+    loc: 'Courgenay',
+    canton: 'JU'
+}, {
+    zip: 2952,
+    loc: 'Cornol',
+    canton: 'JU'
+}, {
+    zip: 2953,
+    loc: 'Fregi\xE9court',
+    canton: 'JU'
+}, {
+    zip: 2953,
+    loc: 'Pleujouse',
+    canton: 'JU'
+}, {
+    zip: 2954,
+    loc: 'Asuel',
+    canton: 'JU'
+}, {
+    zip: 3000,
+    loc: 'Bern',
+    canton: 'BE'
+}, {
+    zip: 3004,
+    loc: 'Bern',
+    canton: 'BE'
+}, {
+    zip: 3005,
+    loc: 'Bern',
+    canton: 'BE'
+}, {
+    zip: 3006,
+    loc: 'Bern',
+    canton: 'BE'
+}, {
+    zip: 3007,
+    loc: 'Bern',
+    canton: 'BE'
+}, {
+    zip: 3008,
+    loc: 'Bern',
+    canton: 'BE'
+}, {
+    zip: 3010,
+    loc: 'Bern',
+    canton: 'BE'
+}, {
+    zip: 3011,
+    loc: 'Bern',
+    canton: 'BE'
+}, {
+    zip: 3012,
+    loc: 'Bern',
+    canton: 'BE'
+}, {
+    zip: 3013,
+    loc: 'Bern',
+    canton: 'BE'
+}, {
+    zip: 3014,
+    loc: 'Bern',
+    canton: 'BE'
+}, {
+    zip: 3015,
+    loc: 'Bern',
+    canton: 'BE'
+}, {
+    zip: 3018,
+    loc: 'Bern',
+    canton: 'BE'
+}, {
+    zip: 3019,
+    loc: 'Bern',
+    canton: 'BE'
+}, {
+    zip: 3020,
+    loc: 'Bern',
+    canton: 'BE'
+}, {
+    zip: 3027,
+    loc: 'Bern',
+    canton: 'BE'
+}, {
+    zip: 3032,
+    loc: 'Hinterkappelen',
+    canton: 'BE'
+}, {
+    zip: 3033,
+    loc: 'Wohlen b. Bern',
+    canton: 'BE'
+}, {
+    zip: 3034,
+    loc: 'Murzelen',
+    canton: 'BE'
+}, {
+    zip: 3035,
+    loc: 'Frieswil',
+    canton: 'BE'
+}, {
+    zip: 3036,
+    loc: 'Detligen',
+    canton: 'BE'
+}, {
+    zip: 3037,
+    loc: 'Herrenschwanden',
+    canton: 'BE'
+}, {
+    zip: 3038,
+    loc: 'Kirchlindach',
+    canton: 'BE'
+}, {
+    zip: 3042,
+    loc: 'Ortschwaben',
+    canton: 'BE'
+}, {
+    zip: 3043,
+    loc: 'Uettligen',
+    canton: 'BE'
+}, {
+    zip: 3044,
+    loc: 'Innerberg',
+    canton: 'BE'
+}, {
+    zip: 3045,
+    loc: 'Meikirch',
+    canton: 'BE'
+}, {
+    zip: 3046,
+    loc: 'Wahlendorf',
+    canton: 'BE'
+}, {
+    zip: 3047,
+    loc: 'Bremgarten b. Bern',
+    canton: 'BE'
+}, {
+    zip: 3048,
+    loc: 'Worblaufen',
+    canton: 'BE'
+}, {
+    zip: 3049,
+    loc: 'S\xE4riswil',
+    canton: 'BE'
+}, {
+    zip: 3052,
+    loc: 'Zollikofen',
+    canton: 'BE'
+}, {
+    zip: 3053,
+    loc: 'Deisswil b. M\xFCnchenbuchsee',
+    canton: 'BE'
+}, {
+    zip: 3053,
+    loc: 'Diemerswil',
+    canton: 'BE'
+}, {
+    zip: 3053,
+    loc: 'Wiggiswil',
+    canton: 'BE'
+}, {
+    zip: 3053,
+    loc: 'L\xE4tti',
+    canton: 'BE'
+}, {
+    zip: 3053,
+    loc: 'M\xFCnchenbuchsee',
+    canton: 'BE'
+}, {
+    zip: 3054,
+    loc: 'Sch\xFCpfen',
+    canton: 'BE'
+}, {
+    zip: 3063,
+    loc: 'Ittigen',
+    canton: 'BE'
+}, {
+    zip: 3065,
+    loc: 'Bolligen',
+    canton: 'BE'
+}, {
+    zip: 3066,
+    loc: 'Stettlen',
+    canton: 'BE'
+}, {
+    zip: 3067,
+    loc: 'Boll',
+    canton: 'BE'
+}, {
+    zip: 3068,
+    loc: 'Utzigen',
+    canton: 'BE'
+}, {
+    zip: 3072,
+    loc: 'Ostermundigen',
+    canton: 'BE'
+}, {
+    zip: 3073,
+    loc: 'G\xFCmligen',
+    canton: 'BE'
+}, {
+    zip: 3074,
+    loc: 'Muri b. Bern',
+    canton: 'BE'
+}, {
+    zip: 3075,
+    loc: 'R\xFCfenacht BE',
+    canton: 'BE'
+}, {
+    zip: 3076,
+    loc: 'Worb',
+    canton: 'BE'
+}, {
+    zip: 3077,
+    loc: 'Enggistein',
+    canton: 'BE'
+}, {
+    zip: 3078,
+    loc: 'Richigen',
+    canton: 'BE'
+}, {
+    zip: 3082,
+    loc: 'Schlosswil',
+    canton: 'BE'
+}, {
+    zip: 3083,
+    loc: 'Trimstein',
+    canton: 'BE'
+}, {
+    zip: 3084,
+    loc: 'Wabern',
+    canton: 'BE'
+}, {
+    zip: 3086,
+    loc: 'Englisberg',
+    canton: 'BE'
+}, {
+    zip: 3086,
+    loc: 'Zimmerwald',
+    canton: 'BE'
+}, {
+    zip: 3087,
+    loc: 'Niedermuhlern',
+    canton: 'BE'
+}, {
+    zip: 3088,
+    loc: 'Oberb\xFCtschel',
+    canton: 'BE'
+}, {
+    zip: 3088,
+    loc: 'R\xFCeggisberg',
+    canton: 'BE'
+}, {
+    zip: 3089,
+    loc: 'Hinterfultigen',
+    canton: 'BE'
+}, {
+    zip: 3095,
+    loc: 'Spiegel b. Bern',
+    canton: 'BE'
+}, {
+    zip: 3096,
+    loc: 'Oberbalm',
+    canton: 'BE'
+}, {
+    zip: 3097,
+    loc: 'Liebefeld',
+    canton: 'BE'
+}, {
+    zip: 3098,
+    loc: 'K\xF6niz',
+    canton: 'BE'
+}, {
+    zip: 3098,
+    loc: 'Schliern b. K\xF6niz',
+    canton: 'BE'
+}, {
+    zip: 3099,
+    loc: 'R\xFCti b. Riggisberg',
+    canton: 'BE'
+}, {
+    zip: 3110,
+    loc: 'M\xFCnsingen',
+    canton: 'BE'
+}, {
+    zip: 3111,
+    loc: 'T\xE4gertschi',
+    canton: 'BE'
+}, {
+    zip: 3112,
+    loc: 'Allmendingen b. Bern',
+    canton: 'BE'
+}, {
+    zip: 3113,
+    loc: 'Rubigen',
+    canton: 'BE'
+}, {
+    zip: 3114,
+    loc: 'Wichtrach',
+    canton: 'BE'
+}, {
+    zip: 3115,
+    loc: 'Gerzensee',
+    canton: 'BE'
+}, {
+    zip: 3116,
+    loc: 'M\xFChledorf BE',
+    canton: 'BE'
+}, {
+    zip: 3116,
+    loc: 'Noflen BE',
+    canton: 'BE'
+}, {
+    zip: 3116,
+    loc: 'Kirchdorf BE',
+    canton: 'BE'
+}, {
+    zip: 3122,
+    loc: 'Kehrsatz',
+    canton: 'BE'
+}, {
+    zip: 3123,
+    loc: 'Belp',
+    canton: 'BE'
+}, {
+    zip: 3124,
+    loc: 'Belpberg',
+    canton: 'BE'
+}, {
+    zip: 3125,
+    loc: 'Toffen',
+    canton: 'BE'
+}, {
+    zip: 3126,
+    loc: 'Gelterfingen',
+    canton: 'BE'
+}, {
+    zip: 3126,
+    loc: 'Kaufdorf',
+    canton: 'BE'
+}, {
+    zip: 3127,
+    loc: 'Lohnstorf',
+    canton: 'BE'
+}, {
+    zip: 3127,
+    loc: 'M\xFChlethurnen',
+    canton: 'BE'
+}, {
+    zip: 3128,
+    loc: 'Kirchenthurnen',
+    canton: 'BE'
+}, {
+    zip: 3128,
+    loc: 'R\xFCmligen',
+    canton: 'BE'
+}, {
+    zip: 3132,
+    loc: 'Riggisberg',
+    canton: 'BE'
+}, {
+    zip: 3144,
+    loc: 'Gasel',
+    canton: 'BE'
+}, {
+    zip: 3145,
+    loc: 'Niederscherli',
+    canton: 'BE'
+}, {
+    zip: 3147,
+    loc: 'Mittelh\xE4usern',
+    canton: 'BE'
+}, {
+    zip: 3148,
+    loc: 'Lanzenh\xE4usern',
+    canton: 'BE'
+}, {
+    zip: 3150,
+    loc: 'Schwarzenburg',
+    canton: 'BE'
+}, {
+    zip: 3152,
+    loc: 'Mamishaus',
+    canton: 'BE'
+}, {
+    zip: 3153,
+    loc: 'R\xFCschegg Gambach',
+    canton: 'BE'
+}, {
+    zip: 3154,
+    loc: 'R\xFCschegg Heubach',
+    canton: 'BE'
+}, {
+    zip: 3155,
+    loc: 'Helgisried-Rohrbach',
+    canton: 'BE'
+}, {
+    zip: 3156,
+    loc: 'Riffenmatt',
+    canton: 'BE'
+}, {
+    zip: 3157,
+    loc: 'Milken',
+    canton: 'BE'
+}, {
+    zip: 3158,
+    loc: 'Guggisberg',
+    canton: 'BE'
+}, {
+    zip: 3159,
+    loc: 'Riedst\xE4tt',
+    canton: 'BE'
+}, {
+    zip: 3172,
+    loc: 'Niederwangen b. Bern',
+    canton: 'BE'
+}, {
+    zip: 3173,
+    loc: 'Oberwangen b. Bern',
+    canton: 'BE'
+}, {
+    zip: 3174,
+    loc: 'Th\xF6rishaus',
+    canton: 'BE'
+}, {
+    zip: 3175,
+    loc: 'Flamatt',
+    canton: 'FR'
+}, {
+    zip: 3176,
+    loc: 'Neuenegg',
+    canton: 'BE'
+}, {
+    zip: 3177,
+    loc: 'Laupen BE',
+    canton: 'BE'
+}, {
+    zip: 3178,
+    loc: 'B\xF6singen',
+    canton: 'FR'
+}, {
+    zip: 3179,
+    loc: 'Kriechenwil',
+    canton: 'BE'
+}, {
+    zip: 3182,
+    loc: 'Ueberstorf',
+    canton: 'FR'
+}, {
+    zip: 3183,
+    loc: 'Albligen',
+    canton: 'BE'
+}, {
+    zip: 3184,
+    loc: 'W\xFCnnewil',
+    canton: 'FR'
+}, {
+    zip: 3185,
+    loc: 'Schmitten FR',
+    canton: 'FR'
+}, {
+    zip: 3186,
+    loc: 'D\xFCdingen',
+    canton: 'FR'
+}, {
+    zip: 3202,
+    loc: 'Frauenkappelen',
+    canton: 'BE'
+}, {
+    zip: 3203,
+    loc: 'M\xFChleberg',
+    canton: 'BE'
+}, {
+    zip: 3204,
+    loc: 'Rossh\xE4usern',
+    canton: 'BE'
+}, {
+    zip: 3205,
+    loc: 'G\xFCmmenen',
+    canton: 'BE'
+}, {
+    zip: 3206,
+    loc: 'Rizenbach',
+    canton: 'BE'
+}, {
+    zip: 3206,
+    loc: 'Ferenbalm',
+    canton: 'BE'
+}, {
+    zip: 3206,
+    loc: 'Biberen',
+    canton: 'BE'
+}, {
+    zip: 3206,
+    loc: 'Gammen',
+    canton: 'BE'
+}, {
+    zip: 3206,
+    loc: 'Wallenbuch',
+    canton: 'FR'
+}, {
+    zip: 3207,
+    loc: 'Wileroltigen',
+    canton: 'BE'
+}, {
+    zip: 3207,
+    loc: 'Golaten',
+    canton: 'BE'
+}, {
+    zip: 3208,
+    loc: 'Gurbr\xFC',
+    canton: 'BE'
+}, {
+    zip: 3210,
+    loc: 'Kerzers',
+    canton: 'FR'
+}, {
+    zip: 3212,
+    loc: 'Kleingurmels',
+    canton: 'FR'
+}, {
+    zip: 3212,
+    loc: 'Gurmels',
+    canton: 'FR'
+}, {
+    zip: 3213,
+    loc: 'Liebistorf',
+    canton: 'FR'
+}, {
+    zip: 3213,
+    loc: 'Kleinb\xF6singen',
+    canton: 'FR'
+}, {
+    zip: 3214,
+    loc: 'Ulmiz',
+    canton: 'FR'
+}, {
+    zip: 3215,
+    loc: 'Gempenach',
+    canton: 'FR'
+}, {
+    zip: 3215,
+    loc: 'B\xFCchslen',
+    canton: 'FR'
+}, {
+    zip: 3215,
+    loc: 'Lurtigen',
+    canton: 'FR'
+}, {
+    zip: 3216,
+    loc: 'Agriswil',
+    canton: 'FR'
+}, {
+    zip: 3216,
+    loc: 'Ried b. Kerzers',
+    canton: 'FR'
+}, {
+    zip: 3225,
+    loc: 'M\xFCntschemier',
+    canton: 'BE'
+}, {
+    zip: 3226,
+    loc: 'Treiten',
+    canton: 'BE'
+}, {
+    zip: 3232,
+    loc: 'Ins',
+    canton: 'BE'
+}, {
+    zip: 3233,
+    loc: 'Tschugg',
+    canton: 'BE'
+}, {
+    zip: 3234,
+    loc: 'Vinelz',
+    canton: 'BE'
+}, {
+    zip: 3235,
+    loc: 'Erlach',
+    canton: 'BE'
+}, {
+    zip: 3236,
+    loc: 'Gampelen',
+    canton: 'BE'
+}, {
+    zip: 3237,
+    loc: 'Br\xFCttelen',
+    canton: 'BE'
+}, {
+    zip: 3238,
+    loc: 'Gals',
+    canton: 'BE'
+}, {
+    zip: 3250,
+    loc: 'Lyss',
+    canton: 'BE'
+}, {
+    zip: 3251,
+    loc: 'Ruppoldsried',
+    canton: 'BE'
+}, {
+    zip: 3251,
+    loc: 'Wengi b. B\xFCren',
+    canton: 'BE'
+}, {
+    zip: 3252,
+    loc: 'Worben',
+    canton: 'BE'
+}, {
+    zip: 3253,
+    loc: 'Schnottwil',
+    canton: 'SO'
+}, {
+    zip: 3254,
+    loc: 'Balm b. Messen',
+    canton: 'SO'
+}, {
+    zip: 3254,
+    loc: 'Messen',
+    canton: 'SO'
+}, {
+    zip: 3255,
+    loc: 'Rapperswil BE',
+    canton: 'BE'
+}, {
+    zip: 3256,
+    loc: 'Dieterswil',
+    canton: 'BE'
+}, {
+    zip: 3256,
+    loc: 'Bangerten b. Dieterswil',
+    canton: 'BE'
+}, {
+    zip: 3256,
+    loc: 'Seewil',
+    canton: 'BE'
+}, {
+    zip: 3257,
+    loc: 'Ammerzwil BE',
+    canton: 'BE'
+}, {
+    zip: 3257,
+    loc: 'Grossaffoltern',
+    canton: 'BE'
+}, {
+    zip: 3262,
+    loc: 'Suberg',
+    canton: 'BE'
+}, {
+    zip: 3263,
+    loc: 'B\xFCetigen',
+    canton: 'BE'
+}, {
+    zip: 3264,
+    loc: 'Diessbach b. B\xFCren',
+    canton: 'BE'
+}, {
+    zip: 3266,
+    loc: 'Wiler b. Seedorf',
+    canton: 'BE'
+}, {
+    zip: 3267,
+    loc: 'Seedorf BE',
+    canton: 'BE'
+}, {
+    zip: 3268,
+    loc: 'Lobsigen',
+    canton: 'BE'
+}, {
+    zip: 3270,
+    loc: 'Aarberg',
+    canton: 'BE'
+}, {
+    zip: 3271,
+    loc: 'Radelfingen b. Aarberg',
+    canton: 'BE'
+}, {
+    zip: 3272,
+    loc: 'Epsach',
+    canton: 'BE'
+}, {
+    zip: 3272,
+    loc: 'Walperswil',
+    canton: 'BE'
+}, {
+    zip: 3273,
+    loc: 'Kappelen',
+    canton: 'BE'
+}, {
+    zip: 3274,
+    loc: 'Hermrigen',
+    canton: 'BE'
+}, {
+    zip: 3274,
+    loc: 'B\xFChl b. Aarberg',
+    canton: 'BE'
+}, {
+    zip: 3274,
+    loc: 'Merzligen',
+    canton: 'BE'
+}, {
+    zip: 3280,
+    loc: 'Meyriez',
+    canton: 'FR'
+}, {
+    zip: 3280,
+    loc: 'Greng',
+    canton: 'FR'
+}, {
+    zip: 3280,
+    loc: 'Murten',
+    canton: 'FR'
+}, {
+    zip: 3282,
+    loc: 'Bargen BE',
+    canton: 'BE'
+}, {
+    zip: 3283,
+    loc: 'Niederried b. Kallnach',
+    canton: 'BE'
+}, {
+    zip: 3283,
+    loc: 'Kallnach',
+    canton: 'BE'
+}, {
+    zip: 3284,
+    loc: 'Fr\xE4schels',
+    canton: 'FR'
+}, {
+    zip: 3285,
+    loc: 'Galmiz',
+    canton: 'FR'
+}, {
+    zip: 3286,
+    loc: 'Muntelier',
+    canton: 'FR'
+}, {
+    zip: 3292,
+    loc: 'Busswil b. B\xFCren',
+    canton: 'BE'
+}, {
+    zip: 3293,
+    loc: 'Dotzigen',
+    canton: 'BE'
+}, {
+    zip: 3294,
+    loc: 'Meienried',
+    canton: 'BE'
+}, {
+    zip: 3294,
+    loc: 'B\xFCren an der Aare',
+    canton: 'BE'
+}, {
+    zip: 3295,
+    loc: 'R\xFCti b. B\xFCren',
+    canton: 'BE'
+}, {
+    zip: 3296,
+    loc: 'Arch',
+    canton: 'BE'
+}, {
+    zip: 3297,
+    loc: 'Leuzigen',
+    canton: 'BE'
+}, {
+    zip: 3298,
+    loc: 'Oberwil b. B\xFCren',
+    canton: 'BE'
+}, {
+    zip: 3302,
+    loc: 'Moosseedorf',
+    canton: 'BE'
+}, {
+    zip: 3303,
+    loc: 'Zuzwil BE',
+    canton: 'BE'
+}, {
+    zip: 3303,
+    loc: 'Ballmoos',
+    canton: 'BE'
+}, {
+    zip: 3303,
+    loc: 'M\xFCnchringen',
+    canton: 'BE'
+}, {
+    zip: 3303,
+    loc: 'Jegenstorf',
+    canton: 'BE'
+}, {
+    zip: 3305,
+    loc: 'Iffwil',
+    canton: 'BE'
+}, {
+    zip: 3305,
+    loc: 'Scheunen',
+    canton: 'BE'
+}, {
+    zip: 3306,
+    loc: 'Etzelkofen',
+    canton: 'BE'
+}, {
+    zip: 3307,
+    loc: 'Brunnenthal',
+    canton: 'SO'
+}, {
+    zip: 3308,
+    loc: 'Grafenried',
+    canton: 'BE'
+}, {
+    zip: 3309,
+    loc: 'Kernenried',
+    canton: 'BE'
+}, {
+    zip: 3309,
+    loc: 'Zauggenried',
+    canton: 'BE'
+}, {
+    zip: 3312,
+    loc: 'Fraubrunnen',
+    canton: 'BE'
+}, {
+    zip: 3313,
+    loc: 'B\xFCren zum Hof',
+    canton: 'BE'
+}, {
+    zip: 3314,
+    loc: 'Schalunen',
+    canton: 'BE'
+}, {
+    zip: 3315,
+    loc: 'Kr\xE4iligen',
+    canton: 'BE'
+}, {
+    zip: 3315,
+    loc: 'B\xE4tterkinden',
+    canton: 'BE'
+}, {
+    zip: 3317,
+    loc: 'Limpach',
+    canton: 'BE'
+}, {
+    zip: 3317,
+    loc: 'M\xFClchi',
+    canton: 'BE'
+}, {
+    zip: 3322,
+    loc: 'Mattstetten',
+    canton: 'BE'
+}, {
+    zip: 3322,
+    loc: 'Urtenen-Sch\xF6nb\xFChl',
+    canton: 'BE'
+}, {
+    zip: 3323,
+    loc: 'B\xE4riswil BE',
+    canton: 'BE'
+}, {
+    zip: 3324,
+    loc: 'M\xF6tschwil',
+    canton: 'BE'
+}, {
+    zip: 3324,
+    loc: 'Hindelbank',
+    canton: 'BE'
+}, {
+    zip: 3325,
+    loc: 'Hettiswil b. Hindelbank',
+    canton: 'BE'
+}, {
+    zip: 3326,
+    loc: 'Krauchthal',
+    canton: 'BE'
+}, {
+    zip: 3360,
+    loc: 'Herzogenbuchsee',
+    canton: 'BE'
+}, {
+    zip: 3362,
+    loc: 'Nieder\xF6nz',
+    canton: 'BE'
+}, {
+    zip: 3363,
+    loc: 'Ober\xF6nz',
+    canton: 'BE'
+}, {
+    zip: 3365,
+    loc: 'Seeberg',
+    canton: 'BE'
+}, {
+    zip: 3365,
+    loc: 'Grasswil',
+    canton: 'BE'
+}, {
+    zip: 3366,
+    loc: 'Bettenhausen',
+    canton: 'BE'
+}, {
+    zip: 3366,
+    loc: 'Bollodingen',
+    canton: 'BE'
+}, {
+    zip: 3367,
+    loc: 'Ochlenberg',
+    canton: 'BE'
+}, {
+    zip: 3367,
+    loc: 'Th\xF6rigen',
+    canton: 'BE'
+}, {
+    zip: 3368,
+    loc: 'Bleienbach',
+    canton: 'BE'
+}, {
+    zip: 3372,
+    loc: 'Wanzwil',
+    canton: 'BE'
+}, {
+    zip: 3373,
+    loc: 'Heimenhausen',
+    canton: 'BE'
+}, {
+    zip: 3373,
+    loc: 'R\xF6thenbach Herzogenbuchsee',
+    canton: 'BE'
+}, {
+    zip: 3374,
+    loc: 'Wangenried',
+    canton: 'BE'
+}, {
+    zip: 3375,
+    loc: 'Inkwil',
+    canton: 'BE'
+}, {
+    zip: 3376,
+    loc: 'Graben',
+    canton: 'BE'
+}, {
+    zip: 3376,
+    loc: 'Berken',
+    canton: 'BE'
+}, {
+    zip: 3377,
+    loc: 'Walliswil b. Wangen',
+    canton: 'BE'
+}, {
+    zip: 3380,
+    loc: 'Walliswil b. Niederbipp',
+    canton: 'BE'
+}, {
+    zip: 3380,
+    loc: 'Wangen an der Aare',
+    canton: 'BE'
+}, {
+    zip: 3400,
+    loc: 'Burgdorf',
+    canton: 'BE'
+}, {
+    zip: 3412,
+    loc: 'Heimiswil',
+    canton: 'BE'
+}, {
+    zip: 3413,
+    loc: 'Kaltacker',
+    canton: 'BE'
+}, {
+    zip: 3414,
+    loc: 'Oberburg',
+    canton: 'BE'
+}, {
+    zip: 3415,
+    loc: 'Schafhausen im Emmental',
+    canton: 'BE'
+}, {
+    zip: 3415,
+    loc: 'R\xFCegsauschachen',
+    canton: 'BE'
+}, {
+    zip: 3415,
+    loc: 'Hasle b. Burgdorf',
+    canton: 'BE'
+}, {
+    zip: 3416,
+    loc: 'Affoltern im Emmental',
+    canton: 'BE'
+}, {
+    zip: 3417,
+    loc: 'R\xFCegsau',
+    canton: 'BE'
+}, {
+    zip: 3418,
+    loc: 'R\xFCegsbach',
+    canton: 'BE'
+}, {
+    zip: 3419,
+    loc: 'Biembach im Emmental',
+    canton: 'BE'
+}, {
+    zip: 3421,
+    loc: 'R\xFCti b. Lyssach',
+    canton: 'BE'
+}, {
+    zip: 3421,
+    loc: 'Lyssach',
+    canton: 'BE'
+}, {
+    zip: 3422,
+    loc: 'R\xFCdtligen',
+    canton: 'BE'
+}, {
+    zip: 3422,
+    loc: 'Alchenfl\xFCh',
+    canton: 'BE'
+}, {
+    zip: 3422,
+    loc: 'Kirchberg BE',
+    canton: 'BE'
+}, {
+    zip: 3423,
+    loc: 'Ersigen',
+    canton: 'BE'
+}, {
+    zip: 3424,
+    loc: 'Nieder\xF6sch',
+    canton: 'BE'
+}, {
+    zip: 3424,
+    loc: 'Ober\xF6sch',
+    canton: 'BE'
+}, {
+    zip: 3425,
+    loc: 'Willadingen',
+    canton: 'BE'
+}, {
+    zip: 3425,
+    loc: 'Koppigen',
+    canton: 'BE'
+}, {
+    zip: 3426,
+    loc: 'Aefligen',
+    canton: 'BE'
+}, {
+    zip: 3427,
+    loc: 'Utzenstorf',
+    canton: 'BE'
+}, {
+    zip: 3428,
+    loc: 'Wiler b. Utzenstorf',
+    canton: 'BE'
+}, {
+    zip: 3429,
+    loc: 'Hellsau',
+    canton: 'BE'
+}, {
+    zip: 3429,
+    loc: 'H\xF6chstetten',
+    canton: 'BE'
+}, {
+    zip: 3432,
+    loc: 'L\xFCtzelfl\xFCh-Goldbach',
+    canton: 'BE'
+}, {
+    zip: 3433,
+    loc: 'Schwanden im Emmental',
+    canton: 'BE'
+}, {
+    zip: 3434,
+    loc: 'Obergoldbach',
+    canton: 'BE'
+}, {
+    zip: 3435,
+    loc: 'Ramsei',
+    canton: 'BE'
+}, {
+    zip: 3436,
+    loc: 'Zollbr\xFCck',
+    canton: 'BE'
+}, {
+    zip: 3437,
+    loc: 'R\xFCderswil',
+    canton: 'BE'
+}, {
+    zip: 3438,
+    loc: 'Lauperswil',
+    canton: 'BE'
+}, {
+    zip: 3439,
+    loc: 'Ranfl\xFCh',
+    canton: 'BE'
+}, {
+    zip: 3452,
+    loc: 'Gr\xFCnenmatt',
+    canton: 'BE'
+}, {
+    zip: 3453,
+    loc: 'Heimisbach',
+    canton: 'BE'
+}, {
+    zip: 3454,
+    loc: 'Sumiswald',
+    canton: 'BE'
+}, {
+    zip: 3455,
+    loc: 'Gr\xFCnen',
+    canton: 'BE'
+}, {
+    zip: 3456,
+    loc: 'Trachselwald',
+    canton: 'BE'
+}, {
+    zip: 3457,
+    loc: 'Wasen im Emmental',
+    canton: 'BE'
+}, {
+    zip: 3462,
+    loc: 'Weier im Emmental',
+    canton: 'BE'
+}, {
+    zip: 3463,
+    loc: 'H\xE4usernmoos im Emmental',
+    canton: 'BE'
+}, {
+    zip: 3464,
+    loc: 'Schmidigen-M\xFChleweg',
+    canton: 'BE'
+}, {
+    zip: 3465,
+    loc: 'D\xFCrrenroth',
+    canton: 'BE'
+}, {
+    zip: 3472,
+    loc: 'Rumendingen',
+    canton: 'BE'
+}, {
+    zip: 3472,
+    loc: 'Wynigen',
+    canton: 'BE'
+}, {
+    zip: 3473,
+    loc: 'Alchenstorf',
+    canton: 'BE'
+}, {
+    zip: 3474,
+    loc: 'R\xFCedisbach',
+    canton: 'BE'
+}, {
+    zip: 3475,
+    loc: 'Riedtwil',
+    canton: 'BE'
+}, {
+    zip: 3475,
+    loc: 'Hermiswil',
+    canton: 'BE'
+}, {
+    zip: 3476,
+    loc: 'Oschwand',
+    canton: 'BE'
+}, {
+    zip: 3503,
+    loc: 'Gysenstein',
+    canton: 'BE'
+}, {
+    zip: 3504,
+    loc: 'Niederh\xFCnigen',
+    canton: 'BE'
+}, {
+    zip: 3504,
+    loc: 'Oberh\xFCnigen',
+    canton: 'BE'
+}, {
+    zip: 3506,
+    loc: 'Grossh\xF6chstetten',
+    canton: 'BE'
+}, {
+    zip: 3507,
+    loc: 'Biglen',
+    canton: 'BE'
+}, {
+    zip: 3508,
+    loc: 'Arni BE',
+    canton: 'BE'
+}, {
+    zip: 3510,
+    loc: 'Freimettigen',
+    canton: 'BE'
+}, {
+    zip: 3510,
+    loc: 'H\xE4utligen',
+    canton: 'BE'
+}, {
+    zip: 3510,
+    loc: 'Konolfingen',
+    canton: 'BE'
+}, {
+    zip: 3512,
+    loc: 'Walkringen',
+    canton: 'BE'
+}, {
+    zip: 3513,
+    loc: 'Bigenthal',
+    canton: 'BE'
+}, {
+    zip: 3531,
+    loc: 'Oberthal',
+    canton: 'BE'
+}, {
+    zip: 3532,
+    loc: 'Mirchel',
+    canton: 'BE'
+}, {
+    zip: 3532,
+    loc: 'Z\xE4ziwil',
+    canton: 'BE'
+}, {
+    zip: 3533,
+    loc: 'Bowil',
+    canton: 'BE'
+}, {
+    zip: 3534,
+    loc: 'Signau',
+    canton: 'BE'
+}, {
+    zip: 3535,
+    loc: 'Sch\xFCpbach',
+    canton: 'BE'
+}, {
+    zip: 3536,
+    loc: 'Aeschau',
+    canton: 'BE'
+}, {
+    zip: 3537,
+    loc: 'Eggiwil',
+    canton: 'BE'
+}, {
+    zip: 3538,
+    loc: 'R\xF6thenbach im Emmental',
+    canton: 'BE'
+}, {
+    zip: 3543,
+    loc: 'Emmenmatt',
+    canton: 'BE'
+}, {
+    zip: 3550,
+    loc: 'Langnau im Emmental',
+    canton: 'BE'
+}, {
+    zip: 3551,
+    loc: 'Oberfrittenbach',
+    canton: 'BE'
+}, {
+    zip: 3552,
+    loc: 'B\xE4rau',
+    canton: 'BE'
+}, {
+    zip: 3553,
+    loc: 'Gohl',
+    canton: 'BE'
+}, {
+    zip: 3555,
+    loc: 'Trubschachen',
+    canton: 'BE'
+}, {
+    zip: 3556,
+    loc: 'Trub',
+    canton: 'BE'
+}, {
+    zip: 3557,
+    loc: 'Fankhaus (Trub)',
+    canton: 'BE'
+}, {
+    zip: 3600,
+    loc: 'Thun',
+    canton: 'BE'
+}, {
+    zip: 3603,
+    loc: 'Thun',
+    canton: 'BE'
+}, {
+    zip: 3604,
+    loc: 'Thun',
+    canton: 'BE'
+}, {
+    zip: 3608,
+    loc: 'Thun',
+    canton: 'BE'
+}, {
+    zip: 3612,
+    loc: 'Steffisburg',
+    canton: 'BE'
+}, {
+    zip: 3613,
+    loc: 'Steffisburg',
+    canton: 'BE'
+}, {
+    zip: 3614,
+    loc: 'Unterlangenegg',
+    canton: 'BE'
+}, {
+    zip: 3615,
+    loc: 'Heimenschwand',
+    canton: 'BE'
+}, {
+    zip: 3616,
+    loc: 'Schwarzenegg',
+    canton: 'BE'
+}, {
+    zip: 3617,
+    loc: 'Fahrni b. Thun',
+    canton: 'BE'
+}, {
+    zip: 3618,
+    loc: 'S\xFCderen',
+    canton: 'BE'
+}, {
+    zip: 3619,
+    loc: 'Eriz',
+    canton: 'BE'
+}, {
+    zip: 3619,
+    loc: 'Innereriz',
+    canton: 'BE'
+}, {
+    zip: 3622,
+    loc: 'Homberg b. Thun',
+    canton: 'BE'
+}, {
+    zip: 3623,
+    loc: 'Teuffenthal b. Thun',
+    canton: 'BE'
+}, {
+    zip: 3623,
+    loc: 'Horrenbach',
+    canton: 'BE'
+}, {
+    zip: 3623,
+    loc: 'Buchen BE',
+    canton: 'BE'
+}, {
+    zip: 3624,
+    loc: 'Schwendibach',
+    canton: 'BE'
+}, {
+    zip: 3624,
+    loc: 'Goldiwil (Thun)',
+    canton: 'BE'
+}, {
+    zip: 3625,
+    loc: 'Heiligenschwendi',
+    canton: 'BE'
+}, {
+    zip: 3626,
+    loc: 'H\xFCnibach',
+    canton: 'BE'
+}, {
+    zip: 3627,
+    loc: 'Heimberg',
+    canton: 'BE'
+}, {
+    zip: 3628,
+    loc: 'Kienersr\xFCti',
+    canton: 'BE'
+}, {
+    zip: 3628,
+    loc: 'Uttigen',
+    canton: 'BE'
+}, {
+    zip: 3629,
+    loc: 'Oppligen',
+    canton: 'BE'
+}, {
+    zip: 3629,
+    loc: 'Jaberg',
+    canton: 'BE'
+}, {
+    zip: 3629,
+    loc: 'Kiesen',
+    canton: 'BE'
+}, {
+    zip: 3631,
+    loc: 'H\xF6fen b. Thun',
+    canton: 'BE'
+}, {
+    zip: 3632,
+    loc: 'Niederstocken',
+    canton: 'BE'
+}, {
+    zip: 3632,
+    loc: 'Oberstocken',
+    canton: 'BE'
+}, {
+    zip: 3633,
+    loc: 'Amsoldingen',
+    canton: 'BE'
+}, {
+    zip: 3634,
+    loc: 'Thierachern',
+    canton: 'BE'
+}, {
+    zip: 3635,
+    loc: 'Uebeschi',
+    canton: 'BE'
+}, {
+    zip: 3636,
+    loc: 'L\xE4ngenb\xFChl',
+    canton: 'BE'
+}, {
+    zip: 3636,
+    loc: 'Forst b. L\xE4ngenb\xFChl',
+    canton: 'BE'
+}, {
+    zip: 3638,
+    loc: 'Pohlern',
+    canton: 'BE'
+}, {
+    zip: 3638,
+    loc: 'Blumenstein',
+    canton: 'BE'
+}, {
+    zip: 3645,
+    loc: 'Gwatt (Thun)',
+    canton: 'BE'
+}, {
+    zip: 3645,
+    loc: 'Zwieselberg',
+    canton: 'BE'
+}, {
+    zip: 3646,
+    loc: 'Einigen',
+    canton: 'BE'
+}, {
+    zip: 3647,
+    loc: 'Reutigen',
+    canton: 'BE'
+}, {
+    zip: 3652,
+    loc: 'Hilterfingen',
+    canton: 'BE'
+}, {
+    zip: 3653,
+    loc: 'Oberhofen am Thunersee',
+    canton: 'BE'
+}, {
+    zip: 3654,
+    loc: 'Gunten',
+    canton: 'BE'
+}, {
+    zip: 3655,
+    loc: 'Sigriswil',
+    canton: 'BE'
+}, {
+    zip: 3656,
+    loc: 'Tschingel ob Gunten',
+    canton: 'BE'
+}, {
+    zip: 3656,
+    loc: 'Aeschlen ob Gunten',
+    canton: 'BE'
+}, {
+    zip: 3656,
+    loc: 'Ringoldswil',
+    canton: 'BE'
+}, {
+    zip: 3657,
+    loc: 'Schwanden (Sigriswil)',
+    canton: 'BE'
+}, {
+    zip: 3658,
+    loc: 'Merligen',
+    canton: 'BE'
+}, {
+    zip: 3661,
+    loc: 'Uetendorf',
+    canton: 'BE'
+}, {
+    zip: 3662,
+    loc: 'Seftigen',
+    canton: 'BE'
+}, {
+    zip: 3663,
+    loc: 'Gurzelen',
+    canton: 'BE'
+}, {
+    zip: 3664,
+    loc: 'Burgistein',
+    canton: 'BE'
+}, {
+    zip: 3665,
+    loc: 'Wattenwil',
+    canton: 'BE'
+}, {
+    zip: 3671,
+    loc: 'Herbligen',
+    canton: 'BE'
+}, {
+    zip: 3671,
+    loc: 'Brenzikofen',
+    canton: 'BE'
+}, {
+    zip: 3672,
+    loc: 'Aeschlen b. Oberdiessbach',
+    canton: 'BE'
+}, {
+    zip: 3672,
+    loc: 'Oberdiessbach',
+    canton: 'BE'
+}, {
+    zip: 3673,
+    loc: 'Linden',
+    canton: 'BE'
+}, {
+    zip: 3674,
+    loc: 'Bleiken b. Oberdiessbach',
+    canton: 'BE'
+}, {
+    zip: 3700,
+    loc: 'Spiez',
+    canton: 'BE'
+}, {
+    zip: 3702,
+    loc: 'Hondrich',
+    canton: 'BE'
+}, {
+    zip: 3703,
+    loc: 'Aeschiried',
+    canton: 'BE'
+}, {
+    zip: 3703,
+    loc: 'Aeschi b. Spiez',
+    canton: 'BE'
+}, {
+    zip: 3704,
+    loc: 'Krattigen',
+    canton: 'BE'
+}, {
+    zip: 3705,
+    loc: 'Faulensee',
+    canton: 'BE'
+}, {
+    zip: 3706,
+    loc: 'Leissigen',
+    canton: 'BE'
+}, {
+    zip: 3707,
+    loc: 'D\xE4rligen',
+    canton: 'BE'
+}, {
+    zip: 3711,
+    loc: 'Emdthal',
+    canton: 'BE'
+}, {
+    zip: 3711,
+    loc: 'M\xFClenen',
+    canton: 'BE'
+}, {
+    zip: 3713,
+    loc: 'Reichenbach im Kandertal',
+    canton: 'BE'
+}, {
+    zip: 3714,
+    loc: 'Wengi b. Frutigen',
+    canton: 'BE'
+}, {
+    zip: 3714,
+    loc: 'Frutigen',
+    canton: 'BE'
+}, {
+    zip: 3715,
+    loc: 'Adelboden',
+    canton: 'BE'
+}, {
+    zip: 3716,
+    loc: 'Kandergrund',
+    canton: 'BE'
+}, {
+    zip: 3717,
+    loc: 'Blausee-Mitholz',
+    canton: 'BE'
+}, {
+    zip: 3718,
+    loc: 'Kandersteg',
+    canton: 'BE'
+}, {
+    zip: 3722,
+    loc: 'Scharnachtal',
+    canton: 'BE'
+}, {
+    zip: 3723,
+    loc: 'Kiental',
+    canton: 'BE'
+}, {
+    zip: 3724,
+    loc: 'Ried (Frutigen)',
+    canton: 'BE'
+}, {
+    zip: 3725,
+    loc: 'Achseten',
+    canton: 'BE'
+}, {
+    zip: 3752,
+    loc: 'Wimmis',
+    canton: 'BE'
+}, {
+    zip: 3753,
+    loc: 'Oey',
+    canton: 'BE'
+}, {
+    zip: 3754,
+    loc: 'Diemtigen',
+    canton: 'BE'
+}, {
+    zip: 3755,
+    loc: 'Horboden',
+    canton: 'BE'
+}, {
+    zip: 3756,
+    loc: 'Zwischenfl\xFCh',
+    canton: 'BE'
+}, {
+    zip: 3757,
+    loc: 'Schwenden im Diemtigtal',
+    canton: 'BE'
+}, {
+    zip: 3758,
+    loc: 'Latterbach',
+    canton: 'BE'
+}, {
+    zip: 3762,
+    loc: 'Erlenbach im Simmental',
+    canton: 'BE'
+}, {
+    zip: 3763,
+    loc: 'D\xE4rstetten',
+    canton: 'BE'
+}, {
+    zip: 3764,
+    loc: 'Weissenburg',
+    canton: 'BE'
+}, {
+    zip: 3765,
+    loc: 'Oberwil im Simmental',
+    canton: 'BE'
+}, {
+    zip: 3766,
+    loc: 'Boltigen',
+    canton: 'BE'
+}, {
+    zip: 3770,
+    loc: 'Zweisimmen',
+    canton: 'BE'
+}, {
+    zip: 3771,
+    loc: 'Blankenburg',
+    canton: 'BE'
+}, {
+    zip: 3772,
+    loc: 'St. Stephan',
+    canton: 'BE'
+}, {
+    zip: 3773,
+    loc: 'Matten (St. Stephan)',
+    canton: 'BE'
+}, {
+    zip: 3775,
+    loc: 'Lenk im Simmental',
+    canton: 'BE'
+}, {
+    zip: 3776,
+    loc: 'Oeschseite',
+    canton: 'BE'
+}, {
+    zip: 3777,
+    loc: 'Saanenm\xF6ser',
+    canton: 'BE'
+}, {
+    zip: 3778,
+    loc: 'Sch\xF6nried',
+    canton: 'BE'
+}, {
+    zip: 3780,
+    loc: 'Gstaad',
+    canton: 'BE'
+}, {
+    zip: 3781,
+    loc: 'Turbach',
+    canton: 'BE'
+}, {
+    zip: 3782,
+    loc: 'Lauenen b. Gstaad',
+    canton: 'BE'
+}, {
+    zip: 3783,
+    loc: 'Grund b. Gstaad',
+    canton: 'BE'
+}, {
+    zip: 3784,
+    loc: 'Feutersoey',
+    canton: 'BE'
+}, {
+    zip: 3785,
+    loc: 'Gsteig b. Gstaad',
+    canton: 'BE'
+}, {
+    zip: 3792,
+    loc: 'Saanen',
+    canton: 'BE'
+}, {
+    zip: 3800,
+    loc: 'Sundlauenen',
+    canton: 'BE'
+}, {
+    zip: 3800,
+    loc: 'Interlaken',
+    canton: 'BE'
+}, {
+    zip: 3800,
+    loc: 'Unterseen',
+    canton: 'BE'
+}, {
+    zip: 3800,
+    loc: 'Matten b. Interlaken',
+    canton: 'BE'
+}, {
+    zip: 3801,
+    loc: 'Jungfraujoch',
+    canton: 'VS'
+}, {
+    zip: 3803,
+    loc: 'Beatenberg',
+    canton: 'BE'
+}, {
+    zip: 3804,
+    loc: 'Habkern',
+    canton: 'BE'
+}, {
+    zip: 3805,
+    loc: 'Goldswil b. Interlaken',
+    canton: 'BE'
+}, {
+    zip: 3806,
+    loc: 'B\xF6nigen b. Interlaken',
+    canton: 'BE'
+}, {
+    zip: 3807,
+    loc: 'Iseltwald',
+    canton: 'BE'
+}, {
+    zip: 3812,
+    loc: 'Wilderswil',
+    canton: 'BE'
+}, {
+    zip: 3813,
+    loc: 'Saxeten',
+    canton: 'BE'
+}, {
+    zip: 3814,
+    loc: 'Gsteigwiler',
+    canton: 'BE'
+}, {
+    zip: 3815,
+    loc: 'Zweil\xFCtschinen',
+    canton: 'BE'
+}, {
+    zip: 3815,
+    loc: 'G\xFCndlischwand',
+    canton: 'BE'
+}, {
+    zip: 3816,
+    loc: 'L\xFCtschental',
+    canton: 'BE'
+}, {
+    zip: 3816,
+    loc: 'Burglauenen',
+    canton: 'BE'
+}, {
+    zip: 3818,
+    loc: 'Grindelwald',
+    canton: 'BE'
+}, {
+    zip: 3822,
+    loc: 'Isenfluh',
+    canton: 'BE'
+}, {
+    zip: 3822,
+    loc: 'Lauterbrunnen',
+    canton: 'BE'
+}, {
+    zip: 3823,
+    loc: 'Kleine Scheidegg',
+    canton: 'BE'
+}, {
+    zip: 3823,
+    loc: 'Eigergletscher',
+    canton: 'BE'
+}, {
+    zip: 3823,
+    loc: 'Wengen',
+    canton: 'BE'
+}, {
+    zip: 3824,
+    loc: 'Stechelberg',
+    canton: 'BE'
+}, {
+    zip: 3825,
+    loc: 'M\xFCrren',
+    canton: 'BE'
+}, {
+    zip: 3826,
+    loc: 'Gimmelwald',
+    canton: 'BE'
+}, {
+    zip: 3852,
+    loc: 'Ringgenberg BE',
+    canton: 'BE'
+}, {
+    zip: 3853,
+    loc: 'Niederried b. Interlaken',
+    canton: 'BE'
+}, {
+    zip: 3854,
+    loc: 'Oberried am Brienzersee',
+    canton: 'BE'
+}, {
+    zip: 3855,
+    loc: 'Schwanden b. Brienz',
+    canton: 'BE'
+}, {
+    zip: 3855,
+    loc: 'Brienz BE',
+    canton: 'BE'
+}, {
+    zip: 3855,
+    loc: 'Axalp',
+    canton: 'BE'
+}, {
+    zip: 3856,
+    loc: 'Brienzwiler',
+    canton: 'BE'
+}, {
+    zip: 3857,
+    loc: 'Unterbach BE',
+    canton: 'BE'
+}, {
+    zip: 3858,
+    loc: 'Hofstetten b. Brienz',
+    canton: 'BE'
+}, {
+    zip: 3860,
+    loc: 'Rosenlaui',
+    canton: 'BE'
+}, {
+    zip: 3860,
+    loc: 'Schattenhalb',
+    canton: 'BE'
+}, {
+    zip: 3860,
+    loc: 'Meiringen',
+    canton: 'BE'
+}, {
+    zip: 3860,
+    loc: 'Br\xFCnig',
+    canton: 'BE'
+}, {
+    zip: 3862,
+    loc: 'Innertkirchen',
+    canton: 'BE'
+}, {
+    zip: 3863,
+    loc: 'Gadmen',
+    canton: 'BE'
+}, {
+    zip: 3864,
+    loc: 'Guttannen',
+    canton: 'BE'
+}, {
+    zip: 3900,
+    loc: 'Gamsen',
+    canton: 'VS'
+}, {
+    zip: 3900,
+    loc: 'Brigerbad',
+    canton: 'VS'
+}, {
+    zip: 3900,
+    loc: 'Brig',
+    canton: 'VS'
+}, {
+    zip: 3901,
+    loc: 'Rothwald',
+    canton: 'VS'
+}, {
+    zip: 3902,
+    loc: 'Glis',
+    canton: 'VS'
+}, {
+    zip: 3903,
+    loc: 'Birgisch',
+    canton: 'VS'
+}, {
+    zip: 3903,
+    loc: 'Mund',
+    canton: 'VS'
+}, {
+    zip: 3904,
+    loc: 'Naters',
+    canton: 'VS'
+}, {
+    zip: 3905,
+    loc: 'Saas-Almagell',
+    canton: 'VS'
+}, {
+    zip: 3906,
+    loc: 'Saas-Fee',
+    canton: 'VS'
+}, {
+    zip: 3907,
+    loc: 'Simplon Hospiz',
+    canton: 'VS'
+}, {
+    zip: 3907,
+    loc: 'Gabi (Simplon)',
+    canton: 'VS'
+}, {
+    zip: 3907,
+    loc: 'Gondo',
+    canton: 'VS'
+}, {
+    zip: 3907,
+    loc: 'Simplon Dorf',
+    canton: 'VS'
+}, {
+    zip: 3908,
+    loc: 'Saas-Balen',
+    canton: 'VS'
+}, {
+    zip: 3910,
+    loc: 'Saas-Grund',
+    canton: 'VS'
+}, {
+    zip: 3911,
+    loc: 'Ried-Brig',
+    canton: 'VS'
+}, {
+    zip: 3912,
+    loc: 'Termen',
+    canton: 'VS'
+}, {
+    zip: 3913,
+    loc: 'Rosswald',
+    canton: 'VS'
+}, {
+    zip: 3914,
+    loc: 'Belalp',
+    canton: 'VS'
+}, {
+    zip: 3914,
+    loc: 'Blatten b. Naters',
+    canton: 'VS'
+}, {
+    zip: 3916,
+    loc: 'Ferden',
+    canton: 'VS'
+}, {
+    zip: 3917,
+    loc: 'Goppenstein',
+    canton: 'VS'
+}, {
+    zip: 3917,
+    loc: 'Kippel',
+    canton: 'VS'
+}, {
+    zip: 3918,
+    loc: 'Wiler (L\xF6tschen)',
+    canton: 'VS'
+}, {
+    zip: 3919,
+    loc: 'Blatten (L\xF6tschen)',
+    canton: 'VS'
+}, {
+    zip: 3920,
+    loc: 'Zermatt',
+    canton: 'VS'
+}, {
+    zip: 3922,
+    loc: 'Eisten',
+    canton: 'VS'
+}, {
+    zip: 3922,
+    loc: 'Kalpetran',
+    canton: 'VS'
+}, {
+    zip: 3922,
+    loc: 'Stalden VS',
+    canton: 'VS'
+}, {
+    zip: 3923,
+    loc: 'T\xF6rbel',
+    canton: 'VS'
+}, {
+    zip: 3924,
+    loc: 'Gasenried',
+    canton: 'VS'
+}, {
+    zip: 3924,
+    loc: 'St. Niklaus VS',
+    canton: 'VS'
+}, {
+    zip: 3925,
+    loc: 'Gr\xE4chen',
+    canton: 'VS'
+}, {
+    zip: 3926,
+    loc: 'Embd',
+    canton: 'VS'
+}, {
+    zip: 3927,
+    loc: 'Herbriggen',
+    canton: 'VS'
+}, {
+    zip: 3928,
+    loc: 'Randa',
+    canton: 'VS'
+}, {
+    zip: 3929,
+    loc: 'T\xE4sch',
+    canton: 'VS'
+}, {
+    zip: 3930,
+    loc: 'Eyholz',
+    canton: 'VS'
+}, {
+    zip: 3930,
+    loc: 'Visp',
+    canton: 'VS'
+}, {
+    zip: 3931,
+    loc: 'Lalden',
+    canton: 'VS'
+}, {
+    zip: 3932,
+    loc: 'Visperterminen',
+    canton: 'VS'
+}, {
+    zip: 3933,
+    loc: 'Staldenried',
+    canton: 'VS'
+}, {
+    zip: 3934,
+    loc: 'Zeneggen',
+    canton: 'VS'
+}, {
+    zip: 3935,
+    loc: 'B\xFCrchen',
+    canton: 'VS'
+}, {
+    zip: 3937,
+    loc: 'Baltschieder',
+    canton: 'VS'
+}, {
+    zip: 3938,
+    loc: 'Ausserberg',
+    canton: 'VS'
+}, {
+    zip: 3939,
+    loc: 'Eggerberg',
+    canton: 'VS'
+}, {
+    zip: 3940,
+    loc: 'Steg VS',
+    canton: 'VS'
+}, {
+    zip: 3942,
+    loc: 'Niedergesteln',
+    canton: 'VS'
+}, {
+    zip: 3942,
+    loc: 'St. German',
+    canton: 'VS'
+}, {
+    zip: 3942,
+    loc: 'Raron',
+    canton: 'VS'
+}, {
+    zip: 3943,
+    loc: 'Eischoll',
+    canton: 'VS'
+}, {
+    zip: 3944,
+    loc: 'Unterb\xE4ch VS',
+    canton: 'VS'
+}, {
+    zip: 3945,
+    loc: 'Gampel',
+    canton: 'VS'
+}, {
+    zip: 3945,
+    loc: 'Niedergampel',
+    canton: 'VS'
+}, {
+    zip: 3946,
+    loc: 'Gruben',
+    canton: 'VS'
+}, {
+    zip: 3946,
+    loc: 'Turtmann',
+    canton: 'VS'
+}, {
+    zip: 3947,
+    loc: 'Ergisch',
+    canton: 'VS'
+}, {
+    zip: 3948,
+    loc: 'Unterems',
+    canton: 'VS'
+}, {
+    zip: 3948,
+    loc: 'Oberems',
+    canton: 'VS'
+}, {
+    zip: 3949,
+    loc: 'Hohtenn',
+    canton: 'VS'
+}, {
+    zip: 3951,
+    loc: 'Agarn',
+    canton: 'VS'
+}, {
+    zip: 3952,
+    loc: 'Susten',
+    canton: 'VS'
+}, {
+    zip: 3953,
+    loc: 'Inden',
+    canton: 'VS'
+}, {
+    zip: 3953,
+    loc: 'Varen',
+    canton: 'VS'
+}, {
+    zip: 3953,
+    loc: 'Leuk Stadt',
+    canton: 'VS'
+}, {
+    zip: 3954,
+    loc: 'Leukerbad',
+    canton: 'VS'
+}, {
+    zip: 3955,
+    loc: 'Albinen',
+    canton: 'VS'
+}, {
+    zip: 3956,
+    loc: 'Guttet-Feschel',
+    canton: 'VS'
+}, {
+    zip: 3957,
+    loc: 'Bratsch',
+    canton: 'VS'
+}, {
+    zip: 3957,
+    loc: 'Erschmatt',
+    canton: 'VS'
+}, {
+    zip: 3960,
+    loc: 'Corin-de-la-Cr\xEAte',
+    canton: 'VS'
+}, {
+    zip: 3960,
+    loc: 'Loc',
+    canton: 'VS'
+}, {
+    zip: 3960,
+    loc: 'Muraz (Sierre)',
+    canton: 'VS'
+}, {
+    zip: 3960,
+    loc: 'Niouc',
+    canton: 'VS'
+}, {
+    zip: 3960,
+    loc: 'Sierre',
+    canton: 'VS'
+}, {
+    zip: 3961,
+    loc: 'Chandolin',
+    canton: 'VS'
+}, {
+    zip: 3961,
+    loc: 'Ayer',
+    canton: 'VS'
+}, {
+    zip: 3961,
+    loc: 'St-Jean VS',
+    canton: 'VS'
+}, {
+    zip: 3961,
+    loc: 'Vissoie',
+    canton: 'VS'
+}, {
+    zip: 3961,
+    loc: 'St-Luc',
+    canton: 'VS'
+}, {
+    zip: 3961,
+    loc: 'Zinal',
+    canton: 'VS'
+}, {
+    zip: 3961,
+    loc: 'Grimentz',
+    canton: 'VS'
+}, {
+    zip: 3963,
+    loc: 'Montana',
+    canton: 'VS'
+}, {
+    zip: 3963,
+    loc: 'Crans-Montana',
+    canton: 'VS'
+}, {
+    zip: 3963,
+    loc: 'Aminona',
+    canton: 'VS'
+}, {
+    zip: 3965,
+    loc: 'Chippis',
+    canton: 'VS'
+}, {
+    zip: 3966,
+    loc: 'R\xE9chy',
+    canton: 'VS'
+}, {
+    zip: 3966,
+    loc: 'Chalais',
+    canton: 'VS'
+}, {
+    zip: 3967,
+    loc: 'Vercorin',
+    canton: 'VS'
+}, {
+    zip: 3968,
+    loc: 'Veyras',
+    canton: 'VS'
+}, {
+    zip: 3970,
+    loc: 'Salgesch',
+    canton: 'VS'
+}, {
+    zip: 3971,
+    loc: 'Chermignon-d\'en-Bas',
+    canton: 'VS'
+}, {
+    zip: 3971,
+    loc: 'Ollon VS',
+    canton: 'VS'
+}, {
+    zip: 3971,
+    loc: 'Chermignon',
+    canton: 'VS'
+}, {
+    zip: 3972,
+    loc: 'Mi\xE8ge',
+    canton: 'VS'
+}, {
+    zip: 3973,
+    loc: 'Venth\xF4ne',
+    canton: 'VS'
+}, {
+    zip: 3974,
+    loc: 'Mollens VS',
+    canton: 'VS'
+}, {
+    zip: 3975,
+    loc: 'Randogne',
+    canton: 'VS'
+}, {
+    zip: 3976,
+    loc: 'Champzab\xE9',
+    canton: 'VS'
+}, {
+    zip: 3976,
+    loc: 'No\xEBs',
+    canton: 'VS'
+}, {
+    zip: 3977,
+    loc: 'Granges VS',
+    canton: 'VS'
+}, {
+    zip: 3978,
+    loc: 'Flanthey',
+    canton: 'VS'
+}, {
+    zip: 3979,
+    loc: 'Gr\xF4ne',
+    canton: 'VS'
+}, {
+    zip: 3982,
+    loc: 'Bitsch',
+    canton: 'VS'
+}, {
+    zip: 3983,
+    loc: 'Bister',
+    canton: 'VS'
+}, {
+    zip: 3983,
+    loc: 'Filet',
+    canton: 'VS'
+}, {
+    zip: 3983,
+    loc: 'Goppisberg',
+    canton: 'VS'
+}, {
+    zip: 3983,
+    loc: 'Greich',
+    canton: 'VS'
+}, {
+    zip: 3983,
+    loc: 'M\xF6rel',
+    canton: 'VS'
+}, {
+    zip: 3984,
+    loc: 'Fieschertal',
+    canton: 'VS'
+}, {
+    zip: 3984,
+    loc: 'Fiesch',
+    canton: 'VS'
+}, {
+    zip: 3985,
+    loc: 'Geschinen',
+    canton: 'VS'
+}, {
+    zip: 3985,
+    loc: 'M\xFCnster VS',
+    canton: 'VS'
+}, {
+    zip: 3986,
+    loc: 'Ried-M\xF6rel',
+    canton: 'VS'
+}, {
+    zip: 3987,
+    loc: 'Riederalp',
+    canton: 'VS'
+}, {
+    zip: 3988,
+    loc: 'Obergesteln',
+    canton: 'VS'
+}, {
+    zip: 3988,
+    loc: 'Ulrichen',
+    canton: 'VS'
+}, {
+    zip: 3989,
+    loc: 'Niederwald',
+    canton: 'VS'
+}, {
+    zip: 3989,
+    loc: 'Blitzingen',
+    canton: 'VS'
+}, {
+    zip: 3989,
+    loc: 'Biel VS',
+    canton: 'VS'
+}, {
+    zip: 3989,
+    loc: 'Ritzingen',
+    canton: 'VS'
+}, {
+    zip: 3989,
+    loc: 'Selkingen',
+    canton: 'VS'
+}, {
+    zip: 3991,
+    loc: 'Betten',
+    canton: 'VS'
+}, {
+    zip: 3992,
+    loc: 'Bettmeralp',
+    canton: 'VS'
+}, {
+    zip: 3993,
+    loc: 'Grengiols',
+    canton: 'VS'
+}, {
+    zip: 3994,
+    loc: 'Lax',
+    canton: 'VS'
+}, {
+    zip: 3994,
+    loc: 'Martisberg',
+    canton: 'VS'
+}, {
+    zip: 3995,
+    loc: 'Ausserbinn',
+    canton: 'VS'
+}, {
+    zip: 3995,
+    loc: 'M\xFChlebach (Goms)',
+    canton: 'VS'
+}, {
+    zip: 3995,
+    loc: 'Steinhaus',
+    canton: 'VS'
+}, {
+    zip: 3995,
+    loc: 'Ernen',
+    canton: 'VS'
+}, {
+    zip: 3996,
+    loc: 'Binn',
+    canton: 'VS'
+}, {
+    zip: 3997,
+    loc: 'Bellwald',
+    canton: 'VS'
+}, {
+    zip: 3998,
+    loc: 'Gluringen',
+    canton: 'VS'
+}, {
+    zip: 3998,
+    loc: 'Reckingen VS',
+    canton: 'VS'
+}, {
+    zip: 3999,
+    loc: 'Oberwald',
+    canton: 'VS'
+}, {
+    zip: 4000,
+    loc: 'Basel',
+    canton: 'BS'
+}, {
+    zip: 4001,
+    loc: 'Basel',
+    canton: 'BS'
+}, {
+    zip: 4031,
+    loc: 'Basel Universit\xE4tsspital',
+    canton: 'BS'
+}, {
+    zip: 4051,
+    loc: 'Basel',
+    canton: 'BS'
+}, {
+    zip: 4052,
+    loc: 'Basel',
+    canton: 'BS'
+}, {
+    zip: 4053,
+    loc: 'Basel',
+    canton: 'BS'
+}, {
+    zip: 4054,
+    loc: 'Basel',
+    canton: 'BS'
+}, {
+    zip: 4055,
+    loc: 'Basel',
+    canton: 'BS'
+}, {
+    zip: 4056,
+    loc: 'Basel',
+    canton: 'BS'
+}, {
+    zip: 4057,
+    loc: 'Basel',
+    canton: 'BS'
+}, {
+    zip: 4058,
+    loc: 'Basel',
+    canton: 'BS'
+}, {
+    zip: 4059,
+    loc: 'Basel',
+    canton: 'BS'
+}, {
+    zip: 4101,
+    loc: 'Bruderholz',
+    canton: 'BL'
+}, {
+    zip: 4102,
+    loc: 'Binningen',
+    canton: 'BL'
+}, {
+    zip: 4103,
+    loc: 'Bottmingen',
+    canton: 'BL'
+}, {
+    zip: 4104,
+    loc: 'Oberwil BL',
+    canton: 'BL'
+}, {
+    zip: 4105,
+    loc: 'Biel-Benken BL',
+    canton: 'BL'
+}, {
+    zip: 4106,
+    loc: 'Therwil',
+    canton: 'BL'
+}, {
+    zip: 4107,
+    loc: 'Ettingen',
+    canton: 'BL'
+}, {
+    zip: 4108,
+    loc: 'Witterswil',
+    canton: 'SO'
+}, {
+    zip: 4112,
+    loc: 'B\xE4ttwil',
+    canton: 'SO'
+}, {
+    zip: 4112,
+    loc: 'Fl\xFCh',
+    canton: 'SO'
+}, {
+    zip: 4114,
+    loc: 'Hofstetten SO',
+    canton: 'SO'
+}, {
+    zip: 4115,
+    loc: 'Mariastein',
+    canton: 'SO'
+}, {
+    zip: 4116,
+    loc: 'Metzerlen',
+    canton: 'SO'
+}, {
+    zip: 4117,
+    loc: 'Burg im Leimental',
+    canton: 'BL'
+}, {
+    zip: 4118,
+    loc: 'Rodersdorf',
+    canton: 'SO'
+}, {
+    zip: 4123,
+    loc: 'Allschwil',
+    canton: 'BL'
+}, {
+    zip: 4124,
+    loc: 'Sch\xF6nenbuch',
+    canton: 'BL'
+}, {
+    zip: 4125,
+    loc: 'Riehen',
+    canton: 'BS'
+}, {
+    zip: 4126,
+    loc: 'Bettingen',
+    canton: 'BS'
+}, {
+    zip: 4127,
+    loc: 'Birsfelden',
+    canton: 'BL'
+}, {
+    zip: 4132,
+    loc: 'Muttenz',
+    canton: 'BL'
+}, {
+    zip: 4133,
+    loc: 'Pratteln',
+    canton: 'BL'
+}, {
+    zip: 4142,
+    loc: 'M\xFCnchenstein',
+    canton: 'BL'
+}, {
+    zip: 4143,
+    loc: 'Dornach',
+    canton: 'SO'
+}, {
+    zip: 4144,
+    loc: 'Arlesheim',
+    canton: 'BL'
+}, {
+    zip: 4145,
+    loc: 'Gempen',
+    canton: 'SO'
+}, {
+    zip: 4146,
+    loc: 'Hochwald',
+    canton: 'SO'
+}, {
+    zip: 4147,
+    loc: 'Aesch BL',
+    canton: 'BL'
+}, {
+    zip: 4148,
+    loc: 'Pfeffingen',
+    canton: 'BL'
+}, {
+    zip: 4153,
+    loc: 'Reinach BL',
+    canton: 'BL'
+}, {
+    zip: 4202,
+    loc: 'Duggingen',
+    canton: 'BL'
+}, {
+    zip: 4203,
+    loc: 'Grellingen',
+    canton: 'BL'
+}, {
+    zip: 4204,
+    loc: 'Himmelried',
+    canton: 'SO'
+}, {
+    zip: 4206,
+    loc: 'Seewen SO',
+    canton: 'SO'
+}, {
+    zip: 4207,
+    loc: 'Bretzwil',
+    canton: 'BL'
+}, {
+    zip: 4208,
+    loc: 'Nunningen',
+    canton: 'SO'
+}, {
+    zip: 4222,
+    loc: 'Zwingen',
+    canton: 'BL'
+}, {
+    zip: 4223,
+    loc: 'Blauen',
+    canton: 'BL'
+}, {
+    zip: 4224,
+    loc: 'Nenzlingen',
+    canton: 'BL'
+}, {
+    zip: 4225,
+    loc: 'Brislach',
+    canton: 'BL'
+}, {
+    zip: 4226,
+    loc: 'Breitenbach',
+    canton: 'SO'
+}, {
+    zip: 4227,
+    loc: 'B\xFCsserach',
+    canton: 'SO'
+}, {
+    zip: 4228,
+    loc: 'Erschwil',
+    canton: 'SO'
+}, {
+    zip: 4229,
+    loc: 'Beinwil SO',
+    canton: 'SO'
+}, {
+    zip: 4232,
+    loc: 'Fehren',
+    canton: 'SO'
+}, {
+    zip: 4233,
+    loc: 'Meltingen',
+    canton: 'SO'
+}, {
+    zip: 4234,
+    loc: 'Zullwil',
+    canton: 'SO'
+}, {
+    zip: 4242,
+    loc: 'Laufen',
+    canton: 'BL'
+}, {
+    zip: 4243,
+    loc: 'Dittingen',
+    canton: 'BL'
+}, {
+    zip: 4244,
+    loc: 'R\xF6schenz',
+    canton: 'BL'
+}, {
+    zip: 4245,
+    loc: 'Kleinl\xFCtzel',
+    canton: 'SO'
+}, {
+    zip: 4246,
+    loc: 'Wahlen b. Laufen',
+    canton: 'BL'
+}, {
+    zip: 4247,
+    loc: 'Grindel',
+    canton: 'SO'
+}, {
+    zip: 4252,
+    loc: 'B\xE4rschwil',
+    canton: 'SO'
+}, {
+    zip: 4253,
+    loc: 'Liesberg',
+    canton: 'BL'
+}, {
+    zip: 4254,
+    loc: 'Liesberg Dorf',
+    canton: 'BL'
+}, {
+    zip: 4302,
+    loc: 'Augst BL',
+    canton: 'BL'
+}, {
+    zip: 4303,
+    loc: 'Kaiseraugst',
+    canton: 'AG'
+}, {
+    zip: 4304,
+    loc: 'Giebenach',
+    canton: 'BL'
+}, {
+    zip: 4305,
+    loc: 'Olsberg',
+    canton: 'AG'
+}, {
+    zip: 4310,
+    loc: 'Rheinfelden',
+    canton: 'AG'
+}, {
+    zip: 4312,
+    loc: 'Magden',
+    canton: 'AG'
+}, {
+    zip: 4313,
+    loc: 'M\xF6hlin',
+    canton: 'AG'
+}, {
+    zip: 4314,
+    loc: 'Zeiningen',
+    canton: 'AG'
+}, {
+    zip: 4315,
+    loc: 'Zuzgen',
+    canton: 'AG'
+}, {
+    zip: 4316,
+    loc: 'Hellikon',
+    canton: 'AG'
+}, {
+    zip: 4317,
+    loc: 'Wegenstetten',
+    canton: 'AG'
+}, {
+    zip: 4322,
+    loc: 'Mumpf',
+    canton: 'AG'
+}, {
+    zip: 4323,
+    loc: 'Wallbach',
+    canton: 'AG'
+}, {
+    zip: 4324,
+    loc: 'Obermumpf',
+    canton: 'AG'
+}, {
+    zip: 4325,
+    loc: 'Schupfart',
+    canton: 'AG'
+}, {
+    zip: 4332,
+    loc: 'Stein AG',
+    canton: 'AG'
+}, {
+    zip: 4333,
+    loc: 'M\xFCnchwilen AG',
+    canton: 'AG'
+}, {
+    zip: 4334,
+    loc: 'Sisseln AG',
+    canton: 'AG'
+}, {
+    zip: 4402,
+    loc: 'Frenkendorf',
+    canton: 'BL'
+}, {
+    zip: 4410,
+    loc: 'Liestal',
+    canton: 'BL'
+}, {
+    zip: 4411,
+    loc: 'Seltisberg',
+    canton: 'BL'
+}, {
+    zip: 4412,
+    loc: 'Nuglar',
+    canton: 'SO'
+}, {
+    zip: 4413,
+    loc: 'B\xFCren SO',
+    canton: 'SO'
+}, {
+    zip: 4414,
+    loc: 'F\xFCllinsdorf',
+    canton: 'BL'
+}, {
+    zip: 4415,
+    loc: 'Lausen',
+    canton: 'BL'
+}, {
+    zip: 4416,
+    loc: 'Bubendorf',
+    canton: 'BL'
+}, {
+    zip: 4417,
+    loc: 'Ziefen',
+    canton: 'BL'
+}, {
+    zip: 4418,
+    loc: 'Reigoldswil',
+    canton: 'BL'
+}, {
+    zip: 4419,
+    loc: 'Lupsingen',
+    canton: 'BL'
+}, {
+    zip: 4421,
+    loc: 'St. Pantaleon',
+    canton: 'SO'
+}, {
+    zip: 4422,
+    loc: 'Arisdorf',
+    canton: 'BL'
+}, {
+    zip: 4423,
+    loc: 'Hersberg',
+    canton: 'BL'
+}, {
+    zip: 4424,
+    loc: 'Arboldswil',
+    canton: 'BL'
+}, {
+    zip: 4425,
+    loc: 'Titterten',
+    canton: 'BL'
+}, {
+    zip: 4426,
+    loc: 'Lauwil',
+    canton: 'BL'
+}, {
+    zip: 4431,
+    loc: 'Bennwil',
+    canton: 'BL'
+}, {
+    zip: 4432,
+    loc: 'Lampenberg',
+    canton: 'BL'
+}, {
+    zip: 4433,
+    loc: 'Ramlinsburg',
+    canton: 'BL'
+}, {
+    zip: 4434,
+    loc: 'H\xF6lstein',
+    canton: 'BL'
+}, {
+    zip: 4435,
+    loc: 'Niederdorf',
+    canton: 'BL'
+}, {
+    zip: 4436,
+    loc: 'Liedertswil',
+    canton: 'BL'
+}, {
+    zip: 4436,
+    loc: 'Oberdorf BL',
+    canton: 'BL'
+}, {
+    zip: 4437,
+    loc: 'Waldenburg',
+    canton: 'BL'
+}, {
+    zip: 4438,
+    loc: 'Langenbruck',
+    canton: 'BL'
+}, {
+    zip: 4441,
+    loc: 'Th\xFCrnen',
+    canton: 'BL'
+}, {
+    zip: 4442,
+    loc: 'Diepflingen',
+    canton: 'BL'
+}, {
+    zip: 4443,
+    loc: 'Wittinsburg',
+    canton: 'BL'
+}, {
+    zip: 4444,
+    loc: 'R\xFCmlingen',
+    canton: 'BL'
+}, {
+    zip: 4445,
+    loc: 'H\xE4felfingen',
+    canton: 'BL'
+}, {
+    zip: 4446,
+    loc: 'Buckten',
+    canton: 'BL'
+}, {
+    zip: 4447,
+    loc: 'K\xE4nerkinden',
+    canton: 'BL'
+}, {
+    zip: 4448,
+    loc: 'L\xE4ufelfingen',
+    canton: 'BL'
+}, {
+    zip: 4450,
+    loc: 'Sissach',
+    canton: 'BL'
+}, {
+    zip: 4451,
+    loc: 'Wintersingen',
+    canton: 'BL'
+}, {
+    zip: 4452,
+    loc: 'Itingen',
+    canton: 'BL'
+}, {
+    zip: 4453,
+    loc: 'Nusshof',
+    canton: 'BL'
+}, {
+    zip: 4455,
+    loc: 'Zunzgen',
+    canton: 'BL'
+}, {
+    zip: 4456,
+    loc: 'Tenniken',
+    canton: 'BL'
+}, {
+    zip: 4457,
+    loc: 'Diegten',
+    canton: 'BL'
+}, {
+    zip: 4458,
+    loc: 'Eptingen',
+    canton: 'BL'
+}, {
+    zip: 4460,
+    loc: 'Gelterkinden',
+    canton: 'BL'
+}, {
+    zip: 4461,
+    loc: 'B\xF6ckten',
+    canton: 'BL'
+}, {
+    zip: 4462,
+    loc: 'Rickenbach BL',
+    canton: 'BL'
+}, {
+    zip: 4463,
+    loc: 'Buus',
+    canton: 'BL'
+}, {
+    zip: 4464,
+    loc: 'Maisprach',
+    canton: 'BL'
+}, {
+    zip: 4465,
+    loc: 'Hemmiken',
+    canton: 'BL'
+}, {
+    zip: 4466,
+    loc: 'Ormalingen',
+    canton: 'BL'
+}, {
+    zip: 4467,
+    loc: 'Rothenfluh',
+    canton: 'BL'
+}, {
+    zip: 4468,
+    loc: 'Kienberg',
+    canton: 'SO'
+}, {
+    zip: 4469,
+    loc: 'Anwil',
+    canton: 'BL'
+}, {
+    zip: 4492,
+    loc: 'Tecknau',
+    canton: 'BL'
+}, {
+    zip: 4493,
+    loc: 'Wenslingen',
+    canton: 'BL'
+}, {
+    zip: 4494,
+    loc: 'Oltingen',
+    canton: 'BL'
+}, {
+    zip: 4495,
+    loc: 'Zeglingen',
+    canton: 'BL'
+}, {
+    zip: 4496,
+    loc: 'Kilchberg BL',
+    canton: 'BL'
+}, {
+    zip: 4497,
+    loc: 'R\xFCnenberg',
+    canton: 'BL'
+}, {
+    zip: 4500,
+    loc: 'Solothurn',
+    canton: 'SO'
+}, {
+    zip: 4512,
+    loc: 'Bellach',
+    canton: 'SO'
+}, {
+    zip: 4513,
+    loc: 'Langendorf',
+    canton: 'SO'
+}, {
+    zip: 4514,
+    loc: 'Lommiswil',
+    canton: 'SO'
+}, {
+    zip: 4515,
+    loc: 'Weissenstein b. Solothurn',
+    canton: 'SO'
+}, {
+    zip: 4515,
+    loc: 'Oberdorf SO',
+    canton: 'SO'
+}, {
+    zip: 4522,
+    loc: 'R\xFCttenen',
+    canton: 'SO'
+}, {
+    zip: 4523,
+    loc: 'Niederwil SO',
+    canton: 'SO'
+}, {
+    zip: 4524,
+    loc: 'Balmberg',
+    canton: 'SO'
+}, {
+    zip: 4524,
+    loc: 'Oberbalmberg',
+    canton: 'SO'
+}, {
+    zip: 4524,
+    loc: 'G\xFCnsberg',
+    canton: 'SO'
+}, {
+    zip: 4525,
+    loc: 'Balm b. G\xFCnsberg',
+    canton: 'SO'
+}, {
+    zip: 4528,
+    loc: 'Zuchwil',
+    canton: 'SO'
+}, {
+    zip: 4532,
+    loc: 'Feldbrunnen',
+    canton: 'SO'
+}, {
+    zip: 4533,
+    loc: 'Riedholz',
+    canton: 'SO'
+}, {
+    zip: 4534,
+    loc: 'Flumenthal',
+    canton: 'SO'
+}, {
+    zip: 4535,
+    loc: 'Hubersdorf',
+    canton: 'SO'
+}, {
+    zip: 4535,
+    loc: 'Kammersrohr',
+    canton: 'SO'
+}, {
+    zip: 4536,
+    loc: 'Attiswil',
+    canton: 'BE'
+}, {
+    zip: 4537,
+    loc: 'Wiedlisbach',
+    canton: 'BE'
+}, {
+    zip: 4538,
+    loc: 'Oberbipp',
+    canton: 'BE'
+}, {
+    zip: 4539,
+    loc: 'Rumisberg',
+    canton: 'BE'
+}, {
+    zip: 4539,
+    loc: 'Farnern',
+    canton: 'BE'
+}, {
+    zip: 4542,
+    loc: 'Luterbach',
+    canton: 'SO'
+}, {
+    zip: 4543,
+    loc: 'Deitingen',
+    canton: 'SO'
+}, {
+    zip: 4552,
+    loc: 'Derendingen',
+    canton: 'SO'
+}, {
+    zip: 4553,
+    loc: 'Subingen',
+    canton: 'SO'
+}, {
+    zip: 4554,
+    loc: 'H\xFCniken',
+    canton: 'SO'
+}, {
+    zip: 4554,
+    loc: 'Etziken',
+    canton: 'SO'
+}, {
+    zip: 4556,
+    loc: 'Bolken',
+    canton: 'SO'
+}, {
+    zip: 4556,
+    loc: 'Burg\xE4schi',
+    canton: 'SO'
+}, {
+    zip: 4556,
+    loc: 'Steinhof SO',
+    canton: 'SO'
+}, {
+    zip: 4556,
+    loc: 'Aeschi SO',
+    canton: 'SO'
+}, {
+    zip: 4557,
+    loc: 'Horriwil',
+    canton: 'SO'
+}, {
+    zip: 4558,
+    loc: 'Hersiwil',
+    canton: 'SO'
+}, {
+    zip: 4558,
+    loc: 'Heinrichswil',
+    canton: 'SO'
+}, {
+    zip: 4558,
+    loc: 'Winistorf',
+    canton: 'SO'
+}, {
+    zip: 4562,
+    loc: 'Biberist',
+    canton: 'SO'
+}, {
+    zip: 4563,
+    loc: 'Gerlafingen',
+    canton: 'SO'
+}, {
+    zip: 4564,
+    loc: 'Zielebach',
+    canton: 'BE'
+}, {
+    zip: 4564,
+    loc: 'Obergerlafingen',
+    canton: 'SO'
+}, {
+    zip: 4565,
+    loc: 'Recherswil',
+    canton: 'SO'
+}, {
+    zip: 4566,
+    loc: 'Halten',
+    canton: 'SO'
+}, {
+    zip: 4566,
+    loc: 'Oekingen',
+    canton: 'SO'
+}, {
+    zip: 4566,
+    loc: 'Kriegstetten',
+    canton: 'SO'
+}, {
+    zip: 4571,
+    loc: 'Ichertswil',
+    canton: 'SO'
+}, {
+    zip: 4571,
+    loc: 'L\xFCterkofen',
+    canton: 'SO'
+}, {
+    zip: 4573,
+    loc: 'Lohn-Ammannsegg',
+    canton: 'SO'
+}, {
+    zip: 4574,
+    loc: 'L\xFCsslingen',
+    canton: 'SO'
+}, {
+    zip: 4574,
+    loc: 'Nennigkofen',
+    canton: 'SO'
+}, {
+    zip: 4576,
+    loc: 'Tscheppach',
+    canton: 'SO'
+}, {
+    zip: 4577,
+    loc: 'Hessigkofen',
+    canton: 'SO'
+}, {
+    zip: 4578,
+    loc: 'Bibern SO',
+    canton: 'SO'
+}, {
+    zip: 4579,
+    loc: 'Gossliwil',
+    canton: 'SO'
+}, {
+    zip: 4581,
+    loc: 'K\xFCttigkofen',
+    canton: 'SO'
+}, {
+    zip: 4582,
+    loc: 'Br\xFCgglen',
+    canton: 'SO'
+}, {
+    zip: 4583,
+    loc: 'Aetigkofen',
+    canton: 'SO'
+}, {
+    zip: 4583,
+    loc: 'M\xFChledorf SO',
+    canton: 'SO'
+}, {
+    zip: 4584,
+    loc: 'G\xE4chliwil',
+    canton: 'SO'
+}, {
+    zip: 4584,
+    loc: 'L\xFCterswil',
+    canton: 'SO'
+}, {
+    zip: 4585,
+    loc: 'Biezwil',
+    canton: 'SO'
+}, {
+    zip: 4586,
+    loc: 'Kyburg-Buchegg',
+    canton: 'SO'
+}, {
+    zip: 4587,
+    loc: 'Aetingen',
+    canton: 'SO'
+}, {
+    zip: 4588,
+    loc: 'Unterramsern',
+    canton: 'SO'
+}, {
+    zip: 4588,
+    loc: 'Oberramsern',
+    canton: 'SO'
+}, {
+    zip: 4588,
+    loc: 'Brittern',
+    canton: 'SO'
+}, {
+    zip: 4600,
+    loc: 'Olten',
+    canton: 'SO'
+}, {
+    zip: 4612,
+    loc: 'Wangen b. Olten',
+    canton: 'SO'
+}, {
+    zip: 4613,
+    loc: 'Rickenbach SO',
+    canton: 'SO'
+}, {
+    zip: 4614,
+    loc: 'H\xE4gendorf',
+    canton: 'SO'
+}, {
+    zip: 4615,
+    loc: 'Allerheiligenberg',
+    canton: 'SO'
+}, {
+    zip: 4616,
+    loc: 'Kappel SO',
+    canton: 'SO'
+}, {
+    zip: 4617,
+    loc: 'Gunzgen',
+    canton: 'SO'
+}, {
+    zip: 4618,
+    loc: 'Boningen',
+    canton: 'SO'
+}, {
+    zip: 4622,
+    loc: 'Egerkingen',
+    canton: 'SO'
+}, {
+    zip: 4623,
+    loc: 'Neuendorf',
+    canton: 'SO'
+}, {
+    zip: 4624,
+    loc: 'H\xE4rkingen',
+    canton: 'SO'
+}, {
+    zip: 4625,
+    loc: 'Oberbuchsiten',
+    canton: 'SO'
+}, {
+    zip: 4626,
+    loc: 'Niederbuchsiten',
+    canton: 'SO'
+}, {
+    zip: 4628,
+    loc: 'Wolfwil',
+    canton: 'SO'
+}, {
+    zip: 4629,
+    loc: 'Fulenbach',
+    canton: 'SO'
+}, {
+    zip: 4632,
+    loc: 'Trimbach',
+    canton: 'SO'
+}, {
+    zip: 4633,
+    loc: 'Hauenstein',
+    canton: 'SO'
+}, {
+    zip: 4634,
+    loc: 'Wisen SO',
+    canton: 'SO'
+}, {
+    zip: 4652,
+    loc: 'Winznau',
+    canton: 'SO'
+}, {
+    zip: 4653,
+    loc: 'Oberg\xF6sgen',
+    canton: 'SO'
+}, {
+    zip: 4654,
+    loc: 'Lostorf',
+    canton: 'SO'
+}, {
+    zip: 4655,
+    loc: 'Rohr b. Olten',
+    canton: 'SO'
+}, {
+    zip: 4655,
+    loc: 'St\xFCsslingen',
+    canton: 'SO'
+}, {
+    zip: 4656,
+    loc: 'Starrkirch-Wil',
+    canton: 'SO'
+}, {
+    zip: 4657,
+    loc: 'Dulliken',
+    canton: 'SO'
+}, {
+    zip: 4658,
+    loc: 'D\xE4niken SO',
+    canton: 'SO'
+}, {
+    zip: 4663,
+    loc: 'Aarburg',
+    canton: 'AG'
+}, {
+    zip: 4665,
+    loc: 'Oftringen',
+    canton: 'AG'
+}, {
+    zip: 4702,
+    loc: 'Oensingen',
+    canton: 'SO'
+}, {
+    zip: 4703,
+    loc: 'Kestenholz',
+    canton: 'SO'
+}, {
+    zip: 4704,
+    loc: 'Wolfisberg',
+    canton: 'BE'
+}, {
+    zip: 4704,
+    loc: 'Niederbipp',
+    canton: 'BE'
+}, {
+    zip: 4710,
+    loc: 'Balsthal',
+    canton: 'SO'
+}, {
+    zip: 4712,
+    loc: 'Laupersdorf',
+    canton: 'SO'
+}, {
+    zip: 4713,
+    loc: 'Matzendorf',
+    canton: 'SO'
+}, {
+    zip: 4714,
+    loc: 'Aedermannsdorf',
+    canton: 'SO'
+}, {
+    zip: 4715,
+    loc: 'Herbetswil',
+    canton: 'SO'
+}, {
+    zip: 4716,
+    loc: 'G\xE4nsbrunnen',
+    canton: 'SO'
+}, {
+    zip: 4716,
+    loc: 'Welschenrohr',
+    canton: 'SO'
+}, {
+    zip: 4717,
+    loc: 'M\xFCmliswil',
+    canton: 'SO'
+}, {
+    zip: 4718,
+    loc: 'Holderbank SO',
+    canton: 'SO'
+}, {
+    zip: 4719,
+    loc: 'Ramiswil',
+    canton: 'SO'
+}, {
+    zip: 4800,
+    loc: 'Zofingen',
+    canton: 'AG'
+}, {
+    zip: 4802,
+    loc: 'Strengelbach',
+    canton: 'AG'
+}, {
+    zip: 4803,
+    loc: 'Vordemwald',
+    canton: 'AG'
+}, {
+    zip: 4805,
+    loc: 'Brittnau',
+    canton: 'AG'
+}, {
+    zip: 4806,
+    loc: 'Wikon',
+    canton: 'LU'
+}, {
+    zip: 4812,
+    loc: 'M\xFChlethal',
+    canton: 'AG'
+}, {
+    zip: 4813,
+    loc: 'Uerkheim',
+    canton: 'AG'
+}, {
+    zip: 4814,
+    loc: 'Bottenwil',
+    canton: 'AG'
+}, {
+    zip: 4852,
+    loc: 'Rothrist',
+    canton: 'AG'
+}, {
+    zip: 4853,
+    loc: 'Riken AG',
+    canton: 'AG'
+}, {
+    zip: 4853,
+    loc: 'Murgenthal',
+    canton: 'AG'
+}, {
+    zip: 4856,
+    loc: 'Glash\xFCtten',
+    canton: 'AG'
+}, {
+    zip: 4900,
+    loc: 'Langenthal',
+    canton: 'BE'
+}, {
+    zip: 4911,
+    loc: 'Schwarzh\xE4usern',
+    canton: 'BE'
+}, {
+    zip: 4912,
+    loc: 'Aarwangen',
+    canton: 'BE'
+}, {
+    zip: 4913,
+    loc: 'Bannwil',
+    canton: 'BE'
+}, {
+    zip: 4914,
+    loc: 'Roggwil BE',
+    canton: 'BE'
+}, {
+    zip: 4915,
+    loc: 'St. Urban',
+    canton: 'LU'
+}, {
+    zip: 4916,
+    loc: 'Untersteckholz',
+    canton: 'BE'
+}, {
+    zip: 4917,
+    loc: 'Busswil b. Melchnau',
+    canton: 'BE'
+}, {
+    zip: 4917,
+    loc: 'Melchnau',
+    canton: 'BE'
+}, {
+    zip: 4919,
+    loc: 'Reisiswil',
+    canton: 'BE'
+}, {
+    zip: 4922,
+    loc: 'Thunstetten',
+    canton: 'BE'
+}, {
+    zip: 4922,
+    loc: 'B\xFCtzberg',
+    canton: 'BE'
+}, {
+    zip: 4923,
+    loc: 'Wynau',
+    canton: 'BE'
+}, {
+    zip: 4924,
+    loc: 'Obersteckholz',
+    canton: 'BE'
+}, {
+    zip: 4932,
+    loc: 'Gutenburg',
+    canton: 'BE'
+}, {
+    zip: 4932,
+    loc: 'Lotzwil',
+    canton: 'BE'
+}, {
+    zip: 4933,
+    loc: 'R\xFCtschelen',
+    canton: 'BE'
+}, {
+    zip: 4934,
+    loc: 'Madiswil',
+    canton: 'BE'
+}, {
+    zip: 4935,
+    loc: 'Leimiswil',
+    canton: 'BE'
+}, {
+    zip: 4936,
+    loc: 'Kleindietwil',
+    canton: 'BE'
+}, {
+    zip: 4937,
+    loc: 'Ursenbach',
+    canton: 'BE'
+}, {
+    zip: 4938,
+    loc: 'Rohrbachgraben',
+    canton: 'BE'
+}, {
+    zip: 4938,
+    loc: 'Rohrbach',
+    canton: 'BE'
+}, {
+    zip: 4942,
+    loc: 'Walterswil BE',
+    canton: 'BE'
+}, {
+    zip: 4943,
+    loc: 'Oeschenbach',
+    canton: 'BE'
+}, {
+    zip: 4944,
+    loc: 'Auswil',
+    canton: 'BE'
+}, {
+    zip: 4950,
+    loc: 'Huttwil',
+    canton: 'BE'
+}, {
+    zip: 4952,
+    loc: 'Eriswil',
+    canton: 'BE'
+}, {
+    zip: 4953,
+    loc: 'Schwarzenbach (Huttwil)',
+    canton: 'BE'
+}, {
+    zip: 4954,
+    loc: 'Wyssachen',
+    canton: 'BE'
+}, {
+    zip: 4955,
+    loc: 'Gondiswil',
+    canton: 'BE'
+}, {
+    zip: 5000,
+    loc: 'Aarau',
+    canton: 'AG'
+}, {
+    zip: 5004,
+    loc: 'Aarau',
+    canton: 'AG'
+}, {
+    zip: 5012,
+    loc: 'Eppenberg',
+    canton: 'SO'
+}, {
+    zip: 5012,
+    loc: 'W\xF6schnau',
+    canton: 'SO'
+}, {
+    zip: 5012,
+    loc: 'Sch\xF6nenwerd',
+    canton: 'SO'
+}, {
+    zip: 5013,
+    loc: 'Niederg\xF6sgen',
+    canton: 'SO'
+}, {
+    zip: 5014,
+    loc: 'Gretzenbach',
+    canton: 'SO'
+}, {
+    zip: 5015,
+    loc: 'Erlinsbach SO',
+    canton: 'SO'
+}, {
+    zip: 5017,
+    loc: 'Barmelweid',
+    canton: 'AG'
+}, {
+    zip: 5018,
+    loc: 'Erlinsbach',
+    canton: 'AG'
+}, {
+    zip: 5022,
+    loc: 'Rombach',
+    canton: 'AG'
+}, {
+    zip: 5023,
+    loc: 'Biberstein',
+    canton: 'AG'
+}, {
+    zip: 5024,
+    loc: 'K\xFCttigen',
+    canton: 'AG'
+}, {
+    zip: 5025,
+    loc: 'Asp',
+    canton: 'AG'
+}, {
+    zip: 5026,
+    loc: 'Densb\xFCren',
+    canton: 'AG'
+}, {
+    zip: 5027,
+    loc: 'Herznach',
+    canton: 'AG'
+}, {
+    zip: 5028,
+    loc: 'Ueken',
+    canton: 'AG'
+}, {
+    zip: 5032,
+    loc: 'Aarau Rohr',
+    canton: 'AG'
+}, {
+    zip: 5033,
+    loc: 'Buchs AG',
+    canton: 'AG'
+}, {
+    zip: 5034,
+    loc: 'Suhr',
+    canton: 'AG'
+}, {
+    zip: 5035,
+    loc: 'Unterentfelden',
+    canton: 'AG'
+}, {
+    zip: 5036,
+    loc: 'Oberentfelden',
+    canton: 'AG'
+}, {
+    zip: 5037,
+    loc: 'Muhen',
+    canton: 'AG'
+}, {
+    zip: 5040,
+    loc: 'Sch\xF6ftland',
+    canton: 'AG'
+}, {
+    zip: 5042,
+    loc: 'Hirschthal',
+    canton: 'AG'
+}, {
+    zip: 5043,
+    loc: 'Holziken',
+    canton: 'AG'
+}, {
+    zip: 5044,
+    loc: 'Schlossrued',
+    canton: 'AG'
+}, {
+    zip: 5046,
+    loc: 'Schmiedrued',
+    canton: 'AG'
+}, {
+    zip: 5046,
+    loc: 'Walde AG',
+    canton: 'AG'
+}, {
+    zip: 5046,
+    loc: 'Schmiedrued-Walde',
+    canton: 'AG'
+}, {
+    zip: 5053,
+    loc: 'Wittwil',
+    canton: 'AG'
+}, {
+    zip: 5053,
+    loc: 'Staffelbach',
+    canton: 'AG'
+}, {
+    zip: 5054,
+    loc: 'Kirchleerau',
+    canton: 'AG'
+}, {
+    zip: 5054,
+    loc: 'Moosleerau',
+    canton: 'AG'
+}, {
+    zip: 5056,
+    loc: 'Attelwil',
+    canton: 'AG'
+}, {
+    zip: 5057,
+    loc: 'Reitnau',
+    canton: 'AG'
+}, {
+    zip: 5058,
+    loc: 'Wiliberg',
+    canton: 'AG'
+}, {
+    zip: 5062,
+    loc: 'Oberhof',
+    canton: 'AG'
+}, {
+    zip: 5063,
+    loc: 'W\xF6lflinswil',
+    canton: 'AG'
+}, {
+    zip: 5064,
+    loc: 'Wittnau',
+    canton: 'AG'
+}, {
+    zip: 5070,
+    loc: 'Frick',
+    canton: 'AG'
+}, {
+    zip: 5072,
+    loc: 'Oeschgen',
+    canton: 'AG'
+}, {
+    zip: 5073,
+    loc: 'Gipf-Oberfrick',
+    canton: 'AG'
+}, {
+    zip: 5074,
+    loc: 'Eiken',
+    canton: 'AG'
+}, {
+    zip: 5075,
+    loc: 'Hornussen',
+    canton: 'AG'
+}, {
+    zip: 5076,
+    loc: 'B\xF6zen',
+    canton: 'AG'
+}, {
+    zip: 5077,
+    loc: 'Elfingen',
+    canton: 'AG'
+}, {
+    zip: 5078,
+    loc: 'Effingen',
+    canton: 'AG'
+}, {
+    zip: 5079,
+    loc: 'Zeihen',
+    canton: 'AG'
+}, {
+    zip: 5080,
+    loc: 'Laufenburg',
+    canton: 'AG'
+}, {
+    zip: 5082,
+    loc: 'Kaisten',
+    canton: 'AG'
+}, {
+    zip: 5083,
+    loc: 'Ittenthal',
+    canton: 'AG'
+}, {
+    zip: 5084,
+    loc: 'Rheinsulz',
+    canton: 'AG'
+}, {
+    zip: 5085,
+    loc: 'Sulz AG',
+    canton: 'AG'
+}, {
+    zip: 5102,
+    loc: 'Rupperswil',
+    canton: 'AG'
+}, {
+    zip: 5103,
+    loc: 'Wildegg',
+    canton: 'AG'
+}, {
+    zip: 5103,
+    loc: 'M\xF6riken AG',
+    canton: 'AG'
+}, {
+    zip: 5105,
+    loc: 'Auenstein',
+    canton: 'AG'
+}, {
+    zip: 5106,
+    loc: 'Veltheim AG',
+    canton: 'AG'
+}, {
+    zip: 5107,
+    loc: 'Schinznach Dorf',
+    canton: 'AG'
+}, {
+    zip: 5108,
+    loc: 'Oberflachs',
+    canton: 'AG'
+}, {
+    zip: 5112,
+    loc: 'Thalheim AG',
+    canton: 'AG'
+}, {
+    zip: 5113,
+    loc: 'Holderbank AG',
+    canton: 'AG'
+}, {
+    zip: 5116,
+    loc: 'Schinznach Bad',
+    canton: 'AG'
+}, {
+    zip: 5200,
+    loc: 'Brugg AG',
+    canton: 'AG'
+}, {
+    zip: 5210,
+    loc: 'Windisch',
+    canton: 'AG'
+}, {
+    zip: 5212,
+    loc: 'Hausen AG',
+    canton: 'AG'
+}, {
+    zip: 5213,
+    loc: 'Villnachern',
+    canton: 'AG'
+}, {
+    zip: 5222,
+    loc: 'Umiken',
+    canton: 'AG'
+}, {
+    zip: 5223,
+    loc: 'Riniken',
+    canton: 'AG'
+}, {
+    zip: 5224,
+    loc: 'Gallenkirch',
+    canton: 'AG'
+}, {
+    zip: 5224,
+    loc: 'Linn',
+    canton: 'AG'
+}, {
+    zip: 5224,
+    loc: 'Unterb\xF6zberg',
+    canton: 'AG'
+}, {
+    zip: 5225,
+    loc: 'Oberb\xF6zberg',
+    canton: 'AG'
+}, {
+    zip: 5233,
+    loc: 'Stilli',
+    canton: 'AG'
+}, {
+    zip: 5234,
+    loc: 'Villigen',
+    canton: 'AG'
+}, {
+    zip: 5235,
+    loc: 'R\xFCfenach AG',
+    canton: 'AG'
+}, {
+    zip: 5236,
+    loc: 'Remigen',
+    canton: 'AG'
+}, {
+    zip: 5237,
+    loc: 'M\xF6nthal',
+    canton: 'AG'
+}, {
+    zip: 5242,
+    loc: 'Birr',
+    canton: 'AG'
+}, {
+    zip: 5242,
+    loc: 'Lupfig',
+    canton: 'AG'
+}, {
+    zip: 5243,
+    loc: 'M\xFClligen',
+    canton: 'AG'
+}, {
+    zip: 5244,
+    loc: 'Birrhard',
+    canton: 'AG'
+}, {
+    zip: 5245,
+    loc: 'Habsburg',
+    canton: 'AG'
+}, {
+    zip: 5246,
+    loc: 'Scherz',
+    canton: 'AG'
+}, {
+    zip: 5272,
+    loc: 'Gansingen',
+    canton: 'AG'
+}, {
+    zip: 5273,
+    loc: 'Oberhofen AG',
+    canton: 'AG'
+}, {
+    zip: 5274,
+    loc: 'Mettau',
+    canton: 'AG'
+}, {
+    zip: 5275,
+    loc: 'Etzgen',
+    canton: 'AG'
+}, {
+    zip: 5276,
+    loc: 'Wil AG',
+    canton: 'AG'
+}, {
+    zip: 5277,
+    loc: 'Hottwil',
+    canton: 'AG'
+}, {
+    zip: 5300,
+    loc: 'Turgi',
+    canton: 'AG'
+}, {
+    zip: 5301,
+    loc: 'Siggenthal Station',
+    canton: 'AG'
+}, {
+    zip: 5303,
+    loc: 'W\xFCrenlingen',
+    canton: 'AG'
+}, {
+    zip: 5304,
+    loc: 'Endingen',
+    canton: 'AG'
+}, {
+    zip: 5305,
+    loc: 'Unterendingen',
+    canton: 'AG'
+}, {
+    zip: 5306,
+    loc: 'Tegerfelden',
+    canton: 'AG'
+}, {
+    zip: 5312,
+    loc: 'D\xF6ttingen',
+    canton: 'AG'
+}, {
+    zip: 5313,
+    loc: 'Klingnau',
+    canton: 'AG'
+}, {
+    zip: 5314,
+    loc: 'Kleind\xF6ttingen',
+    canton: 'AG'
+}, {
+    zip: 5315,
+    loc: 'B\xF6ttstein',
+    canton: 'AG'
+}, {
+    zip: 5316,
+    loc: 'Felsenau AG',
+    canton: 'AG'
+}, {
+    zip: 5316,
+    loc: 'Leuggern',
+    canton: 'AG'
+}, {
+    zip: 5317,
+    loc: 'Hettenschwil',
+    canton: 'AG'
+}, {
+    zip: 5318,
+    loc: 'Mandach',
+    canton: 'AG'
+}, {
+    zip: 5322,
+    loc: 'Koblenz',
+    canton: 'AG'
+}, {
+    zip: 5323,
+    loc: 'Rietheim',
+    canton: 'AG'
+}, {
+    zip: 5324,
+    loc: 'Full-Reuenthal',
+    canton: 'AG'
+}, {
+    zip: 5325,
+    loc: 'Leibstadt',
+    canton: 'AG'
+}, {
+    zip: 5326,
+    loc: 'Schwaderloch',
+    canton: 'AG'
+}, {
+    zip: 5330,
+    loc: 'Bad Zurzach',
+    canton: 'AG'
+}, {
+    zip: 5332,
+    loc: 'Rekingen AG',
+    canton: 'AG'
+}, {
+    zip: 5333,
+    loc: 'Baldingen',
+    canton: 'AG'
+}, {
+    zip: 5334,
+    loc: 'B\xF6bikon',
+    canton: 'AG'
+}, {
+    zip: 5400,
+    loc: 'Baden',
+    canton: 'AG'
+}, {
+    zip: 5404,
+    loc: 'Baden',
+    canton: 'AG'
+}, {
+    zip: 5405,
+    loc: 'D\xE4ttwil AG',
+    canton: 'AG'
+}, {
+    zip: 5406,
+    loc: 'R\xFCtihof',
+    canton: 'AG'
+}, {
+    zip: 5408,
+    loc: 'Ennetbaden',
+    canton: 'AG'
+}, {
+    zip: 5412,
+    loc: 'Gebenstorf',
+    canton: 'AG'
+}, {
+    zip: 5413,
+    loc: 'Birmenstorf AG',
+    canton: 'AG'
+}, {
+    zip: 5415,
+    loc: 'Hertenstein AG',
+    canton: 'AG'
+}, {
+    zip: 5415,
+    loc: 'Rieden AG',
+    canton: 'AG'
+}, {
+    zip: 5415,
+    loc: 'Nussbaumen AG',
+    canton: 'AG'
+}, {
+    zip: 5416,
+    loc: 'Kirchdorf AG',
+    canton: 'AG'
+}, {
+    zip: 5417,
+    loc: 'Untersiggenthal',
+    canton: 'AG'
+}, {
+    zip: 5420,
+    loc: 'Ehrendingen',
+    canton: 'AG'
+}, {
+    zip: 5423,
+    loc: 'Freienwil',
+    canton: 'AG'
+}, {
+    zip: 5425,
+    loc: 'Schneisingen',
+    canton: 'AG'
+}, {
+    zip: 5426,
+    loc: 'Lengnau AG',
+    canton: 'AG'
+}, {
+    zip: 5430,
+    loc: 'Wettingen',
+    canton: 'AG'
+}, {
+    zip: 5432,
+    loc: 'Neuenhof',
+    canton: 'AG'
+}, {
+    zip: 5436,
+    loc: 'W\xFCrenlos',
+    canton: 'AG'
+}, {
+    zip: 5442,
+    loc: 'Fislisbach',
+    canton: 'AG'
+}, {
+    zip: 5443,
+    loc: 'Niederrohrdorf',
+    canton: 'AG'
+}, {
+    zip: 5444,
+    loc: 'K\xFCnten',
+    canton: 'AG'
+}, {
+    zip: 5445,
+    loc: 'Eggenwil',
+    canton: 'AG'
+}, {
+    zip: 5452,
+    loc: 'Oberrohrdorf',
+    canton: 'AG'
+}, {
+    zip: 5453,
+    loc: 'Remetschwil',
+    canton: 'AG'
+}, {
+    zip: 5454,
+    loc: 'Bellikon',
+    canton: 'AG'
+}, {
+    zip: 5462,
+    loc: 'Siglistorf',
+    canton: 'AG'
+}, {
+    zip: 5463,
+    loc: 'Wislikofen',
+    canton: 'AG'
+}, {
+    zip: 5464,
+    loc: 'R\xFCmikon AG',
+    canton: 'AG'
+}, {
+    zip: 5465,
+    loc: 'Mellikon',
+    canton: 'AG'
+}, {
+    zip: 5466,
+    loc: 'Kaiserstuhl AG',
+    canton: 'AG'
+}, {
+    zip: 5467,
+    loc: 'Fisibach',
+    canton: 'AG'
+}, {
+    zip: 5502,
+    loc: 'Hunzenschwil',
+    canton: 'AG'
+}, {
+    zip: 5503,
+    loc: 'Schafisheim',
+    canton: 'AG'
+}, {
+    zip: 5504,
+    loc: 'Othmarsingen',
+    canton: 'AG'
+}, {
+    zip: 5505,
+    loc: 'Brunegg',
+    canton: 'AG'
+}, {
+    zip: 5506,
+    loc: 'M\xE4genwil',
+    canton: 'AG'
+}, {
+    zip: 5507,
+    loc: 'Mellingen',
+    canton: 'AG'
+}, {
+    zip: 5512,
+    loc: 'Wohlenschwil',
+    canton: 'AG'
+}, {
+    zip: 5522,
+    loc: 'T\xE4gerig',
+    canton: 'AG'
+}, {
+    zip: 5524,
+    loc: 'Nesselnbach',
+    canton: 'AG'
+}, {
+    zip: 5524,
+    loc: 'Niederwil AG',
+    canton: 'AG'
+}, {
+    zip: 5525,
+    loc: 'Fischbach-G\xF6slikon',
+    canton: 'AG'
+}, {
+    zip: 5600,
+    loc: 'Lenzburg',
+    canton: 'AG'
+}, {
+    zip: 5600,
+    loc: 'Ammerswil AG',
+    canton: 'AG'
+}, {
+    zip: 5603,
+    loc: 'Staufen',
+    canton: 'AG'
+}, {
+    zip: 5604,
+    loc: 'Hendschiken',
+    canton: 'AG'
+}, {
+    zip: 5605,
+    loc: 'Dottikon',
+    canton: 'AG'
+}, {
+    zip: 5606,
+    loc: 'Dintikon',
+    canton: 'AG'
+}, {
+    zip: 5607,
+    loc: 'H\xE4gglingen',
+    canton: 'AG'
+}, {
+    zip: 5608,
+    loc: 'Stetten AG',
+    canton: 'AG'
+}, {
+    zip: 5610,
+    loc: 'Wohlen AG',
+    canton: 'AG'
+}, {
+    zip: 5611,
+    loc: 'Anglikon',
+    canton: 'AG'
+}, {
+    zip: 5612,
+    loc: 'Villmergen',
+    canton: 'AG'
+}, {
+    zip: 5613,
+    loc: 'Hilfikon',
+    canton: 'AG'
+}, {
+    zip: 5614,
+    loc: 'Sarmenstorf',
+    canton: 'AG'
+}, {
+    zip: 5615,
+    loc: 'Fahrwangen',
+    canton: 'AG'
+}, {
+    zip: 5616,
+    loc: 'Meisterschwanden',
+    canton: 'AG'
+}, {
+    zip: 5617,
+    loc: 'Tennwil',
+    canton: 'AG'
+}, {
+    zip: 5618,
+    loc: 'Bettwil',
+    canton: 'AG'
+}, {
+    zip: 5619,
+    loc: 'B\xFCttikon AG',
+    canton: 'AG'
+}, {
+    zip: 5619,
+    loc: 'Uezwil',
+    canton: 'AG'
+}, {
+    zip: 5620,
+    loc: 'Bremgarten AG',
+    canton: 'AG'
+}, {
+    zip: 5621,
+    loc: 'Zufikon',
+    canton: 'AG'
+}, {
+    zip: 5622,
+    loc: 'Waltenschwil',
+    canton: 'AG'
+}, {
+    zip: 5623,
+    loc: 'Boswil',
+    canton: 'AG'
+}, {
+    zip: 5624,
+    loc: 'Waldh\xE4usern AG',
+    canton: 'AG'
+}, {
+    zip: 5624,
+    loc: 'B\xFCnzen',
+    canton: 'AG'
+}, {
+    zip: 5625,
+    loc: 'Kallern',
+    canton: 'AG'
+}, {
+    zip: 5626,
+    loc: 'Hermetschwil-Staffeln',
+    canton: 'AG'
+}, {
+    zip: 5627,
+    loc: 'Besenb\xFCren',
+    canton: 'AG'
+}, {
+    zip: 5628,
+    loc: 'Aristau',
+    canton: 'AG'
+}, {
+    zip: 5630,
+    loc: 'Muri AG',
+    canton: 'AG'
+}, {
+    zip: 5632,
+    loc: 'Buttwil',
+    canton: 'AG'
+}, {
+    zip: 5634,
+    loc: 'Merenschwand',
+    canton: 'AG'
+}, {
+    zip: 5636,
+    loc: 'Benzenschwil',
+    canton: 'AG'
+}, {
+    zip: 5637,
+    loc: 'Geltwil',
+    canton: 'AG'
+}, {
+    zip: 5637,
+    loc: 'Beinwil (Freiamt)',
+    canton: 'AG'
+}, {
+    zip: 5642,
+    loc: 'M\xFChlau',
+    canton: 'AG'
+}, {
+    zip: 5643,
+    loc: 'Alikon',
+    canton: 'AG'
+}, {
+    zip: 5643,
+    loc: 'Meienberg',
+    canton: 'AG'
+}, {
+    zip: 5643,
+    loc: 'Sins',
+    canton: 'AG'
+}, {
+    zip: 5644,
+    loc: 'Auw',
+    canton: 'AG'
+}, {
+    zip: 5645,
+    loc: 'Aettenschwil',
+    canton: 'AG'
+}, {
+    zip: 5645,
+    loc: 'Fenkrieden',
+    canton: 'AG'
+}, {
+    zip: 5646,
+    loc: 'Abtwil AG',
+    canton: 'AG'
+}, {
+    zip: 5647,
+    loc: 'Oberr\xFCti',
+    canton: 'AG'
+}, {
+    zip: 5702,
+    loc: 'Niederlenz',
+    canton: 'AG'
+}, {
+    zip: 5703,
+    loc: 'Seon',
+    canton: 'AG'
+}, {
+    zip: 5704,
+    loc: 'Egliswil',
+    canton: 'AG'
+}, {
+    zip: 5705,
+    loc: 'Hallwil',
+    canton: 'AG'
+}, {
+    zip: 5706,
+    loc: 'Boniswil',
+    canton: 'AG'
+}, {
+    zip: 5707,
+    loc: 'Seengen',
+    canton: 'AG'
+}, {
+    zip: 5708,
+    loc: 'Birrwil',
+    canton: 'AG'
+}, {
+    zip: 5712,
+    loc: 'Beinwil am See',
+    canton: 'AG'
+}, {
+    zip: 5722,
+    loc: 'Gr\xE4nichen',
+    canton: 'AG'
+}, {
+    zip: 5723,
+    loc: 'Teufenthal AG',
+    canton: 'AG'
+}, {
+    zip: 5724,
+    loc: 'D\xFCrren\xE4sch',
+    canton: 'AG'
+}, {
+    zip: 5725,
+    loc: 'Leutwil',
+    canton: 'AG'
+}, {
+    zip: 5726,
+    loc: 'Unterkulm',
+    canton: 'AG'
+}, {
+    zip: 5727,
+    loc: 'Oberkulm',
+    canton: 'AG'
+}, {
+    zip: 5728,
+    loc: 'Gontenschwil',
+    canton: 'AG'
+}, {
+    zip: 5732,
+    loc: 'Zetzwil',
+    canton: 'AG'
+}, {
+    zip: 5733,
+    loc: 'Leimbach AG',
+    canton: 'AG'
+}, {
+    zip: 5734,
+    loc: 'Reinach AG',
+    canton: 'AG'
+}, {
+    zip: 5735,
+    loc: 'Pfeffikon LU',
+    canton: 'LU'
+}, {
+    zip: 5736,
+    loc: 'Burg AG',
+    canton: 'AG'
+}, {
+    zip: 5737,
+    loc: 'Menziken',
+    canton: 'AG'
+}, {
+    zip: 5742,
+    loc: 'K\xF6lliken',
+    canton: 'AG'
+}, {
+    zip: 5745,
+    loc: 'Safenwil',
+    canton: 'AG'
+}, {
+    zip: 5746,
+    loc: 'Walterswil SO',
+    canton: 'SO'
+}, {
+    zip: 6000,
+    loc: 'Luzern',
+    canton: 'LU'
+}, {
+    zip: 6003,
+    loc: 'Luzern',
+    canton: 'LU'
+}, {
+    zip: 6004,
+    loc: 'Luzern',
+    canton: 'LU'
+}, {
+    zip: 6005,
+    loc: 'Luzern',
+    canton: 'LU'
+}, {
+    zip: 6005,
+    loc: 'St. Niklausen LU',
+    canton: 'LU'
+}, {
+    zip: 6006,
+    loc: 'Luzern',
+    canton: 'LU'
+}, {
+    zip: 6010,
+    loc: 'Kriens',
+    canton: 'LU'
+}, {
+    zip: 6010,
+    loc: 'Pilatus Kulm',
+    canton: 'OW'
+}, {
+    zip: 6012,
+    loc: 'Obernau',
+    canton: 'LU'
+}, {
+    zip: 6013,
+    loc: 'Eigenthal',
+    canton: 'LU'
+}, {
+    zip: 6014,
+    loc: 'Luzern',
+    canton: 'LU'
+}, {
+    zip: 6015,
+    loc: 'Luzern',
+    canton: 'LU'
+}, {
+    zip: 6016,
+    loc: 'Hellb\xFChl',
+    canton: 'LU'
+}, {
+    zip: 6017,
+    loc: 'Ruswil',
+    canton: 'LU'
+}, {
+    zip: 6018,
+    loc: 'Buttisholz',
+    canton: 'LU'
+}, {
+    zip: 6019,
+    loc: 'Sigigen',
+    canton: 'LU'
+}, {
+    zip: 6020,
+    loc: 'Emmenbr\xFCcke',
+    canton: 'LU'
+}, {
+    zip: 6022,
+    loc: 'Grosswangen',
+    canton: 'LU'
+}, {
+    zip: 6023,
+    loc: 'Rothenburg',
+    canton: 'LU'
+}, {
+    zip: 6024,
+    loc: 'Hildisrieden',
+    canton: 'LU'
+}, {
+    zip: 6025,
+    loc: 'Neudorf',
+    canton: 'LU'
+}, {
+    zip: 6026,
+    loc: 'Rain',
+    canton: 'LU'
+}, {
+    zip: 6027,
+    loc: 'R\xF6merswil LU',
+    canton: 'LU'
+}, {
+    zip: 6028,
+    loc: 'Herlisberg',
+    canton: 'LU'
+}, {
+    zip: 6030,
+    loc: 'Ebikon',
+    canton: 'LU'
+}, {
+    zip: 6032,
+    loc: 'Emmen',
+    canton: 'LU'
+}, {
+    zip: 6033,
+    loc: 'Buchrain',
+    canton: 'LU'
+}, {
+    zip: 6034,
+    loc: 'Inwil',
+    canton: 'LU'
+}, {
+    zip: 6035,
+    loc: 'Perlen',
+    canton: 'LU'
+}, {
+    zip: 6036,
+    loc: 'Dierikon',
+    canton: 'LU'
+}, {
+    zip: 6037,
+    loc: 'Root',
+    canton: 'LU'
+}, {
+    zip: 6038,
+    loc: 'Gisikon',
+    canton: 'LU'
+}, {
+    zip: 6038,
+    loc: 'Honau',
+    canton: 'LU'
+}, {
+    zip: 6039,
+    loc: 'Root L\xE4ngenbold',
+    canton: 'LU'
+}, {
+    zip: 6042,
+    loc: 'Dietwil',
+    canton: 'AG'
+}, {
+    zip: 6043,
+    loc: 'Adligenswil',
+    canton: 'LU'
+}, {
+    zip: 6044,
+    loc: 'Udligenswil',
+    canton: 'LU'
+}, {
+    zip: 6045,
+    loc: 'Meggen',
+    canton: 'LU'
+}, {
+    zip: 6047,
+    loc: 'Kastanienbaum',
+    canton: 'LU'
+}, {
+    zip: 6048,
+    loc: 'Horw',
+    canton: 'LU'
+}, {
+    zip: 6052,
+    loc: 'Hergiswil NW',
+    canton: 'NW'
+}, {
+    zip: 6053,
+    loc: 'Alpnachstad',
+    canton: 'OW'
+}, {
+    zip: 6055,
+    loc: 'Alpnach Dorf',
+    canton: 'OW'
+}, {
+    zip: 6056,
+    loc: 'K\xE4giswil',
+    canton: 'OW'
+}, {
+    zip: 6060,
+    loc: 'Sarnen',
+    canton: 'OW'
+}, {
+    zip: 6060,
+    loc: 'Ramersberg',
+    canton: 'OW'
+}, {
+    zip: 6062,
+    loc: 'Wilen (Sarnen)',
+    canton: 'OW'
+}, {
+    zip: 6063,
+    loc: 'Stalden (Sarnen)',
+    canton: 'OW'
+}, {
+    zip: 6064,
+    loc: 'Kerns',
+    canton: 'OW'
+}, {
+    zip: 6066,
+    loc: 'St. Niklausen OW',
+    canton: 'OW'
+}, {
+    zip: 6067,
+    loc: 'Melchtal',
+    canton: 'OW'
+}, {
+    zip: 6068,
+    loc: 'Melchsee-Frutt',
+    canton: 'OW'
+}, {
+    zip: 6072,
+    loc: 'Sachseln',
+    canton: 'OW'
+}, {
+    zip: 6073,
+    loc: 'Fl\xFCeli-Ranft',
+    canton: 'OW'
+}, {
+    zip: 6074,
+    loc: 'Giswil',
+    canton: 'OW'
+}, {
+    zip: 6078,
+    loc: 'B\xFCrglen OW',
+    canton: 'OW'
+}, {
+    zip: 6078,
+    loc: 'Lungern',
+    canton: 'OW'
+}, {
+    zip: 6083,
+    loc: 'Hasliberg Hohfluh',
+    canton: 'BE'
+}, {
+    zip: 6084,
+    loc: 'Hasliberg Wasserwendi',
+    canton: 'BE'
+}, {
+    zip: 6085,
+    loc: 'Hasliberg Goldern',
+    canton: 'BE'
+}, {
+    zip: 6086,
+    loc: 'Hasliberg Reuti',
+    canton: 'BE'
+}, {
+    zip: 6102,
+    loc: 'Malters',
+    canton: 'LU'
+}, {
+    zip: 6103,
+    loc: 'Schwarzenberg LU',
+    canton: 'LU'
+}, {
+    zip: 6105,
+    loc: 'Schachen LU',
+    canton: 'LU'
+}, {
+    zip: 6106,
+    loc: 'Werthenstein',
+    canton: 'LU'
+}, {
+    zip: 6110,
+    loc: 'Fontannen b. Wolhusen',
+    canton: 'LU'
+}, {
+    zip: 6110,
+    loc: 'Wolhusen',
+    canton: 'LU'
+}, {
+    zip: 6112,
+    loc: 'Doppleschwand',
+    canton: 'LU'
+}, {
+    zip: 6113,
+    loc: 'Romoos',
+    canton: 'LU'
+}, {
+    zip: 6114,
+    loc: 'Steinhuserberg',
+    canton: 'LU'
+}, {
+    zip: 6122,
+    loc: 'Menznau',
+    canton: 'LU'
+}, {
+    zip: 6123,
+    loc: 'Geiss',
+    canton: 'LU'
+}, {
+    zip: 6125,
+    loc: 'Menzberg',
+    canton: 'LU'
+}, {
+    zip: 6126,
+    loc: 'Daiwil',
+    canton: 'LU'
+}, {
+    zip: 6130,
+    loc: 'Willisau',
+    canton: 'LU'
+}, {
+    zip: 6132,
+    loc: 'Rohrmatt',
+    canton: 'LU'
+}, {
+    zip: 6133,
+    loc: 'Hergiswil b. Willisau',
+    canton: 'LU'
+}, {
+    zip: 6142,
+    loc: 'Gettnau',
+    canton: 'LU'
+}, {
+    zip: 6143,
+    loc: 'Ohmstal',
+    canton: 'LU'
+}, {
+    zip: 6144,
+    loc: 'Zell LU',
+    canton: 'LU'
+}, {
+    zip: 6145,
+    loc: 'Fischbach LU',
+    canton: 'LU'
+}, {
+    zip: 6146,
+    loc: 'Grossdietwil',
+    canton: 'LU'
+}, {
+    zip: 6147,
+    loc: 'Altb\xFCron',
+    canton: 'LU'
+}, {
+    zip: 6152,
+    loc: 'H\xFCswil',
+    canton: 'LU'
+}, {
+    zip: 6153,
+    loc: 'Ufhusen',
+    canton: 'LU'
+}, {
+    zip: 6154,
+    loc: 'Hofstatt',
+    canton: 'LU'
+}, {
+    zip: 6156,
+    loc: 'Luthern Bad',
+    canton: 'LU'
+}, {
+    zip: 6156,
+    loc: 'Luthern',
+    canton: 'LU'
+}, {
+    zip: 6162,
+    loc: 'Rengg',
+    canton: 'LU'
+}, {
+    zip: 6162,
+    loc: 'Finsterwald b. Entlebuch',
+    canton: 'LU'
+}, {
+    zip: 6162,
+    loc: 'Entlebuch',
+    canton: 'LU'
+}, {
+    zip: 6163,
+    loc: 'Ebnet',
+    canton: 'LU'
+}, {
+    zip: 6166,
+    loc: 'Hasle LU',
+    canton: 'LU'
+}, {
+    zip: 6167,
+    loc: 'Bramboden',
+    canton: 'LU'
+}, {
+    zip: 6170,
+    loc: 'Sch\xFCpfheim',
+    canton: 'LU'
+}, {
+    zip: 6173,
+    loc: 'Fl\xFChli LU',
+    canton: 'LU'
+}, {
+    zip: 6174,
+    loc: 'S\xF6renberg',
+    canton: 'LU'
+}, {
+    zip: 6182,
+    loc: 'Escholzmatt',
+    canton: 'LU'
+}, {
+    zip: 6192,
+    loc: 'Wiggen',
+    canton: 'LU'
+}, {
+    zip: 6196,
+    loc: 'Marbach LU',
+    canton: 'LU'
+}, {
+    zip: 6197,
+    loc: 'Schangnau',
+    canton: 'BE'
+}, {
+    zip: 6203,
+    loc: 'Sempach Station',
+    canton: 'LU'
+}, {
+    zip: 6204,
+    loc: 'Sempach',
+    canton: 'LU'
+}, {
+    zip: 6205,
+    loc: 'Eich',
+    canton: 'LU'
+}, {
+    zip: 6206,
+    loc: 'Neuenkirch',
+    canton: 'LU'
+}, {
+    zip: 6207,
+    loc: 'Nottwil',
+    canton: 'LU'
+}, {
+    zip: 6208,
+    loc: 'Oberkirch LU',
+    canton: 'LU'
+}, {
+    zip: 6210,
+    loc: 'Sursee',
+    canton: 'LU'
+}, {
+    zip: 6211,
+    loc: 'Buchs LU',
+    canton: 'LU'
+}, {
+    zip: 6212,
+    loc: 'Kaltbach',
+    canton: 'LU'
+}, {
+    zip: 6212,
+    loc: 'St. Erhard',
+    canton: 'LU'
+}, {
+    zip: 6213,
+    loc: 'Knutwil',
+    canton: 'LU'
+}, {
+    zip: 6214,
+    loc: 'Schenkon',
+    canton: 'LU'
+}, {
+    zip: 6215,
+    loc: 'Schwarzenbach Berom\xFCnster',
+    canton: 'LU'
+}, {
+    zip: 6215,
+    loc: 'Berom\xFCnster',
+    canton: 'LU'
+}, {
+    zip: 6216,
+    loc: 'Mauensee',
+    canton: 'LU'
+}, {
+    zip: 6217,
+    loc: 'Kottwil',
+    canton: 'LU'
+}, {
+    zip: 6218,
+    loc: 'Ettiswil',
+    canton: 'LU'
+}, {
+    zip: 6221,
+    loc: 'Rickenbach LU',
+    canton: 'LU'
+}, {
+    zip: 6222,
+    loc: 'Gunzwil',
+    canton: 'LU'
+}, {
+    zip: 6231,
+    loc: 'Schlierbach',
+    canton: 'LU'
+}, {
+    zip: 6232,
+    loc: 'Geuensee',
+    canton: 'LU'
+}, {
+    zip: 6233,
+    loc: 'B\xFCron',
+    canton: 'LU'
+}, {
+    zip: 6234,
+    loc: 'Kulmerau',
+    canton: 'LU'
+}, {
+    zip: 6234,
+    loc: 'Triengen',
+    canton: 'LU'
+}, {
+    zip: 6235,
+    loc: 'Winikon',
+    canton: 'LU'
+}, {
+    zip: 6236,
+    loc: 'Wilihof',
+    canton: 'LU'
+}, {
+    zip: 6242,
+    loc: 'Wauwil',
+    canton: 'LU'
+}, {
+    zip: 6243,
+    loc: 'Egolzwil',
+    canton: 'LU'
+}, {
+    zip: 6244,
+    loc: 'Nebikon',
+    canton: 'LU'
+}, {
+    zip: 6245,
+    loc: 'Ebersecken',
+    canton: 'LU'
+}, {
+    zip: 6246,
+    loc: 'Altishofen',
+    canton: 'LU'
+}, {
+    zip: 6247,
+    loc: 'Sch\xF6tz',
+    canton: 'LU'
+}, {
+    zip: 6248,
+    loc: 'Alberswil',
+    canton: 'LU'
+}, {
+    zip: 6252,
+    loc: 'Dagmersellen',
+    canton: 'LU'
+}, {
+    zip: 6253,
+    loc: 'Uffikon',
+    canton: 'LU'
+}, {
+    zip: 6260,
+    loc: 'Reidermoos',
+    canton: 'LU'
+}, {
+    zip: 6260,
+    loc: 'Hintermoos',
+    canton: 'LU'
+}, {
+    zip: 6260,
+    loc: 'Mehlsecken',
+    canton: 'LU'
+}, {
+    zip: 6260,
+    loc: 'Reiden',
+    canton: 'LU'
+}, {
+    zip: 6262,
+    loc: 'Langnau b. Reiden',
+    canton: 'LU'
+}, {
+    zip: 6263,
+    loc: 'Richenthal',
+    canton: 'LU'
+}, {
+    zip: 6264,
+    loc: 'Pfaffnau',
+    canton: 'LU'
+}, {
+    zip: 6265,
+    loc: 'Roggliswil',
+    canton: 'LU'
+}, {
+    zip: 6274,
+    loc: 'Eschenbach LU',
+    canton: 'LU'
+}, {
+    zip: 6275,
+    loc: 'Ballwil',
+    canton: 'LU'
+}, {
+    zip: 6276,
+    loc: 'Hohenrain',
+    canton: 'LU'
+}, {
+    zip: 6277,
+    loc: 'Kleinwangen',
+    canton: 'LU'
+}, {
+    zip: 6277,
+    loc: 'Lieli LU',
+    canton: 'LU'
+}, {
+    zip: 6280,
+    loc: 'Hochdorf',
+    canton: 'LU'
+}, {
+    zip: 6280,
+    loc: 'Urswil',
+    canton: 'LU'
+}, {
+    zip: 6283,
+    loc: 'Baldegg',
+    canton: 'LU'
+}, {
+    zip: 6284,
+    loc: 'Sulz LU',
+    canton: 'LU'
+}, {
+    zip: 6284,
+    loc: 'Gelfingen',
+    canton: 'LU'
+}, {
+    zip: 6285,
+    loc: 'Retschwil',
+    canton: 'LU'
+}, {
+    zip: 6285,
+    loc: 'Hitzkirch',
+    canton: 'LU'
+}, {
+    zip: 6286,
+    loc: 'Altwis',
+    canton: 'LU'
+}, {
+    zip: 6287,
+    loc: 'Aesch LU',
+    canton: 'LU'
+}, {
+    zip: 6288,
+    loc: 'Schongau',
+    canton: 'LU'
+}, {
+    zip: 6289,
+    loc: 'M\xFCswangen',
+    canton: 'LU'
+}, {
+    zip: 6289,
+    loc: 'H\xE4mikon',
+    canton: 'LU'
+}, {
+    zip: 6294,
+    loc: 'Ermensee',
+    canton: 'LU'
+}, {
+    zip: 6295,
+    loc: 'Mosen',
+    canton: 'LU'
+}, {
+    zip: 6300,
+    loc: 'Zug',
+    canton: 'ZG'
+}, {
+    zip: 6300,
+    loc: 'Zugerberg',
+    canton: 'ZG'
+}, {
+    zip: 6312,
+    loc: 'Steinhausen',
+    canton: 'ZG'
+}, {
+    zip: 6313,
+    loc: 'Edlibach',
+    canton: 'ZG'
+}, {
+    zip: 6313,
+    loc: 'Finstersee',
+    canton: 'ZG'
+}, {
+    zip: 6313,
+    loc: 'Menzingen',
+    canton: 'ZG'
+}, {
+    zip: 6314,
+    loc: 'Neu\xE4geri',
+    canton: 'ZG'
+}, {
+    zip: 6314,
+    loc: 'Unter\xE4geri',
+    canton: 'ZG'
+}, {
+    zip: 6315,
+    loc: 'Morgarten',
+    canton: 'ZG'
+}, {
+    zip: 6315,
+    loc: 'Alosen',
+    canton: 'ZG'
+}, {
+    zip: 6315,
+    loc: 'Ober\xE4geri',
+    canton: 'ZG'
+}, {
+    zip: 6317,
+    loc: 'Oberwil b. Zug',
+    canton: 'ZG'
+}, {
+    zip: 6318,
+    loc: 'Walchwil',
+    canton: 'ZG'
+}, {
+    zip: 6319,
+    loc: 'Allenwinden',
+    canton: 'ZG'
+}, {
+    zip: 6330,
+    loc: 'Cham',
+    canton: 'ZG'
+}, {
+    zip: 6331,
+    loc: 'H\xFCnenberg',
+    canton: 'ZG'
+}, {
+    zip: 6332,
+    loc: 'Hagendorn',
+    canton: 'ZG'
+}, {
+    zip: 6333,
+    loc: 'H\xFCnenberg See',
+    canton: 'ZG'
+}, {
+    zip: 6340,
+    loc: 'Baar',
+    canton: 'ZG'
+}, {
+    zip: 6340,
+    loc: 'Sihlbrugg',
+    canton: 'ZG'
+}, {
+    zip: 6343,
+    loc: 'Buonas',
+    canton: 'ZG'
+}, {
+    zip: 6343,
+    loc: 'Risch',
+    canton: 'ZG'
+}, {
+    zip: 6343,
+    loc: 'Holzh\xE4usern ZG',
+    canton: 'ZG'
+}, {
+    zip: 6343,
+    loc: 'Rotkreuz',
+    canton: 'ZG'
+}, {
+    zip: 6344,
+    loc: 'Meierskappel',
+    canton: 'LU'
+}, {
+    zip: 6345,
+    loc: 'Neuheim',
+    canton: 'ZG'
+}, {
+    zip: 6353,
+    loc: 'Weggis',
+    canton: 'LU'
+}, {
+    zip: 6354,
+    loc: 'Vitznau',
+    canton: 'LU'
+}, {
+    zip: 6356,
+    loc: 'Rigi Kaltbad',
+    canton: 'LU'
+}, {
+    zip: 6362,
+    loc: 'Stansstad',
+    canton: 'NW'
+}, {
+    zip: 6363,
+    loc: 'Obb\xFCrgen',
+    canton: 'NW'
+}, {
+    zip: 6363,
+    loc: 'B\xFCrgenstock',
+    canton: 'NW'
+}, {
+    zip: 6363,
+    loc: 'F\xFCrigen',
+    canton: 'NW'
+}, {
+    zip: 6365,
+    loc: 'Kehrsiten',
+    canton: 'NW'
+}, {
+    zip: 6370,
+    loc: 'Stans',
+    canton: 'NW'
+}, {
+    zip: 6370,
+    loc: 'Oberdorf NW',
+    canton: 'NW'
+}, {
+    zip: 6372,
+    loc: 'Ennetmoos',
+    canton: 'NW'
+}, {
+    zip: 6373,
+    loc: 'Ennetb\xFCrgen',
+    canton: 'NW'
+}, {
+    zip: 6374,
+    loc: 'Buochs',
+    canton: 'NW'
+}, {
+    zip: 6375,
+    loc: 'Beckenried',
+    canton: 'NW'
+}, {
+    zip: 6376,
+    loc: 'Emmetten',
+    canton: 'NW'
+}, {
+    zip: 6377,
+    loc: 'Seelisberg',
+    canton: 'UR'
+}, {
+    zip: 6382,
+    loc: 'B\xFCren NW',
+    canton: 'NW'
+}, {
+    zip: 6383,
+    loc: 'Niederrickenbach',
+    canton: 'NW'
+}, {
+    zip: 6383,
+    loc: 'Wiesenberg',
+    canton: 'NW'
+}, {
+    zip: 6383,
+    loc: 'Wirzweli',
+    canton: 'NW'
+}, {
+    zip: 6383,
+    loc: 'Dallenwil',
+    canton: 'NW'
+}, {
+    zip: 6386,
+    loc: 'Wolfenschiessen',
+    canton: 'NW'
+}, {
+    zip: 6387,
+    loc: 'Oberrickenbach',
+    canton: 'NW'
+}, {
+    zip: 6388,
+    loc: 'Grafenort',
+    canton: 'OW'
+}, {
+    zip: 6390,
+    loc: 'Engelberg',
+    canton: 'OW'
+}, {
+    zip: 6402,
+    loc: 'Merlischachen',
+    canton: 'SZ'
+}, {
+    zip: 6403,
+    loc: 'K\xFCssnacht am Rigi',
+    canton: 'SZ'
+}, {
+    zip: 6404,
+    loc: 'Greppen',
+    canton: 'LU'
+}, {
+    zip: 6405,
+    loc: 'Immensee',
+    canton: 'SZ'
+}, {
+    zip: 6410,
+    loc: 'Rigi Kl\xF6sterli',
+    canton: 'SZ'
+}, {
+    zip: 6410,
+    loc: 'Rigi Staffel',
+    canton: 'SZ'
+}, {
+    zip: 6410,
+    loc: 'Rigi Kulm',
+    canton: 'SZ'
+}, {
+    zip: 6410,
+    loc: 'Rigi Scheidegg',
+    canton: 'SZ'
+}, {
+    zip: 6410,
+    loc: 'Goldau',
+    canton: 'SZ'
+}, {
+    zip: 6414,
+    loc: 'Oberarth',
+    canton: 'SZ'
+}, {
+    zip: 6415,
+    loc: 'Arth',
+    canton: 'SZ'
+}, {
+    zip: 6416,
+    loc: 'Steinerberg',
+    canton: 'SZ'
+}, {
+    zip: 6417,
+    loc: 'Sattel',
+    canton: 'SZ'
+}, {
+    zip: 6418,
+    loc: 'Rothenthurm',
+    canton: 'SZ'
+}, {
+    zip: 6422,
+    loc: 'Steinen',
+    canton: 'SZ'
+}, {
+    zip: 6423,
+    loc: 'Seewen SZ',
+    canton: 'SZ'
+}, {
+    zip: 6424,
+    loc: 'Lauerz',
+    canton: 'SZ'
+}, {
+    zip: 6430,
+    loc: 'Schwyz',
+    canton: 'SZ'
+}, {
+    zip: 6432,
+    loc: 'Rickenbach b. Schwyz',
+    canton: 'SZ'
+}, {
+    zip: 6433,
+    loc: 'Stoos SZ',
+    canton: 'SZ'
+}, {
+    zip: 6434,
+    loc: 'Illgau',
+    canton: 'SZ'
+}, {
+    zip: 6436,
+    loc: 'Ried (Muotathal)',
+    canton: 'SZ'
+}, {
+    zip: 6436,
+    loc: 'Bisisthal',
+    canton: 'SZ'
+}, {
+    zip: 6436,
+    loc: 'Muotathal',
+    canton: 'SZ'
+}, {
+    zip: 6438,
+    loc: 'Ibach',
+    canton: 'SZ'
+}, {
+    zip: 6440,
+    loc: 'Brunnen',
+    canton: 'SZ'
+}, {
+    zip: 6441,
+    loc: 'R\xFCtli',
+    canton: 'UR'
+}, {
+    zip: 6442,
+    loc: 'Gersau',
+    canton: 'SZ'
+}, {
+    zip: 6443,
+    loc: 'Morschach',
+    canton: 'SZ'
+}, {
+    zip: 6452,
+    loc: 'Riemenstalden',
+    canton: 'SZ'
+}, {
+    zip: 6452,
+    loc: 'Sisikon',
+    canton: 'UR'
+}, {
+    zip: 6454,
+    loc: 'Fl\xFCelen',
+    canton: 'UR'
+}, {
+    zip: 6460,
+    loc: 'Altdorf UR',
+    canton: 'UR'
+}, {
+    zip: 6461,
+    loc: 'Isenthal',
+    canton: 'UR'
+}, {
+    zip: 6462,
+    loc: 'Seedorf UR',
+    canton: 'UR'
+}, {
+    zip: 6463,
+    loc: 'B\xFCrglen UR',
+    canton: 'UR'
+}, {
+    zip: 6464,
+    loc: 'Spiringen',
+    canton: 'UR'
+}, {
+    zip: 6465,
+    loc: 'Untersch\xE4chen',
+    canton: 'UR'
+}, {
+    zip: 6466,
+    loc: 'Bauen',
+    canton: 'UR'
+}, {
+    zip: 6467,
+    loc: 'Schattdorf',
+    canton: 'UR'
+}, {
+    zip: 6468,
+    loc: 'Attinghausen',
+    canton: 'UR'
+}, {
+    zip: 6469,
+    loc: 'Haldi b. Schattdorf',
+    canton: 'UR'
+}, {
+    zip: 6472,
+    loc: 'Erstfeld',
+    canton: 'UR'
+}, {
+    zip: 6473,
+    loc: 'Silenen',
+    canton: 'UR'
+}, {
+    zip: 6474,
+    loc: 'Amsteg',
+    canton: 'UR'
+}, {
+    zip: 6475,
+    loc: 'Bristen',
+    canton: 'UR'
+}, {
+    zip: 6476,
+    loc: 'Intschi',
+    canton: 'UR'
+}, {
+    zip: 6482,
+    loc: 'Gurtnellen',
+    canton: 'UR'
+}, {
+    zip: 6484,
+    loc: 'Wassen UR',
+    canton: 'UR'
+}, {
+    zip: 6485,
+    loc: 'Meien',
+    canton: 'UR'
+}, {
+    zip: 6487,
+    loc: 'G\xF6schenen',
+    canton: 'UR'
+}, {
+    zip: 6490,
+    loc: 'Andermatt',
+    canton: 'UR'
+}, {
+    zip: 6491,
+    loc: 'Realp',
+    canton: 'UR'
+}, {
+    zip: 6493,
+    loc: 'Hospental',
+    canton: 'UR'
+}, {
+    zip: 6500,
+    loc: 'Bellinzona',
+    canton: 'TI'
+}, {
+    zip: 6503,
+    loc: 'Bellinzona',
+    canton: 'TI'
+}, {
+    zip: 6512,
+    loc: 'Giubiasco',
+    canton: 'TI'
+}, {
+    zip: 6513,
+    loc: 'Monte Carasso',
+    canton: 'TI'
+}, {
+    zip: 6514,
+    loc: 'Sementina',
+    canton: 'TI'
+}, {
+    zip: 6515,
+    loc: 'Gudo',
+    canton: 'TI'
+}, {
+    zip: 6516,
+    loc: 'Cugnasco',
+    canton: 'TI'
+}, {
+    zip: 6517,
+    loc: 'Arbedo',
+    canton: 'TI'
+}, {
+    zip: 6518,
+    loc: 'Gorduno',
+    canton: 'TI'
+}, {
+    zip: 6523,
+    loc: 'Preonzo',
+    canton: 'TI'
+}, {
+    zip: 6524,
+    loc: 'Moleno',
+    canton: 'TI'
+}, {
+    zip: 6525,
+    loc: 'Gnosca',
+    canton: 'TI'
+}, {
+    zip: 6526,
+    loc: 'Prosito',
+    canton: 'TI'
+}, {
+    zip: 6527,
+    loc: 'Lodrino',
+    canton: 'TI'
+}, {
+    zip: 6528,
+    loc: 'Camorino',
+    canton: 'TI'
+}, {
+    zip: 6532,
+    loc: 'Castione',
+    canton: 'TI'
+}, {
+    zip: 6533,
+    loc: 'Lumino',
+    canton: 'TI'
+}, {
+    zip: 6534,
+    loc: 'S. Vittore',
+    canton: 'GR'
+}, {
+    zip: 6535,
+    loc: 'Roveredo GR',
+    canton: 'GR'
+}, {
+    zip: 6537,
+    loc: 'Grono',
+    canton: 'GR'
+}, {
+    zip: 6538,
+    loc: 'Verdabbio',
+    canton: 'GR'
+}, {
+    zip: 6540,
+    loc: 'Castaneda',
+    canton: 'GR'
+}, {
+    zip: 6541,
+    loc: 'Sta. Maria in Calanca',
+    canton: 'GR'
+}, {
+    zip: 6542,
+    loc: 'Buseno',
+    canton: 'GR'
+}, {
+    zip: 6543,
+    loc: 'Arvigo',
+    canton: 'GR'
+}, {
+    zip: 6544,
+    loc: 'Braggio',
+    canton: 'GR'
+}, {
+    zip: 6545,
+    loc: 'Selma',
+    canton: 'GR'
+}, {
+    zip: 6546,
+    loc: 'Cauco',
+    canton: 'GR'
+}, {
+    zip: 6547,
+    loc: 'Augio',
+    canton: 'GR'
+}, {
+    zip: 6548,
+    loc: 'Rossa',
+    canton: 'GR'
+}, {
+    zip: 6549,
+    loc: 'Laura',
+    canton: 'GR'
+}, {
+    zip: 6556,
+    loc: 'Leggia',
+    canton: 'GR'
+}, {
+    zip: 6557,
+    loc: 'Cama',
+    canton: 'GR'
+}, {
+    zip: 6558,
+    loc: 'Lostallo',
+    canton: 'GR'
+}, {
+    zip: 6562,
+    loc: 'Soazza',
+    canton: 'GR'
+}, {
+    zip: 6563,
+    loc: 'Mesocco',
+    canton: 'GR'
+}, {
+    zip: 6565,
+    loc: 'S. Bernardino',
+    canton: 'GR'
+}, {
+    zip: 6571,
+    loc: 'Indemini',
+    canton: 'TI'
+}, {
+    zip: 6572,
+    loc: 'Quartino',
+    canton: 'TI'
+}, {
+    zip: 6573,
+    loc: 'Magadino',
+    canton: 'TI'
+}, {
+    zip: 6574,
+    loc: 'Vira (Gambarogno)',
+    canton: 'TI'
+}, {
+    zip: 6575,
+    loc: 'Vairano',
+    canton: 'TI'
+}, {
+    zip: 6575,
+    loc: 'S. Nazzaro',
+    canton: 'TI'
+}, {
+    zip: 6576,
+    loc: 'Gerra (Gambarogno)',
+    canton: 'TI'
+}, {
+    zip: 6577,
+    loc: 'Ranzo',
+    canton: 'TI'
+}, {
+    zip: 6578,
+    loc: 'Caviano',
+    canton: 'TI'
+}, {
+    zip: 6579,
+    loc: 'Piazzogna',
+    canton: 'TI'
+}, {
+    zip: 6582,
+    loc: 'Pianezzo',
+    canton: 'TI'
+}, {
+    zip: 6583,
+    loc: 'S. Antonio (Val Morobbia)',
+    canton: 'TI'
+}, {
+    zip: 6584,
+    loc: 'Carena',
+    canton: 'TI'
+}, {
+    zip: 6592,
+    loc: 'S. Antonino',
+    canton: 'TI'
+}, {
+    zip: 6593,
+    loc: 'Cadenazzo',
+    canton: 'TI'
+}, {
+    zip: 6594,
+    loc: 'Contone',
+    canton: 'TI'
+}, {
+    zip: 6595,
+    loc: 'Riazzino',
+    canton: 'TI'
+}, {
+    zip: 6596,
+    loc: 'Gordola',
+    canton: 'TI'
+}, {
+    zip: 6597,
+    loc: 'Agarone',
+    canton: 'TI'
+}, {
+    zip: 6598,
+    loc: 'Tenero',
+    canton: 'TI'
+}, {
+    zip: 6599,
+    loc: 'Robasacco',
+    canton: 'TI'
+}, {
+    zip: 6600,
+    loc: 'Locarno',
+    canton: 'TI'
+}, {
+    zip: 6600,
+    loc: 'Muralto',
+    canton: 'TI'
+}, {
+    zip: 6600,
+    loc: 'Solduno',
+    canton: 'TI'
+}, {
+    zip: 6605,
+    loc: 'Monte Br\xE8 sopra Locarno',
+    canton: 'TI'
+}, {
+    zip: 6605,
+    loc: 'Locarno',
+    canton: 'TI'
+}, {
+    zip: 6611,
+    loc: 'Mosogno',
+    canton: 'TI'
+}, {
+    zip: 6611,
+    loc: 'Gresso',
+    canton: 'TI'
+}, {
+    zip: 6611,
+    loc: 'Crana',
+    canton: 'TI'
+}, {
+    zip: 6612,
+    loc: 'Ascona',
+    canton: 'TI'
+}, {
+    zip: 6613,
+    loc: 'Porto Ronco',
+    canton: 'TI'
+}, {
+    zip: 6614,
+    loc: 'Isole di Brissago',
+    canton: 'TI'
+}, {
+    zip: 6614,
+    loc: 'Brissago',
+    canton: 'TI'
+}, {
+    zip: 6616,
+    loc: 'Losone',
+    canton: 'TI'
+}, {
+    zip: 6618,
+    loc: 'Arcegno',
+    canton: 'TI'
+}, {
+    zip: 6622,
+    loc: 'Ronco sopra Ascona',
+    canton: 'TI'
+}, {
+    zip: 6631,
+    loc: 'Corippo',
+    canton: 'TI'
+}, {
+    zip: 6632,
+    loc: 'Vogorno',
+    canton: 'TI'
+}, {
+    zip: 6633,
+    loc: 'Lavertezzo',
+    canton: 'TI'
+}, {
+    zip: 6634,
+    loc: 'Brione (Verzasca)',
+    canton: 'TI'
+}, {
+    zip: 6635,
+    loc: 'Gerra (Verzasca)',
+    canton: 'TI'
+}, {
+    zip: 6636,
+    loc: 'Frasco',
+    canton: 'TI'
+}, {
+    zip: 6637,
+    loc: 'Sonogno',
+    canton: 'TI'
+}, {
+    zip: 6644,
+    loc: 'Orselina',
+    canton: 'TI'
+}, {
+    zip: 6645,
+    loc: 'Brione sopra Minusio',
+    canton: 'TI'
+}, {
+    zip: 6646,
+    loc: 'Contra',
+    canton: 'TI'
+}, {
+    zip: 6647,
+    loc: 'Mergoscia',
+    canton: 'TI'
+}, {
+    zip: 6648,
+    loc: 'Minusio',
+    canton: 'TI'
+}, {
+    zip: 6652,
+    loc: 'Tegna',
+    canton: 'TI'
+}, {
+    zip: 6653,
+    loc: 'Verscio',
+    canton: 'TI'
+}, {
+    zip: 6654,
+    loc: 'Cavigliano',
+    canton: 'TI'
+}, {
+    zip: 6655,
+    loc: 'Verdasio',
+    canton: 'TI'
+}, {
+    zip: 6655,
+    loc: 'Rasa',
+    canton: 'TI'
+}, {
+    zip: 6655,
+    loc: 'Intragna',
+    canton: 'TI'
+}, {
+    zip: 6656,
+    loc: 'Golino',
+    canton: 'TI'
+}, {
+    zip: 6657,
+    loc: 'Palagnedra',
+    canton: 'TI'
+}, {
+    zip: 6658,
+    loc: 'Borgnone',
+    canton: 'TI'
+}, {
+    zip: 6659,
+    loc: 'Moneto',
+    canton: 'TI'
+}, {
+    zip: 6659,
+    loc: 'Camedo',
+    canton: 'TI'
+}, {
+    zip: 6661,
+    loc: 'Auressio',
+    canton: 'TI'
+}, {
+    zip: 6661,
+    loc: 'Berzona',
+    canton: 'TI'
+}, {
+    zip: 6661,
+    loc: 'Loco',
+    canton: 'TI'
+}, {
+    zip: 6662,
+    loc: 'Russo',
+    canton: 'TI'
+}, {
+    zip: 6663,
+    loc: 'Comologno',
+    canton: 'TI'
+}, {
+    zip: 6663,
+    loc: 'Spruga',
+    canton: 'TI'
+}, {
+    zip: 6664,
+    loc: 'Vergeletto',
+    canton: 'TI'
+}, {
+    zip: 6670,
+    loc: 'Avegno',
+    canton: 'TI'
+}, {
+    zip: 6672,
+    loc: 'Gordevio',
+    canton: 'TI'
+}, {
+    zip: 6673,
+    loc: 'Maggia',
+    canton: 'TI'
+}, {
+    zip: 6674,
+    loc: 'Riveo',
+    canton: 'TI'
+}, {
+    zip: 6674,
+    loc: 'Someo',
+    canton: 'TI'
+}, {
+    zip: 6675,
+    loc: 'Cevio',
+    canton: 'TI'
+}, {
+    zip: 6676,
+    loc: 'Bignasco',
+    canton: 'TI'
+}, {
+    zip: 6677,
+    loc: 'Moghegno',
+    canton: 'TI'
+}, {
+    zip: 6677,
+    loc: 'Aurigeno',
+    canton: 'TI'
+}, {
+    zip: 6678,
+    loc: 'Coglio',
+    canton: 'TI'
+}, {
+    zip: 6678,
+    loc: 'Lodano',
+    canton: 'TI'
+}, {
+    zip: 6678,
+    loc: 'Giumaglio',
+    canton: 'TI'
+}, {
+    zip: 6682,
+    loc: 'Linescio',
+    canton: 'TI'
+}, {
+    zip: 6683,
+    loc: 'Cerentino',
+    canton: 'TI'
+}, {
+    zip: 6683,
+    loc: 'Niva (Vallemaggia)',
+    canton: 'TI'
+}, {
+    zip: 6684,
+    loc: 'Campo (Vallemaggia)',
+    canton: 'TI'
+}, {
+    zip: 6684,
+    loc: 'Cimalmotto',
+    canton: 'TI'
+}, {
+    zip: 6685,
+    loc: 'Bosco/Gurin',
+    canton: 'TI'
+}, {
+    zip: 6690,
+    loc: 'Cavergno',
+    canton: 'TI'
+}, {
+    zip: 6690,
+    loc: 'S. Carlo (Val Bavona)',
+    canton: 'TI'
+}, {
+    zip: 6692,
+    loc: 'Brontallo',
+    canton: 'TI'
+}, {
+    zip: 6692,
+    loc: 'Menzonio',
+    canton: 'TI'
+}, {
+    zip: 6693,
+    loc: 'Broglio',
+    canton: 'TI'
+}, {
+    zip: 6694,
+    loc: 'Prato-Sornico',
+    canton: 'TI'
+}, {
+    zip: 6695,
+    loc: 'Peccia',
+    canton: 'TI'
+}, {
+    zip: 6695,
+    loc: 'Piano di Peccia',
+    canton: 'TI'
+}, {
+    zip: 6696,
+    loc: 'Fusio',
+    canton: 'TI'
+}, {
+    zip: 6702,
+    loc: 'Claro',
+    canton: 'TI'
+}, {
+    zip: 6703,
+    loc: 'Osogna',
+    canton: 'TI'
+}, {
+    zip: 6705,
+    loc: 'Cresciano',
+    canton: 'TI'
+}, {
+    zip: 6707,
+    loc: 'Iragna',
+    canton: 'TI'
+}, {
+    zip: 6710,
+    loc: 'Biasca',
+    canton: 'TI'
+}, {
+    zip: 6710,
+    loc: 'Biasca Stazione',
+    canton: 'TI'
+}, {
+    zip: 6713,
+    loc: 'Malvaglia',
+    canton: 'TI'
+}, {
+    zip: 6714,
+    loc: 'Semione',
+    canton: 'TI'
+}, {
+    zip: 6715,
+    loc: 'Dongio',
+    canton: 'TI'
+}, {
+    zip: 6716,
+    loc: 'Leontica',
+    canton: 'TI'
+}, {
+    zip: 6716,
+    loc: 'Lottigna',
+    canton: 'TI'
+}, {
+    zip: 6716,
+    loc: 'Acquarossa',
+    canton: 'TI'
+}, {
+    zip: 6717,
+    loc: 'Dangio-Torre',
+    canton: 'TI'
+}, {
+    zip: 6717,
+    loc: 'Torre',
+    canton: 'TI'
+}, {
+    zip: 6718,
+    loc: 'Camperio',
+    canton: 'TI'
+}, {
+    zip: 6718,
+    loc: 'Olivone',
+    canton: 'TI'
+}, {
+    zip: 6719,
+    loc: 'Aquila',
+    canton: 'TI'
+}, {
+    zip: 6720,
+    loc: 'Campo (Blenio)',
+    canton: 'TI'
+}, {
+    zip: 6720,
+    loc: 'Ghirone',
+    canton: 'TI'
+}, {
+    zip: 6721,
+    loc: 'Ludiano',
+    canton: 'TI'
+}, {
+    zip: 6721,
+    loc: 'Motto (Blenio)',
+    canton: 'TI'
+}, {
+    zip: 6722,
+    loc: 'Corzoneso',
+    canton: 'TI'
+}, {
+    zip: 6723,
+    loc: 'Prugiasco',
+    canton: 'TI'
+}, {
+    zip: 6723,
+    loc: 'Castro',
+    canton: 'TI'
+}, {
+    zip: 6723,
+    loc: 'Marolta',
+    canton: 'TI'
+}, {
+    zip: 6724,
+    loc: 'Ponto Valentino',
+    canton: 'TI'
+}, {
+    zip: 6724,
+    loc: 'Largario',
+    canton: 'TI'
+}, {
+    zip: 6742,
+    loc: 'Pollegio',
+    canton: 'TI'
+}, {
+    zip: 6743,
+    loc: 'Bodio TI',
+    canton: 'TI'
+}, {
+    zip: 6744,
+    loc: 'Personico',
+    canton: 'TI'
+}, {
+    zip: 6745,
+    loc: 'Giornico',
+    canton: 'TI'
+}, {
+    zip: 6746,
+    loc: 'Calonico',
+    canton: 'TI'
+}, {
+    zip: 6746,
+    loc: 'Nivo',
+    canton: 'TI'
+}, {
+    zip: 6746,
+    loc: 'Lavorgo',
+    canton: 'TI'
+}, {
+    zip: 6747,
+    loc: 'Chironico',
+    canton: 'TI'
+}, {
+    zip: 6748,
+    loc: 'Anzonico',
+    canton: 'TI'
+}, {
+    zip: 6749,
+    loc: 'Sobrio',
+    canton: 'TI'
+}, {
+    zip: 6749,
+    loc: 'Cavagnago',
+    canton: 'TI'
+}, {
+    zip: 6760,
+    loc: 'Molare',
+    canton: 'TI'
+}, {
+    zip: 6760,
+    loc: 'Calpiogna',
+    canton: 'TI'
+}, {
+    zip: 6760,
+    loc: 'Car\xEC',
+    canton: 'TI'
+}, {
+    zip: 6760,
+    loc: 'Rossura',
+    canton: 'TI'
+}, {
+    zip: 6760,
+    loc: 'Faido',
+    canton: 'TI'
+}, {
+    zip: 6760,
+    loc: 'Campello',
+    canton: 'TI'
+}, {
+    zip: 6763,
+    loc: 'Mairengo',
+    canton: 'TI'
+}, {
+    zip: 6763,
+    loc: 'Osco',
+    canton: 'TI'
+}, {
+    zip: 6764,
+    loc: 'Chiggiogna',
+    canton: 'TI'
+}, {
+    zip: 6772,
+    loc: 'Rodi-Fiesso',
+    canton: 'TI'
+}, {
+    zip: 6773,
+    loc: 'Prato (Leventina)',
+    canton: 'TI'
+}, {
+    zip: 6774,
+    loc: 'Dalpe',
+    canton: 'TI'
+}, {
+    zip: 6775,
+    loc: 'Ambr\xEC',
+    canton: 'TI'
+}, {
+    zip: 6776,
+    loc: 'Piotta',
+    canton: 'TI'
+}, {
+    zip: 6777,
+    loc: 'Quinto',
+    canton: 'TI'
+}, {
+    zip: 6777,
+    loc: 'Varenzo',
+    canton: 'TI'
+}, {
+    zip: 6780,
+    loc: 'Madrano',
+    canton: 'TI'
+}, {
+    zip: 6780,
+    loc: 'Airolo',
+    canton: 'TI'
+}, {
+    zip: 6781,
+    loc: 'Villa Bedretto',
+    canton: 'TI'
+}, {
+    zip: 6781,
+    loc: 'Bedretto',
+    canton: 'TI'
+}, {
+    zip: 6802,
+    loc: 'Rivera',
+    canton: 'TI'
+}, {
+    zip: 6803,
+    loc: 'Camignolo',
+    canton: 'TI'
+}, {
+    zip: 6804,
+    loc: 'Bironico',
+    canton: 'TI'
+}, {
+    zip: 6805,
+    loc: 'Mezzovico',
+    canton: 'TI'
+}, {
+    zip: 6806,
+    loc: 'Sigirino',
+    canton: 'TI'
+}, {
+    zip: 6807,
+    loc: 'Taverne',
+    canton: 'TI'
+}, {
+    zip: 6808,
+    loc: 'Torricella',
+    canton: 'TI'
+}, {
+    zip: 6809,
+    loc: 'Medeglia',
+    canton: 'TI'
+}, {
+    zip: 6810,
+    loc: 'Isone',
+    canton: 'TI'
+}, {
+    zip: 6814,
+    loc: 'Lamone',
+    canton: 'TI'
+}, {
+    zip: 6814,
+    loc: 'Cadempino',
+    canton: 'TI'
+}, {
+    zip: 6815,
+    loc: 'Melide',
+    canton: 'TI'
+}, {
+    zip: 6816,
+    loc: 'Bissone',
+    canton: 'TI'
+}, {
+    zip: 6817,
+    loc: 'Maroggia',
+    canton: 'TI'
+}, {
+    zip: 6818,
+    loc: 'Melano',
+    canton: 'TI'
+}, {
+    zip: 6821,
+    loc: 'Rovio',
+    canton: 'TI'
+}, {
+    zip: 6822,
+    loc: 'Arogno',
+    canton: 'TI'
+}, {
+    zip: 6823,
+    loc: 'Pugerna',
+    canton: 'TI'
+}, {
+    zip: 6825,
+    loc: 'Capolago',
+    canton: 'TI'
+}, {
+    zip: 6826,
+    loc: 'Riva San Vitale',
+    canton: 'TI'
+}, {
+    zip: 6827,
+    loc: 'Brusino Arsizio',
+    canton: 'TI'
+}, {
+    zip: 6828,
+    loc: 'Balerna',
+    canton: 'TI'
+}, {
+    zip: 6830,
+    loc: 'Chiasso',
+    canton: 'TI'
+}, {
+    zip: 6832,
+    loc: 'Seseglio',
+    canton: 'TI'
+}, {
+    zip: 6832,
+    loc: 'Pedrinate',
+    canton: 'TI'
+}, {
+    zip: 6833,
+    loc: 'Vacallo',
+    canton: 'TI'
+}, {
+    zip: 6834,
+    loc: 'Morbio Inferiore',
+    canton: 'TI'
+}, {
+    zip: 6835,
+    loc: 'Morbio Superiore',
+    canton: 'TI'
+}, {
+    zip: 6837,
+    loc: 'Bruzella',
+    canton: 'TI'
+}, {
+    zip: 6837,
+    loc: 'Caneggio',
+    canton: 'TI'
+}, {
+    zip: 6838,
+    loc: 'Cabbio',
+    canton: 'TI'
+}, {
+    zip: 6838,
+    loc: 'Scudellate',
+    canton: 'TI'
+}, {
+    zip: 6838,
+    loc: 'Muggio',
+    canton: 'TI'
+}, {
+    zip: 6839,
+    loc: 'Sagno',
+    canton: 'TI'
+}, {
+    zip: 6850,
+    loc: 'Mendrisio',
+    canton: 'TI'
+}, {
+    zip: 6852,
+    loc: 'Genestrerio',
+    canton: 'TI'
+}, {
+    zip: 6853,
+    loc: 'Ligornetto',
+    canton: 'TI'
+}, {
+    zip: 6854,
+    loc: 'S. Pietro',
+    canton: 'TI'
+}, {
+    zip: 6855,
+    loc: 'Stabio',
+    canton: 'TI'
+}, {
+    zip: 6862,
+    loc: 'Rancate',
+    canton: 'TI'
+}, {
+    zip: 6863,
+    loc: 'Besazio',
+    canton: 'TI'
+}, {
+    zip: 6864,
+    loc: 'Arzo',
+    canton: 'TI'
+}, {
+    zip: 6865,
+    loc: 'Tremona',
+    canton: 'TI'
+}, {
+    zip: 6866,
+    loc: 'Meride',
+    canton: 'TI'
+}, {
+    zip: 6867,
+    loc: 'Serpiano',
+    canton: 'TI'
+}, {
+    zip: 6872,
+    loc: 'Salorino',
+    canton: 'TI'
+}, {
+    zip: 6872,
+    loc: 'Somazzo',
+    canton: 'TI'
+}, {
+    zip: 6873,
+    loc: 'Corteglia',
+    canton: 'TI'
+}, {
+    zip: 6874,
+    loc: 'Castel San Pietro',
+    canton: 'TI'
+}, {
+    zip: 6875,
+    loc: 'Casima',
+    canton: 'TI'
+}, {
+    zip: 6875,
+    loc: 'Monte',
+    canton: 'TI'
+}, {
+    zip: 6877,
+    loc: 'Coldrerio',
+    canton: 'TI'
+}, {
+    zip: 6883,
+    loc: 'Novazzano',
+    canton: 'TI'
+}, {
+    zip: 6900,
+    loc: 'Lugano',
+    canton: 'TI'
+}, {
+    zip: 6900,
+    loc: 'Massagno',
+    canton: 'TI'
+}, {
+    zip: 6900,
+    loc: 'Paradiso',
+    canton: 'TI'
+}, {
+    zip: 6911,
+    loc: 'Campione d\'Italia',
+    canton: 'IT',
+    cc: 'IT'
+}, {
+    zip: 6912,
+    loc: 'Pazzallo',
+    canton: 'TI'
+}, {
+    zip: 6913,
+    loc: 'Carabbia',
+    canton: 'TI'
+}, {
+    zip: 6914,
+    loc: 'Carona',
+    canton: 'TI'
+}, {
+    zip: 6915,
+    loc: 'Pambio-Noranco',
+    canton: 'TI'
+}, {
+    zip: 6916,
+    loc: 'Grancia',
+    canton: 'TI'
+}, {
+    zip: 6917,
+    loc: 'Barbengo',
+    canton: 'TI'
+}, {
+    zip: 6918,
+    loc: 'Figino',
+    canton: 'TI'
+}, {
+    zip: 6919,
+    loc: 'Carabietta',
+    canton: 'TI'
+}, {
+    zip: 6921,
+    loc: 'Vico Morcote',
+    canton: 'TI'
+}, {
+    zip: 6922,
+    loc: 'Morcote',
+    canton: 'TI'
+}, {
+    zip: 6924,
+    loc: 'Sorengo',
+    canton: 'TI'
+}, {
+    zip: 6925,
+    loc: 'Gentilino',
+    canton: 'TI'
+}, {
+    zip: 6926,
+    loc: 'Montagnola',
+    canton: 'TI'
+}, {
+    zip: 6927,
+    loc: 'Agra',
+    canton: 'TI'
+}, {
+    zip: 6928,
+    loc: 'Manno',
+    canton: 'TI'
+}, {
+    zip: 6929,
+    loc: 'Gravesano',
+    canton: 'TI'
+}, {
+    zip: 6930,
+    loc: 'Bedano',
+    canton: 'TI'
+}, {
+    zip: 6932,
+    loc: 'Breganzona',
+    canton: 'TI'
+}, {
+    zip: 6933,
+    loc: 'Muzzano',
+    canton: 'TI'
+}, {
+    zip: 6934,
+    loc: 'Bioggio',
+    canton: 'TI'
+}, {
+    zip: 6935,
+    loc: 'Bosco Luganese',
+    canton: 'TI'
+}, {
+    zip: 6936,
+    loc: 'Cademario',
+    canton: 'TI'
+}, {
+    zip: 6937,
+    loc: 'Breno',
+    canton: 'TI'
+}, {
+    zip: 6938,
+    loc: 'Vezio',
+    canton: 'TI'
+}, {
+    zip: 6938,
+    loc: 'Fescoggia',
+    canton: 'TI'
+}, {
+    zip: 6939,
+    loc: 'Arosio',
+    canton: 'TI'
+}, {
+    zip: 6939,
+    loc: 'Mugena',
+    canton: 'TI'
+}, {
+    zip: 6942,
+    loc: 'Savosa',
+    canton: 'TI'
+}, {
+    zip: 6943,
+    loc: 'Vezia',
+    canton: 'TI'
+}, {
+    zip: 6944,
+    loc: 'Cureglia',
+    canton: 'TI'
+}, {
+    zip: 6945,
+    loc: 'Origlio',
+    canton: 'TI'
+}, {
+    zip: 6946,
+    loc: 'Ponte Capriasca',
+    canton: 'TI'
+}, {
+    zip: 6947,
+    loc: 'Vaglio',
+    canton: 'TI'
+}, {
+    zip: 6948,
+    loc: 'Porza',
+    canton: 'TI'
+}, {
+    zip: 6949,
+    loc: 'Comano',
+    canton: 'TI'
+}, {
+    zip: 6950,
+    loc: 'Tesserete',
+    canton: 'TI'
+}, {
+    zip: 6951,
+    loc: 'Insone',
+    canton: 'TI'
+}, {
+    zip: 6951,
+    loc: 'Odogno',
+    canton: 'TI'
+}, {
+    zip: 6951,
+    loc: 'Colla',
+    canton: 'TI'
+}, {
+    zip: 6951,
+    loc: 'Bogno',
+    canton: 'TI'
+}, {
+    zip: 6951,
+    loc: 'Cozzo',
+    canton: 'TI'
+}, {
+    zip: 6951,
+    loc: 'Sign\xF4ra',
+    canton: 'TI'
+}, {
+    zip: 6951,
+    loc: 'Scareglia',
+    canton: 'TI'
+}, {
+    zip: 6952,
+    loc: 'Canobbio',
+    canton: 'TI'
+}, {
+    zip: 6953,
+    loc: 'Lugaggia',
+    canton: 'TI'
+}, {
+    zip: 6954,
+    loc: 'Sala Capriasca',
+    canton: 'TI'
+}, {
+    zip: 6954,
+    loc: 'Bigorio',
+    canton: 'TI'
+}, {
+    zip: 6955,
+    loc: 'Cagiallo',
+    canton: 'TI'
+}, {
+    zip: 6955,
+    loc: 'Oggio',
+    canton: 'TI'
+}, {
+    zip: 6956,
+    loc: 'Lopagno',
+    canton: 'TI'
+}, {
+    zip: 6957,
+    loc: 'Roveredo TI',
+    canton: 'TI'
+}, {
+    zip: 6958,
+    loc: 'Bidogno',
+    canton: 'TI'
+}, {
+    zip: 6958,
+    loc: 'Corticiasca',
+    canton: 'TI'
+}, {
+    zip: 6959,
+    loc: 'Cimadera',
+    canton: 'TI'
+}, {
+    zip: 6959,
+    loc: 'Certara',
+    canton: 'TI'
+}, {
+    zip: 6959,
+    loc: 'Curtina',
+    canton: 'TI'
+}, {
+    zip: 6959,
+    loc: 'Piandera Paese',
+    canton: 'TI'
+}, {
+    zip: 6959,
+    loc: 'Maglio di Colla',
+    canton: 'TI'
+}, {
+    zip: 6962,
+    loc: 'Viganello',
+    canton: 'TI'
+}, {
+    zip: 6963,
+    loc: 'Cureggia',
+    canton: 'TI'
+}, {
+    zip: 6963,
+    loc: 'Pregassona',
+    canton: 'TI'
+}, {
+    zip: 6964,
+    loc: 'Davesco-Soragno',
+    canton: 'TI'
+}, {
+    zip: 6965,
+    loc: 'Cadro',
+    canton: 'TI'
+}, {
+    zip: 6966,
+    loc: 'Villa Luganese',
+    canton: 'TI'
+}, {
+    zip: 6967,
+    loc: 'Dino',
+    canton: 'TI'
+}, {
+    zip: 6968,
+    loc: 'Sonvico',
+    canton: 'TI'
+}, {
+    zip: 6974,
+    loc: 'Aldesago',
+    canton: 'TI'
+}, {
+    zip: 6976,
+    loc: 'Castagnola',
+    canton: 'TI'
+}, {
+    zip: 6977,
+    loc: 'Ruvigliana',
+    canton: 'TI'
+}, {
+    zip: 6978,
+    loc: 'Gandria',
+    canton: 'TI'
+}, {
+    zip: 6979,
+    loc: 'Br\xE8 sopra Lugano',
+    canton: 'TI'
+}, {
+    zip: 6980,
+    loc: 'Castelrotto',
+    canton: 'TI'
+}, {
+    zip: 6981,
+    loc: 'Bedigliora',
+    canton: 'TI'
+}, {
+    zip: 6981,
+    loc: 'Biogno-Beride',
+    canton: 'TI'
+}, {
+    zip: 6981,
+    loc: 'Bombinasco',
+    canton: 'TI'
+}, {
+    zip: 6981,
+    loc: 'Banco',
+    canton: 'TI'
+}, {
+    zip: 6982,
+    loc: 'Agno',
+    canton: 'TI'
+}, {
+    zip: 6983,
+    loc: 'Magliaso',
+    canton: 'TI'
+}, {
+    zip: 6984,
+    loc: 'Pura',
+    canton: 'TI'
+}, {
+    zip: 6986,
+    loc: 'Miglieglia',
+    canton: 'TI'
+}, {
+    zip: 6986,
+    loc: 'Curio',
+    canton: 'TI'
+}, {
+    zip: 6986,
+    loc: 'Novaggio',
+    canton: 'TI'
+}, {
+    zip: 6987,
+    loc: 'Caslano',
+    canton: 'TI'
+}, {
+    zip: 6988,
+    loc: 'Ponte Tresa',
+    canton: 'TI'
+}, {
+    zip: 6989,
+    loc: 'Purasca',
+    canton: 'TI'
+}, {
+    zip: 6990,
+    loc: 'Cassina d\'Agno',
+    canton: 'TI'
+}, {
+    zip: 6991,
+    loc: 'Neggio',
+    canton: 'TI'
+}, {
+    zip: 6992,
+    loc: 'Cimo',
+    canton: 'TI'
+}, {
+    zip: 6992,
+    loc: 'Vernate',
+    canton: 'TI'
+}, {
+    zip: 6993,
+    loc: 'Iseo',
+    canton: 'TI'
+}, {
+    zip: 6994,
+    loc: 'Aranno',
+    canton: 'TI'
+}, {
+    zip: 6995,
+    loc: 'Madonna del Piano',
+    canton: 'TI'
+}, {
+    zip: 6995,
+    loc: 'Molinazzo di Monteggio',
+    canton: 'TI'
+}, {
+    zip: 6996,
+    loc: 'Ponte Cremenaga',
+    canton: 'TI'
+}, {
+    zip: 6997,
+    loc: 'Sessa',
+    canton: 'TI'
+}, {
+    zip: 6998,
+    loc: 'Termine',
+    canton: 'TI'
+}, {
+    zip: 6999,
+    loc: 'Astano',
+    canton: 'TI'
+}, {
+    zip: 7000,
+    loc: 'Chur',
+    canton: 'GR'
+}, {
+    zip: 7012,
+    loc: 'Felsberg',
+    canton: 'GR'
+}, {
+    zip: 7013,
+    loc: 'Domat/Ems',
+    canton: 'GR'
+}, {
+    zip: 7014,
+    loc: 'Trin',
+    canton: 'GR'
+}, {
+    zip: 7015,
+    loc: 'Tamins',
+    canton: 'GR'
+}, {
+    zip: 7016,
+    loc: 'Trin Mulin',
+    canton: 'GR'
+}, {
+    zip: 7017,
+    loc: 'Flims Dorf',
+    canton: 'GR'
+}, {
+    zip: 7018,
+    loc: 'Flims Waldhaus',
+    canton: 'GR'
+}, {
+    zip: 7019,
+    loc: 'Fidaz',
+    canton: 'GR'
+}, {
+    zip: 7023,
+    loc: 'Haldenstein',
+    canton: 'GR'
+}, {
+    zip: 7026,
+    loc: 'Maladers',
+    canton: 'GR'
+}, {
+    zip: 7027,
+    loc: 'L\xFCen',
+    canton: 'GR'
+}, {
+    zip: 7027,
+    loc: 'Castiel',
+    canton: 'GR'
+}, {
+    zip: 7027,
+    loc: 'Calfreisen',
+    canton: 'GR'
+}, {
+    zip: 7028,
+    loc: 'Pagig',
+    canton: 'GR'
+}, {
+    zip: 7028,
+    loc: 'St. Peter',
+    canton: 'GR'
+}, {
+    zip: 7029,
+    loc: 'Peist',
+    canton: 'GR'
+}, {
+    zip: 7031,
+    loc: 'Laax GR',
+    canton: 'GR'
+}, {
+    zip: 7032,
+    loc: 'Laax GR 2',
+    canton: 'GR'
+}, {
+    zip: 7050,
+    loc: 'Arosa',
+    canton: 'GR'
+}, {
+    zip: 7056,
+    loc: 'Molinis',
+    canton: 'GR'
+}, {
+    zip: 7057,
+    loc: 'Langwies',
+    canton: 'GR'
+}, {
+    zip: 7058,
+    loc: 'Litzir\xFCti',
+    canton: 'GR'
+}, {
+    zip: 7062,
+    loc: 'Passugg-Araschgen',
+    canton: 'GR'
+}, {
+    zip: 7063,
+    loc: 'Praden',
+    canton: 'GR'
+}, {
+    zip: 7064,
+    loc: 'Tschiertschen',
+    canton: 'GR'
+}, {
+    zip: 7074,
+    loc: 'Malix',
+    canton: 'GR'
+}, {
+    zip: 7075,
+    loc: 'Churwalden',
+    canton: 'GR'
+}, {
+    zip: 7076,
+    loc: 'Parpan',
+    canton: 'GR'
+}, {
+    zip: 7077,
+    loc: 'Valbella',
+    canton: 'GR'
+}, {
+    zip: 7078,
+    loc: 'Lenzerheide/Lai',
+    canton: 'GR'
+}, {
+    zip: 7082,
+    loc: 'Vaz/Obervaz',
+    canton: 'GR'
+}, {
+    zip: 7083,
+    loc: 'Lantsch/Lenz',
+    canton: 'GR'
+}, {
+    zip: 7084,
+    loc: 'Brienz/Brinzauls GR',
+    canton: 'GR'
+}, {
+    zip: 7104,
+    loc: 'Arezen',
+    canton: 'GR'
+}, {
+    zip: 7104,
+    loc: 'Versam',
+    canton: 'GR'
+}, {
+    zip: 7106,
+    loc: 'Tenna',
+    canton: 'GR'
+}, {
+    zip: 7107,
+    loc: 'Safien Platz',
+    canton: 'GR'
+}, {
+    zip: 7109,
+    loc: 'Thalkirch',
+    canton: 'GR'
+}, {
+    zip: 7110,
+    loc: 'Peiden',
+    canton: 'GR'
+}, {
+    zip: 7111,
+    loc: 'Pitasch',
+    canton: 'GR'
+}, {
+    zip: 7112,
+    loc: 'Duvin',
+    canton: 'GR'
+}, {
+    zip: 7113,
+    loc: 'Camuns',
+    canton: 'GR'
+}, {
+    zip: 7114,
+    loc: 'Uors (Lumnezia)',
+    canton: 'GR'
+}, {
+    zip: 7115,
+    loc: 'Surcasti',
+    canton: 'GR'
+}, {
+    zip: 7116,
+    loc: 'Tersnaus',
+    canton: 'GR'
+}, {
+    zip: 7116,
+    loc: 'St. Martin (Lugnez)',
+    canton: 'GR'
+}, {
+    zip: 7122,
+    loc: 'Valendas',
+    canton: 'GR'
+}, {
+    zip: 7122,
+    loc: 'Carrera',
+    canton: 'GR'
+}, {
+    zip: 7126,
+    loc: 'Castrisch',
+    canton: 'GR'
+}, {
+    zip: 7127,
+    loc: 'Sevgein',
+    canton: 'GR'
+}, {
+    zip: 7128,
+    loc: 'Riein',
+    canton: 'GR'
+}, {
+    zip: 7130,
+    loc: 'Schnaus',
+    canton: 'GR'
+}, {
+    zip: 7130,
+    loc: 'Ilanz',
+    canton: 'GR'
+}, {
+    zip: 7132,
+    loc: 'Vals',
+    canton: 'GR'
+}, {
+    zip: 7133,
+    loc: 'Obersaxen Affeier',
+    canton: 'GR'
+}, {
+    zip: 7134,
+    loc: 'Obersaxen Meierhof',
+    canton: 'GR'
+}, {
+    zip: 7135,
+    loc: 'Obersaxen Giraniga',
+    canton: 'GR'
+}, {
+    zip: 7136,
+    loc: 'Obersaxen Friggah\xFCs',
+    canton: 'GR'
+}, {
+    zip: 7137,
+    loc: 'Flond',
+    canton: 'GR'
+}, {
+    zip: 7138,
+    loc: 'Surcuolm',
+    canton: 'GR'
+}, {
+    zip: 7141,
+    loc: 'Luven',
+    canton: 'GR'
+}, {
+    zip: 7142,
+    loc: 'Cumbel',
+    canton: 'GR'
+}, {
+    zip: 7143,
+    loc: 'Morissen',
+    canton: 'GR'
+}, {
+    zip: 7144,
+    loc: 'Vella',
+    canton: 'GR'
+}, {
+    zip: 7145,
+    loc: 'Degen',
+    canton: 'GR'
+}, {
+    zip: 7146,
+    loc: 'Vattiz',
+    canton: 'GR'
+}, {
+    zip: 7147,
+    loc: 'Vignogn',
+    canton: 'GR'
+}, {
+    zip: 7148,
+    loc: 'Surin',
+    canton: 'GR'
+}, {
+    zip: 7148,
+    loc: 'Lumbrein',
+    canton: 'GR'
+}, {
+    zip: 7149,
+    loc: 'Vrin',
+    canton: 'GR'
+}, {
+    zip: 7151,
+    loc: 'Schluein',
+    canton: 'GR'
+}, {
+    zip: 7152,
+    loc: 'Sagogn',
+    canton: 'GR'
+}, {
+    zip: 7153,
+    loc: 'Falera',
+    canton: 'GR'
+}, {
+    zip: 7154,
+    loc: 'Ruschein',
+    canton: 'GR'
+}, {
+    zip: 7155,
+    loc: 'Ladir',
+    canton: 'GR'
+}, {
+    zip: 7156,
+    loc: 'Pigniu',
+    canton: 'GR'
+}, {
+    zip: 7156,
+    loc: 'Rueun',
+    canton: 'GR'
+}, {
+    zip: 7157,
+    loc: 'Siat',
+    canton: 'GR'
+}, {
+    zip: 7158,
+    loc: 'Waltensburg/Vuorz',
+    canton: 'GR'
+}, {
+    zip: 7159,
+    loc: 'Andiast',
+    canton: 'GR'
+}, {
+    zip: 7162,
+    loc: 'Tavanasa',
+    canton: 'GR'
+}, {
+    zip: 7163,
+    loc: 'Danis',
+    canton: 'GR'
+}, {
+    zip: 7164,
+    loc: 'Dardin',
+    canton: 'GR'
+}, {
+    zip: 7165,
+    loc: 'Breil/Brigels',
+    canton: 'GR'
+}, {
+    zip: 7166,
+    loc: 'Trun',
+    canton: 'GR'
+}, {
+    zip: 7167,
+    loc: 'Zignau',
+    canton: 'GR'
+}, {
+    zip: 7168,
+    loc: 'Schlans',
+    canton: 'GR'
+}, {
+    zip: 7172,
+    loc: 'Rabius',
+    canton: 'GR'
+}, {
+    zip: 7173,
+    loc: 'Surrein',
+    canton: 'GR'
+}, {
+    zip: 7174,
+    loc: 'S. Benedetg',
+    canton: 'GR'
+}, {
+    zip: 7175,
+    loc: 'Sumvitg',
+    canton: 'GR'
+}, {
+    zip: 7176,
+    loc: 'Cumpadials',
+    canton: 'GR'
+}, {
+    zip: 7180,
+    loc: 'Disentis/Must\xE9r',
+    canton: 'GR'
+}, {
+    zip: 7182,
+    loc: 'Cavardiras',
+    canton: 'GR'
+}, {
+    zip: 7183,
+    loc: 'Momp\xE9 Medel',
+    canton: 'GR'
+}, {
+    zip: 7184,
+    loc: 'Curaglia',
+    canton: 'GR'
+}, {
+    zip: 7185,
+    loc: 'Platta',
+    canton: 'GR'
+}, {
+    zip: 7186,
+    loc: 'Segnas',
+    canton: 'GR'
+}, {
+    zip: 7187,
+    loc: 'Camischolas',
+    canton: 'GR'
+}, {
+    zip: 7188,
+    loc: 'Sedrun',
+    canton: 'GR'
+}, {
+    zip: 7189,
+    loc: 'Rueras',
+    canton: 'GR'
+}, {
+    zip: 7201,
+    loc: 'Untervaz Bahnhof',
+    canton: 'GR'
+}, {
+    zip: 7202,
+    loc: 'Says',
+    canton: 'GR'
+}, {
+    zip: 7203,
+    loc: 'Trimmis',
+    canton: 'GR'
+}, {
+    zip: 7204,
+    loc: 'Untervaz',
+    canton: 'GR'
+}, {
+    zip: 7205,
+    loc: 'Zizers',
+    canton: 'GR'
+}, {
+    zip: 7206,
+    loc: 'Igis',
+    canton: 'GR'
+}, {
+    zip: 7208,
+    loc: 'Malans GR',
+    canton: 'GR'
+}, {
+    zip: 7212,
+    loc: 'Seewis Dorf',
+    canton: 'GR'
+}, {
+    zip: 7213,
+    loc: 'Valzeina',
+    canton: 'GR'
+}, {
+    zip: 7214,
+    loc: 'Seewis-Pardisla',
+    canton: 'GR'
+}, {
+    zip: 7214,
+    loc: 'Seewis-Schmitten',
+    canton: 'GR'
+}, {
+    zip: 7214,
+    loc: 'Gr\xFCsch',
+    canton: 'GR'
+}, {
+    zip: 7215,
+    loc: 'Fanas',
+    canton: 'GR'
+}, {
+    zip: 7220,
+    loc: 'Schiers',
+    canton: 'GR'
+}, {
+    zip: 7222,
+    loc: 'Mittellunden',
+    canton: 'GR'
+}, {
+    zip: 7223,
+    loc: 'Buchen im Pr\xE4ttigau',
+    canton: 'GR'
+}, {
+    zip: 7224,
+    loc: 'Putz',
+    canton: 'GR'
+}, {
+    zip: 7226,
+    loc: 'Stels',
+    canton: 'GR'
+}, {
+    zip: 7226,
+    loc: 'Fajauna',
+    canton: 'GR'
+}, {
+    zip: 7228,
+    loc: 'Schuders',
+    canton: 'GR'
+}, {
+    zip: 7228,
+    loc: 'Pusserein',
+    canton: 'GR'
+}, {
+    zip: 7231,
+    loc: 'Pragg-Jenaz',
+    canton: 'GR'
+}, {
+    zip: 7232,
+    loc: 'Furna',
+    canton: 'GR'
+}, {
+    zip: 7233,
+    loc: 'Jenaz',
+    canton: 'GR'
+}, {
+    zip: 7235,
+    loc: 'Fideris',
+    canton: 'GR'
+}, {
+    zip: 7240,
+    loc: 'K\xFCblis',
+    canton: 'GR'
+}, {
+    zip: 7241,
+    loc: 'Conters im Pr\xE4ttigau',
+    canton: 'GR'
+}, {
+    zip: 7242,
+    loc: 'Luzein',
+    canton: 'GR'
+}, {
+    zip: 7243,
+    loc: 'Pany',
+    canton: 'GR'
+}, {
+    zip: 7244,
+    loc: 'Gadenst\xE4tt',
+    canton: 'GR'
+}, {
+    zip: 7245,
+    loc: 'Ascharina',
+    canton: 'GR'
+}, {
+    zip: 7246,
+    loc: 'St. Ant\xF6nien',
+    canton: 'GR'
+}, {
+    zip: 7247,
+    loc: 'Saas im Pr\xE4ttigau',
+    canton: 'GR'
+}, {
+    zip: 7249,
+    loc: 'Serneus',
+    canton: 'GR'
+}, {
+    zip: 7250,
+    loc: 'Klosters',
+    canton: 'GR'
+}, {
+    zip: 7252,
+    loc: 'Klosters Dorf',
+    canton: 'GR'
+}, {
+    zip: 7260,
+    loc: 'Davos Dorf',
+    canton: 'GR'
+}, {
+    zip: 7265,
+    loc: 'Davos Wolfgang',
+    canton: 'GR'
+}, {
+    zip: 7270,
+    loc: 'Davos Platz',
+    canton: 'GR'
+}, {
+    zip: 7272,
+    loc: 'Davos Clavadel',
+    canton: 'GR'
+}, {
+    zip: 7276,
+    loc: 'Davos Frauenkirch',
+    canton: 'GR'
+}, {
+    zip: 7277,
+    loc: 'Davos Glaris',
+    canton: 'GR'
+}, {
+    zip: 7278,
+    loc: 'Davos Monstein',
+    canton: 'GR'
+}, {
+    zip: 7302,
+    loc: 'Landquart',
+    canton: 'GR'
+}, {
+    zip: 7303,
+    loc: 'Mastrils',
+    canton: 'GR'
+}, {
+    zip: 7304,
+    loc: 'Maienfeld',
+    canton: 'GR'
+}, {
+    zip: 7306,
+    loc: 'Fl\xE4sch',
+    canton: 'GR'
+}, {
+    zip: 7307,
+    loc: 'Jenins',
+    canton: 'GR'
+}, {
+    zip: 7310,
+    loc: 'Bad Ragaz',
+    canton: 'SG'
+}, {
+    zip: 7312,
+    loc: 'Pf\xE4fers',
+    canton: 'SG'
+}, {
+    zip: 7313,
+    loc: 'St. Margrethenberg',
+    canton: 'SG'
+}, {
+    zip: 7314,
+    loc: 'Vadura',
+    canton: 'SG'
+}, {
+    zip: 7315,
+    loc: 'V\xE4ttis',
+    canton: 'SG'
+}, {
+    zip: 7317,
+    loc: 'Vas\xF6n',
+    canton: 'SG'
+}, {
+    zip: 7317,
+    loc: 'Valens',
+    canton: 'SG'
+}, {
+    zip: 7320,
+    loc: 'Sargans',
+    canton: 'SG'
+}, {
+    zip: 7323,
+    loc: 'Wangs',
+    canton: 'SG'
+}, {
+    zip: 7324,
+    loc: 'Vilters',
+    canton: 'SG'
+}, {
+    zip: 7325,
+    loc: 'Schwendi im Weisstannental',
+    canton: 'SG'
+}, {
+    zip: 7326,
+    loc: 'Weisstannen',
+    canton: 'SG'
+}, {
+    zip: 7402,
+    loc: 'Bonaduz',
+    canton: 'GR'
+}, {
+    zip: 7403,
+    loc: 'Rh\xE4z\xFCns',
+    canton: 'GR'
+}, {
+    zip: 7404,
+    loc: 'Feldis/Veulden',
+    canton: 'GR'
+}, {
+    zip: 7405,
+    loc: 'Rothenbrunnen',
+    canton: 'GR'
+}, {
+    zip: 7407,
+    loc: 'Trans',
+    canton: 'GR'
+}, {
+    zip: 7408,
+    loc: 'Realta',
+    canton: 'GR'
+}, {
+    zip: 7408,
+    loc: 'Cazis',
+    canton: 'GR'
+}, {
+    zip: 7411,
+    loc: 'Sils im Domleschg',
+    canton: 'GR'
+}, {
+    zip: 7412,
+    loc: 'Scharans',
+    canton: 'GR'
+}, {
+    zip: 7413,
+    loc: 'F\xFCrstenaubruck',
+    canton: 'GR'
+}, {
+    zip: 7414,
+    loc: 'F\xFCrstenau',
+    canton: 'GR'
+}, {
+    zip: 7415,
+    loc: 'Pratval',
+    canton: 'GR'
+}, {
+    zip: 7415,
+    loc: 'Rodels',
+    canton: 'GR'
+}, {
+    zip: 7416,
+    loc: 'Almens',
+    canton: 'GR'
+}, {
+    zip: 7417,
+    loc: 'Paspels',
+    canton: 'GR'
+}, {
+    zip: 7418,
+    loc: 'Tumegl/Tomils',
+    canton: 'GR'
+}, {
+    zip: 7419,
+    loc: 'Scheid',
+    canton: 'GR'
+}, {
+    zip: 7421,
+    loc: 'Summaprada',
+    canton: 'GR'
+}, {
+    zip: 7422,
+    loc: 'Tartar',
+    canton: 'GR'
+}, {
+    zip: 7423,
+    loc: 'Sarn',
+    canton: 'GR'
+}, {
+    zip: 7423,
+    loc: 'Portein',
+    canton: 'GR'
+}, {
+    zip: 7424,
+    loc: 'Pr\xE4z',
+    canton: 'GR'
+}, {
+    zip: 7424,
+    loc: 'Dalin',
+    canton: 'GR'
+}, {
+    zip: 7425,
+    loc: 'Masein',
+    canton: 'GR'
+}, {
+    zip: 7426,
+    loc: 'Flerden',
+    canton: 'GR'
+}, {
+    zip: 7427,
+    loc: 'Urmein',
+    canton: 'GR'
+}, {
+    zip: 7428,
+    loc: 'Tschappina',
+    canton: 'GR'
+}, {
+    zip: 7428,
+    loc: 'Glaspass',
+    canton: 'GR'
+}, {
+    zip: 7430,
+    loc: 'Rongellen',
+    canton: 'GR'
+}, {
+    zip: 7430,
+    loc: 'Thusis',
+    canton: 'GR'
+}, {
+    zip: 7431,
+    loc: 'Mutten',
+    canton: 'GR'
+}, {
+    zip: 7431,
+    loc: 'Obermutten',
+    canton: 'GR'
+}, {
+    zip: 7432,
+    loc: 'Zillis',
+    canton: 'GR'
+}, {
+    zip: 7433,
+    loc: 'Farden',
+    canton: 'GR'
+}, {
+    zip: 7433,
+    loc: 'Wergenstein',
+    canton: 'GR'
+}, {
+    zip: 7433,
+    loc: 'Lohn GR',
+    canton: 'GR'
+}, {
+    zip: 7433,
+    loc: 'Donat',
+    canton: 'GR'
+}, {
+    zip: 7433,
+    loc: 'Mathon',
+    canton: 'GR'
+}, {
+    zip: 7434,
+    loc: 'Sufers',
+    canton: 'GR'
+}, {
+    zip: 7435,
+    loc: 'Spl\xFCgen',
+    canton: 'GR'
+}, {
+    zip: 7436,
+    loc: 'Medels im Rheinwald',
+    canton: 'GR'
+}, {
+    zip: 7437,
+    loc: 'Nufenen',
+    canton: 'GR'
+}, {
+    zip: 7438,
+    loc: 'Hinterrhein',
+    canton: 'GR'
+}, {
+    zip: 7440,
+    loc: 'Andeer',
+    canton: 'GR'
+}, {
+    zip: 7442,
+    loc: 'Clugin',
+    canton: 'GR'
+}, {
+    zip: 7443,
+    loc: 'Pignia',
+    canton: 'GR'
+}, {
+    zip: 7444,
+    loc: 'Ausserferrera',
+    canton: 'GR'
+}, {
+    zip: 7445,
+    loc: 'Innerferrera',
+    canton: 'GR'
+}, {
+    zip: 7446,
+    loc: 'Campsut-Cr\xF6t',
+    canton: 'GR'
+}, {
+    zip: 7447,
+    loc: 'Cresta (Avers)',
+    canton: 'GR'
+}, {
+    zip: 7447,
+    loc: 'Am Bach (Avers)',
+    canton: 'GR'
+}, {
+    zip: 7448,
+    loc: 'Juf',
+    canton: 'GR'
+}, {
+    zip: 7450,
+    loc: 'Tiefencastel',
+    canton: 'GR'
+}, {
+    zip: 7451,
+    loc: 'Alvaschein',
+    canton: 'GR'
+}, {
+    zip: 7452,
+    loc: 'Cunter',
+    canton: 'GR'
+}, {
+    zip: 7453,
+    loc: 'Tinizong',
+    canton: 'GR'
+}, {
+    zip: 7454,
+    loc: 'Rona',
+    canton: 'GR'
+}, {
+    zip: 7455,
+    loc: 'Mulegns',
+    canton: 'GR'
+}, {
+    zip: 7456,
+    loc: 'Sur',
+    canton: 'GR'
+}, {
+    zip: 7456,
+    loc: 'Marmorera',
+    canton: 'GR'
+}, {
+    zip: 7457,
+    loc: 'Bivio',
+    canton: 'GR'
+}, {
+    zip: 7458,
+    loc: 'Mon',
+    canton: 'GR'
+}, {
+    zip: 7459,
+    loc: 'Stierva',
+    canton: 'GR'
+}, {
+    zip: 7460,
+    loc: 'Savognin',
+    canton: 'GR'
+}, {
+    zip: 7462,
+    loc: 'Salouf',
+    canton: 'GR'
+}, {
+    zip: 7463,
+    loc: 'Riom',
+    canton: 'GR'
+}, {
+    zip: 7464,
+    loc: 'Parsonz',
+    canton: 'GR'
+}, {
+    zip: 7472,
+    loc: 'Surava',
+    canton: 'GR'
+}, {
+    zip: 7473,
+    loc: 'Alvaneu Bad',
+    canton: 'GR'
+}, {
+    zip: 7477,
+    loc: 'Filisur',
+    canton: 'GR'
+}, {
+    zip: 7482,
+    loc: 'Stugl/Stuls',
+    canton: 'GR'
+}, {
+    zip: 7482,
+    loc: 'Preda',
+    canton: 'GR'
+}, {
+    zip: 7482,
+    loc: 'Berg\xFCn/Bravuogn',
+    canton: 'GR'
+}, {
+    zip: 7484,
+    loc: 'Latsch',
+    canton: 'GR'
+}, {
+    zip: 7492,
+    loc: 'Alvaneu Dorf',
+    canton: 'GR'
+}, {
+    zip: 7493,
+    loc: 'Schmitten (Albula)',
+    canton: 'GR'
+}, {
+    zip: 7494,
+    loc: 'Wiesen GR',
+    canton: 'GR'
+}, {
+    zip: 7500,
+    loc: 'St. Moritz',
+    canton: 'GR'
+}, {
+    zip: 7502,
+    loc: 'Bever',
+    canton: 'GR'
+}, {
+    zip: 7503,
+    loc: 'Samedan',
+    canton: 'GR'
+}, {
+    zip: 7504,
+    loc: 'Pontresina',
+    canton: 'GR'
+}, {
+    zip: 7505,
+    loc: 'Celerina/Schlarigna',
+    canton: 'GR'
+}, {
+    zip: 7512,
+    loc: 'Champf\xE8r',
+    canton: 'GR'
+}, {
+    zip: 7513,
+    loc: 'Silvaplana-Surlej',
+    canton: 'GR'
+}, {
+    zip: 7513,
+    loc: 'Silvaplana',
+    canton: 'GR'
+}, {
+    zip: 7514,
+    loc: 'Fex',
+    canton: 'GR'
+}, {
+    zip: 7514,
+    loc: 'Sils/Segl Maria',
+    canton: 'GR'
+}, {
+    zip: 7515,
+    loc: 'Sils/Segl Baselgia',
+    canton: 'GR'
+}, {
+    zip: 7516,
+    loc: 'Maloja',
+    canton: 'GR'
+}, {
+    zip: 7517,
+    loc: 'Plaun da Lej',
+    canton: 'GR'
+}, {
+    zip: 7522,
+    loc: 'La Punt-Chamues-ch',
+    canton: 'GR'
+}, {
+    zip: 7523,
+    loc: 'Madulain',
+    canton: 'GR'
+}, {
+    zip: 7524,
+    loc: 'Zuoz',
+    canton: 'GR'
+}, {
+    zip: 7525,
+    loc: 'S-chanf',
+    canton: 'GR'
+}, {
+    zip: 7526,
+    loc: 'Cinuos-chel',
+    canton: 'GR'
+}, {
+    zip: 7527,
+    loc: 'Brail',
+    canton: 'GR'
+}, {
+    zip: 7530,
+    loc: 'Zernez',
+    canton: 'GR'
+}, {
+    zip: 7532,
+    loc: 'Tschierv',
+    canton: 'GR'
+}, {
+    zip: 7533,
+    loc: 'Fuldera',
+    canton: 'GR'
+}, {
+    zip: 7534,
+    loc: 'L\xFC',
+    canton: 'GR'
+}, {
+    zip: 7535,
+    loc: 'Valchava',
+    canton: 'GR'
+}, {
+    zip: 7536,
+    loc: 'Sta. Maria Val M\xFCstair',
+    canton: 'GR'
+}, {
+    zip: 7537,
+    loc: 'M\xFCstair',
+    canton: 'GR'
+}, {
+    zip: 7542,
+    loc: 'Susch',
+    canton: 'GR'
+}, {
+    zip: 7543,
+    loc: 'Lavin',
+    canton: 'GR'
+}, {
+    zip: 7545,
+    loc: 'Guarda',
+    canton: 'GR'
+}, {
+    zip: 7546,
+    loc: 'Ardez',
+    canton: 'GR'
+}, {
+    zip: 7550,
+    loc: 'Scuol',
+    canton: 'GR'
+}, {
+    zip: 7551,
+    loc: 'Ftan',
+    canton: 'GR'
+}, {
+    zip: 7552,
+    loc: 'Vulpera',
+    canton: 'GR'
+}, {
+    zip: 7553,
+    loc: 'Tarasp',
+    canton: 'GR'
+}, {
+    zip: 7554,
+    loc: 'Crusch',
+    canton: 'GR'
+}, {
+    zip: 7554,
+    loc: 'Sent',
+    canton: 'GR'
+}, {
+    zip: 7556,
+    loc: 'Ramosch',
+    canton: 'GR'
+}, {
+    zip: 7557,
+    loc: 'Vn\xE0',
+    canton: 'GR'
+}, {
+    zip: 7558,
+    loc: 'Strada',
+    canton: 'GR'
+}, {
+    zip: 7559,
+    loc: 'Tschlin',
+    canton: 'GR'
+}, {
+    zip: 7560,
+    loc: 'Martina',
+    canton: 'GR'
+}, {
+    zip: 7562,
+    loc: 'Samnaun-Compatsch',
+    canton: 'GR'
+}, {
+    zip: 7563,
+    loc: 'Samnaun Dorf',
+    canton: 'GR'
+}, {
+    zip: 7602,
+    loc: 'Casaccia',
+    canton: 'GR'
+}, {
+    zip: 7603,
+    loc: 'Vicosoprano',
+    canton: 'GR'
+}, {
+    zip: 7604,
+    loc: 'Borgonovo',
+    canton: 'GR'
+}, {
+    zip: 7605,
+    loc: 'Stampa',
+    canton: 'GR'
+}, {
+    zip: 7606,
+    loc: 'Promontogno',
+    canton: 'GR'
+}, {
+    zip: 7608,
+    loc: 'Castasegna',
+    canton: 'GR'
+}, {
+    zip: 7610,
+    loc: 'Soglio',
+    canton: 'GR'
+}, {
+    zip: 7710,
+    loc: 'Ospizio Bernina',
+    canton: 'GR'
+}, {
+    zip: 7710,
+    loc: 'Alp Gr\xFCm',
+    canton: 'GR'
+}, {
+    zip: 7741,
+    loc: 'S. Carlo (Poschiavo)',
+    canton: 'GR'
+}, {
+    zip: 7742,
+    loc: 'Sfaz\xF9',
+    canton: 'GR'
+}, {
+    zip: 7742,
+    loc: 'La R\xF6sa',
+    canton: 'GR'
+}, {
+    zip: 7742,
+    loc: 'Poschiavo',
+    canton: 'GR'
+}, {
+    zip: 7743,
+    loc: 'Miralago',
+    canton: 'GR'
+}, {
+    zip: 7743,
+    loc: 'Brusio',
+    canton: 'GR'
+}, {
+    zip: 7744,
+    loc: 'Campocologno',
+    canton: 'GR'
+}, {
+    zip: 7745,
+    loc: 'Li Curt',
+    canton: 'GR'
+}, {
+    zip: 7746,
+    loc: 'Le Prese',
+    canton: 'GR'
+}, {
+    zip: 7747,
+    loc: 'Viano',
+    canton: 'GR'
+}, {
+    zip: 7748,
+    loc: 'Campascio',
+    canton: 'GR'
+}, {
+    zip: 8000,
+    loc: 'Z\xFCrich',
+    canton: 'ZH'
+}, {
+    zip: 8001,
+    loc: 'Z\xFCrich',
+    canton: 'ZH'
+}, {
+    zip: 8002,
+    loc: 'Z\xFCrich',
+    canton: 'ZH'
+}, {
+    zip: 8003,
+    loc: 'Z\xFCrich',
+    canton: 'ZH'
+}, {
+    zip: 8004,
+    loc: 'Z\xFCrich',
+    canton: 'ZH'
+}, {
+    zip: 8005,
+    loc: 'Z\xFCrich',
+    canton: 'ZH'
+}, {
+    zip: 8006,
+    loc: 'Z\xFCrich',
+    canton: 'ZH'
+}, {
+    zip: 8008,
+    loc: 'Z\xFCrich',
+    canton: 'ZH'
+}, {
+    zip: 8032,
+    loc: 'Z\xFCrich',
+    canton: 'ZH'
+}, {
+    zip: 8037,
+    loc: 'Z\xFCrich',
+    canton: 'ZH'
+}, {
+    zip: 8038,
+    loc: 'Z\xFCrich',
+    canton: 'ZH'
+}, {
+    zip: 8041,
+    loc: 'Z\xFCrich',
+    canton: 'ZH'
+}, {
+    zip: 8044,
+    loc: 'Gockhausen',
+    canton: 'ZH'
+}, {
+    zip: 8044,
+    loc: 'Z\xFCrich',
+    canton: 'ZH'
+}, {
+    zip: 8045,
+    loc: 'Z\xFCrich',
+    canton: 'ZH'
+}, {
+    zip: 8046,
+    loc: 'Z\xFCrich',
+    canton: 'ZH'
+}, {
+    zip: 8047,
+    loc: 'Z\xFCrich',
+    canton: 'ZH'
+}, {
+    zip: 8048,
+    loc: 'Z\xFCrich',
+    canton: 'ZH'
+}, {
+    zip: 8049,
+    loc: 'Z\xFCrich',
+    canton: 'ZH'
+}, {
+    zip: 8050,
+    loc: 'Z\xFCrich',
+    canton: 'ZH'
+}, {
+    zip: 8051,
+    loc: 'Z\xFCrich',
+    canton: 'ZH'
+}, {
+    zip: 8052,
+    loc: 'Z\xFCrich',
+    canton: 'ZH'
+}, {
+    zip: 8053,
+    loc: 'Z\xFCrich',
+    canton: 'ZH'
+}, {
+    zip: 8055,
+    loc: 'Z\xFCrich',
+    canton: 'ZH'
+}, {
+    zip: 8057,
+    loc: 'Z\xFCrich',
+    canton: 'ZH'
+}, {
+    zip: 8063,
+    loc: 'Z\xFCrich',
+    canton: 'ZH'
+}, {
+    zip: 8064,
+    loc: 'Z\xFCrich',
+    canton: 'ZH'
+}, {
+    zip: 8099,
+    loc: 'Z\xFCrich',
+    canton: 'ZH'
+}, {
+    zip: 8102,
+    loc: 'Oberengstringen',
+    canton: 'ZH'
+}, {
+    zip: 8103,
+    loc: 'Unterengstringen',
+    canton: 'ZH'
+}, {
+    zip: 8104,
+    loc: 'Weiningen ZH',
+    canton: 'ZH'
+}, {
+    zip: 8105,
+    loc: 'Regensdorf',
+    canton: 'ZH'
+}, {
+    zip: 8105,
+    loc: 'Watt',
+    canton: 'ZH'
+}, {
+    zip: 8106,
+    loc: 'Adlikon b. Regensdorf',
+    canton: 'ZH'
+}, {
+    zip: 8107,
+    loc: 'Buchs ZH',
+    canton: 'ZH'
+}, {
+    zip: 8108,
+    loc: 'D\xE4llikon',
+    canton: 'ZH'
+}, {
+    zip: 8109,
+    loc: 'Kloster Fahr',
+    canton: 'AG'
+}, {
+    zip: 8112,
+    loc: 'Otelfingen',
+    canton: 'ZH'
+}, {
+    zip: 8113,
+    loc: 'Boppelsen',
+    canton: 'ZH'
+}, {
+    zip: 8114,
+    loc: 'D\xE4nikon ZH',
+    canton: 'ZH'
+}, {
+    zip: 8115,
+    loc: 'H\xFCttikon',
+    canton: 'ZH'
+}, {
+    zip: 8117,
+    loc: 'F\xE4llanden',
+    canton: 'ZH'
+}, {
+    zip: 8118,
+    loc: 'Pfaffhausen',
+    canton: 'ZH'
+}, {
+    zip: 8121,
+    loc: 'Benglen',
+    canton: 'ZH'
+}, {
+    zip: 8122,
+    loc: 'Binz',
+    canton: 'ZH'
+}, {
+    zip: 8123,
+    loc: 'Ebmatingen',
+    canton: 'ZH'
+}, {
+    zip: 8124,
+    loc: 'Maur',
+    canton: 'ZH'
+}, {
+    zip: 8125,
+    loc: 'Zollikerberg',
+    canton: 'ZH'
+}, {
+    zip: 8126,
+    loc: 'Zumikon',
+    canton: 'ZH'
+}, {
+    zip: 8127,
+    loc: 'Forch',
+    canton: 'ZH'
+}, {
+    zip: 8132,
+    loc: 'Hinteregg',
+    canton: 'ZH'
+}, {
+    zip: 8132,
+    loc: 'Egg b. Z\xFCrich',
+    canton: 'ZH'
+}, {
+    zip: 8133,
+    loc: 'Esslingen',
+    canton: 'ZH'
+}, {
+    zip: 8134,
+    loc: 'Adliswil',
+    canton: 'ZH'
+}, {
+    zip: 8135,
+    loc: 'Sihlbrugg Station',
+    canton: 'ZH'
+}, {
+    zip: 8135,
+    loc: 'Sihlwald',
+    canton: 'ZH'
+}, {
+    zip: 8135,
+    loc: 'Langnau am Albis',
+    canton: 'ZH'
+}, {
+    zip: 8136,
+    loc: 'Gattikon',
+    canton: 'ZH'
+}, {
+    zip: 8142,
+    loc: 'Uitikon Waldegg',
+    canton: 'ZH'
+}, {
+    zip: 8143,
+    loc: 'Uetliberg',
+    canton: 'ZH'
+}, {
+    zip: 8143,
+    loc: 'Stallikon',
+    canton: 'ZH'
+}, {
+    zip: 8152,
+    loc: 'Glattpark (Opfikon)',
+    canton: 'ZH'
+}, {
+    zip: 8152,
+    loc: 'Glattbrugg',
+    canton: 'ZH'
+}, {
+    zip: 8152,
+    loc: 'Opfikon',
+    canton: 'ZH'
+}, {
+    zip: 8153,
+    loc: 'R\xFCmlang',
+    canton: 'ZH'
+}, {
+    zip: 8154,
+    loc: 'Oberglatt ZH',
+    canton: 'ZH'
+}, {
+    zip: 8155,
+    loc: 'Niederhasli',
+    canton: 'ZH'
+}, {
+    zip: 8156,
+    loc: 'Oberhasli',
+    canton: 'ZH'
+}, {
+    zip: 8157,
+    loc: 'Dielsdorf',
+    canton: 'ZH'
+}, {
+    zip: 8158,
+    loc: 'Regensberg',
+    canton: 'ZH'
+}, {
+    zip: 8162,
+    loc: 'Steinmaur',
+    canton: 'ZH'
+}, {
+    zip: 8164,
+    loc: 'Bachs',
+    canton: 'ZH'
+}, {
+    zip: 8165,
+    loc: 'Oberweningen',
+    canton: 'ZH'
+}, {
+    zip: 8165,
+    loc: 'Schleinikon',
+    canton: 'ZH'
+}, {
+    zip: 8165,
+    loc: 'Sch\xF6fflisdorf',
+    canton: 'ZH'
+}, {
+    zip: 8166,
+    loc: 'Niederweningen',
+    canton: 'ZH'
+}, {
+    zip: 8172,
+    loc: 'Niederglatt ZH',
+    canton: 'ZH'
+}, {
+    zip: 8173,
+    loc: 'Neerach',
+    canton: 'ZH'
+}, {
+    zip: 8174,
+    loc: 'Stadel b. Niederglatt',
+    canton: 'ZH'
+}, {
+    zip: 8175,
+    loc: 'Windlach',
+    canton: 'ZH'
+}, {
+    zip: 8180,
+    loc: 'B\xFClach',
+    canton: 'ZH'
+}, {
+    zip: 8181,
+    loc: 'H\xF6ri',
+    canton: 'ZH'
+}, {
+    zip: 8182,
+    loc: 'Hochfelden',
+    canton: 'ZH'
+}, {
+    zip: 8184,
+    loc: 'Bachenb\xFClach',
+    canton: 'ZH'
+}, {
+    zip: 8185,
+    loc: 'Winkel',
+    canton: 'ZH'
+}, {
+    zip: 8187,
+    loc: 'Weiach',
+    canton: 'ZH'
+}, {
+    zip: 8192,
+    loc: 'Zweidlen',
+    canton: 'ZH'
+}, {
+    zip: 8192,
+    loc: 'Glattfelden',
+    canton: 'ZH'
+}, {
+    zip: 8193,
+    loc: 'Eglisau',
+    canton: 'ZH'
+}, {
+    zip: 8194,
+    loc: 'H\xFCntwangen',
+    canton: 'ZH'
+}, {
+    zip: 8195,
+    loc: 'Wasterkingen',
+    canton: 'ZH'
+}, {
+    zip: 8196,
+    loc: 'Wil ZH',
+    canton: 'ZH'
+}, {
+    zip: 8197,
+    loc: 'Rafz',
+    canton: 'ZH'
+}, {
+    zip: 8200,
+    loc: 'Schaffhausen',
+    canton: 'SH'
+}, {
+    zip: 8203,
+    loc: 'Schaffhausen',
+    canton: 'SH'
+}, {
+    zip: 8207,
+    loc: 'Schaffhausen',
+    canton: 'SH'
+}, {
+    zip: 8208,
+    loc: 'Schaffhausen',
+    canton: 'SH'
+}, {
+    zip: 8212,
+    loc: 'Neuhausen am Rheinfall',
+    canton: 'SH'
+}, {
+    zip: 8212,
+    loc: 'Nohl',
+    canton: 'ZH'
+}, {
+    zip: 8213,
+    loc: 'Neunkirch',
+    canton: 'SH'
+}, {
+    zip: 8214,
+    loc: 'G\xE4chlingen',
+    canton: 'SH'
+}, {
+    zip: 8215,
+    loc: 'Hallau',
+    canton: 'SH'
+}, {
+    zip: 8216,
+    loc: 'Oberhallau',
+    canton: 'SH'
+}, {
+    zip: 8217,
+    loc: 'Wilchingen',
+    canton: 'SH'
+}, {
+    zip: 8218,
+    loc: 'Osterfingen',
+    canton: 'SH'
+}, {
+    zip: 8219,
+    loc: 'Trasadingen',
+    canton: 'SH'
+}, {
+    zip: 8222,
+    loc: 'Beringen',
+    canton: 'SH'
+}, {
+    zip: 8223,
+    loc: 'Guntmadingen',
+    canton: 'SH'
+}, {
+    zip: 8224,
+    loc: 'L\xF6hningen',
+    canton: 'SH'
+}, {
+    zip: 8225,
+    loc: 'Siblingen',
+    canton: 'SH'
+}, {
+    zip: 8226,
+    loc: 'Schleitheim',
+    canton: 'SH'
+}, {
+    zip: 8228,
+    loc: 'Beggingen',
+    canton: 'SH'
+}, {
+    zip: 8231,
+    loc: 'Hemmental',
+    canton: 'SH'
+}, {
+    zip: 8232,
+    loc: 'Merishausen',
+    canton: 'SH'
+}, {
+    zip: 8233,
+    loc: 'Bargen SH',
+    canton: 'SH'
+}, {
+    zip: 8234,
+    loc: 'Stetten SH',
+    canton: 'SH'
+}, {
+    zip: 8235,
+    loc: 'Lohn SH',
+    canton: 'SH'
+}, {
+    zip: 8236,
+    loc: 'Opfertshofen SH',
+    canton: 'SH'
+}, {
+    zip: 8236,
+    loc: 'B\xFCttenhardt',
+    canton: 'SH'
+}, {
+    zip: 8238,
+    loc: 'B\xFCsingen',
+    canton: 'DE',
+    cc: 'DE'
+}, {
+    zip: 8239,
+    loc: 'D\xF6rflingen',
+    canton: 'SH'
+}, {
+    zip: 8240,
+    loc: 'Thayngen',
+    canton: 'SH'
+}, {
+    zip: 8241,
+    loc: 'Barzheim',
+    canton: 'SH'
+}, {
+    zip: 8242,
+    loc: 'Hofen SH',
+    canton: 'SH'
+}, {
+    zip: 8242,
+    loc: 'Bibern SH',
+    canton: 'SH'
+}, {
+    zip: 8243,
+    loc: 'Altdorf SH',
+    canton: 'SH'
+}, {
+    zip: 8245,
+    loc: 'Feuerthalen',
+    canton: 'ZH'
+}, {
+    zip: 8246,
+    loc: 'Langwiesen',
+    canton: 'ZH'
+}, {
+    zip: 8247,
+    loc: 'Flurlingen',
+    canton: 'ZH'
+}, {
+    zip: 8248,
+    loc: 'Uhwiesen',
+    canton: 'ZH'
+}, {
+    zip: 8252,
+    loc: 'Schlatt TG',
+    canton: 'TG'
+}, {
+    zip: 8253,
+    loc: 'Willisdorf',
+    canton: 'TG'
+}, {
+    zip: 8253,
+    loc: 'Diessenhofen',
+    canton: 'TG'
+}, {
+    zip: 8254,
+    loc: 'Basadingen',
+    canton: 'TG'
+}, {
+    zip: 8255,
+    loc: 'Schlattingen',
+    canton: 'TG'
+}, {
+    zip: 8259,
+    loc: 'Kaltenbach',
+    canton: 'TG'
+}, {
+    zip: 8259,
+    loc: 'Etzwilen',
+    canton: 'TG'
+}, {
+    zip: 8259,
+    loc: 'Wagenhausen',
+    canton: 'TG'
+}, {
+    zip: 8259,
+    loc: 'Rheinklingen',
+    canton: 'TG'
+}, {
+    zip: 8260,
+    loc: 'Stein am Rhein',
+    canton: 'SH'
+}, {
+    zip: 8261,
+    loc: 'Hemishofen',
+    canton: 'SH'
+}, {
+    zip: 8262,
+    loc: 'Ramsen',
+    canton: 'SH'
+}, {
+    zip: 8263,
+    loc: 'Buch SH',
+    canton: 'SH'
+}, {
+    zip: 8264,
+    loc: 'Eschenz',
+    canton: 'TG'
+}, {
+    zip: 8265,
+    loc: 'Mammern',
+    canton: 'TG'
+}, {
+    zip: 8266,
+    loc: 'Steckborn',
+    canton: 'TG'
+}, {
+    zip: 8267,
+    loc: 'Berlingen',
+    canton: 'TG'
+}, {
+    zip: 8268,
+    loc: 'Salenstein',
+    canton: 'TG'
+}, {
+    zip: 8268,
+    loc: 'Mannenbach-Salenstein',
+    canton: 'TG'
+}, {
+    zip: 8269,
+    loc: 'Fruthwilen',
+    canton: 'TG'
+}, {
+    zip: 8272,
+    loc: 'Ermatingen',
+    canton: 'TG'
+}, {
+    zip: 8273,
+    loc: 'Triboltingen',
+    canton: 'TG'
+}, {
+    zip: 8274,
+    loc: 'Gottlieben',
+    canton: 'TG'
+}, {
+    zip: 8274,
+    loc: 'T\xE4gerwilen',
+    canton: 'TG'
+}, {
+    zip: 8280,
+    loc: 'Kreuzlingen',
+    canton: 'TG'
+}, {
+    zip: 8302,
+    loc: 'Kloten',
+    canton: 'ZH'
+}, {
+    zip: 8303,
+    loc: 'Bassersdorf',
+    canton: 'ZH'
+}, {
+    zip: 8304,
+    loc: 'Wallisellen',
+    canton: 'ZH'
+}, {
+    zip: 8305,
+    loc: 'Dietlikon',
+    canton: 'ZH'
+}, {
+    zip: 8306,
+    loc: 'Br\xFCttisellen',
+    canton: 'ZH'
+}, {
+    zip: 8307,
+    loc: 'Ottikon b. Kemptthal',
+    canton: 'ZH'
+}, {
+    zip: 8307,
+    loc: 'Effretikon',
+    canton: 'ZH'
+}, {
+    zip: 8308,
+    loc: 'Agasul',
+    canton: 'ZH'
+}, {
+    zip: 8308,
+    loc: 'Illnau',
+    canton: 'ZH'
+}, {
+    zip: 8309,
+    loc: 'N\xFCrensdorf',
+    canton: 'ZH'
+}, {
+    zip: 8310,
+    loc: 'Kemptthal',
+    canton: 'ZH'
+}, {
+    zip: 8310,
+    loc: 'Grafstal',
+    canton: 'ZH'
+}, {
+    zip: 8311,
+    loc: 'Br\xFCtten',
+    canton: 'ZH'
+}, {
+    zip: 8312,
+    loc: 'Winterberg ZH',
+    canton: 'ZH'
+}, {
+    zip: 8314,
+    loc: 'Kyburg',
+    canton: 'ZH'
+}, {
+    zip: 8315,
+    loc: 'Lindau',
+    canton: 'ZH'
+}, {
+    zip: 8317,
+    loc: 'Tagelswangen',
+    canton: 'ZH'
+}, {
+    zip: 8320,
+    loc: 'Fehraltorf',
+    canton: 'ZH'
+}, {
+    zip: 8322,
+    loc: 'Madetswil',
+    canton: 'ZH'
+}, {
+    zip: 8330,
+    loc: 'Hermatswil',
+    canton: 'ZH'
+}, {
+    zip: 8330,
+    loc: 'Pf\xE4ffikon ZH',
+    canton: 'ZH'
+}, {
+    zip: 8331,
+    loc: 'Auslikon',
+    canton: 'ZH'
+}, {
+    zip: 8332,
+    loc: 'Russikon',
+    canton: 'ZH'
+}, {
+    zip: 8335,
+    loc: 'Hittnau',
+    canton: 'ZH'
+}, {
+    zip: 8340,
+    loc: 'Hinwil',
+    canton: 'ZH'
+}, {
+    zip: 8342,
+    loc: 'Wernetshausen',
+    canton: 'ZH'
+}, {
+    zip: 8344,
+    loc: 'B\xE4retswil',
+    canton: 'ZH'
+}, {
+    zip: 8345,
+    loc: 'Adetswil',
+    canton: 'ZH'
+}, {
+    zip: 8352,
+    loc: 'Ricketwil (Winterthur)',
+    canton: 'ZH'
+}, {
+    zip: 8352,
+    loc: 'Elsau',
+    canton: 'ZH'
+}, {
+    zip: 8353,
+    loc: 'Elgg',
+    canton: 'ZH'
+}, {
+    zip: 8354,
+    loc: 'Hofstetten ZH',
+    canton: 'ZH'
+}, {
+    zip: 8355,
+    loc: 'Aadorf',
+    canton: 'TG'
+}, {
+    zip: 8356,
+    loc: 'Ettenhausen TG',
+    canton: 'TG'
+}, {
+    zip: 8357,
+    loc: 'Guntershausen b. Aadorf',
+    canton: 'TG'
+}, {
+    zip: 8360,
+    loc: 'Wallenwil',
+    canton: 'TG'
+}, {
+    zip: 8360,
+    loc: 'Eschlikon TG',
+    canton: 'TG'
+}, {
+    zip: 8362,
+    loc: 'Balterswil',
+    canton: 'TG'
+}, {
+    zip: 8363,
+    loc: 'Bichelsee',
+    canton: 'TG'
+}, {
+    zip: 8370,
+    loc: 'Busswil TG',
+    canton: 'TG'
+}, {
+    zip: 8370,
+    loc: 'Sirnach',
+    canton: 'TG'
+}, {
+    zip: 8372,
+    loc: 'Wiezikon b. Sirnach',
+    canton: 'TG'
+}, {
+    zip: 8374,
+    loc: 'Oberwangen TG',
+    canton: 'TG'
+}, {
+    zip: 8374,
+    loc: 'Dussnang',
+    canton: 'TG'
+}, {
+    zip: 8376,
+    loc: 'Fischingen',
+    canton: 'TG'
+}, {
+    zip: 8376,
+    loc: 'Au TG',
+    canton: 'TG'
+}, {
+    zip: 8400,
+    loc: 'Winterthur',
+    canton: 'ZH'
+}, {
+    zip: 8404,
+    loc: 'Reutlingen (Winterthur)',
+    canton: 'ZH'
+}, {
+    zip: 8404,
+    loc: 'Stadel (Winterthur)',
+    canton: 'ZH'
+}, {
+    zip: 8404,
+    loc: 'Winterthur',
+    canton: 'ZH'
+}, {
+    zip: 8405,
+    loc: 'Winterthur',
+    canton: 'ZH'
+}, {
+    zip: 8406,
+    loc: 'Winterthur',
+    canton: 'ZH'
+}, {
+    zip: 8408,
+    loc: 'Winterthur',
+    canton: 'ZH'
+}, {
+    zip: 8409,
+    loc: 'Winterthur',
+    canton: 'ZH'
+}, {
+    zip: 8412,
+    loc: 'Aesch (Neftenbach)',
+    canton: 'ZH'
+}, {
+    zip: 8412,
+    loc: 'Riet (Neftenbach)',
+    canton: 'ZH'
+}, {
+    zip: 8412,
+    loc: 'H\xFCnikon (Neftenbach)',
+    canton: 'ZH'
+}, {
+    zip: 8413,
+    loc: 'Neftenbach',
+    canton: 'ZH'
+}, {
+    zip: 8414,
+    loc: 'Buch am Irchel',
+    canton: 'ZH'
+}, {
+    zip: 8415,
+    loc: 'Berg am Irchel',
+    canton: 'ZH'
+}, {
+    zip: 8415,
+    loc: 'Gr\xE4slikon',
+    canton: 'ZH'
+}, {
+    zip: 8416,
+    loc: 'Flaach',
+    canton: 'ZH'
+}, {
+    zip: 8418,
+    loc: 'Schlatt b. Winterthur',
+    canton: 'ZH'
+}, {
+    zip: 8421,
+    loc: 'D\xE4ttlikon',
+    canton: 'ZH'
+}, {
+    zip: 8422,
+    loc: 'Pfungen',
+    canton: 'ZH'
+}, {
+    zip: 8424,
+    loc: 'Embrach',
+    canton: 'ZH'
+}, {
+    zip: 8425,
+    loc: 'Oberembrach',
+    canton: 'ZH'
+}, {
+    zip: 8426,
+    loc: 'Lufingen',
+    canton: 'ZH'
+}, {
+    zip: 8427,
+    loc: 'Freienstein',
+    canton: 'ZH'
+}, {
+    zip: 8427,
+    loc: 'Rorbas',
+    canton: 'ZH'
+}, {
+    zip: 8428,
+    loc: 'Teufen ZH',
+    canton: 'ZH'
+}, {
+    zip: 8442,
+    loc: 'Hettlingen',
+    canton: 'ZH'
+}, {
+    zip: 8444,
+    loc: 'Henggart',
+    canton: 'ZH'
+}, {
+    zip: 8447,
+    loc: 'Dachsen',
+    canton: 'ZH'
+}, {
+    zip: 8450,
+    loc: 'Andelfingen',
+    canton: 'ZH'
+}, {
+    zip: 8451,
+    loc: 'Kleinandelfingen',
+    canton: 'ZH'
+}, {
+    zip: 8452,
+    loc: 'Adlikon b. Andelfingen',
+    canton: 'ZH'
+}, {
+    zip: 8453,
+    loc: 'Alten',
+    canton: 'ZH'
+}, {
+    zip: 8454,
+    loc: 'Buchberg',
+    canton: 'SH'
+}, {
+    zip: 8455,
+    loc: 'R\xFCdlingen',
+    canton: 'SH'
+}, {
+    zip: 8457,
+    loc: 'Humlikon',
+    canton: 'ZH'
+}, {
+    zip: 8458,
+    loc: 'Dorf',
+    canton: 'ZH'
+}, {
+    zip: 8459,
+    loc: 'Volken',
+    canton: 'ZH'
+}, {
+    zip: 8460,
+    loc: 'Marthalen',
+    canton: 'ZH'
+}, {
+    zip: 8461,
+    loc: 'Oerlingen',
+    canton: 'ZH'
+}, {
+    zip: 8462,
+    loc: 'Rheinau',
+    canton: 'ZH'
+}, {
+    zip: 8463,
+    loc: 'Benken ZH',
+    canton: 'ZH'
+}, {
+    zip: 8464,
+    loc: 'Ellikon am Rhein',
+    canton: 'ZH'
+}, {
+    zip: 8465,
+    loc: 'Rudolfingen',
+    canton: 'ZH'
+}, {
+    zip: 8465,
+    loc: 'Wildensbuch',
+    canton: 'ZH'
+}, {
+    zip: 8466,
+    loc: 'Tr\xFCllikon',
+    canton: 'ZH'
+}, {
+    zip: 8467,
+    loc: 'Truttikon',
+    canton: 'ZH'
+}, {
+    zip: 8468,
+    loc: 'Waltalingen',
+    canton: 'ZH'
+}, {
+    zip: 8468,
+    loc: 'Guntalingen',
+    canton: 'ZH'
+}, {
+    zip: 8471,
+    loc: 'Rutschwil (D\xE4gerlen)',
+    canton: 'ZH'
+}, {
+    zip: 8471,
+    loc: 'D\xE4gerlen',
+    canton: 'ZH'
+}, {
+    zip: 8471,
+    loc: 'Oberwil (D\xE4gerlen)',
+    canton: 'ZH'
+}, {
+    zip: 8471,
+    loc: 'Berg (D\xE4gerlen)',
+    canton: 'ZH'
+}, {
+    zip: 8471,
+    loc: 'B\xE4nk (D\xE4gerlen)',
+    canton: 'ZH'
+}, {
+    zip: 8472,
+    loc: 'Seuzach',
+    canton: 'ZH'
+}, {
+    zip: 8474,
+    loc: 'Dinhard',
+    canton: 'ZH'
+}, {
+    zip: 8475,
+    loc: 'Ossingen',
+    canton: 'ZH'
+}, {
+    zip: 8476,
+    loc: 'Unterstammheim',
+    canton: 'ZH'
+}, {
+    zip: 8477,
+    loc: 'Oberstammheim',
+    canton: 'ZH'
+}, {
+    zip: 8478,
+    loc: 'Thalheim an der Thur',
+    canton: 'ZH'
+}, {
+    zip: 8479,
+    loc: 'Altikon',
+    canton: 'ZH'
+}, {
+    zip: 8482,
+    loc: 'Sennhof (Winterthur)',
+    canton: 'ZH'
+}, {
+    zip: 8483,
+    loc: 'Kollbrunn',
+    canton: 'ZH'
+}, {
+    zip: 8484,
+    loc: 'Neschwil',
+    canton: 'ZH'
+}, {
+    zip: 8484,
+    loc: 'Theilingen',
+    canton: 'ZH'
+}, {
+    zip: 8484,
+    loc: 'Weisslingen',
+    canton: 'ZH'
+}, {
+    zip: 8486,
+    loc: 'Rikon im T\xF6sstal',
+    canton: 'ZH'
+}, {
+    zip: 8487,
+    loc: 'R\xE4mism\xFChle',
+    canton: 'ZH'
+}, {
+    zip: 8487,
+    loc: 'Zell ZH',
+    canton: 'ZH'
+}, {
+    zip: 8488,
+    loc: 'Turbenthal',
+    canton: 'ZH'
+}, {
+    zip: 8489,
+    loc: 'Wildberg',
+    canton: 'ZH'
+}, {
+    zip: 8492,
+    loc: 'Wila',
+    canton: 'ZH'
+}, {
+    zip: 8493,
+    loc: 'Saland',
+    canton: 'ZH'
+}, {
+    zip: 8494,
+    loc: 'Bauma',
+    canton: 'ZH'
+}, {
+    zip: 8495,
+    loc: 'Schmidr\xFCti',
+    canton: 'ZH'
+}, {
+    zip: 8496,
+    loc: 'Steg im T\xF6sstal',
+    canton: 'ZH'
+}, {
+    zip: 8497,
+    loc: 'Fischenthal',
+    canton: 'ZH'
+}, {
+    zip: 8498,
+    loc: 'Gibswil-Ried',
+    canton: 'ZH'
+}, {
+    zip: 8499,
+    loc: 'Sternenberg',
+    canton: 'ZH'
+}, {
+    zip: 8500,
+    loc: 'Frauenfeld',
+    canton: 'TG'
+}, {
+    zip: 8500,
+    loc: 'Gerlikon',
+    canton: 'TG'
+}, {
+    zip: 8505,
+    loc: 'Dettighofen',
+    canton: 'TG'
+}, {
+    zip: 8505,
+    loc: 'Pfyn',
+    canton: 'TG'
+}, {
+    zip: 8506,
+    loc: 'Lanzenneunforn',
+    canton: 'TG'
+}, {
+    zip: 8507,
+    loc: 'H\xF6rhausen',
+    canton: 'TG'
+}, {
+    zip: 8508,
+    loc: 'Homburg',
+    canton: 'TG'
+}, {
+    zip: 8512,
+    loc: 'Lustdorf',
+    canton: 'TG'
+}, {
+    zip: 8512,
+    loc: 'Wetzikon TG',
+    canton: 'TG'
+}, {
+    zip: 8512,
+    loc: 'Thundorf',
+    canton: 'TG'
+}, {
+    zip: 8514,
+    loc: 'Amlikon-Bissegg',
+    canton: 'TG'
+}, {
+    zip: 8522,
+    loc: 'H\xE4uslenen',
+    canton: 'TG'
+}, {
+    zip: 8522,
+    loc: 'Aawangen',
+    canton: 'TG'
+}, {
+    zip: 8523,
+    loc: 'Hagenbuch ZH',
+    canton: 'ZH'
+}, {
+    zip: 8524,
+    loc: 'Buch b. Frauenfeld',
+    canton: 'TG'
+}, {
+    zip: 8524,
+    loc: 'Uesslingen',
+    canton: 'TG'
+}, {
+    zip: 8525,
+    loc: 'Niederneunforn',
+    canton: 'TG'
+}, {
+    zip: 8525,
+    loc: 'Wilen b. Neunforn',
+    canton: 'TG'
+}, {
+    zip: 8526,
+    loc: 'Oberneunforn',
+    canton: 'TG'
+}, {
+    zip: 8532,
+    loc: 'Weiningen TG',
+    canton: 'TG'
+}, {
+    zip: 8532,
+    loc: 'Warth',
+    canton: 'TG'
+}, {
+    zip: 8535,
+    loc: 'Herdern',
+    canton: 'TG'
+}, {
+    zip: 8536,
+    loc: 'H\xFCttwilen',
+    canton: 'TG'
+}, {
+    zip: 8537,
+    loc: 'Nussbaumen TG',
+    canton: 'TG'
+}, {
+    zip: 8537,
+    loc: 'Uerschhausen',
+    canton: 'TG'
+}, {
+    zip: 8542,
+    loc: 'Wiesendangen',
+    canton: 'ZH'
+}, {
+    zip: 8543,
+    loc: 'Bertschikon',
+    canton: 'ZH'
+}, {
+    zip: 8543,
+    loc: 'Gundetswil',
+    canton: 'ZH'
+}, {
+    zip: 8543,
+    loc: 'Kefikon ZH',
+    canton: 'ZH'
+}, {
+    zip: 8544,
+    loc: 'Attikon',
+    canton: 'ZH'
+}, {
+    zip: 8545,
+    loc: 'Rickenbach ZH',
+    canton: 'ZH'
+}, {
+    zip: 8545,
+    loc: 'Rickenbach Sulz',
+    canton: 'ZH'
+}, {
+    zip: 8546,
+    loc: 'Kefikon TG',
+    canton: 'TG'
+}, {
+    zip: 8546,
+    loc: 'Islikon',
+    canton: 'TG'
+}, {
+    zip: 8546,
+    loc: 'Menzengr\xFCt',
+    canton: 'ZH'
+}, {
+    zip: 8547,
+    loc: 'Gachnang',
+    canton: 'TG'
+}, {
+    zip: 8548,
+    loc: 'Ellikon an der Thur',
+    canton: 'ZH'
+}, {
+    zip: 8552,
+    loc: 'Felben-Wellhausen',
+    canton: 'TG'
+}, {
+    zip: 8553,
+    loc: 'Eschikofen',
+    canton: 'TG'
+}, {
+    zip: 8553,
+    loc: 'Harenwilen',
+    canton: 'TG'
+}, {
+    zip: 8553,
+    loc: 'Mettendorf TG',
+    canton: 'TG'
+}, {
+    zip: 8553,
+    loc: 'H\xFCttlingen',
+    canton: 'TG'
+}, {
+    zip: 8554,
+    loc: 'M\xFCllheim-Wigoltingen',
+    canton: 'TG'
+}, {
+    zip: 8554,
+    loc: 'Bonau',
+    canton: 'TG'
+}, {
+    zip: 8555,
+    loc: 'M\xFCllheim Dorf',
+    canton: 'TG'
+}, {
+    zip: 8556,
+    loc: 'Engwang',
+    canton: 'TG'
+}, {
+    zip: 8556,
+    loc: 'Illhart',
+    canton: 'TG'
+}, {
+    zip: 8556,
+    loc: 'Lamperswil TG',
+    canton: 'TG'
+}, {
+    zip: 8556,
+    loc: 'Wigoltingen',
+    canton: 'TG'
+}, {
+    zip: 8558,
+    loc: 'Raperswilen',
+    canton: 'TG'
+}, {
+    zip: 8560,
+    loc: 'M\xE4rstetten',
+    canton: 'TG'
+}, {
+    zip: 8561,
+    loc: 'Ottoberg',
+    canton: 'TG'
+}, {
+    zip: 8564,
+    loc: 'Lipperswil',
+    canton: 'TG'
+}, {
+    zip: 8564,
+    loc: 'Engwilen',
+    canton: 'TG'
+}, {
+    zip: 8564,
+    loc: 'W\xE4ldi',
+    canton: 'TG'
+}, {
+    zip: 8564,
+    loc: 'Sonterswil',
+    canton: 'TG'
+}, {
+    zip: 8564,
+    loc: 'Wagerswil',
+    canton: 'TG'
+}, {
+    zip: 8564,
+    loc: 'Hattenhausen',
+    canton: 'TG'
+}, {
+    zip: 8564,
+    loc: 'Gunterswilen',
+    canton: 'TG'
+}, {
+    zip: 8564,
+    loc: 'Hefenhausen',
+    canton: 'TG'
+}, {
+    zip: 8565,
+    loc: 'Hugelshofen',
+    canton: 'TG'
+}, {
+    zip: 8566,
+    loc: 'Dotnacht',
+    canton: 'TG'
+}, {
+    zip: 8566,
+    loc: 'Neuwilen',
+    canton: 'TG'
+}, {
+    zip: 8566,
+    loc: 'Ellighausen',
+    canton: 'TG'
+}, {
+    zip: 8566,
+    loc: 'Lippoldswilen',
+    canton: 'TG'
+}, {
+    zip: 8570,
+    loc: 'Weinfelden',
+    canton: 'TG'
+}, {
+    zip: 8572,
+    loc: 'Andhausen',
+    canton: 'TG'
+}, {
+    zip: 8572,
+    loc: 'Graltshausen',
+    canton: 'TG'
+}, {
+    zip: 8572,
+    loc: 'Guntershausen b. Berg',
+    canton: 'TG'
+}, {
+    zip: 8572,
+    loc: 'Berg TG',
+    canton: 'TG'
+}, {
+    zip: 8573,
+    loc: 'Alterswilen',
+    canton: 'TG'
+}, {
+    zip: 8573,
+    loc: 'Altishausen',
+    canton: 'TG'
+}, {
+    zip: 8573,
+    loc: 'Siegershausen',
+    canton: 'TG'
+}, {
+    zip: 8574,
+    loc: 'Illighausen',
+    canton: 'TG'
+}, {
+    zip: 8574,
+    loc: 'Lengwil-Oberhofen',
+    canton: 'TG'
+}, {
+    zip: 8575,
+    loc: 'Istighofen',
+    canton: 'TG'
+}, {
+    zip: 8575,
+    loc: 'B\xFCrglen TG',
+    canton: 'TG'
+}, {
+    zip: 8576,
+    loc: 'Mauren TG',
+    canton: 'TG'
+}, {
+    zip: 8577,
+    loc: 'Toos',
+    canton: 'TG'
+}, {
+    zip: 8577,
+    loc: 'Sch\xF6nholzerswilen',
+    canton: 'TG'
+}, {
+    zip: 8580,
+    loc: 'Sommeri',
+    canton: 'TG'
+}, {
+    zip: 8580,
+    loc: 'Hagenwil b. Amriswil',
+    canton: 'TG'
+}, {
+    zip: 8580,
+    loc: 'Hefenhofen',
+    canton: 'TG'
+}, {
+    zip: 8580,
+    loc: 'Amriswil',
+    canton: 'TG'
+}, {
+    zip: 8581,
+    loc: 'Schocherswil',
+    canton: 'TG'
+}, {
+    zip: 8582,
+    loc: 'Dozwil',
+    canton: 'TG'
+}, {
+    zip: 8583,
+    loc: 'G\xF6tighofen',
+    canton: 'TG'
+}, {
+    zip: 8583,
+    loc: 'Donzhausen',
+    canton: 'TG'
+}, {
+    zip: 8583,
+    loc: 'Sulgen',
+    canton: 'TG'
+}, {
+    zip: 8584,
+    loc: 'Leimbach TG',
+    canton: 'TG'
+}, {
+    zip: 8584,
+    loc: 'Opfershofen TG',
+    canton: 'TG'
+}, {
+    zip: 8585,
+    loc: 'Happerswil',
+    canton: 'TG'
+}, {
+    zip: 8585,
+    loc: 'Eggethof',
+    canton: 'TG'
+}, {
+    zip: 8585,
+    loc: 'Zuben',
+    canton: 'TG'
+}, {
+    zip: 8585,
+    loc: 'Sch\xF6nenbaumgarten',
+    canton: 'TG'
+}, {
+    zip: 8585,
+    loc: 'Herrenhof',
+    canton: 'TG'
+}, {
+    zip: 8585,
+    loc: 'Birwinken',
+    canton: 'TG'
+}, {
+    zip: 8585,
+    loc: 'Klarsreuti',
+    canton: 'TG'
+}, {
+    zip: 8585,
+    loc: 'Mattwil',
+    canton: 'TG'
+}, {
+    zip: 8585,
+    loc: 'Langrickenbach',
+    canton: 'TG'
+}, {
+    zip: 8586,
+    loc: 'Andwil TG',
+    canton: 'TG'
+}, {
+    zip: 8586,
+    loc: 'K\xFCmmertshausen',
+    canton: 'TG'
+}, {
+    zip: 8586,
+    loc: 'Riedt b. Erlen',
+    canton: 'TG'
+}, {
+    zip: 8586,
+    loc: 'Buchackern',
+    canton: 'TG'
+}, {
+    zip: 8586,
+    loc: 'Engishofen',
+    canton: 'TG'
+}, {
+    zip: 8586,
+    loc: 'Ennetaach',
+    canton: 'TG'
+}, {
+    zip: 8586,
+    loc: 'Buch b. K\xFCmmertshausen',
+    canton: 'TG'
+}, {
+    zip: 8586,
+    loc: 'Erlen',
+    canton: 'TG'
+}, {
+    zip: 8587,
+    loc: 'Oberaach',
+    canton: 'TG'
+}, {
+    zip: 8588,
+    loc: 'Zihlschlacht',
+    canton: 'TG'
+}, {
+    zip: 8589,
+    loc: 'Sitterdorf',
+    canton: 'TG'
+}, {
+    zip: 8590,
+    loc: 'Romanshorn',
+    canton: 'TG'
+}, {
+    zip: 8592,
+    loc: 'Uttwil',
+    canton: 'TG'
+}, {
+    zip: 8593,
+    loc: 'Kesswil',
+    canton: 'TG'
+}, {
+    zip: 8594,
+    loc: 'G\xFCttingen',
+    canton: 'TG'
+}, {
+    zip: 8595,
+    loc: 'Altnau',
+    canton: 'TG'
+}, {
+    zip: 8596,
+    loc: 'M\xFCnsterlingen',
+    canton: 'TG'
+}, {
+    zip: 8596,
+    loc: 'Scherzingen',
+    canton: 'TG'
+}, {
+    zip: 8597,
+    loc: 'Landschlacht',
+    canton: 'TG'
+}, {
+    zip: 8598,
+    loc: 'Bottighofen',
+    canton: 'TG'
+}, {
+    zip: 8599,
+    loc: 'Salmsach',
+    canton: 'TG'
+}, {
+    zip: 8600,
+    loc: 'D\xFCbendorf',
+    canton: 'ZH'
+}, {
+    zip: 8602,
+    loc: 'Wangen b. D\xFCbendorf',
+    canton: 'ZH'
+}, {
+    zip: 8603,
+    loc: 'Schwerzenbach',
+    canton: 'ZH'
+}, {
+    zip: 8604,
+    loc: 'Volketswil',
+    canton: 'ZH'
+}, {
+    zip: 8605,
+    loc: 'Gutenswil',
+    canton: 'ZH'
+}, {
+    zip: 8606,
+    loc: 'N\xE4nikon',
+    canton: 'ZH'
+}, {
+    zip: 8606,
+    loc: 'Greifensee',
+    canton: 'ZH'
+}, {
+    zip: 8607,
+    loc: 'Aathal-Seegr\xE4ben',
+    canton: 'ZH'
+}, {
+    zip: 8608,
+    loc: 'Bubikon',
+    canton: 'ZH'
+}, {
+    zip: 8610,
+    loc: 'Uster',
+    canton: 'ZH'
+}, {
+    zip: 8614,
+    loc: 'Sulzbach',
+    canton: 'ZH'
+}, {
+    zip: 8614,
+    loc: 'Bertschikon (Gossau ZH)',
+    canton: 'ZH'
+}, {
+    zip: 8615,
+    loc: 'Wermatswil',
+    canton: 'ZH'
+}, {
+    zip: 8615,
+    loc: 'Freudwil',
+    canton: 'ZH'
+}, {
+    zip: 8616,
+    loc: 'Riedikon',
+    canton: 'ZH'
+}, {
+    zip: 8617,
+    loc: 'M\xF6nchaltorf',
+    canton: 'ZH'
+}, {
+    zip: 8618,
+    loc: 'Oetwil am See',
+    canton: 'ZH'
+}, {
+    zip: 8620,
+    loc: 'Wetzikon ZH',
+    canton: 'ZH'
+}, {
+    zip: 8623,
+    loc: 'Wetzikon ZH',
+    canton: 'ZH'
+}, {
+    zip: 8624,
+    loc: 'Gr\xFCt (Gossau ZH)',
+    canton: 'ZH'
+}, {
+    zip: 8625,
+    loc: 'Gossau ZH',
+    canton: 'ZH'
+}, {
+    zip: 8626,
+    loc: 'Ottikon (Gossau ZH)',
+    canton: 'ZH'
+}, {
+    zip: 8627,
+    loc: 'Gr\xFCningen',
+    canton: 'ZH'
+}, {
+    zip: 8630,
+    loc: 'R\xFCti ZH',
+    canton: 'ZH'
+}, {
+    zip: 8632,
+    loc: 'Tann',
+    canton: 'ZH'
+}, {
+    zip: 8633,
+    loc: 'Wolfhausen',
+    canton: 'ZH'
+}, {
+    zip: 8634,
+    loc: 'Hombrechtikon',
+    canton: 'ZH'
+}, {
+    zip: 8635,
+    loc: 'D\xFCrnten',
+    canton: 'ZH'
+}, {
+    zip: 8636,
+    loc: 'Wald ZH',
+    canton: 'ZH'
+}, {
+    zip: 8637,
+    loc: 'Laupen ZH',
+    canton: 'ZH'
+}, {
+    zip: 8638,
+    loc: 'Goldingen',
+    canton: 'SG'
+}, {
+    zip: 8639,
+    loc: 'Faltigberg',
+    canton: 'ZH'
+}, {
+    zip: 8640,
+    loc: 'Rapperswil SG',
+    canton: 'SG'
+}, {
+    zip: 8640,
+    loc: 'Hurden',
+    canton: 'SZ'
+}, {
+    zip: 8645,
+    loc: 'Jona',
+    canton: 'SG'
+}, {
+    zip: 8646,
+    loc: 'Wagen',
+    canton: 'SG'
+}, {
+    zip: 8700,
+    loc: 'K\xFCsnacht ZH',
+    canton: 'ZH'
+}, {
+    zip: 8702,
+    loc: 'Zollikon',
+    canton: 'ZH'
+}, {
+    zip: 8703,
+    loc: 'Erlenbach ZH',
+    canton: 'ZH'
+}, {
+    zip: 8704,
+    loc: 'Herrliberg',
+    canton: 'ZH'
+}, {
+    zip: 8706,
+    loc: 'Meilen',
+    canton: 'ZH'
+}, {
+    zip: 8707,
+    loc: 'Uetikon am See',
+    canton: 'ZH'
+}, {
+    zip: 8708,
+    loc: 'M\xE4nnedorf',
+    canton: 'ZH'
+}, {
+    zip: 8712,
+    loc: 'St\xE4fa',
+    canton: 'ZH'
+}, {
+    zip: 8713,
+    loc: 'Uerikon',
+    canton: 'ZH'
+}, {
+    zip: 8714,
+    loc: 'Feldbach',
+    canton: 'ZH'
+}, {
+    zip: 8715,
+    loc: 'Bollingen',
+    canton: 'SG'
+}, {
+    zip: 8716,
+    loc: 'Schmerikon',
+    canton: 'SG'
+}, {
+    zip: 8717,
+    loc: 'Benken SG',
+    canton: 'SG'
+}, {
+    zip: 8718,
+    loc: 'Sch\xE4nis',
+    canton: 'SG'
+}, {
+    zip: 8722,
+    loc: 'Kaltbrunn',
+    canton: 'SG'
+}, {
+    zip: 8723,
+    loc: 'Rufi',
+    canton: 'SG'
+}, {
+    zip: 8725,
+    loc: 'Gebertingen',
+    canton: 'SG'
+}, {
+    zip: 8725,
+    loc: 'Ernetschwil',
+    canton: 'SG'
+}, {
+    zip: 8726,
+    loc: 'Ricken SG',
+    canton: 'SG'
+}, {
+    zip: 8727,
+    loc: 'Walde SG',
+    canton: 'SG'
+}, {
+    zip: 8730,
+    loc: 'Uznach',
+    canton: 'SG'
+}, {
+    zip: 8732,
+    loc: 'Neuhaus SG',
+    canton: 'SG'
+}, {
+    zip: 8733,
+    loc: 'Eschenbach SG',
+    canton: 'SG'
+}, {
+    zip: 8734,
+    loc: 'Ermenswil',
+    canton: 'SG'
+}, {
+    zip: 8735,
+    loc: 'R\xFCeterswil',
+    canton: 'SG'
+}, {
+    zip: 8735,
+    loc: 'St. Gallenkappel',
+    canton: 'SG'
+}, {
+    zip: 8737,
+    loc: 'Gommiswald',
+    canton: 'SG'
+}, {
+    zip: 8738,
+    loc: 'Uetliburg SG',
+    canton: 'SG'
+}, {
+    zip: 8739,
+    loc: 'Rieden SG',
+    canton: 'SG'
+}, {
+    zip: 8750,
+    loc: 'Kl\xF6ntal',
+    canton: 'GL'
+}, {
+    zip: 8750,
+    loc: 'Glarus',
+    canton: 'GL'
+}, {
+    zip: 8750,
+    loc: 'Riedern',
+    canton: 'GL'
+}, {
+    zip: 8751,
+    loc: 'Urnerboden',
+    canton: 'UR'
+}, {
+    zip: 8752,
+    loc: 'N\xE4fels',
+    canton: 'GL'
+}, {
+    zip: 8753,
+    loc: 'Mollis',
+    canton: 'GL'
+}, {
+    zip: 8754,
+    loc: 'Netstal',
+    canton: 'GL'
+}, {
+    zip: 8755,
+    loc: 'Ennenda',
+    canton: 'GL'
+}, {
+    zip: 8756,
+    loc: 'Mitl\xF6di',
+    canton: 'GL'
+}, {
+    zip: 8757,
+    loc: 'Filzbach',
+    canton: 'GL'
+}, {
+    zip: 8758,
+    loc: 'Obstalden',
+    canton: 'GL'
+}, {
+    zip: 8762,
+    loc: 'Schw\xE4ndi b. Schwanden',
+    canton: 'GL'
+}, {
+    zip: 8762,
+    loc: 'Sool',
+    canton: 'GL'
+}, {
+    zip: 8762,
+    loc: 'Schwanden GL',
+    canton: 'GL'
+}, {
+    zip: 8765,
+    loc: 'Engi',
+    canton: 'GL'
+}, {
+    zip: 8766,
+    loc: 'Matt',
+    canton: 'GL'
+}, {
+    zip: 8767,
+    loc: 'Elm',
+    canton: 'GL'
+}, {
+    zip: 8772,
+    loc: 'Nidfurn',
+    canton: 'GL'
+}, {
+    zip: 8773,
+    loc: 'Haslen GL',
+    canton: 'GL'
+}, {
+    zip: 8774,
+    loc: 'Leuggelbach',
+    canton: 'GL'
+}, {
+    zip: 8775,
+    loc: 'Luchsingen',
+    canton: 'GL'
+}, {
+    zip: 8775,
+    loc: 'H\xE4tzingen',
+    canton: 'GL'
+}, {
+    zip: 8777,
+    loc: 'Diesbach GL',
+    canton: 'GL'
+}, {
+    zip: 8777,
+    loc: 'Betschwanden',
+    canton: 'GL'
+}, {
+    zip: 8782,
+    loc: 'R\xFCti GL',
+    canton: 'GL'
+}, {
+    zip: 8783,
+    loc: 'Linthal',
+    canton: 'GL'
+}, {
+    zip: 8784,
+    loc: 'Braunwald',
+    canton: 'GL'
+}, {
+    zip: 8800,
+    loc: 'Thalwil',
+    canton: 'ZH'
+}, {
+    zip: 8802,
+    loc: 'Kilchberg ZH',
+    canton: 'ZH'
+}, {
+    zip: 8803,
+    loc: 'R\xFCschlikon',
+    canton: 'ZH'
+}, {
+    zip: 8804,
+    loc: 'Au ZH',
+    canton: 'ZH'
+}, {
+    zip: 8805,
+    loc: 'Richterswil',
+    canton: 'ZH'
+}, {
+    zip: 8806,
+    loc: 'B\xE4ch SZ',
+    canton: 'SZ'
+}, {
+    zip: 8807,
+    loc: 'Freienbach',
+    canton: 'SZ'
+}, {
+    zip: 8808,
+    loc: 'Pf\xE4ffikon SZ',
+    canton: 'SZ'
+}, {
+    zip: 8810,
+    loc: 'Horgen',
+    canton: 'ZH'
+}, {
+    zip: 8815,
+    loc: 'Horgenberg',
+    canton: 'ZH'
+}, {
+    zip: 8816,
+    loc: 'Hirzel',
+    canton: 'ZH'
+}, {
+    zip: 8820,
+    loc: 'W\xE4denswil',
+    canton: 'ZH'
+}, {
+    zip: 8824,
+    loc: 'Sch\xF6nenberg ZH',
+    canton: 'ZH'
+}, {
+    zip: 8825,
+    loc: 'H\xFCtten',
+    canton: 'ZH'
+}, {
+    zip: 8832,
+    loc: 'Wilen b. Wollerau',
+    canton: 'SZ'
+}, {
+    zip: 8832,
+    loc: 'Wollerau',
+    canton: 'SZ'
+}, {
+    zip: 8833,
+    loc: 'Samstagern',
+    canton: 'ZH'
+}, {
+    zip: 8834,
+    loc: 'Schindellegi',
+    canton: 'SZ'
+}, {
+    zip: 8835,
+    loc: 'Feusisberg',
+    canton: 'SZ'
+}, {
+    zip: 8836,
+    loc: 'Bennau',
+    canton: 'SZ'
+}, {
+    zip: 8840,
+    loc: 'Trachslau',
+    canton: 'SZ'
+}, {
+    zip: 8840,
+    loc: 'Einsiedeln',
+    canton: 'SZ'
+}, {
+    zip: 8841,
+    loc: 'Gross',
+    canton: 'SZ'
+}, {
+    zip: 8842,
+    loc: 'Unteriberg',
+    canton: 'SZ'
+}, {
+    zip: 8843,
+    loc: 'Oberiberg',
+    canton: 'SZ'
+}, {
+    zip: 8844,
+    loc: 'Euthal',
+    canton: 'SZ'
+}, {
+    zip: 8845,
+    loc: 'Studen SZ',
+    canton: 'SZ'
+}, {
+    zip: 8846,
+    loc: 'Willerzell',
+    canton: 'SZ'
+}, {
+    zip: 8847,
+    loc: 'Egg SZ',
+    canton: 'SZ'
+}, {
+    zip: 8849,
+    loc: 'Alpthal',
+    canton: 'SZ'
+}, {
+    zip: 8852,
+    loc: 'Altendorf',
+    canton: 'SZ'
+}, {
+    zip: 8853,
+    loc: 'Lachen SZ',
+    canton: 'SZ'
+}, {
+    zip: 8854,
+    loc: 'Siebnen',
+    canton: 'SZ'
+}, {
+    zip: 8854,
+    loc: 'Galgenen',
+    canton: 'SZ'
+}, {
+    zip: 8855,
+    loc: 'Wangen SZ',
+    canton: 'SZ'
+}, {
+    zip: 8856,
+    loc: 'Tuggen',
+    canton: 'SZ'
+}, {
+    zip: 8857,
+    loc: 'Vorderthal',
+    canton: 'SZ'
+}, {
+    zip: 8858,
+    loc: 'Innerthal',
+    canton: 'SZ'
+}, {
+    zip: 8862,
+    loc: 'Sch\xFCbelbach',
+    canton: 'SZ'
+}, {
+    zip: 8863,
+    loc: 'Buttikon SZ',
+    canton: 'SZ'
+}, {
+    zip: 8864,
+    loc: 'Reichenburg',
+    canton: 'SZ'
+}, {
+    zip: 8865,
+    loc: 'Bilten',
+    canton: 'GL'
+}, {
+    zip: 8866,
+    loc: 'Ziegelbr\xFCcke',
+    canton: 'GL'
+}, {
+    zip: 8867,
+    loc: 'Niederurnen',
+    canton: 'GL'
+}, {
+    zip: 8868,
+    loc: 'Oberurnen',
+    canton: 'GL'
+}, {
+    zip: 8872,
+    loc: 'Weesen',
+    canton: 'SG'
+}, {
+    zip: 8873,
+    loc: 'Amden',
+    canton: 'SG'
+}, {
+    zip: 8874,
+    loc: 'M\xFChlehorn',
+    canton: 'GL'
+}, {
+    zip: 8877,
+    loc: 'Murg',
+    canton: 'SG'
+}, {
+    zip: 8878,
+    loc: 'Quinten',
+    canton: 'SG'
+}, {
+    zip: 8880,
+    loc: 'Walenstadt',
+    canton: 'SG'
+}, {
+    zip: 8881,
+    loc: 'Knoblisb\xFChl',
+    canton: 'SG'
+}, {
+    zip: 8881,
+    loc: 'Tscherlach',
+    canton: 'SG'
+}, {
+    zip: 8881,
+    loc: 'Walenstadtberg',
+    canton: 'SG'
+}, {
+    zip: 8882,
+    loc: 'Unterterzen',
+    canton: 'SG'
+}, {
+    zip: 8883,
+    loc: 'Quarten',
+    canton: 'SG'
+}, {
+    zip: 8884,
+    loc: 'Oberterzen',
+    canton: 'SG'
+}, {
+    zip: 8885,
+    loc: 'Mols',
+    canton: 'SG'
+}, {
+    zip: 8886,
+    loc: 'M\xE4dris-Vermol',
+    canton: 'SG'
+}, {
+    zip: 8887,
+    loc: 'Mels',
+    canton: 'SG'
+}, {
+    zip: 8888,
+    loc: 'Heiligkreuz (Mels)',
+    canton: 'SG'
+}, {
+    zip: 8889,
+    loc: 'Plons',
+    canton: 'SG'
+}, {
+    zip: 8890,
+    loc: 'Flums',
+    canton: 'SG'
+}, {
+    zip: 8892,
+    loc: 'Berschis',
+    canton: 'SG'
+}, {
+    zip: 8893,
+    loc: 'Flums Hochwiese',
+    canton: 'SG'
+}, {
+    zip: 8894,
+    loc: 'Flumserberg Saxli',
+    canton: 'SG'
+}, {
+    zip: 8895,
+    loc: 'Flumserberg Portels',
+    canton: 'SG'
+}, {
+    zip: 8896,
+    loc: 'Flumserberg Bergheim',
+    canton: 'SG'
+}, {
+    zip: 8897,
+    loc: 'Flumserberg Tannenheim',
+    canton: 'SG'
+}, {
+    zip: 8898,
+    loc: 'Flumserberg Tannenbodenalp',
+    canton: 'SG'
+}, {
+    zip: 8902,
+    loc: 'Urdorf',
+    canton: 'ZH'
+}, {
+    zip: 8903,
+    loc: 'Birmensdorf ZH',
+    canton: 'ZH'
+}, {
+    zip: 8904,
+    loc: 'Aesch ZH',
+    canton: 'ZH'
+}, {
+    zip: 8905,
+    loc: 'Islisberg',
+    canton: 'AG'
+}, {
+    zip: 8905,
+    loc: 'Arni AG',
+    canton: 'AG'
+}, {
+    zip: 8906,
+    loc: 'Bonstetten',
+    canton: 'ZH'
+}, {
+    zip: 8907,
+    loc: 'Wettswil',
+    canton: 'ZH'
+}, {
+    zip: 8908,
+    loc: 'Hedingen',
+    canton: 'ZH'
+}, {
+    zip: 8909,
+    loc: 'Zwillikon',
+    canton: 'ZH'
+}, {
+    zip: 8910,
+    loc: 'Affoltern am Albis',
+    canton: 'ZH'
+}, {
+    zip: 8911,
+    loc: 'Rifferswil',
+    canton: 'ZH'
+}, {
+    zip: 8912,
+    loc: 'Obfelden',
+    canton: 'ZH'
+}, {
+    zip: 8913,
+    loc: 'Ottenbach',
+    canton: 'ZH'
+}, {
+    zip: 8914,
+    loc: 'Aeugstertal',
+    canton: 'ZH'
+}, {
+    zip: 8914,
+    loc: 'Aeugst am Albis',
+    canton: 'ZH'
+}, {
+    zip: 8915,
+    loc: 'Hausen am Albis',
+    canton: 'ZH'
+}, {
+    zip: 8916,
+    loc: 'Jonen',
+    canton: 'AG'
+}, {
+    zip: 8917,
+    loc: 'Oberlunkhofen',
+    canton: 'AG'
+}, {
+    zip: 8918,
+    loc: 'Unterlunkhofen',
+    canton: 'AG'
+}, {
+    zip: 8919,
+    loc: 'Rottenschwil',
+    canton: 'AG'
+}, {
+    zip: 8925,
+    loc: 'Ebertswil',
+    canton: 'ZH'
+}, {
+    zip: 8926,
+    loc: 'Hauptikon',
+    canton: 'ZH'
+}, {
+    zip: 8926,
+    loc: 'Uerzlikon',
+    canton: 'ZH'
+}, {
+    zip: 8926,
+    loc: 'Kappel am Albis',
+    canton: 'ZH'
+}, {
+    zip: 8932,
+    loc: 'Mettmenstetten',
+    canton: 'ZH'
+}, {
+    zip: 8933,
+    loc: 'Maschwanden',
+    canton: 'ZH'
+}, {
+    zip: 8934,
+    loc: 'Knonau',
+    canton: 'ZH'
+}, {
+    zip: 8942,
+    loc: 'Oberrieden',
+    canton: 'ZH'
+}, {
+    zip: 8951,
+    loc: 'Fahrweid',
+    canton: 'ZH'
+}, {
+    zip: 8952,
+    loc: 'Schlieren',
+    canton: 'ZH'
+}, {
+    zip: 8953,
+    loc: 'Dietikon',
+    canton: 'ZH'
+}, {
+    zip: 8954,
+    loc: 'Geroldswil',
+    canton: 'ZH'
+}, {
+    zip: 8955,
+    loc: 'Oetwil an der Limmat',
+    canton: 'ZH'
+}, {
+    zip: 8956,
+    loc: 'Killwangen',
+    canton: 'AG'
+}, {
+    zip: 8957,
+    loc: 'Spreitenbach',
+    canton: 'AG'
+}, {
+    zip: 8962,
+    loc: 'Bergdietikon',
+    canton: 'AG'
+}, {
+    zip: 8964,
+    loc: 'Rudolfstetten',
+    canton: 'AG'
+}, {
+    zip: 8965,
+    loc: 'Berikon',
+    canton: 'AG'
+}, {
+    zip: 8966,
+    loc: 'Oberwil-Lieli',
+    canton: 'AG'
+}, {
+    zip: 8967,
+    loc: 'Widen',
+    canton: 'AG'
+}, {
+    zip: 9000,
+    loc: 'St. Gallen',
+    canton: 'SG'
+}, {
+    zip: 9007,
+    loc: 'St. Gallen',
+    canton: 'SG'
+}, {
+    zip: 9008,
+    loc: 'St. Gallen',
+    canton: 'SG'
+}, {
+    zip: 9010,
+    loc: 'St. Gallen',
+    canton: 'SG'
+}, {
+    zip: 9011,
+    loc: 'St. Gallen',
+    canton: 'SG'
+}, {
+    zip: 9012,
+    loc: 'St. Gallen',
+    canton: 'SG'
+}, {
+    zip: 9014,
+    loc: 'St. Gallen',
+    canton: 'SG'
+}, {
+    zip: 9015,
+    loc: 'St. Gallen',
+    canton: 'SG'
+}, {
+    zip: 9016,
+    loc: 'St. Gallen',
+    canton: 'SG'
+}, {
+    zip: 9030,
+    loc: 'Abtwil SG',
+    canton: 'SG'
+}, {
+    zip: 9032,
+    loc: 'Engelburg',
+    canton: 'SG'
+}, {
+    zip: 9033,
+    loc: 'Untereggen',
+    canton: 'SG'
+}, {
+    zip: 9034,
+    loc: 'Eggersriet',
+    canton: 'SG'
+}, {
+    zip: 9035,
+    loc: 'Grub AR',
+    canton: 'AR'
+}, {
+    zip: 9036,
+    loc: 'Grub SG',
+    canton: 'SG'
+}, {
+    zip: 9037,
+    loc: 'Speicherschwendi',
+    canton: 'AR'
+}, {
+    zip: 9038,
+    loc: 'Rehetobel',
+    canton: 'AR'
+}, {
+    zip: 9042,
+    loc: 'Speicher',
+    canton: 'AR'
+}, {
+    zip: 9043,
+    loc: 'Trogen',
+    canton: 'AR'
+}, {
+    zip: 9044,
+    loc: 'Wald AR',
+    canton: 'AR'
+}, {
+    zip: 9050,
+    loc: 'Appenzell Eggerstanden',
+    canton: 'AI'
+}, {
+    zip: 9050,
+    loc: 'Appenzell Enggenh\xFCtten',
+    canton: 'AI'
+}, {
+    zip: 9050,
+    loc: 'Appenzell Meistersr\xFCte',
+    canton: 'AI'
+}, {
+    zip: 9050,
+    loc: 'Appenzell Steinegg',
+    canton: 'AI'
+}, {
+    zip: 9050,
+    loc: 'Appenzell Schlatt',
+    canton: 'AI'
+}, {
+    zip: 9050,
+    loc: 'Appenzell',
+    canton: 'AI'
+}, {
+    zip: 9052,
+    loc: 'Niederteufen',
+    canton: 'AR'
+}, {
+    zip: 9053,
+    loc: 'Teufen AR',
+    canton: 'AR'
+}, {
+    zip: 9054,
+    loc: 'Haslen AI',
+    canton: 'AI'
+}, {
+    zip: 9055,
+    loc: 'B\xFChler',
+    canton: 'AR'
+}, {
+    zip: 9056,
+    loc: 'Gais',
+    canton: 'AR'
+}, {
+    zip: 9057,
+    loc: 'Schwende',
+    canton: 'AI'
+}, {
+    zip: 9057,
+    loc: 'Wasserauen',
+    canton: 'AI'
+}, {
+    zip: 9057,
+    loc: 'Weissbad',
+    canton: 'AI'
+}, {
+    zip: 9058,
+    loc: 'Br\xFClisau',
+    canton: 'AI'
+}, {
+    zip: 9062,
+    loc: 'Lustm\xFChle',
+    canton: 'AR'
+}, {
+    zip: 9063,
+    loc: 'Stein AR',
+    canton: 'AR'
+}, {
+    zip: 9064,
+    loc: 'Hundwil',
+    canton: 'AR'
+}, {
+    zip: 9100,
+    loc: 'Herisau',
+    canton: 'AR'
+}, {
+    zip: 9103,
+    loc: 'Schwellbrunn',
+    canton: 'AR'
+}, {
+    zip: 9104,
+    loc: 'Waldstatt',
+    canton: 'AR'
+}, {
+    zip: 9105,
+    loc: 'Sch\xF6nengrund',
+    canton: 'AR'
+}, {
+    zip: 9107,
+    loc: 'Urn\xE4sch',
+    canton: 'AR'
+}, {
+    zip: 9108,
+    loc: 'Gontenbad',
+    canton: 'AI'
+}, {
+    zip: 9108,
+    loc: 'Jakobsbad',
+    canton: 'AI'
+}, {
+    zip: 9108,
+    loc: 'Gonten',
+    canton: 'AI'
+}, {
+    zip: 9112,
+    loc: 'Schachen b. Herisau',
+    canton: 'AR'
+}, {
+    zip: 9113,
+    loc: 'Degersheim',
+    canton: 'SG'
+}, {
+    zip: 9114,
+    loc: 'Hoffeld',
+    canton: 'SG'
+}, {
+    zip: 9115,
+    loc: 'Dicken',
+    canton: 'SG'
+}, {
+    zip: 9116,
+    loc: 'Wolfertswil',
+    canton: 'SG'
+}, {
+    zip: 9122,
+    loc: 'Ebersol',
+    canton: 'SG'
+}, {
+    zip: 9122,
+    loc: 'Mogelsberg',
+    canton: 'SG'
+}, {
+    zip: 9123,
+    loc: 'Nassen',
+    canton: 'SG'
+}, {
+    zip: 9125,
+    loc: 'Brunnadern',
+    canton: 'SG'
+}, {
+    zip: 9126,
+    loc: 'Necker',
+    canton: 'SG'
+}, {
+    zip: 9127,
+    loc: 'St. Peterzell',
+    canton: 'SG'
+}, {
+    zip: 9200,
+    loc: 'Gossau SG',
+    canton: 'SG'
+}, {
+    zip: 9203,
+    loc: 'Niederwil SG',
+    canton: 'SG'
+}, {
+    zip: 9204,
+    loc: 'Andwil SG',
+    canton: 'SG'
+}, {
+    zip: 9205,
+    loc: 'Waldkirch',
+    canton: 'SG'
+}, {
+    zip: 9212,
+    loc: 'Arnegg',
+    canton: 'SG'
+}, {
+    zip: 9213,
+    loc: 'Hauptwil',
+    canton: 'TG'
+}, {
+    zip: 9214,
+    loc: 'Kradolf',
+    canton: 'TG'
+}, {
+    zip: 9215,
+    loc: 'Sch\xF6nenberg an der Thur',
+    canton: 'TG'
+}, {
+    zip: 9215,
+    loc: 'Buhwil',
+    canton: 'TG'
+}, {
+    zip: 9216,
+    loc: 'Heldswil',
+    canton: 'TG'
+}, {
+    zip: 9216,
+    loc: 'Hohentannen',
+    canton: 'TG'
+}, {
+    zip: 9217,
+    loc: 'Neukirch an der Thur',
+    canton: 'TG'
+}, {
+    zip: 9220,
+    loc: 'Bischofszell',
+    canton: 'TG'
+}, {
+    zip: 9223,
+    loc: 'Schweizersholz',
+    canton: 'TG'
+}, {
+    zip: 9223,
+    loc: 'Halden',
+    canton: 'TG'
+}, {
+    zip: 9225,
+    loc: 'Wilen (Gottshaus)',
+    canton: 'TG'
+}, {
+    zip: 9225,
+    loc: 'St. Pelagiberg',
+    canton: 'TG'
+}, {
+    zip: 9230,
+    loc: 'Flawil',
+    canton: 'SG'
+}, {
+    zip: 9231,
+    loc: 'Egg (Flawil)',
+    canton: 'SG'
+}, {
+    zip: 9240,
+    loc: 'Niederglatt SG',
+    canton: 'SG'
+}, {
+    zip: 9240,
+    loc: 'Uzwil',
+    canton: 'SG'
+}, {
+    zip: 9242,
+    loc: 'Oberuzwil',
+    canton: 'SG'
+}, {
+    zip: 9243,
+    loc: 'Jonschwil',
+    canton: 'SG'
+}, {
+    zip: 9244,
+    loc: 'Niederuzwil',
+    canton: 'SG'
+}, {
+    zip: 9245,
+    loc: 'Sonnental',
+    canton: 'SG'
+}, {
+    zip: 9245,
+    loc: 'Oberb\xFCren',
+    canton: 'SG'
+}, {
+    zip: 9246,
+    loc: 'Niederb\xFCren',
+    canton: 'SG'
+}, {
+    zip: 9247,
+    loc: 'Henau',
+    canton: 'SG'
+}, {
+    zip: 9248,
+    loc: 'Bichwil',
+    canton: 'SG'
+}, {
+    zip: 9249,
+    loc: 'Oberstetten',
+    canton: 'SG'
+}, {
+    zip: 9249,
+    loc: 'Niederstetten',
+    canton: 'SG'
+}, {
+    zip: 9249,
+    loc: 'Algetshausen',
+    canton: 'SG'
+}, {
+    zip: 9300,
+    loc: 'Wittenbach',
+    canton: 'SG'
+}, {
+    zip: 9304,
+    loc: 'Bernhardzell',
+    canton: 'SG'
+}, {
+    zip: 9305,
+    loc: 'Berg SG',
+    canton: 'SG'
+}, {
+    zip: 9306,
+    loc: 'Freidorf TG',
+    canton: 'TG'
+}, {
+    zip: 9308,
+    loc: 'L\xF6mmenschwil',
+    canton: 'SG'
+}, {
+    zip: 9312,
+    loc: 'H\xE4ggenschwil',
+    canton: 'SG'
+}, {
+    zip: 9313,
+    loc: 'Muolen',
+    canton: 'SG'
+}, {
+    zip: 9314,
+    loc: 'Steinebrunn',
+    canton: 'TG'
+}, {
+    zip: 9315,
+    loc: 'Winden',
+    canton: 'TG'
+}, {
+    zip: 9315,
+    loc: 'Neukirch (Egnach)',
+    canton: 'TG'
+}, {
+    zip: 9320,
+    loc: 'Frasnacht',
+    canton: 'TG'
+}, {
+    zip: 9320,
+    loc: 'Stachen',
+    canton: 'TG'
+}, {
+    zip: 9320,
+    loc: 'Arbon',
+    canton: 'TG'
+}, {
+    zip: 9322,
+    loc: 'Egnach',
+    canton: 'TG'
+}, {
+    zip: 9323,
+    loc: 'Steinach',
+    canton: 'SG'
+}, {
+    zip: 9325,
+    loc: 'Roggwil TG',
+    canton: 'TG'
+}, {
+    zip: 9326,
+    loc: 'Horn',
+    canton: 'TG'
+}, {
+    zip: 9327,
+    loc: 'T\xFCbach',
+    canton: 'SG'
+}, {
+    zip: 9400,
+    loc: 'Rorschach',
+    canton: 'SG'
+}, {
+    zip: 9402,
+    loc: 'M\xF6rschwil',
+    canton: 'SG'
+}, {
+    zip: 9403,
+    loc: 'Goldach',
+    canton: 'SG'
+}, {
+    zip: 9404,
+    loc: 'Rorschacherberg',
+    canton: 'SG'
+}, {
+    zip: 9405,
+    loc: 'Wienacht-Tobel',
+    canton: 'AR'
+}, {
+    zip: 9410,
+    loc: 'Heiden',
+    canton: 'AR'
+}, {
+    zip: 9411,
+    loc: 'Reute AR',
+    canton: 'AR'
+}, {
+    zip: 9413,
+    loc: 'Oberegg',
+    canton: 'AI'
+}, {
+    zip: 9414,
+    loc: 'Schachen b. Reute',
+    canton: 'AR'
+}, {
+    zip: 9422,
+    loc: 'Staad SG',
+    canton: 'SG'
+}, {
+    zip: 9423,
+    loc: 'Altenrhein',
+    canton: 'SG'
+}, {
+    zip: 9424,
+    loc: 'Rheineck',
+    canton: 'SG'
+}, {
+    zip: 9425,
+    loc: 'Thal',
+    canton: 'SG'
+}, {
+    zip: 9426,
+    loc: 'Lutzenberg',
+    canton: 'AR'
+}, {
+    zip: 9427,
+    loc: 'Zelg (Wolfhalden)',
+    canton: 'AR'
+}, {
+    zip: 9427,
+    loc: 'Wolfhalden',
+    canton: 'AR'
+}, {
+    zip: 9428,
+    loc: 'Walzenhausen',
+    canton: 'AR'
+}, {
+    zip: 9430,
+    loc: 'St. Margrethen SG',
+    canton: 'SG'
+}, {
+    zip: 9434,
+    loc: 'Au SG',
+    canton: 'SG'
+}, {
+    zip: 9435,
+    loc: 'Heerbrugg',
+    canton: 'SG'
+}, {
+    zip: 9436,
+    loc: 'Balgach',
+    canton: 'SG'
+}, {
+    zip: 9437,
+    loc: 'Marbach SG',
+    canton: 'SG'
+}, {
+    zip: 9442,
+    loc: 'B\xFCriswilen',
+    canton: 'AI'
+}, {
+    zip: 9442,
+    loc: 'Berneck',
+    canton: 'SG'
+}, {
+    zip: 9443,
+    loc: 'Widnau',
+    canton: 'SG'
+}, {
+    zip: 9444,
+    loc: 'Diepoldsau',
+    canton: 'SG'
+}, {
+    zip: 9445,
+    loc: 'Rebstein',
+    canton: 'SG'
+}, {
+    zip: 9450,
+    loc: 'L\xFCchingen',
+    canton: 'SG'
+}, {
+    zip: 9450,
+    loc: 'Altst\xE4tten SG',
+    canton: 'SG'
+}, {
+    zip: 9451,
+    loc: 'Kriessern',
+    canton: 'SG'
+}, {
+    zip: 9452,
+    loc: 'Hinterforst',
+    canton: 'SG'
+}, {
+    zip: 9453,
+    loc: 'Eichberg',
+    canton: 'SG'
+}, {
+    zip: 9462,
+    loc: 'Montlingen',
+    canton: 'SG'
+}, {
+    zip: 9463,
+    loc: 'Oberriet SG',
+    canton: 'SG'
+}, {
+    zip: 9464,
+    loc: 'Lienz',
+    canton: 'SG'
+}, {
+    zip: 9464,
+    loc: 'R\xFCthi (Rheintal)',
+    canton: 'SG'
+}, {
+    zip: 9465,
+    loc: 'Salez',
+    canton: 'SG'
+}, {
+    zip: 9466,
+    loc: 'Sennwald',
+    canton: 'SG'
+}, {
+    zip: 9467,
+    loc: 'Fr\xFCmsen',
+    canton: 'SG'
+}, {
+    zip: 9468,
+    loc: 'Sax',
+    canton: 'SG'
+}, {
+    zip: 9469,
+    loc: 'Haag (Rheintal)',
+    canton: 'SG'
+}, {
+    zip: 9470,
+    loc: 'Buchs SG',
+    canton: 'SG'
+}, {
+    zip: 9470,
+    loc: 'Werdenberg',
+    canton: 'SG'
+}, {
+    zip: 9472,
+    loc: 'Grabserberg',
+    canton: 'SG'
+}, {
+    zip: 9472,
+    loc: 'Grabs',
+    canton: 'SG'
+}, {
+    zip: 9473,
+    loc: 'Gams',
+    canton: 'SG'
+}, {
+    zip: 9475,
+    loc: 'Sevelen',
+    canton: 'SG'
+}, {
+    zip: 9476,
+    loc: 'Fontnas',
+    canton: 'SG'
+}, {
+    zip: 9476,
+    loc: 'Weite',
+    canton: 'SG'
+}, {
+    zip: 9477,
+    loc: 'Tr\xFCbbach',
+    canton: 'SG'
+}, {
+    zip: 9478,
+    loc: 'Azmoos',
+    canton: 'SG'
+}, {
+    zip: 9479,
+    loc: 'Gretschins',
+    canton: 'SG'
+}, {
+    zip: 9479,
+    loc: 'Malans SG',
+    canton: 'SG'
+}, {
+    zip: 9479,
+    loc: 'Oberschan',
+    canton: 'SG'
+}, {
+    zip: 9485,
+    loc: 'Nendeln',
+    canton: 'FL',
+    cc: 'LI'
+}, {
+    zip: 9486,
+    loc: 'Schaanwald',
+    canton: 'FL',
+    cc: 'LI'
+}, {
+    zip: 9487,
+    loc: 'Gamprin-Bendern',
+    canton: 'FL',
+    cc: 'LI'
+}, {
+    zip: 9488,
+    loc: 'Schellenberg',
+    canton: 'FL',
+    cc: 'LI'
+}, {
+    zip: 9490,
+    loc: 'Vaduz',
+    canton: 'FL',
+    cc: 'LI'
+}, {
+    zip: 9491,
+    loc: 'Ruggell',
+    canton: 'FL',
+    cc: 'LI'
+}, {
+    zip: 9492,
+    loc: 'Eschen',
+    canton: 'FL',
+    cc: 'LI'
+}, {
+    zip: 9493,
+    loc: 'Mauren FL',
+    canton: 'FL',
+    cc: 'LI'
+}, {
+    zip: 9494,
+    loc: 'Schaan',
+    canton: 'FL',
+    cc: 'LI'
+}, {
+    zip: 9495,
+    loc: 'Triesen',
+    canton: 'FL',
+    cc: 'LI'
+}, {
+    zip: 9496,
+    loc: 'Balzers',
+    canton: 'FL',
+    cc: 'LI'
+}, {
+    zip: 9497,
+    loc: 'Triesenberg',
+    canton: 'FL',
+    cc: 'LI'
+}, {
+    zip: 9498,
+    loc: 'Planken',
+    canton: 'FL',
+    cc: 'LI'
+}, {
+    zip: 9500,
+    loc: 'Wil SG',
+    canton: 'SG'
+}, {
+    zip: 9502,
+    loc: 'Braunau',
+    canton: 'TG'
+}, {
+    zip: 9503,
+    loc: 'Stehrenberg',
+    canton: 'TG'
+}, {
+    zip: 9503,
+    loc: 'Lanterswil',
+    canton: 'TG'
+}, {
+    zip: 9504,
+    loc: 'Friltschen',
+    canton: 'TG'
+}, {
+    zip: 9506,
+    loc: 'Lommis',
+    canton: 'TG'
+}, {
+    zip: 9507,
+    loc: 'Stettfurt',
+    canton: 'TG'
+}, {
+    zip: 9508,
+    loc: 'Weingarten-Kalth\xE4usern',
+    canton: 'TG'
+}, {
+    zip: 9512,
+    loc: 'Rossr\xFCti',
+    canton: 'SG'
+}, {
+    zip: 9514,
+    loc: 'Wuppenau',
+    canton: 'TG'
+}, {
+    zip: 9515,
+    loc: 'Hosenruck',
+    canton: 'TG'
+}, {
+    zip: 9517,
+    loc: 'Mettlen',
+    canton: 'TG'
+}, {
+    zip: 9523,
+    loc: 'Z\xFCberwangen',
+    canton: 'SG'
+}, {
+    zip: 9524,
+    loc: 'Zuzwil SG',
+    canton: 'SG'
+}, {
+    zip: 9525,
+    loc: 'Lenggenwil',
+    canton: 'SG'
+}, {
+    zip: 9526,
+    loc: 'Zuckenriet',
+    canton: 'SG'
+}, {
+    zip: 9527,
+    loc: 'Niederhelfenschwil',
+    canton: 'SG'
+}, {
+    zip: 9532,
+    loc: 'Rickenbach b. Wil',
+    canton: 'TG'
+}, {
+    zip: 9533,
+    loc: 'Kirchberg SG',
+    canton: 'SG'
+}, {
+    zip: 9534,
+    loc: 'G\xE4hwil',
+    canton: 'SG'
+}, {
+    zip: 9535,
+    loc: 'Wilen b. Wil',
+    canton: 'TG'
+}, {
+    zip: 9536,
+    loc: 'Schwarzenbach SG',
+    canton: 'SG'
+}, {
+    zip: 9542,
+    loc: 'M\xFCnchwilen TG',
+    canton: 'TG'
+}, {
+    zip: 9543,
+    loc: 'St. Margarethen TG',
+    canton: 'TG'
+}, {
+    zip: 9545,
+    loc: 'W\xE4ngi',
+    canton: 'TG'
+}, {
+    zip: 9546,
+    loc: 'Tuttwil',
+    canton: 'TG'
+}, {
+    zip: 9547,
+    loc: 'Wittenwil',
+    canton: 'TG'
+}, {
+    zip: 9548,
+    loc: 'Matzingen',
+    canton: 'TG'
+}, {
+    zip: 9552,
+    loc: 'Bronschhofen',
+    canton: 'SG'
+}, {
+    zip: 9553,
+    loc: 'Bettwiesen',
+    canton: 'TG'
+}, {
+    zip: 9554,
+    loc: 'T\xE4gerschen',
+    canton: 'TG'
+}, {
+    zip: 9555,
+    loc: 'Tobel',
+    canton: 'TG'
+}, {
+    zip: 9556,
+    loc: 'Zezikon',
+    canton: 'TG'
+}, {
+    zip: 9556,
+    loc: 'Affeltrangen',
+    canton: 'TG'
+}, {
+    zip: 9562,
+    loc: 'Buch b. M\xE4rwil',
+    canton: 'TG'
+}, {
+    zip: 9562,
+    loc: 'M\xE4rwil',
+    canton: 'TG'
+}, {
+    zip: 9565,
+    loc: 'Rothenhausen',
+    canton: 'TG'
+}, {
+    zip: 9565,
+    loc: 'Schmidshof',
+    canton: 'TG'
+}, {
+    zip: 9565,
+    loc: 'Oppikon',
+    canton: 'TG'
+}, {
+    zip: 9565,
+    loc: 'Oberbussnang',
+    canton: 'TG'
+}, {
+    zip: 9565,
+    loc: 'Bussnang',
+    canton: 'TG'
+}, {
+    zip: 9573,
+    loc: 'Littenheid',
+    canton: 'TG'
+}, {
+    zip: 9601,
+    loc: 'L\xFCtisburg Station',
+    canton: 'SG'
+}, {
+    zip: 9602,
+    loc: 'M\xFCselbach',
+    canton: 'SG'
+}, {
+    zip: 9602,
+    loc: 'Bazenheid',
+    canton: 'SG'
+}, {
+    zip: 9604,
+    loc: 'Oberrindal',
+    canton: 'SG'
+}, {
+    zip: 9604,
+    loc: 'Unterrindal',
+    canton: 'SG'
+}, {
+    zip: 9604,
+    loc: 'L\xFCtisburg',
+    canton: 'SG'
+}, {
+    zip: 9606,
+    loc: 'B\xFCtschwil',
+    canton: 'SG'
+}, {
+    zip: 9607,
+    loc: 'Mosnang',
+    canton: 'SG'
+}, {
+    zip: 9608,
+    loc: 'Ganterschwil',
+    canton: 'SG'
+}, {
+    zip: 9612,
+    loc: 'Dreien',
+    canton: 'SG'
+}, {
+    zip: 9613,
+    loc: 'M\xFChlr\xFCti',
+    canton: 'SG'
+}, {
+    zip: 9614,
+    loc: 'Libingen',
+    canton: 'SG'
+}, {
+    zip: 9615,
+    loc: 'Dietfurt',
+    canton: 'SG'
+}, {
+    zip: 9620,
+    loc: 'Lichtensteig',
+    canton: 'SG'
+}, {
+    zip: 9621,
+    loc: 'Oberhelfenschwil',
+    canton: 'SG'
+}, {
+    zip: 9622,
+    loc: 'Krinau',
+    canton: 'SG'
+}, {
+    zip: 9630,
+    loc: 'Wattwil',
+    canton: 'SG'
+}, {
+    zip: 9631,
+    loc: 'Ulisbach',
+    canton: 'SG'
+}, {
+    zip: 9633,
+    loc: 'B\xE4chli (Hemberg)',
+    canton: 'SG'
+}, {
+    zip: 9633,
+    loc: 'Hemberg',
+    canton: 'SG'
+}, {
+    zip: 9642,
+    loc: 'Ebnat-Kappel',
+    canton: 'SG'
+}, {
+    zip: 9643,
+    loc: 'Krummenau',
+    canton: 'SG'
+}, {
+    zip: 9650,
+    loc: 'Nesslau',
+    canton: 'SG'
+}, {
+    zip: 9651,
+    loc: 'Ennetb\xFChl',
+    canton: 'SG'
+}, {
+    zip: 9652,
+    loc: 'Neu St. Johann',
+    canton: 'SG'
+}, {
+    zip: 9655,
+    loc: 'Stein SG',
+    canton: 'SG'
+}, {
+    zip: 9656,
+    loc: 'Alt St. Johann',
+    canton: 'SG'
+}, {
+    zip: 9657,
+    loc: 'Unterwasser',
+    canton: 'SG'
+}, {
+    zip: 9658,
+    loc: 'Wildhaus',
+    canton: 'SG'
+}];
+
+var ZipCodeLookpup = function () {
+    function ZipCodeLookpup() {
+        _classCallCheck(this, ZipCodeLookpup);
+    }
+
+    _createClass(ZipCodeLookpup, [{
+        key: 'lookup',
+        value: function lookup(zip) {
+            //  { "zip":9604, "loc": "Unterrindal", "canton":"SG"}
+
+            return zipdatabase.filter(function (location) {
+                return location.zip === zip;
+            }).map(function (location) {
+                return Object.assign({}, location);
+            }).map(function (location) {
+                location['cantonLocale'] = cantonCode[location.canton];
+                if (!location.hasOwnProperty('cc')) {
+                    location.cc = 'CH';
+                }
+                location['country-locale'] = countryCode[location.cc];
+                return location;
+            });
+        }
+    }]);
+
+    return ZipCodeLookpup;
+}();
+
+module.exports = ZipCodeLookpup;
+//# sourceMappingURL=index.js.map
