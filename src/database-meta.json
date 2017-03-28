@@ -16,7 +16,9 @@
       "it": "Italia"
     },
     "DE": {
-      "de": "Deutschland"
+      "de": "Deutschland",
+      "fr": "Allemagne",
+      "it": "Germania"
     }
   },
   "cantonCode": {
