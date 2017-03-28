@@ -1,22 +1,22 @@
 const countryCode = require('database-meta').countryCode;
 const cantonCode = require('database-meta').cantonCode;
-const zipdatabase = require('database-zip').db;
-
+const zipDatabase = require('database-zip').db;
+const localeKeywords = { canton :'localeCanton', country : 'localeCountry'};
 class ZipCodeLookpup {
 
     constructor() {
     }
 
     lookup(zip) {
-        return zipdatabase
+        return zipDatabase
             .filter(location => location.zip === zip)
             .map(location => Object.assign({}, location))
             .map(location => {
-                location['localeCanton'] = cantonCode[location.canton];
+                location[localeKeywords.canton] = cantonCode[location.canton];
                 if (!location.hasOwnProperty('cc')) {
                     location.cc = 'CH';
                 }
-                location['localeCountry'] = countryCode[location.cc];
+                location[localeKeywords.country] = countryCode[location.cc];
                 return location;
             });
     }
