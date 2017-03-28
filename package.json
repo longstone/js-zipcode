@@ -1,6 +1,6 @@
 {
   "name": "js-zipcode",
-  "version": "1.0.0",
+  "version": "0.0.9",
   "description": "offline zip code search",
   "main": "index.js",
   "directories": {
