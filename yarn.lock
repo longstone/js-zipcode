@@ -1888,9 +1888,9 @@ grunt-mocha-istanbul@5.0.2:
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/grunt-mocha-istanbul/-/grunt-mocha-istanbul-5.0.2.tgz#23929a8b3f45a66c5fab1f6146e62b58418b7882"
 
-grunt-mocha-test@0.13.2:
-  version "0.13.2"
-  resolved "https://registry.yarnpkg.com/grunt-mocha-test/-/grunt-mocha-test-0.13.2.tgz#0f3abcc6ab543647b1effc5ab44ebd3702f0ab8c"
+grunt-mocha-test@0.13.3:
+  version "0.13.3"
+  resolved "https://registry.yarnpkg.com/grunt-mocha-test/-/grunt-mocha-test-0.13.3.tgz#9028472b615bda6ddeaa7b30a5a164e9805de005"
   dependencies:
     hooker "^0.2.3"
     mkdirp "^0.5.0"
