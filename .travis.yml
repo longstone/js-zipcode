@@ -1,7 +1,14 @@
 language: node_js
 node_js:
   - "node"
-  - "6"
+  - "lts/*"
 before_script:
   - npm install -g grunt
-script: grunt
+jobs:
+  include:
+    - stage: "Tests"
+      name: "Unit Tests"
+      script: grunt test
+    - stage: "Build"
+      name: "build"
+      script: grunt
