@@ -44,7 +44,7 @@
     "grunt-mocha-test": "0.13.3",
     "istanbul": "^0.4.0",
     "load-grunt-tasks": "^5.1.0",
-    "mocha": "^7.0.0"
+    "mocha": "^8.0.1"
   },
   "homepage": "https://github.com/longstone/js-zipcode#readme"
 }
